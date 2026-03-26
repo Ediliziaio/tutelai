@@ -1,440 +1,475 @@
-import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
-  FolderOpen, CheckCircle, Coins, TrendingDown, Clock, ChevronRight,
-  AlertTriangle, Download, Check, FileText, X, Rocket,
+  ChevronRight, ChevronDown, ChevronUp, AlertTriangle, CheckCircle2,
+  Clock, Info, ExternalLink, RefreshCw, Bot, FileText, GraduationCap,
+  Calendar, Shield,
 } from 'lucide-react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
-import { StatusBadge } from '@/components/saas/StatusBadge';
-import {
-  mockPratiche, mockFatture, timeAgo, daysUntil,
-} from '@/data/mockDashboardData';
-import { useCounterAnimation } from '@/hooks/useCounterAnimation';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { mockAuditLogs } from '@/data/tutelaiMockData';
 
-// ── KPI Card (client version) ──
-const colorMap = {
-  sky: { bg: 'bg-sky-50', text: 'text-sky-600' },
-  emerald: { bg: 'bg-emerald-50', text: 'text-emerald-600' },
-  amber: { bg: 'bg-amber-50', text: 'text-amber-600' },
-  violet: { bg: 'bg-violet-50', text: 'text-violet-600' },
-  red: { bg: 'bg-red-50', text: 'text-red-500' },
-};
+// ── helpers ──────────────────────────────────────────────────────────────────
 
-interface KPIProps {
-  label: string;
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  variazione?: number;
-  icon: React.ComponentType<{ className?: string }>;
-  colore: keyof typeof colorMap;
-  delay: number;
-  extra?: React.ReactNode;
+function formatRelativeTime(iso: string): string {
+  const now = new Date();
+  const date = new Date(iso);
+  const diffMs = now.getTime() - date.getTime();
+  const diffMin = Math.floor(diffMs / 60000);
+  const diffH = Math.floor(diffMin / 60);
+  const diffD = Math.floor(diffH / 24);
+  if (diffMin < 1) return 'ora';
+  if (diffMin < 60) return `${diffMin} min fa`;
+  if (diffH < 24) return `${diffH}h fa`;
+  if (diffD === 1) return 'ieri';
+  return `${diffD}g fa`;
 }
 
-const KPICard = ({ label, value, prefix = '', suffix = '', variazione, icon: Icon, colore, delay, extra }: KPIProps) => {
-  const { ref: visRef, isVisible } = useScrollAnimation(0.3);
-  const animatedValue = useCounterAnimation(value, isVisible, 1200);
+function formatDateTime(iso: string): string {
+  const d = new Date(iso);
+  return d.toLocaleString('it-IT', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+}
+
+// ── AI Risk Score Gauge ───────────────────────────────────────────────────────
+
+function RiskGauge({ score }: { score: number }) {
+  // semicircle: viewBox 0 0 200 110
+  // arc from 180deg to 0deg (left to right)
+  const r = 80;
+  const cx = 100;
+  const cy = 100;
+  const circumference = Math.PI * r; // half circle
+
+  // color based on score
+  const getColor = (s: number) => {
+    if (s <= 33) return '#22A86B';
+    if (s <= 66) return '#D97706';
+    return '#DC2626';
+  };
+
+  const getLevel = (s: number) => {
+    if (s <= 33) return { label: 'BASSO', color: '#22A86B', bg: '#EAF5EE', text: '#1D6B3A' };
+    if (s <= 66) return { label: 'ATTENZIONE', color: '#D97706', bg: '#FDF3E3', text: '#854F0B' };
+    return { label: 'CRITICO', color: '#DC2626', bg: '#FDEAEA', text: '#8B1A1A' };
+  };
+
+  const level = getLevel(score);
+  const arcColor = getColor(score);
+  const filled = (score / 100) * circumference;
+
+  // SVG arc path: start at left (180deg), sweep to right (0deg)
+  // (cx - r, cy) → (cx + r, cy) going counterclockwise (sweep=0)
+  const startX = cx - r;
+  const startY = cy;
+  const endX = cx + r;
+  const endY = cy;
+
+  // dashoffset: circumference - filled (we draw from left)
+  const dashOffset = circumference - filled;
 
   return (
-    <div
-      ref={visRef as unknown as React.Ref<HTMLDivElement>}
-      className="bg-white rounded-xl border border-slate-200/80 shadow-[0_0_0_1px_rgba(0,0,0,0.04),0_2px_8px_rgba(0,0,0,0.06)] p-5 opacity-0 animate-[fadeUp_0.4s_ease-out_forwards] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200"
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <div className="flex items-start justify-between">
-        <div className="space-y-1.5">
-          <p className="text-sm font-medium text-slate-500">{label}</p>
-          <p className="text-2xl font-bold font-subtitle tracking-tight text-slate-900">
-            {prefix}{animatedValue.toLocaleString('it-IT')}{suffix}
-          </p>
-          {variazione !== undefined && (
-            <div className="flex items-center gap-1.5">
-              <span className={cn(
-                'inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-xs font-semibold',
-                variazione >= 0 ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-500'
-              )}>
-                {variazione > 0 ? '↑' : '↓'} {Math.abs(variazione)}%
-              </span>
-              <span className="text-xs text-slate-400">vs mese scorso</span>
-            </div>
-          )}
-          {extra}
-        </div>
-        <div className={cn('flex h-10 w-10 shrink-0 items-center justify-center rounded-lg', colorMap[colore].bg)}>
-          <Icon className={cn('h-5 w-5', colorMap[colore].text)} />
-        </div>
-      </div>
+    <div className="flex flex-col items-center">
+      <svg viewBox="0 0 200 110" className="w-48 h-28" role="img" aria-label={`AI Risk Score: ${score}/100`}>
+        {/* track */}
+        <path
+          d={`M ${startX} ${startY} A ${r} ${r} 0 0 1 ${endX} ${endY}`}
+          fill="none"
+          stroke="#E5E7EB"
+          strokeWidth="14"
+          strokeLinecap="round"
+        />
+        {/* filled arc using stroke-dasharray */}
+        <path
+          d={`M ${startX} ${startY} A ${r} ${r} 0 0 1 ${endX} ${endY}`}
+          fill="none"
+          stroke={arcColor}
+          strokeWidth="14"
+          strokeLinecap="round"
+          strokeDasharray={`${circumference}`}
+          strokeDashoffset={dashOffset}
+          style={{ transition: 'stroke-dashoffset 0.6s ease' }}
+        />
+        {/* score text */}
+        <text x="100" y="88" textAnchor="middle" fontSize="32" fontWeight="700" fill="#042C53" fontFamily="Inter, sans-serif">
+          {score}
+        </text>
+        <text x="100" y="104" textAnchor="middle" fontSize="11" fill="#6B7280" fontFamily="Inter, sans-serif">
+          / 100
+        </text>
+      </svg>
+      <span
+        className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full mt-1"
+        style={{ background: level.bg, color: level.text }}
+      >
+        {level.label}
+      </span>
     </div>
   );
-};
+}
 
-// ── Onboarding Checklist Banner ──
-const CHECKLIST_ITEMS = [
-  { key: 'account', label: 'Account creato', done: true },
-  { key: 'dati', label: 'Dati aziendali', done: true },
-  { key: 'logo', label: 'Carica logo aziendale', done: false, link: '/app/impostazioni' },
-  { key: 'pratica', label: 'Apri la prima pratica', done: false, link: '/app/pratiche/nuova' },
-  { key: 'invita', label: 'Invita un collega', done: false, link: '/app/impostazioni' },
+// ── Progress Bar ──────────────────────────────────────────────────────────────
+
+function ProgressBar({ value, color = '#185FA5' }: { value: number; color?: string }) {
+  return (
+    <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+      <div
+        className="h-1.5 rounded-full transition-all duration-500"
+        style={{ width: `${value}%`, background: color }}
+      />
+    </div>
+  );
+}
+
+// ── Stat Card ─────────────────────────────────────────────────────────────────
+
+interface StatCardProps {
+  icon: React.ReactNode;
+  title: string;
+  main: string;
+  sub: React.ReactNode;
+  link: string;
+}
+
+function StatCard({ icon, title, main, sub, link }: StatCardProps) {
+  return (
+    <Link to={link} className="block group">
+      <div className="bg-white border border-[#C8C5BC] rounded-xl p-5 hover:shadow-md transition-shadow h-full">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2 text-[#185FA5]">{icon}</div>
+          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#185FA5] transition-colors" />
+        </div>
+        <p className="text-xs text-gray-500 mb-1">{title}</p>
+        <p className="text-2xl font-bold text-[#042C53] mb-2">{main}</p>
+        <div className="text-xs text-gray-500 space-y-0.5">{sub}</div>
+      </div>
+    </Link>
+  );
+}
+
+// ── Priority Action ───────────────────────────────────────────────────────────
+
+interface PriorityAction {
+  urgency: 'red' | 'yellow' | 'blue' | 'green';
+  text: string;
+  actionLabel?: string;
+  actionLink?: string;
+}
+
+const PRIORITY_ACTIONS: PriorityAction[] = [
+  {
+    urgency: 'red',
+    text: 'Formazione AI Literacy: 2 utenti non hanno ancora completato il corso obbligatorio',
+    actionLabel: 'Assegna ora',
+    actionLink: '/app/training/team',
+  },
+  {
+    urgency: 'red',
+    text: 'Voice Agent Twilio: manca disclosure obbligatoria — scadenza 2 ago 2026',
+    actionLabel: 'Risolvi',
+    actionLink: '/app/registry/ai-004',
+  },
+  {
+    urgency: 'yellow',
+    text: 'Contratto con Fornitore: non include clausole AI',
+    actionLabel: 'Genera clausola',
+    actionLink: '/app/docs/new',
+  },
+  {
+    urgency: 'blue',
+    text: 'Nuova circolare ACN del 15 marzo — impatta il tuo settore',
+    actionLabel: 'Leggi',
+    actionLink: '/app/monitor/mon-001',
+  },
+  {
+    urgency: 'green',
+    text: 'Policy uso AI aggiornata e firmata',
+  },
 ];
 
-const OnboardingChecklist = () => {
-  const navigate = useNavigate();
-  const [dismissed, setDismissed] = useState(() => localStorage.getItem('il_checklist_dismissed') === '1');
-  const completedCount = CHECKLIST_ITEMS.filter(i => i.done).length;
-  const total = CHECKLIST_ITEMS.length;
-  const percent = Math.round((completedCount / total) * 100);
-
-  if (dismissed || percent === 100) return null;
-
-  return (
-    <div className="bg-gradient-to-r from-sky-50 to-indigo-50 border border-sky-200 rounded-xl p-5 opacity-0 animate-[fadeUp_0.4s_ease-out_forwards] relative">
-      <button
-        onClick={() => { setDismissed(true); localStorage.setItem('il_checklist_dismissed', '1'); }}
-        className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 transition-colors"
-      >
-        <X className="h-4 w-4" />
-      </button>
-      <div className="flex items-center gap-2 mb-3">
-        <Rocket className="h-5 w-5 text-sky-500" />
-        <h3 className="text-sm font-bold text-slate-800">Completa il setup — {percent}%</h3>
-        <span className="text-xs text-slate-500 ml-auto mr-6">{completedCount}/{total} completati</span>
-      </div>
-      <div className="h-2 w-full rounded-full bg-white/70 mb-4">
-        <div className="h-2 rounded-full bg-sky-500 transition-all duration-700" style={{ width: `${percent}%` }} />
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-        {CHECKLIST_ITEMS.map((item) => (
-          <div
-            key={item.key}
-            onClick={() => item.link && !item.done && navigate(item.link)}
-            className={cn(
-              'flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors',
-              item.done ? 'text-slate-400' : 'text-slate-700 hover:bg-white/60 cursor-pointer'
-            )}
-          >
-            {item.done ? (
-              <Check className="h-4 w-4 text-emerald-500 shrink-0" />
-            ) : (
-              <span className="h-4 w-4 rounded-full border-2 border-slate-300 shrink-0" />
-            )}
-            <span className={item.done ? 'line-through' : 'font-medium'}>{item.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+const urgencyBorder: Record<PriorityAction['urgency'], string> = {
+  red: 'border-l-[#DC2626]',
+  yellow: 'border-l-[#D97706]',
+  blue: 'border-l-[#185FA5]',
+  green: 'border-l-[#22A86B]',
 };
 
-// ── Main ──
-const AppDashboard = () => {
-  const navigate = useNavigate();
+const urgencyBg: Record<PriorityAction['urgency'], string> = {
+  red: 'bg-[#FDEAEA]',
+  yellow: 'bg-[#FDF3E3]',
+  blue: 'bg-[#E6F1FB]',
+  green: 'bg-[#EAF5EE]',
+};
+
+function UrgencyIcon({ urgency }: { urgency: PriorityAction['urgency'] }) {
+  if (urgency === 'red') return <AlertTriangle className="w-4 h-4 text-[#DC2626] flex-shrink-0" />;
+  if (urgency === 'yellow') return <AlertTriangle className="w-4 h-4 text-[#D97706] flex-shrink-0" />;
+  if (urgency === 'blue') return <Info className="w-4 h-4 text-[#185FA5] flex-shrink-0" />;
+  return <CheckCircle2 className="w-4 h-4 text-[#22A86B] flex-shrink-0" />;
+}
+
+// ── Risk Categories ───────────────────────────────────────────────────────────
+
+const riskCategories = [
+  { label: 'Documentazione', score: 45, color: '#D97706' },
+  { label: 'Formazione dipendenti', score: 20, color: '#DC2626' },
+  { label: 'Contrattualistica', score: 55, color: '#D97706' },
+  { label: 'Sistemi AI censiti', score: 80, color: '#22A86B' },
+  { label: 'Governance interna', score: 10, color: '#DC2626' },
+];
+
+function getCategoryColor(score: number) {
+  if (score >= 67) return '#22A86B';
+  if (score >= 34) return '#D97706';
+  return '#DC2626';
+}
+
+// ── Main Component ────────────────────────────────────────────────────────────
+
+export default function AppDashboard() {
   const { profile, tenant } = useAuth();
-  const [praticaFilter, setPraticaFilter] = useState<'all' | 'in_corso' | 'completata'>('all');
+  const [riskExpanded, setRiskExpanded] = useState(false);
 
-  const tenantId = tenant?.id || 't5'; // mock: Arredo Design Lux
-  const myPratiche = mockPratiche.filter((p) => p.tenant_id === tenantId);
-  const inCorso = myPratiche.filter((p) => ['in_corso', 'in_attesa'].includes(p.stato)).length;
-  const completateMese = myPratiche.filter((p) => p.stato === 'completata').length;
-  const crediti = tenant?.crediti_residui ?? 42;
-  const creditiTotali = 500;
+  const firstName = profile?.full_name?.split(' ')[0] ?? 'Utente';
+  const companyName = tenant?.ragione_sociale ?? '';
+  const plan = tenant?.piano ?? 'business';
 
-  const filteredPratiche = myPratiche.filter((p) => {
-    if (praticaFilter === 'in_corso') return ['in_corso', 'in_attesa'].includes(p.stato);
-    if (praticaFilter === 'completata') return p.stato === 'completata';
-    return true;
-  }).slice(0, 6);
+  const planLabel: Record<string, string> = {
+    starter: 'Starter',
+    business: 'Business',
+    enterprise: 'Enterprise',
+  };
 
-  const myFatture = mockFatture.filter((f) => f.tenant_id === tenantId).slice(0, 5);
-
-  // Trial check
-  const isTrialEnding = tenant?.stato === 'trial' && tenant.trial_ends_at && daysUntil(tenant.trial_ends_at) <= 7;
-  const trialDays = tenant?.trial_ends_at ? daysUntil(tenant.trial_ends_at) : 0;
-  const isOnboardingIncomplete = !tenant?.onboarding_completato;
-
-  // Scadenze
-  const scadenze = [
-    ...myPratiche.filter((p) => p.scadenza && !['completata', 'annullata'].includes(p.stato)).map((p) => ({ tipo: 'pratica', titolo: p.titolo, codice: p.codice, data: p.scadenza!, giorni: daysUntil(p.scadenza!) })),
-    ...myFatture.filter((f) => ['inviata', 'scaduta'].includes(f.stato)).map((f) => ({ tipo: 'fattura', titolo: `Fattura ${f.numero}`, codice: f.numero, data: f.data_scadenza, giorni: daysUntil(f.data_scadenza) })),
-  ].sort((a, b) => a.giorni - b.giorni).slice(0, 5);
-
-  // Servizi attivi mock
-  const servizi = [
-    { nome: 'Creazione Fatture', attivo: true },
-    { nome: 'Pratiche ENEA', attivo: true },
-    { nome: 'Call Center', attivo: false },
-    { nome: 'Segreteria Virtuale', attivo: false },
-  ];
-
-  const creditiUsati = creditiTotali - crediti;
-  const creditiData = [
-    { name: 'Usati', value: creditiUsati, color: '#0ea5e9' },
-    { name: 'Residui', value: crediti, color: '#e2e8f0' },
-  ];
+  const recentLogs = mockAuditLogs.slice(0, 5);
 
   return (
-    <div className="space-y-6">
-      {/* Hero Banner */}
-      {isTrialEnding && (
-        <div className="flex items-center gap-4 bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200 rounded-xl p-5 opacity-0 animate-[fadeUp_0.4s_ease-out_forwards]">
-          <Clock className="h-8 w-8 text-amber-500 shrink-0" />
-          <div className="flex-1">
-            <p className="text-sm font-semibold text-amber-800">Il tuo periodo di prova scade tra {trialDays} giorni</p>
-            <p className="text-xs text-amber-600 mt-0.5">Attiva un piano per continuare a usare tutti i servizi.</p>
+    <div className="min-h-screen bg-[#FAFAF8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+        {/* ── Header row ── */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h1 className="text-[22px] font-bold text-[#042C53]">
+              Buongiorno, {firstName}
+            </h1>
+            {companyName && (
+              <p className="text-sm text-gray-500 mt-0.5">{companyName}</p>
+            )}
           </div>
-          <button className="shrink-0 bg-amber-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-amber-600 transition-colors">
-            Attiva il piano
-          </button>
-        </div>
-      )}
-
-      {!isTrialEnding && <OnboardingChecklist />}
-
-      {/* ROW 1 — KPIs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <KPICard label="Pratiche in Corso" value={inCorso} icon={FolderOpen} colore="sky" delay={0} />
-        <KPICard label="Completate (mese)" value={completateMese} variazione={16} icon={CheckCircle} colore="emerald" delay={100} />
-        <KPICard
-          label="Crediti Residui"
-          value={crediti}
-          prefix="€ "
-          icon={Coins}
-          colore={crediti < 10 ? 'red' : crediti < 50 ? 'amber' : 'emerald'}
-          delay={200}
-          extra={crediti < 50 ? <button className="text-xs text-sky-500 hover:text-sky-600 font-medium mt-1">Ricarica →</button> : undefined}
-        />
-        <KPICard
-          label="Risparmio Stimato"
-          value={1260}
-          prefix="€ "
-          icon={TrendingDown}
-          colore="violet"
-          delay={300}
-          extra={<p className="text-xs text-slate-400 mt-1">vs gestione interna</p>}
-        />
-      </div>
-
-      {/* ROW 2 — Pratiche + Piano */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-        {/* Pratiche */}
-        <div className="lg:col-span-7 bg-white rounded-xl border border-slate-200/80 shadow-sm opacity-0 animate-[fadeUp_0.4s_ease-out_forwards]" style={{ animationDelay: '400ms' }}>
-          <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-            <h3 className="text-sm font-semibold text-slate-800">Le tue pratiche</h3>
-            <div className="flex gap-1">
-              {(['all', 'in_corso', 'completata'] as const).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setPraticaFilter(f)}
-                  className={cn(
-                    'rounded-full px-3 py-1 text-xs font-medium transition-colors',
-                    praticaFilter === f ? 'bg-sky-100 text-sky-700' : 'text-slate-400 hover:text-slate-600'
-                  )}
-                >
-                  {f === 'all' ? 'Tutte' : f === 'in_corso' ? 'In corso' : 'Completate'}
-                </button>
-              ))}
-            </div>
-          </div>
-          {filteredPratiche.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-12 text-slate-400">
-              <FolderOpen className="h-10 w-10 mb-3 opacity-30" />
-              <p className="text-sm font-medium">Nessuna pratica ancora</p>
-              <button onClick={() => navigate('/app/pratiche/nuova')} className="mt-2 text-xs text-sky-500 hover:text-sky-600 font-semibold">
-                Fai la prima richiesta →
-              </button>
-            </div>
-          ) : (
-            <div className="divide-y divide-slate-50">
-              {filteredPratiche.map((p) => {
-                const days = p.scadenza ? daysUntil(p.scadenza) : null;
-                return (
-                  <div
-                    key={p.id}
-                    onClick={() => navigate(`/app/pratiche/${p.id}`)}
-                    className="flex items-center gap-3 px-5 py-3 hover:bg-slate-50 cursor-pointer group transition-colors"
-                  >
-                    <span className={cn(
-                      'h-2.5 w-2.5 shrink-0 rounded-full',
-                      p.stato === 'in_corso' ? 'bg-sky-500 animate-pulse' :
-                      p.stato === 'completata' ? 'bg-emerald-500' :
-                      p.stato === 'in_attesa' ? 'bg-amber-500' :
-                      p.stato === 'scaduta' ? 'bg-red-500' : 'bg-slate-300'
-                    )} />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <code className="text-xs font-mono-accent text-slate-400">{p.codice}</code>
-                        <StatusBadge status={p.tipo as any} className="hidden sm:inline-flex" />
-                      </div>
-                      <p className="text-sm font-medium text-slate-800 truncate">{p.titolo}</p>
-                    </div>
-                    {days !== null && (
-                      <span className={cn('text-xs shrink-0 hidden sm:block', days < 0 ? 'text-red-600 font-bold' : days <= 3 ? 'text-amber-600' : 'text-slate-400')}>
-                        {days < 0 ? 'Scaduta' : days === 0 ? 'Oggi' : `${days}gg`}
-                      </span>
-                    )}
-                    <ChevronRight className="h-4 w-4 text-slate-300 group-hover:text-slate-500 group-hover:translate-x-1 transition-all shrink-0" />
-                  </div>
-                );
-              })}
-              <div className="px-5 py-3">
-                <button onClick={() => navigate('/app/pratiche')} className="text-xs text-sky-500 hover:text-sky-600 font-medium">
-                  Vedi tutte le pratiche →
-                </button>
-              </div>
-            </div>
-          )}
+          <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide bg-[#E6F1FB] text-[#185FA5] px-3 py-1 rounded-full self-start sm:self-auto">
+            Piano {planLabel[plan] ?? plan}
+          </span>
         </div>
 
-        {/* Piano & Crediti */}
-        <div className="lg:col-span-5 bg-white rounded-xl border border-slate-200/80 shadow-sm p-5 opacity-0 animate-[fadeUp_0.4s_ease-out_forwards]" style={{ animationDelay: '500ms' }}>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-semibold text-slate-800">Il tuo piano</h3>
-            <span className={cn('rounded-full px-2.5 py-0.5 text-xs font-medium capitalize',
-              tenant?.piano === 'enterprise' ? 'bg-violet-50 text-violet-700' :
-              tenant?.piano === 'professionale' ? 'bg-sky-50 text-sky-700' : 'bg-slate-100 text-slate-600'
-            )}>
-              {tenant?.piano || 'starter'}
-            </span>
-          </div>
+        {/* ── Top section: gauge + stat cards ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
 
-          {/* Mini donut */}
-          <div className="flex items-center gap-4 mb-4">
-            <div className="h-20 w-20 shrink-0">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={creditiData} dataKey="value" cx="50%" cy="50%" innerRadius={25} outerRadius={35} stroke="none">
-                    {creditiData.map((d) => <Cell key={d.name} fill={d.color} />)}
-                  </Pie>
-                  <text x="50%" y="50%" textAnchor="middle" dominantBaseline="central" className="text-xs font-bold fill-slate-800">€{crediti}</text>
-                </PieChart>
-              </ResponsiveContainer>
+          {/* AI Risk Score */}
+          <div className="bg-white border border-[#C8C5BC] rounded-xl p-5 flex flex-col items-center gap-3">
+            <div className="flex items-center gap-2 self-start w-full">
+              <Shield className="w-4 h-4 text-[#185FA5]" />
+              <span className="text-sm font-semibold text-[#042C53]">AI Risk Score</span>
             </div>
-            <div className="flex-1">
-              <div className="h-2 w-full rounded-full bg-slate-100 mb-1.5">
-                <div className="h-2 rounded-full bg-sky-500 transition-all" style={{ width: `${(creditiUsati / creditiTotali) * 100}%` }} />
-              </div>
-              <p className="text-xs text-slate-500">Usati €{creditiUsati} su €{creditiTotali} disponibili</p>
-            </div>
+            <RiskGauge score={34} />
+            <p className="text-xs text-gray-500 text-center">
+              Score calcolato su documentazione, formazione, sistemi e governance
+            </p>
+            <button className="bg-[#042C53] hover:bg-[#185FA5] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+              <RefreshCw className="w-3.5 h-3.5" />
+              Aggiorna score
+            </button>
           </div>
 
-          {/* Servizi */}
-          <div className="space-y-2 mb-4">
-            {servizi.map((s) => (
-              <div key={s.nome} className="flex items-center gap-2 text-sm">
-                {s.attivo ? (
-                  <Check className="h-4 w-4 text-emerald-500" />
-                ) : (
-                  <span className="h-4 w-4 rounded-full border border-slate-200" />
-                )}
-                <span className={s.attivo ? 'text-slate-700' : 'text-slate-400'}>{s.nome}</span>
-              </div>
-            ))}
-            <button className="text-xs text-sky-500 hover:text-sky-600 font-medium mt-1">Attiva più servizi →</button>
+          {/* Stat cards grid */}
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <StatCard
+              icon={<Bot className="w-5 h-5" />}
+              title="Sistemi AI"
+              main="8 totali"
+              sub={
+                <>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-[#22A86B] mr-1.5" />5 conformi</p>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-[#D97706] mr-1.5" />2 attenzione</p>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-[#DC2626] mr-1.5" />1 critico</p>
+                </>
+              }
+              link="/app/registry"
+            />
+            <StatCard
+              icon={<FileText className="w-5 h-5" />}
+              title="Documenti"
+              main="12 totali"
+              sub={
+                <>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-[#22A86B] mr-1.5" />8 firmati</p>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-[#185FA5] mr-1.5" />3 bozza</p>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-[#DC2626] mr-1.5" />1 scaduto</p>
+                </>
+              }
+              link="/app/docs"
+            />
+            <StatCard
+              icon={<GraduationCap className="w-5 h-5" />}
+              title="Formazione"
+              main="5 utenti"
+              sub={
+                <>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-[#22A86B] mr-1.5" />3 completato</p>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-[#D97706] mr-1.5" />2 in corso</p>
+                  <p><span className="inline-block w-2 h-2 rounded-full bg-gray-300 mr-1.5" />0 non iniziato</p>
+                </>
+              }
+              link="/app/training"
+            />
+            <StatCard
+              icon={<Calendar className="w-5 h-5" />}
+              title="Prossima scadenza"
+              main="127 giorni"
+              sub={
+                <>
+                  <p className="font-medium text-[#042C53]">2 agosto 2026</p>
+                  <p>Trasparenza AI — pubblico</p>
+                  <p className="text-[#854F0B]">Art. 50 AI Act</p>
+                </>
+              }
+              link="/app/monitor"
+            />
           </div>
-
-          <button className="w-full rounded-lg border border-slate-200 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
-            Ricarica crediti
-          </button>
-        </div>
-      </div>
-
-      {/* ROW 3 — Fatture + Scadenze */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-        {/* Fatture */}
-        <div className="lg:col-span-7 bg-white rounded-xl border border-slate-200/80 shadow-sm opacity-0 animate-[fadeUp_0.4s_ease-out_forwards]" style={{ animationDelay: '600ms' }}>
-          <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-            <h3 className="text-sm font-semibold text-slate-800">Fatture recenti</h3>
-            <button onClick={() => navigate('/app/fatture')} className="text-xs text-sky-500 hover:text-sky-600 font-medium">Vai alle fatture →</button>
-          </div>
-          {myFatture.length === 0 ? (
-            <p className="px-5 py-8 text-sm text-slate-400 text-center">Nessuna fattura ancora</p>
-          ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-slate-50 text-xs text-slate-400">
-                    <th className="text-left px-5 py-2.5">Numero</th>
-                    <th className="text-left px-3 py-2.5 hidden sm:table-cell">Data</th>
-                    <th className="text-right px-3 py-2.5">Importo</th>
-                    <th className="text-center px-3 py-2.5">Stato</th>
-                    <th className="text-right px-3 py-2.5">Azione</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {myFatture.map((f) => (
-                    <tr key={f.id} className="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
-                      <td className="px-5 py-3 font-medium text-slate-700">{f.numero}</td>
-                      <td className="px-3 py-3 text-slate-500 hidden sm:table-cell">{f.data_emissione}</td>
-                      <td className="px-3 py-3 text-right font-semibold text-slate-800">€ {f.totale.toLocaleString('it-IT', { minimumFractionDigits: 2 })}</td>
-                      <td className="px-3 py-3 text-center"><StatusBadge status={f.stato as any} /></td>
-                      <td className="px-3 py-3 text-right">
-                        {f.stato === 'pagata' && <Check className="h-4 w-4 text-emerald-500 ml-auto" />}
-                        {f.stato === 'inviata' && (
-                          <button className="text-xs text-slate-500 hover:text-slate-700 font-medium inline-flex items-center gap-1">
-                            <Download className="h-3 w-3" /> PDF
-                          </button>
-                        )}
-                        {f.stato === 'scaduta' && (
-                          <button className="text-xs text-amber-600 hover:text-amber-700 font-medium inline-flex items-center gap-1">
-                            <AlertTriangle className="h-3 w-3" /> Sollecita
-                          </button>
-                        )}
-                        {f.stato === 'bozza' && (
-                          <button className="text-xs text-sky-500 hover:text-sky-600 font-medium">Invia</button>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
         </div>
 
-        {/* Scadenze */}
-        <div className="lg:col-span-5 bg-white rounded-xl border border-slate-200/80 shadow-sm opacity-0 animate-[fadeUp_0.4s_ease-out_forwards]" style={{ animationDelay: '700ms' }}>
-          <div className="px-5 py-4 border-b border-slate-100">
-            <h3 className="text-sm font-semibold text-slate-800">Scadenze in arrivo</h3>
-          </div>
-          {scadenze.length === 0 ? (
-            <p className="px-5 py-8 text-sm text-emerald-600 text-center">Nessuna scadenza imminente 🎉</p>
-          ) : (
-            <div className="divide-y divide-slate-50">
-              {scadenze.map((s, i) => (
+        {/* ── Bottom section: actions + activity + risk detail ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+
+          {/* Azioni prioritarie */}
+          <div className="bg-white border border-[#C8C5BC] rounded-xl p-5">
+            <h2 className="text-sm font-semibold text-[#042C53] mb-4 flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-[#D97706]" />
+              Azioni prioritarie
+            </h2>
+            <div className="space-y-2">
+              {PRIORITY_ACTIONS.map((action, idx) => (
                 <div
-                  key={i}
-                  className={cn(
-                    'flex items-center gap-3 px-5 py-3 border-l-4',
-                    s.giorni <= 0 ? 'border-l-red-400 bg-red-50/50' :
-                    s.giorni <= 3 ? 'border-l-amber-400 bg-amber-50/30' :
-                    'border-l-transparent'
-                  )}
+                  key={idx}
+                  className={`flex items-start gap-3 border-l-4 ${urgencyBorder[action.urgency]} ${urgencyBg[action.urgency]} rounded-r-lg px-3 py-2.5`}
                 >
-                  {s.tipo === 'pratica' ? (
-                    <FolderOpen className="h-4 w-4 text-slate-400 shrink-0" />
-                  ) : (
-                    <FileText className="h-4 w-4 text-slate-400 shrink-0" />
+                  <UrgencyIcon urgency={action.urgency} />
+                  <p className="text-sm text-gray-700 flex-1 leading-snug">{action.text}</p>
+                  {action.actionLabel && action.actionLink && (
+                    <Link
+                      to={action.actionLink}
+                      className="flex-shrink-0 border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
+                    >
+                      {action.actionLabel}
+                    </Link>
                   )}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-slate-700 truncate">{s.titolo}</p>
-                    <code className="text-xs font-mono-accent text-slate-400">{s.codice}</code>
-                  </div>
-                  <span className={cn('text-xs font-semibold shrink-0',
-                    s.giorni <= 0 ? 'text-red-600' : s.giorni <= 3 ? 'text-amber-600' : 'text-slate-400'
-                  )}>
-                    {s.giorni <= 0 ? 'Scaduta' : s.giorni === 0 ? 'Oggi' : `+${s.giorni}gg`}
-                  </span>
                 </div>
               ))}
             </div>
-          )}
+          </div>
+
+          {/* Right column: activity + risk detail */}
+          <div className="space-y-5">
+
+            {/* Attività recente */}
+            <div className="bg-white border border-[#C8C5BC] rounded-xl p-5">
+              <h2 className="text-sm font-semibold text-[#042C53] mb-4 flex items-center gap-2">
+                <Clock className="w-4 h-4 text-[#185FA5]" />
+                Attività recente
+              </h2>
+              <div className="space-y-3">
+                {recentLogs.map((log) => (
+                  <div key={log.id} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#185FA5] mt-2 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-gray-800 leading-snug">
+                        <span className="font-medium">{log.azione}</span>
+                        {log.oggetto && (
+                          <span className="text-gray-500"> — {log.oggetto}</span>
+                        )}
+                      </p>
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        {log.utente_nome && <span className="mr-1">{log.utente_nome} ·</span>}
+                        <span className="text-[#185FA5]">{log.modulo}</span>
+                        <span className="mx-1">·</span>
+                        {formatRelativeTime(log.timestamp)}
+                      </p>
+                    </div>
+                    <span className="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">
+                      {formatDateTime(log.timestamp).split(',')[1]?.trim()}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* AI Risk Score detail */}
+            <div className="bg-white border border-[#C8C5BC] rounded-xl p-5">
+              <button
+                className="w-full flex items-center justify-between"
+                onClick={() => setRiskExpanded((v) => !v)}
+              >
+                <h2 className="text-sm font-semibold text-[#042C53] flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-[#185FA5]" />
+                  Dettaglio AI Risk Score per categoria
+                </h2>
+                {riskExpanded
+                  ? <ChevronUp className="w-4 h-4 text-gray-400" />
+                  : <ChevronDown className="w-4 h-4 text-gray-400" />
+                }
+              </button>
+
+              {riskExpanded && (
+                <div className="mt-4 space-y-3">
+                  {riskCategories.map((cat) => {
+                    const color = getCategoryColor(cat.score);
+                    return (
+                      <div key={cat.label}>
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-xs text-gray-600">{cat.label}</span>
+                          <span
+                            className="text-xs font-bold"
+                            style={{ color }}
+                          >
+                            {cat.score}/100
+                          </span>
+                        </div>
+                        <ProgressBar value={cat.score} color={color} />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {!riskExpanded && (
+                <p className="text-xs text-gray-400 mt-2">
+                  Espandi per vedere il dettaglio per area
+                </p>
+              )}
+            </div>
+
+          </div>
         </div>
+
+        {/* ── Quick links footer ── */}
+        <div className="flex flex-wrap gap-3 pt-2">
+          {[
+            { label: 'Registro AI', to: '/app/registry' },
+            { label: 'Documenti', to: '/app/docs' },
+            { label: 'Formazione', to: '/app/training' },
+            { label: 'AI Monitor', to: '/app/monitor' },
+            { label: 'GDPR + AI', to: '/app/gdpr' },
+            { label: 'Audit Log', to: '/app/audit' },
+          ].map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="flex items-center gap-1 text-xs text-[#185FA5] hover:text-[#042C53] transition-colors"
+            >
+              {link.label}
+              <ExternalLink className="w-3 h-3" />
+            </Link>
+          ))}
+        </div>
+
       </div>
     </div>
   );
-};
-
-export default AppDashboard;
+}

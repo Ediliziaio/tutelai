@@ -4,39 +4,42 @@ import { Loader2 } from 'lucide-react';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
-  requiredArea: 'admin' | 'app';
+  requiredArea: 'app' | 'admin';
 }
 
-export const ProtectedRoute = ({ children, requiredArea }: ProtectedRouteProps) => {
-  const { user, isAdmin, isCliente, tenant, loading } = useAuth();
+export function ProtectedRoute({ children, requiredArea }: ProtectedRouteProps) {
+  const { user, profile, tenant, loading, impersonating } = useAuth();
   const location = useLocation();
 
   if (loading) {
     return (
-      <div className="flex h-screen w-full items-center justify-center bg-slate-50">
-        <Loader2 className="h-8 w-8 animate-spin text-sky-500" />
+      <div className="flex h-screen w-full items-center justify-center bg-[#FAFAF8]">
+        <Loader2 className="h-8 w-8 animate-spin text-[#185FA5]" />
       </div>
     );
   }
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
+  if (!user || !profile) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // Admin trying to access /app → redirect to /admin
-  if (requiredArea === 'app' && isAdmin) {
-    return <Navigate to="/admin" replace />;
+  if (requiredArea === 'admin') {
+    if (profile.role !== 'superadmin') {
+      return <Navigate to="/app/dashboard" replace />;
+    }
+    return <>{children}</>;
   }
 
-  // Client trying to access /admin → redirect to /app
-  if (requiredArea === 'admin' && isCliente) {
-    return <Navigate to="/app" replace />;
+  // requiredArea === 'app'
+  // SuperAdmin can enter app area only when impersonating a tenant
+  if (profile.role === 'superadmin' && !impersonating) {
+    return <Navigate to="/admin/dashboard" replace />;
   }
 
-  // Client with incomplete onboarding → redirect to /onboarding (unless already there)
-  if (requiredArea === 'app' && isCliente && tenant && !tenant.onboarding_completato && location.pathname !== '/onboarding') {
+  // Redirect to onboarding if not completed
+  if (tenant && !tenant.onboarding_completato && !location.pathname.startsWith('/onboarding')) {
     return <Navigate to="/onboarding" replace />;
   }
 
   return <>{children}</>;
-};
+}

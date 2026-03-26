@@ -3,33 +3,29 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/saas/ProtectedRoute";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Loader2 } from "lucide-react";
 
-// Landing pages (eagerly loaded — critical path)
+// Landing (eagerly loaded)
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 
-// Lazy-loaded landing pages
-const ServicePage = lazy(() => import("./pages/ServicePage"));
-const PerChiPage = lazy(() => import("./pages/PerChiPage"));
-const PerChi = lazy(() => import("./pages/PerChi"));
+// Lazy landing
 const ChiSiamo = lazy(() => import("./pages/ChiSiamo"));
-const Garanzia = lazy(() => import("./pages/Garanzia"));
-const ComeFunziona = lazy(() => import("./pages/ComeFunziona"));
-const Tariffe = lazy(() => import("./pages/Tariffe"));
-const FAQ = lazy(() => import("./pages/FAQ"));
+const Servizi = lazy(() => import("./pages/Servizi"));
+const Piattaforma = lazy(() => import("./pages/Piattaforma"));
+const NormativaAI = lazy(() => import("./pages/NormativaAI"));
+const PartnerProgram = lazy(() => import("./pages/PartnerProgram"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Contatti = lazy(() => import("./pages/Contatti"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Termini = lazy(() => import("./pages/Termini"));
-
-// Auth pages
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 
@@ -37,42 +33,64 @@ const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const AppLayout = lazy(() => import("./components/saas/AppLayout"));
 const AdminLayout = lazy(() => import("./components/saas/AdminLayout"));
 
-// SaaS pages (lazy-loaded)
-const PlaceholderPage = lazy(() => import("./pages/saas/PlaceholderPage"));
+// Onboarding
+const OnboardingWizard = lazy(() => import("./pages/saas/OnboardingWizard"));
+
+// ── App Cliente ──
+const AppDashboard = lazy(() => import("./pages/saas/AppDashboard"));
+const AppRegistry = lazy(() => import("./pages/saas/AppRegistry"));
+const AppRegistryNew = lazy(() => import("./pages/saas/AppRegistryNew"));
+const AppRegistryDetail = lazy(() => import("./pages/saas/AppRegistryDetail"));
+const AppDocs = lazy(() => import("./pages/saas/AppDocs"));
+const AppDocsNew = lazy(() => import("./pages/saas/AppDocsNew"));
+const AppDocsEdit = lazy(() => import("./pages/saas/AppDocsEdit"));
+const AppMonitor = lazy(() => import("./pages/saas/AppMonitor"));
+const AppMonitorDetail = lazy(() => import("./pages/saas/AppMonitorDetail"));
+const AppMonitorSettings = lazy(() => import("./pages/saas/AppMonitorSettings"));
+const AppTraining = lazy(() => import("./pages/saas/AppTraining"));
+const AppTrainingTeam = lazy(() => import("./pages/saas/AppTrainingTeam"));
+const AppTrainingPlay = lazy(() => import("./pages/saas/AppTrainingPlay"));
+const AppTrainingQuiz = lazy(() => import("./pages/saas/AppTrainingQuiz"));
+const AppTrainingCertificate = lazy(() => import("./pages/saas/AppTrainingCertificate"));
+const AppGdpr = lazy(() => import("./pages/saas/AppGdpr"));
+const AppGdprRegister = lazy(() => import("./pages/saas/AppGdprRegister"));
+const AppGdprDpiaNew = lazy(() => import("./pages/saas/AppGdprDpiaNew"));
+const AppGdprBreach = lazy(() => import("./pages/saas/AppGdprBreach"));
+const AppAudit = lazy(() => import("./pages/saas/AppAudit"));
+const AppAuditDetail = lazy(() => import("./pages/saas/AppAuditDetail"));
+const AppSettingsCompany = lazy(() => import("./pages/saas/AppSettingsCompany"));
+const AppSettingsTeam = lazy(() => import("./pages/saas/AppSettingsTeam"));
+const AppSettingsSecurity = lazy(() => import("./pages/saas/AppSettingsSecurity"));
+const AppSettingsNotifications = lazy(() => import("./pages/saas/AppSettingsNotifications"));
+const AppSettingsIntegrations = lazy(() => import("./pages/saas/AppSettingsIntegrations"));
+const AppBilling = lazy(() => import("./pages/saas/AppBilling"));
+const AppBillingUpgrade = lazy(() => import("./pages/saas/AppBillingUpgrade"));
+const AppNotifications = lazy(() => import("./pages/saas/AppNotifications"));
+const AppCalendario = lazy(() => import("./pages/saas/AppCalendario"));
+const AppGapAnalysis = lazy(() => import("./pages/saas/AppGapAnalysis"));
+const AppAILawyer = lazy(() => import("./pages/saas/AppAILawyer"));
+const AppFirmaDigitale = lazy(() => import("./pages/saas/AppFirmaDigitale"));
+const AppReadinessReport = lazy(() => import("./pages/saas/AppReadinessReport"));
+const AppExecutiveDashboard = lazy(() => import("./pages/saas/AppExecutiveDashboard"));
+const AppVendorManagement = lazy(() => import("./pages/saas/AppVendorManagement"));
+const AppReminders = lazy(() => import("./pages/saas/AppReminders"));
+
+// ── SuperAdmin ──
 const AdminDashboard = lazy(() => import("./pages/saas/AdminDashboard"));
-const AdminClienti = lazy(() => import("./pages/saas/AdminClienti"));
-const AdminFatturazione = lazy(() => import("./pages/saas/AdminFatturazione"));
-const AdminPratiche = lazy(() => import("./pages/saas/AdminPratiche"));
+const AdminAziende = lazy(() => import("./pages/saas/AdminAziende"));
+const AdminAziendaDetail = lazy(() => import("./pages/saas/AdminAziendaDetail"));
+const AdminUtenti = lazy(() => import("./pages/saas/AdminUtenti"));
+const AdminPiani = lazy(() => import("./pages/saas/AdminPiani"));
+const AdminContenuti = lazy(() => import("./pages/saas/AdminContenuti"));
+const AdminCorsi = lazy(() => import("./pages/saas/AdminCorsi"));
 const AdminReport = lazy(() => import("./pages/saas/AdminReport"));
 const AdminImpostazioni = lazy(() => import("./pages/saas/AdminImpostazioni"));
-const EditorFattura = lazy(() => import("./pages/saas/EditorFattura"));
-const NuovoClienteWizard = lazy(() => import("./pages/saas/NuovoClienteWizard"));
-const ClienteDettaglio = lazy(() => import("./pages/saas/ClienteDettaglio"));
-const PraticaDettaglio = lazy(() => import("./pages/saas/PraticaDettaglio"));
-const AppDashboard = lazy(() => import("./pages/saas/AppDashboard"));
-const AppFatture = lazy(() => import("./pages/saas/AppFatture"));
-const AppFatturaDettaglio = lazy(() => import("./pages/saas/AppFatturaDettaglio"));
-const AppPratiche = lazy(() => import("./pages/saas/AppPratiche"));
-const AppImpostazioni = lazy(() => import("./pages/saas/AppImpostazioni"));
-const AppDocumenti = lazy(() => import("./pages/saas/AppDocumenti"));
-const NuovaPraticaCliente = lazy(() => import("./pages/saas/NuovaPraticaCliente"));
-const OnboardingWizard = lazy(() => import("./pages/saas/OnboardingWizard"));
-const AppCrediti = lazy(() => import("./pages/saas/AppCrediti"));
-const CassettoFiscale = lazy(() => import("./pages/saas/CassettoFiscale"));
-const Scadenzario = lazy(() => import("./pages/saas/Scadenzario"));
-const FatturePassive = lazy(() => import("./pages/saas/FatturePassive"));
-const ImpostazioniFatturazione = lazy(() => import("./pages/saas/ImpostazioniFatturazione"));
-const AdminOperatori = lazy(() => import("./pages/saas/AdminOperatori"));
-const NotifichePage = lazy(() => import("./pages/saas/NotifichePage"));
-
-// Redirects (tiny, can be eager)
-import { AppRedirect, AdminRedirect } from "./pages/saas/Redirects";
 
 const queryClient = new QueryClient();
 
 const PageLoader = () => (
-  <div className="flex h-screen w-full items-center justify-center bg-background">
-    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+  <div className="flex h-screen w-full items-center justify-center bg-[#FAFAF8]">
+    <Loader2 className="h-8 w-8 animate-spin text-[#185FA5]" />
   </div>
 );
 
@@ -87,70 +105,120 @@ const App = () => (
             <ScrollToTop />
             <Suspense fallback={<PageLoader />}>
               <Routes>
-                {/* ===== Landing (pubbliche) ===== */}
+                {/* ── Landing ── */}
                 <Route path="/" element={<Index />} />
-                <Route path="/servizi/:slug" element={<ServicePage />} />
-                <Route path="/per-chi" element={<PerChi />} />
-                <Route path="/per-chi/:slug" element={<PerChiPage />} />
                 <Route path="/chi-siamo" element={<ChiSiamo />} />
-                <Route path="/garanzia" element={<Garanzia />} />
-                <Route path="/come-funziona" element={<ComeFunziona />} />
-                <Route path="/tariffe" element={<Tariffe />} />
-                <Route path="/faq" element={<FAQ />} />
+                <Route path="/servizi" element={<Servizi />} />
+                <Route path="/piattaforma" element={<Piattaforma />} />
+                <Route path="/normativa-ai" element={<NormativaAI />} />
+                <Route path="/partner" element={<PartnerProgram />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/contatti" element={<Contatti />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/termini" element={<Termini />} />
 
-                {/* ===== Auth (pubbliche) ===== */}
+                {/* ── Auth ── */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
 
-                {/* ===== App Cliente (protette) ===== */}
+                {/* ── Onboarding ── */}
+                <Route path="/onboarding" element={<ProtectedRoute requiredArea="app"><OnboardingWizard /></ProtectedRoute>} />
+                <Route path="/onboarding/:step" element={<ProtectedRoute requiredArea="app"><OnboardingWizard /></ProtectedRoute>} />
+
+                {/* ── App Cliente ── */}
                 <Route path="/app" element={<ProtectedRoute requiredArea="app"><AppLayout /></ProtectedRoute>}>
-                  <Route index element={<AppRedirect />} />
+                  <Route index element={<Navigate to="/app/dashboard" replace />} />
                   <Route path="dashboard" element={<AppDashboard />} />
-                  <Route path="pratiche" element={<AppPratiche />} />
-                  <Route path="pratiche/nuova" element={<NuovaPraticaCliente />} />
-                  <Route path="pratiche/:id" element={<PraticaDettaglio isAdmin={false} />} />
-                  <Route path="fatture" element={<AppFatture />} />
-                  <Route path="fatture/:id" element={<AppFatturaDettaglio />} />
-                  <Route path="fatture-ricevute" element={<FatturePassive />} />
-                  <Route path="scadenzario" element={<Scadenzario />} />
-                  <Route path="cassetto-fiscale" element={<CassettoFiscale readOnly />} />
-                  <Route path="documenti" element={<AppDocumenti />} />
-                  <Route path="crediti" element={<AppCrediti />} />
-                  <Route path="notifiche" element={<NotifichePage area="app" />} />
-                  <Route path="impostazioni" element={<AppImpostazioni />} />
+
+                  {/* AI Registry */}
+                  <Route path="registry" element={<AppRegistry />} />
+                  <Route path="registry/new" element={<AppRegistryNew />} />
+                  <Route path="registry/:id" element={<AppRegistryDetail />} />
+
+                  {/* Doc Generator */}
+                  <Route path="docs" element={<AppDocs />} />
+                  <Route path="docs/new" element={<AppDocsNew />} />
+                  <Route path="docs/:id/edit" element={<AppDocsEdit />} />
+
+                  {/* AI Monitor */}
+                  <Route path="monitor" element={<AppMonitor />} />
+                  <Route path="monitor/settings" element={<AppMonitorSettings />} />
+                  <Route path="monitor/:id" element={<AppMonitorDetail />} />
+
+                  {/* Training Hub */}
+                  <Route path="training" element={<AppTraining />} />
+                  <Route path="training/team" element={<AppTrainingTeam />} />
+                  <Route path="training/courses/:id/play" element={<AppTrainingPlay />} />
+                  <Route path="training/courses/:id/quiz" element={<AppTrainingQuiz />} />
+                  <Route path="training/courses/:id/certificate" element={<AppTrainingCertificate />} />
+
+                  {/* GDPR + AI */}
+                  <Route path="gdpr" element={<AppGdpr />} />
+                  <Route path="gdpr/register" element={<AppGdprRegister />} />
+                  <Route path="gdpr/dpia/new" element={<AppGdprDpiaNew />} />
+                  <Route path="gdpr/breach" element={<AppGdprBreach />} />
+
+                  {/* Audit Trail */}
+                  <Route path="audit" element={<AppAudit />} />
+                  <Route path="audit/:id" element={<AppAuditDetail />} />
+
+                  {/* Settings */}
+                  <Route path="settings/company" element={<AppSettingsCompany />} />
+                  <Route path="settings/team" element={<AppSettingsTeam />} />
+                  <Route path="settings/security" element={<AppSettingsSecurity />} />
+                  <Route path="settings/notifications" element={<AppSettingsNotifications />} />
+                  <Route path="settings/integrations" element={<AppSettingsIntegrations />} />
+                  <Route path="settings" element={<Navigate to="/app/settings/company" replace />} />
+
+                  {/* Billing */}
+                  <Route path="billing" element={<AppBilling />} />
+                  <Route path="billing/upgrade" element={<AppBillingUpgrade />} />
+
+                  {/* Notifications */}
+                  <Route path="notifications" element={<AppNotifications />} />
+
+                  {/* Calendario Scadenze */}
+                  <Route path="calendario" element={<AppCalendario />} />
+
+                  {/* Gap Analysis */}
+                  <Route path="gap-analysis" element={<AppGapAnalysis />} />
+
+                  {/* AI Legal Advisor */}
+                  <Route path="ai-lawyer" element={<AppAILawyer />} />
+
+                  {/* Firma Digitale */}
+                  <Route path="firma" element={<AppFirmaDigitale />} />
+
+                  {/* Readiness Report */}
+                  <Route path="report" element={<AppReadinessReport />} />
+
+                  {/* Executive Dashboard */}
+                  <Route path="executive" element={<AppExecutiveDashboard />} />
+
+                  {/* Vendor Management */}
+                  <Route path="vendor" element={<AppVendorManagement />} />
+
+                  {/* Reminder automatici */}
+                  <Route path="reminders" element={<AppReminders />} />
                 </Route>
 
-                {/* ===== Admin SuperAdmin (protette) ===== */}
+                {/* ── SuperAdmin ── */}
                 <Route path="/admin" element={<ProtectedRoute requiredArea="admin"><AdminLayout /></ProtectedRoute>}>
-                  <Route index element={<AdminRedirect />} />
+                  <Route index element={<Navigate to="/admin/dashboard" replace />} />
                   <Route path="dashboard" element={<AdminDashboard />} />
-                  <Route path="clienti" element={<AdminClienti />} />
-                  <Route path="clienti/nuovo" element={<NuovoClienteWizard />} />
-                  <Route path="clienti/:id" element={<ClienteDettaglio />} />
-                  <Route path="pratiche" element={<AdminPratiche />} />
-                  <Route path="pratiche/:id" element={<PraticaDettaglio isAdmin={true} />} />
-                  <Route path="fatturazione" element={<AdminFatturazione />} />
-                  <Route path="fatturazione/nuova" element={<EditorFattura />} />
-                  <Route path="fatturazione/:id/modifica" element={<EditorFattura />} />
-                  <Route path="scadenzario" element={<Scadenzario />} />
-                  <Route path="fatture-passive" element={<FatturePassive />} />
-                  <Route path="cassetto-fiscale" element={<CassettoFiscale />} />
-                  <Route path="operatori" element={<AdminOperatori />} />
-                  <Route path="notifiche" element={<NotifichePage area="admin" />} />
+                  <Route path="aziende" element={<AdminAziende />} />
+                  <Route path="aziende/:id" element={<AdminAziendaDetail />} />
+                  <Route path="utenti" element={<AdminUtenti />} />
+                  <Route path="piani" element={<AdminPiani />} />
+                  <Route path="contenuti" element={<AdminContenuti />} />
+                  <Route path="corsi" element={<AdminCorsi />} />
                   <Route path="report" element={<AdminReport />} />
                   <Route path="impostazioni" element={<AdminImpostazioni />} />
-                  <Route path="impostazioni-fatturazione" element={<ImpostazioniFatturazione />} />
                 </Route>
 
-                {/* ===== Onboarding (protetta) ===== */}
-                <Route path="/onboarding" element={<ProtectedRoute requiredArea="app"><OnboardingWizard /></ProtectedRoute>} />
-
-                {/* ===== 404 ===== */}
+                {/* ── 404 ── */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

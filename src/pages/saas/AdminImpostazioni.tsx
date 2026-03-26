@@ -1,225 +1,244 @@
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
-import { mockOperatori } from '@/data/mockDashboardData';
-import { User, Building2, Receipt, Bell, Users, Save, Upload, Shield } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { Check, X, Eye, EyeOff } from 'lucide-react';
 
-const AdminImpostazioni = () => {
-  const { toast } = useToast();
+type Tab = 'generali' | 'email' | 'integrazioni' | 'sicurezza';
 
-  // Profilo
-  const [nome, setNome] = useState('Super Admin');
-  const [emailProfilo, setEmailProfilo] = useState('admin@impresaleggera.it');
-  const [telefonoProfilo, setTelefonoProfilo] = useState('02 1234567');
+interface Integration {
+  id: string;
+  nome: string;
+  descrizione: string;
+  configured: boolean;
+  keyPreview?: string;
+}
 
-  // Azienda
-  const [ragioneSociale, setRagioneSociale] = useState('Impresa Leggera S.r.l.');
-  const [piva, setPiva] = useState('12345678901');
-  const [cf, setCf] = useState('12345678901');
-  const [sdi, setSdi] = useState('M5UXCR1');
-  const [pec, setPec] = useState('impresaleggera@pec.it');
-  const [indirizzo, setIndirizzo] = useState('Via Esempio 1, 20100 Milano (MI)');
-  const [emailAzienda, setEmailAzienda] = useState('info@impresaleggera.it');
-  const [telefono, setTelefono] = useState('02 9876543');
+const integrations: Integration[] = [
+  { id: 'stripe', nome: 'Stripe', descrizione: 'Pagamenti e subscription management', configured: true, keyPreview: 'sk_live_••••••••••••abcd' },
+  { id: 'resend', nome: 'Resend', descrizione: 'Email transazionali e notifiche', configured: true, keyPreview: 're_••••••••••••1234' },
+  { id: 'anthropic', nome: 'Anthropic Claude', descrizione: 'AI Lawyer Chat e Doc Generator', configured: true, keyPreview: 'sk-ant-••••••••••••efgh' },
+  { id: 'namirial', nome: 'Namirial FEA', descrizione: 'Firma elettronica avanzata', configured: false },
+];
 
-  // Fatturazione
-  const [iban, setIban] = useState('IT60X0542811101000000123456');
-  const [intestatario, setIntestatario] = useState('Impresa Leggera S.r.l.');
-  const [banca, setBanca] = useState('Intesa Sanpaolo');
-  const [regime, setRegime] = useState('ordinario');
-  const [prefissoFattura, setPrefissoFattura] = useState('INV');
-  const [prossimoNumero, setProssimoNumero] = useState('013');
+function Toggle({ checked, onChange }: { checked: boolean; onChange: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onChange}
+      className={`relative h-6 w-11 rounded-full transition-colors ${checked ? 'bg-[#042C53]' : 'bg-gray-200'}`}
+    >
+      <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-5' : 'translate-x-0.5'}`} />
+    </button>
+  );
+}
 
-  // Notifiche
-  const [notifiche, setNotifiche] = useState({
-    nuovaPratica: true,
-    praticaCompletata: true,
-    praticaScaduta: true,
-    nuovaFattura: true,
-    fatturaPagata: true,
-    fatturaScaduta: true,
-    nuovoCliente: true,
-    emailSolleciti: true,
-  });
-
-  const toggleNotifica = (key: keyof typeof notifiche) => {
-    setNotifiche(prev => ({ ...prev, [key]: !prev[key] }));
-  };
-
-  const handleSave = () => toast({ title: '✓ Impostazioni salvate', description: 'Le modifiche sono state applicate.' });
-
+function FormField({ label, value, onChange, type = 'text', disabled = false }: {
+  label: string;
+  value: string;
+  onChange?: (v: string) => void;
+  type?: string;
+  disabled?: boolean;
+}) {
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold font-subtitle text-slate-900">Impostazioni</h1>
-          <p className="text-sm text-slate-500">Configura la piattaforma</p>
+      <label className="block text-sm font-medium text-gray-700 mb-1.5">{label}</label>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange?.(e.target.value)}
+        disabled={disabled}
+        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20 disabled:bg-gray-50 disabled:text-gray-400"
+      />
+    </div>
+  );
+}
+
+export default function AdminImpostazioni() {
+  const [tab, setTab] = useState<Tab>('generali');
+
+  // Generali
+  const [platformName, setPlatformName] = useState('TutelAI');
+  const [logoUrl, setLogoUrl] = useState('https://tutelai.it/logo.svg');
+  const [supportEmail, setSupportEmail] = useState('supporto@tutelai.it');
+  const [legalEmail, setLegalEmail] = useState('legal@tutelai.it');
+  const [maintenanceMode, setMaintenanceMode] = useState(false);
+
+  // Email
+  const [smtpHost, setSmtpHost] = useState('smtp.resend.com');
+  const [smtpPort, setSmtpPort] = useState('587');
+  const [smtpUser, setSmtpUser] = useState('resend');
+  const [fromAddress, setFromAddress] = useState('noreply@tutelai.it');
+
+  // Sicurezza
+  const [sessionTimeout, setSessionTimeout] = useState('8');
+  const [twoFaRequired, setTwoFaRequired] = useState(false);
+  const [ipWhitelist, setIpWhitelist] = useState('');
+
+  const [saved, setSaved] = useState(false);
+  const [showApiKey, setShowApiKey] = useState<string | null>(null);
+
+  const handleSave = () => {
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
+
+  const tabs: { id: Tab; label: string }[] = [
+    { id: 'generali', label: 'Generali' },
+    { id: 'email', label: 'Email' },
+    { id: 'integrazioni', label: 'Integrazioni' },
+    { id: 'sicurezza', label: 'Sicurezza' },
+  ];
+
+  return (
+    <div className="space-y-6">
+      <h1 className="text-2xl font-bold text-[#042C53]">Impostazioni piattaforma</h1>
+
+      {/* Tabs */}
+      <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <div className="flex border-b border-gray-200">
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              className={`px-5 py-3 text-sm font-medium transition-colors ${tab === t.id ? 'text-[#042C53] border-b-2 border-[#042C53] -mb-px' : 'text-gray-500 hover:text-gray-700'}`}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
-        <Button onClick={handleSave} className="gap-1.5"><Save className="h-4 w-4" /> Salva</Button>
-      </div>
 
-      <Tabs defaultValue="profilo">
-        <TabsList className="mb-6 w-full justify-start overflow-x-auto">
-          <TabsTrigger value="profilo" className="gap-1.5"><User className="h-3.5 w-3.5" /> Profilo</TabsTrigger>
-          <TabsTrigger value="azienda" className="gap-1.5"><Building2 className="h-3.5 w-3.5" /> Azienda</TabsTrigger>
-          <TabsTrigger value="fatturazione" className="gap-1.5"><Receipt className="h-3.5 w-3.5" /> Fatturazione</TabsTrigger>
-          <TabsTrigger value="notifiche" className="gap-1.5"><Bell className="h-3.5 w-3.5" /> Notifiche</TabsTrigger>
-          <TabsTrigger value="team" className="gap-1.5"><Users className="h-3.5 w-3.5" /> Team</TabsTrigger>
-        </TabsList>
-
-        {/* Profilo */}
-        <TabsContent value="profilo">
-          <div className="max-w-2xl space-y-6">
-            <div className="bg-white border rounded-xl p-6">
-              <h3 className="font-semibold text-slate-800 mb-4">Profilo Personale</h3>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-16 w-16 rounded-full bg-sky-100 flex items-center justify-center text-xl font-bold text-sky-700">SA</div>
+        <div className="p-6">
+          {tab === 'generali' && (
+            <div className="space-y-4 max-w-lg">
+              <FormField label="Nome piattaforma" value={platformName} onChange={setPlatformName} />
+              <FormField label="Logo URL" value={logoUrl} onChange={setLogoUrl} />
+              <FormField label="Email supporto" value={supportEmail} onChange={setSupportEmail} type="email" />
+              <FormField label="Email legale" value={legalEmail} onChange={setLegalEmail} type="email" />
+              <div className="flex items-center justify-between py-2">
                 <div>
-                  <Button variant="outline" size="sm" className="gap-1.5"><Upload className="h-3.5 w-3.5" /> Cambia foto</Button>
-                  <p className="text-[10px] text-slate-400 mt-1">JPG, PNG. Max 2MB</p>
+                  <p className="text-sm font-medium text-gray-700">Modalità manutenzione</p>
+                  <p className="text-xs text-gray-400 mt-0.5">Disabilita l'accesso per tutti gli utenti non admin</p>
+                </div>
+                <Toggle checked={maintenanceMode} onChange={() => setMaintenanceMode(!maintenanceMode)} />
+              </div>
+              <div className="bg-gray-50 rounded-lg px-4 py-3">
+                <p className="text-xs text-gray-500">Versione piattaforma: <span className="font-mono font-medium text-[#042C53]">v1.4.2</span></p>
+                <p className="text-xs text-gray-500 mt-0.5">Build: <span className="font-mono font-medium text-[#042C53]">2026-03-25</span></p>
+              </div>
+            </div>
+          )}
+
+          {tab === 'email' && (
+            <div className="space-y-4 max-w-lg">
+              <p className="text-xs text-gray-500 mb-4">Configurazione SMTP per email transazionali</p>
+              <FormField label="SMTP Host" value={smtpHost} onChange={setSmtpHost} />
+              <div className="grid grid-cols-2 gap-3">
+                <FormField label="SMTP Port" value={smtpPort} onChange={setSmtpPort} />
+                <FormField label="SMTP User" value={smtpUser} onChange={setSmtpUser} />
+              </div>
+              <FormField label="From address" value={fromAddress} onChange={setFromAddress} type="email" />
+              <div className="bg-gray-50 rounded-lg px-4 py-3 border border-gray-200">
+                <p className="text-xs font-semibold text-gray-600 mb-2">Anteprima template email</p>
+                <div className="bg-white border border-gray-200 rounded-lg p-3 text-xs text-gray-600">
+                  <p className="font-semibold text-[#042C53] mb-1">Benvenuto su TutelAI</p>
+                  <p>Il tuo account è pronto. Accedi alla piattaforma per iniziare la compliance AI Act.</p>
+                  <p className="mt-2 text-gray-400">— Il team TutelAI</p>
                 </div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div><Label>Nome completo</Label><Input value={nome} onChange={e => setNome(e.target.value)} className="mt-1" /></div>
-                <div><Label>Email</Label><Input type="email" value={emailProfilo} onChange={e => setEmailProfilo(e.target.value)} className="mt-1" /></div>
-                <div><Label>Telefono</Label><Input value={telefonoProfilo} onChange={e => setTelefonoProfilo(e.target.value)} className="mt-1" /></div>
-                <div><Label>Ruolo</Label><Input value="SuperAdmin" disabled className="mt-1" /></div>
-              </div>
+              <button className="text-sm text-[#185FA5] hover:underline font-medium">Invia email di test</button>
             </div>
-            <div className="bg-white border rounded-xl p-6">
-              <h3 className="font-semibold text-slate-800 mb-4 flex items-center gap-2"><Shield className="h-5 w-5 text-slate-400" /> Sicurezza</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div><Label>Password attuale</Label><Input type="password" placeholder="••••••••" className="mt-1" /></div>
-                <div><Label>Nuova password</Label><Input type="password" placeholder="Min. 8 caratteri" className="mt-1" /></div>
-              </div>
-              <Button variant="outline" size="sm" className="mt-4">Aggiorna Password</Button>
-            </div>
-          </div>
-        </TabsContent>
+          )}
 
-        {/* Azienda */}
-        <TabsContent value="azienda">
-          <div className="max-w-2xl bg-white border rounded-xl p-6">
-            <h3 className="font-semibold text-slate-800 mb-4">Dati Aziendali</h3>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="h-16 w-16 rounded-xl bg-slate-100 flex items-center justify-center text-sm font-bold text-slate-500 border-2 border-dashed border-slate-300">Logo</div>
-              <div>
-                <Button variant="outline" size="sm" className="gap-1.5"><Upload className="h-3.5 w-3.5" /> Carica logo</Button>
-                <p className="text-[10px] text-slate-400 mt-1">Apparirà nelle fatture e documenti</p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div><Label>Ragione Sociale</Label><Input value={ragioneSociale} onChange={e => setRagioneSociale(e.target.value)} className="mt-1" /></div>
-              <div><Label>Partita IVA</Label><Input value={piva} onChange={e => setPiva(e.target.value)} className="mt-1 font-mono" /></div>
-              <div><Label>Codice Fiscale</Label><Input value={cf} onChange={e => setCf(e.target.value)} className="mt-1 font-mono" /></div>
-              <div><Label>Codice SDI</Label><Input value={sdi} onChange={e => setSdi(e.target.value)} className="mt-1 font-mono" /></div>
-              <div><Label>PEC</Label><Input type="email" value={pec} onChange={e => setPec(e.target.value)} className="mt-1" /></div>
-              <div><Label>Email principale</Label><Input type="email" value={emailAzienda} onChange={e => setEmailAzienda(e.target.value)} className="mt-1" /></div>
-              <div className="sm:col-span-2"><Label>Indirizzo</Label><Input value={indirizzo} onChange={e => setIndirizzo(e.target.value)} className="mt-1" /></div>
-              <div><Label>Telefono</Label><Input value={telefono} onChange={e => setTelefono(e.target.value)} className="mt-1" /></div>
-            </div>
-          </div>
-        </TabsContent>
-
-        {/* Fatturazione */}
-        <TabsContent value="fatturazione">
-          <div className="max-w-2xl space-y-6">
-            <div className="bg-white border rounded-xl p-6">
-              <h3 className="font-semibold text-slate-800 mb-4">Dati Bancari Default</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="sm:col-span-2"><Label>IBAN</Label><Input value={iban} onChange={e => setIban(e.target.value)} className="mt-1 font-mono" /></div>
-                <div><Label>Intestatario</Label><Input value={intestatario} onChange={e => setIntestatario(e.target.value)} className="mt-1" /></div>
-                <div><Label>Banca</Label><Input value={banca} onChange={e => setBanca(e.target.value)} className="mt-1" /></div>
-              </div>
-            </div>
-            <div className="bg-white border rounded-xl p-6">
-              <h3 className="font-semibold text-slate-800 mb-4">Regime Fiscale</h3>
-              <Select value={regime} onValueChange={setRegime}>
-                <SelectTrigger className="w-full sm:w-[300px]"><SelectValue /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="ordinario">Regime Ordinario</SelectItem>
-                  <SelectItem value="forfettario">Regime Forfettario</SelectItem>
-                  <SelectItem value="minimi">Regime dei Minimi</SelectItem>
-                </SelectContent>
-              </Select>
-              {regime === 'forfettario' && (
-                <p className="text-xs text-amber-600 mt-2 bg-amber-50 rounded-lg p-2">Contribuente forfettario — non soggetto IVA ex art. 1, commi 54-89, L. 190/2014</p>
-              )}
-            </div>
-            <div className="bg-white border rounded-xl p-6">
-              <h3 className="font-semibold text-slate-800 mb-4">Numerazione Fatture</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div><Label>Prefisso</Label><Input value={prefissoFattura} onChange={e => setPrefissoFattura(e.target.value)} className="mt-1 font-mono" /></div>
-                <div><Label>Prossimo numero</Label><Input value={prossimoNumero} onChange={e => setProssimoNumero(e.target.value)} className="mt-1 font-mono" /></div>
-              </div>
-              <p className="text-xs text-slate-400 mt-2">Anteprima: {prefissoFattura}-2026-{prossimoNumero}</p>
-            </div>
-          </div>
-        </TabsContent>
-
-        {/* Notifiche */}
-        <TabsContent value="notifiche">
-          <div className="max-w-2xl bg-white border rounded-xl p-6">
-            <h3 className="font-semibold text-slate-800 mb-4">Preferenze Notifiche</h3>
+          {tab === 'integrazioni' && (
             <div className="space-y-4">
-              {[
-                { key: 'nuovaPratica' as const, label: 'Nuova pratica ricevuta', desc: 'Ricevi una notifica quando un cliente invia una richiesta' },
-                { key: 'praticaCompletata' as const, label: 'Pratica completata', desc: 'Notifica al completamento di una pratica' },
-                { key: 'praticaScaduta' as const, label: 'Pratica in scadenza', desc: 'Avviso 7 giorni prima della scadenza' },
-                { key: 'nuovaFattura' as const, label: 'Nuova fattura emessa', desc: 'Conferma emissione fattura' },
-                { key: 'fatturaPagata' as const, label: 'Fattura pagata', desc: 'Notifica alla ricezione del pagamento' },
-                { key: 'fatturaScaduta' as const, label: 'Fattura scaduta', desc: 'Avviso fatture non pagate oltre scadenza' },
-                { key: 'nuovoCliente' as const, label: 'Nuovo cliente registrato', desc: 'Notifica alla registrazione di un nuovo cliente' },
-                { key: 'emailSolleciti' as const, label: 'Email solleciti automatici', desc: 'Invio automatico solleciti per fatture scadute' },
-              ].map(item => (
-                <div key={item.key} className="flex items-center justify-between py-2 border-b last:border-0">
-                  <div>
-                    <p className="text-sm font-medium text-slate-700">{item.label}</p>
-                    <p className="text-xs text-slate-400">{item.desc}</p>
-                  </div>
-                  <Switch checked={notifiche[item.key]} onCheckedChange={() => toggleNotifica(item.key)} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </TabsContent>
-
-        {/* Team */}
-        <TabsContent value="team">
-          <div className="max-w-2xl">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-slate-800">Team Operatori</h3>
-              <Button size="sm" className="gap-1.5"><Users className="h-3.5 w-3.5" /> Invita operatore</Button>
-            </div>
-            <div className="bg-white border rounded-xl divide-y">
-              {mockOperatori.map(o => (
-                <div key={o.id} className="flex items-center justify-between p-4">
+              {integrations.map((intg) => (
+                <div key={intg.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-xl">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-100 text-sm font-bold text-sky-700">{o.avatar_iniziali}</span>
+                    <div className={`h-9 w-9 rounded-lg flex items-center justify-center ${intg.configured ? 'bg-emerald-50' : 'bg-gray-50'}`}>
+                      {intg.configured ? (
+                        <Check className="h-5 w-5 text-emerald-500" />
+                      ) : (
+                        <X className="h-5 w-5 text-gray-300" />
+                      )}
+                    </div>
                     <div>
-                      <p className="text-sm font-medium text-slate-800">{o.nome}</p>
-                      <p className="text-xs text-slate-400">{o.pratiche_completate} pratiche completate · ⭐ {o.rating}</p>
+                      <p className="text-sm font-semibold text-[#042C53]">{intg.nome}</p>
+                      <p className="text-xs text-gray-400">{intg.descrizione}</p>
+                      {intg.configured && intg.keyPreview && (
+                        <div className="flex items-center gap-1.5 mt-1">
+                          <code className="text-[11px] font-mono text-gray-500">
+                            {showApiKey === intg.id ? intg.keyPreview : intg.keyPreview.replace(/[^•]/g, '•').slice(0, 20)}
+                          </code>
+                          <button
+                            onClick={() => setShowApiKey(showApiKey === intg.id ? null : intg.id)}
+                            className="text-gray-400 hover:text-gray-600"
+                          >
+                            {showApiKey === intg.id ? <EyeOff className="h-3 w-3" /> : <Eye className="h-3 w-3" />}
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge variant="secondary" className="text-[10px]">Operatore</Badge>
-                    <Button variant="ghost" size="sm" className="text-xs">Modifica</Button>
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${intg.configured ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-50 text-gray-500'}`}>
+                      {intg.configured ? 'Configurato' : 'Non configurato'}
+                    </span>
+                    <button className="bg-[#042C53] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
+                      {intg.configured ? 'Aggiorna' : 'Configura'}
+                    </button>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-        </TabsContent>
-      </Tabs>
+          )}
+
+          {tab === 'sicurezza' && (
+            <div className="space-y-5 max-w-lg">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Timeout sessione</label>
+                <select
+                  value={sessionTimeout}
+                  onChange={(e) => setSessionTimeout(e.target.value)}
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none"
+                >
+                  <option value="1">1 ora</option>
+                  <option value="4">4 ore</option>
+                  <option value="8">8 ore</option>
+                  <option value="24">24 ore</option>
+                  <option value="0">Mai (non consigliato)</option>
+                </select>
+              </div>
+              <div className="flex items-center justify-between py-2">
+                <div>
+                  <p className="text-sm font-medium text-gray-700">2FA obbligatorio</p>
+                  <p className="text-xs text-gray-400 mt-0.5">Richiedi autenticazione a due fattori per tutti gli utenti</p>
+                </div>
+                <Toggle checked={twoFaRequired} onChange={() => setTwoFaRequired(!twoFaRequired)} />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">IP whitelist</label>
+                <textarea
+                  rows={4}
+                  value={ipWhitelist}
+                  onChange={(e) => setIpWhitelist(e.target.value)}
+                  placeholder={"Inserisci un IP per riga:\n192.168.1.0/24\n10.0.0.1"}
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none font-mono resize-none"
+                />
+                <p className="text-xs text-gray-400 mt-1">Lascia vuoto per permettere tutti gli IP. CIDR notation supportata.</p>
+              </div>
+            </div>
+          )}
+
+          {tab !== 'integrazioni' && (
+            <div className="mt-6 pt-4 border-t border-gray-100">
+              <button
+                onClick={handleSave}
+                className="bg-[#042C53] hover:bg-[#185FA5] text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                {saved ? 'Salvato!' : 'Salva modifiche'}
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
-};
-
-export default AdminImpostazioni;
+}

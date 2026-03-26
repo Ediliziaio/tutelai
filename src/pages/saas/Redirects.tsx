@@ -1,4 +1,3 @@
 import { Navigate } from 'react-router-dom';
-
-export const AppRedirect = () => <Navigate to="/app/dashboard" replace />;
-export const AdminRedirect = () => <Navigate to="/admin/dashboard" replace />;
+export function AppRedirect() { return <Navigate to="/app/dashboard" replace />; }
+export function AdminRedirect() { return <Navigate to="/admin/dashboard" replace />; }

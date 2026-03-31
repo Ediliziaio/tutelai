@@ -50,7 +50,7 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53]">Dashboard SuperAdmin</h1>
+          <h1 className="text-2xl font-bold text-[#1a375b]">Dashboard SuperAdmin</h1>
           <p className="text-sm text-gray-500 mt-0.5 capitalize">{today}</p>
         </div>
       </div>
@@ -62,7 +62,7 @@ export default function AdminDashboard() {
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{s.label}</p>
-                <p className="text-2xl font-bold text-[#042C53] mt-1">{s.value}</p>
+                <p className="text-2xl font-bold text-[#1a375b] mt-1">{s.value}</p>
                 <p className="text-xs text-gray-400 mt-1">{s.sub}</p>
               </div>
               <div className={`h-10 w-10 rounded-lg ${s.bg} flex items-center justify-center`}>
@@ -77,13 +77,13 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Bar chart */}
         <div className="lg:col-span-2 bg-white border border-gray-200 rounded-xl p-5">
-          <h2 className="text-sm font-semibold text-[#042C53] mb-4">Crescita aziende — ultimi 6 mesi</h2>
+          <h2 className="text-sm font-semibold text-[#1a375b] mb-4">Crescita aziende — ultimi 6 mesi</h2>
           <div className="flex items-end gap-3 h-32">
             {growthData.map((d) => (
               <div key={d.month} className="flex flex-col items-center flex-1 gap-1">
-                <span className="text-xs font-semibold text-[#042C53]">{d.value}</span>
+                <span className="text-xs font-semibold text-[#1a375b]">{d.value}</span>
                 <div
-                  className="w-full rounded-t-md bg-[#042C53] hover:bg-[#185FA5] transition-colors"
+                  className="w-full rounded-t-md bg-[#1a375b] hover:bg-[#185FA5] transition-colors"
                   style={{ height: `${(d.value / maxGrowth) * 100}%` }}
                 />
                 <span className="text-xs text-gray-400">{d.month}</span>
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
 
         {/* Plan distribution */}
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h2 className="text-sm font-semibold text-[#042C53] mb-4">Distribuzione piani</h2>
+          <h2 className="text-sm font-semibold text-[#1a375b] mb-4">Distribuzione piani</h2>
           <div className="space-y-3">
             {[
               { label: 'Starter', count: 2, color: 'bg-slate-400', pct: 33 },
@@ -115,7 +115,7 @@ export default function AdminDashboard() {
           <div className="mt-4 pt-4 border-t border-gray-100 grid grid-cols-3 gap-2 text-center">
             {[{ l: 'Starter', v: 2 }, { l: 'Business', v: 3 }, { l: 'Enterprise', v: 1 }].map((p) => (
               <div key={p.l}>
-                <p className="text-xl font-bold text-[#042C53]">{p.v}</p>
+                <p className="text-xl font-bold text-[#1a375b]">{p.v}</p>
                 <p className="text-[11px] text-gray-400">{p.l}</p>
               </div>
             ))}
@@ -126,7 +126,7 @@ export default function AdminDashboard() {
       {/* Recent companies */}
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
         <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-[#042C53]">Aziende recenti</h2>
+          <h2 className="text-sm font-semibold text-[#1a375b]">Aziende recenti</h2>
           <button onClick={() => navigate('/admin/aziende')} className="text-xs text-[#185FA5] hover:underline font-medium">
             Vedi tutte →
           </button>
@@ -144,7 +144,7 @@ export default function AdminDashboard() {
               {recentAziende.map((az) => (
                 <tr key={az.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                   <td className="px-4 py-3">
-                    <p className="text-sm font-semibold text-[#042C53]">{az.ragione_sociale}</p>
+                    <p className="text-sm font-semibold text-[#1a375b]">{az.ragione_sociale}</p>
                     <p className="text-xs text-gray-400">{az.partita_iva}</p>
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">{az.settore}</td>
@@ -170,7 +170,7 @@ export default function AdminDashboard() {
 
       {/* Alerts */}
       <div className="bg-white border border-gray-200 rounded-xl p-5">
-        <h2 className="text-sm font-semibold text-[#042C53] mb-3">Alert piattaforma</h2>
+        <h2 className="text-sm font-semibold text-[#1a375b] mb-3">Alert piattaforma</h2>
         <div className="space-y-2">
           <div className="flex items-start gap-3 p-3 bg-red-50 border border-red-100 rounded-lg">
             <AlertTriangle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />

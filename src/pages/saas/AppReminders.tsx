@@ -174,7 +174,7 @@ function NewReminderModal({ onClose }: { onClose: () => void }) {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
         <div className="bg-white rounded-xl p-8 text-center">
           <CheckCircle2 className="h-12 w-12 text-emerald-500 mx-auto mb-3" />
-          <p className="text-lg font-bold text-[#042C53]">Reminder creato!</p>
+          <p className="text-lg font-bold text-[#1a375b]">Reminder creato!</p>
         </div>
       </div>
     );
@@ -184,13 +184,13 @@ function NewReminderModal({ onClose }: { onClose: () => void }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6">
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-bold text-[#042C53]">Nuovo reminder</h2>
+          <h2 className="text-lg font-bold text-[#1a375b]">Nuovo reminder</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl">×</button>
         </div>
         <div className="space-y-3">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">Titolo</label>
-            <input value={form.titolo} onChange={e => upd('titolo', e.target.value)} placeholder="Es. Revisione annuale Privacy Policy" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20" />
+            <input value={form.titolo} onChange={e => upd('titolo', e.target.value)} placeholder="Es. Revisione annuale Privacy Policy" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20" />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
@@ -238,7 +238,7 @@ function NewReminderModal({ onClose }: { onClose: () => void }) {
           <button
             onClick={handleSave}
             disabled={!form.titolo || !form.scadenza}
-            className="flex-1 flex items-center justify-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50 transition-colors"
+            className="flex-1 flex items-center justify-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50 transition-colors"
           >
             <Save className="h-4 w-4" /> Crea reminder
           </button>
@@ -265,7 +265,7 @@ function ReminderRow({ reminder, onToggle }: { reminder: Reminder; onToggle: (id
         {/* Toggle */}
         <button
           onClick={() => onToggle(reminder.id)}
-          className={`relative h-6 w-11 rounded-full transition-colors shrink-0 ${reminder.status === 'attivo' ? 'bg-[#042C53]' : 'bg-gray-200'}`}
+          className={`relative h-6 w-11 rounded-full transition-colors shrink-0 ${reminder.status === 'attivo' ? 'bg-[#1a375b]' : 'bg-gray-200'}`}
         >
           <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${reminder.status === 'attivo' ? 'translate-x-5' : 'translate-x-0.5'}`} />
         </button>
@@ -278,7 +278,7 @@ function ReminderRow({ reminder, onToggle }: { reminder: Reminder; onToggle: (id
               <StatusIcon className="h-3 w-3" /> {statusCfg.label}
             </span>
           </div>
-          <p className="text-sm font-semibold text-[#042C53] truncate">{reminder.titolo}</p>
+          <p className="text-sm font-semibold text-[#1a375b] truncate">{reminder.titolo}</p>
           <div className="flex items-center gap-3 text-xs text-gray-400 mt-0.5">
             <span>{FREQ_LABELS[reminder.frequenza]}</span>
             <span>{CHANNEL_LABELS[reminder.canale]}</span>
@@ -300,11 +300,11 @@ function ReminderRow({ reminder, onToggle }: { reminder: Reminder; onToggle: (id
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-gray-50 rounded-lg px-3 py-2">
               <p className="text-[10px] text-gray-400 uppercase font-semibold">Anticipo avviso</p>
-              <p className="text-sm font-medium text-[#042C53] mt-0.5">{reminder.anticipo_giorni} giorni prima</p>
+              <p className="text-sm font-medium text-[#1a375b] mt-0.5">{reminder.anticipo_giorni} giorni prima</p>
             </div>
             <div className="bg-gray-50 rounded-lg px-3 py-2">
               <p className="text-[10px] text-gray-400 uppercase font-semibold">Prossimo invio</p>
-              <p className="text-sm font-medium text-[#042C53] mt-0.5">{reminder.prossimo_invio ? formatDate(reminder.prossimo_invio) : '—'}</p>
+              <p className="text-sm font-medium text-[#1a375b] mt-0.5">{reminder.prossimo_invio ? formatDate(reminder.prossimo_invio) : '—'}</p>
             </div>
           </div>
           <div>
@@ -318,10 +318,10 @@ function ReminderRow({ reminder, onToggle }: { reminder: Reminder; onToggle: (id
             </div>
           </div>
           <div className="flex gap-2 pt-1">
-            <button className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#042C53] border border-gray-200 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors">
+            <button className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#1a375b] border border-gray-200 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors">
               <Mail className="h-3.5 w-3.5" /> Invia ora
             </button>
-            <button className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#042C53] border border-gray-200 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors">
+            <button className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#1a375b] border border-gray-200 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors">
               <Edit2 className="h-3.5 w-3.5" /> Modifica
             </button>
             <button className="flex items-center gap-1.5 text-xs text-red-500 hover:text-red-700 border border-red-200 px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors ml-auto">
@@ -384,7 +384,7 @@ export default function AppReminders() {
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53] flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-[#1a375b] flex items-center gap-2">
             <Bell className="h-6 w-6 text-[#185FA5]" />
             Reminder Automatici
           </h1>
@@ -394,7 +394,7 @@ export default function AppReminders() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           <Plus className="h-4 w-4" /> Nuovo reminder
         </button>
@@ -403,7 +403,7 @@ export default function AppReminders() {
       {/* ── Stats ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Totali', value: stats.totali, color: 'text-[#042C53]' },
+          { label: 'Totali', value: stats.totali, color: 'text-[#1a375b]' },
           { label: 'Attivi', value: stats.attivi, color: 'text-emerald-600' },
           { label: 'In invio (7gg)', value: stats.prossimi, color: 'text-amber-600' },
           { label: 'Già inviati', value: stats.inviati, color: 'text-blue-600' },
@@ -424,7 +424,7 @@ export default function AppReminders() {
               key={c}
               onClick={() => setFilterCat(c)}
               className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors ${
-                filterCat === c ? 'bg-[#042C53] text-white border-[#042C53]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                filterCat === c ? 'bg-[#1a375b] text-white border-[#1a375b]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
               }`}
             >
               {c === 'tutti' ? 'Tutti' : CATEGORY_CONFIG[c as ReminderCategory].label}
@@ -438,7 +438,7 @@ export default function AppReminders() {
               key={s}
               onClick={() => setFilterStatus(s)}
               className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors ${
-                filterStatus === s ? 'bg-[#042C53] text-white border-[#042C53]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                filterStatus === s ? 'bg-[#1a375b] text-white border-[#1a375b]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
               }`}
             >
               {s === 'tutti' ? 'Tutti' : STATUS_CONFIG[s].label}
@@ -465,7 +465,7 @@ export default function AppReminders() {
       <div className="bg-[#E6F1FB] border border-blue-200 rounded-xl p-4 flex items-start gap-3">
         <Bell className="h-5 w-5 text-[#185FA5] shrink-0 mt-0.5" />
         <div>
-          <p className="text-sm font-semibold text-[#042C53] mb-1">Come funzionano i reminder</p>
+          <p className="text-sm font-semibold text-[#1a375b] mb-1">Come funzionano i reminder</p>
           <p className="text-xs text-gray-600 leading-relaxed">
             I reminder vengono inviati automaticamente via email e/o notifica in-app ai destinatari specificati.
             L'anticipo definisce quanti giorni prima della scadenza inizia la notifica.

@@ -93,7 +93,7 @@ export default function AppBillingUpgrade() {
   return (
     <div className="p-6 space-y-6 bg-[#FAFAF8] min-h-full">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2 max-w-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2 max-w-sm">
           <Check className="w-4 h-4 text-green-300 shrink-0" />
           {toast}
         </div>
@@ -104,12 +104,12 @@ export default function AppBillingUpgrade() {
         <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-[#042C53]">Upgrade a Enterprise</h2>
+              <h2 className="text-lg font-semibold text-[#1a375b]">Upgrade a Enterprise</h2>
               <button onClick={() => setShowModal(false)}>
                 <X className="w-5 h-5 text-gray-400 hover:text-gray-700" />
               </button>
             </div>
-            <div className="bg-[#E6F1FB] border border-[#185FA5]/30 rounded-lg p-4 text-sm text-[#042C53]">
+            <div className="bg-[#E6F1FB] border border-[#185FA5]/30 rounded-lg p-4 text-sm text-[#1a375b]">
               <p className="font-medium mb-1">Ottima scelta!</p>
               <p className="text-gray-600">
                 Sarai contattato da un nostro commerciale entro 24h per configurare il piano Enterprise
@@ -123,13 +123,13 @@ export default function AppBillingUpgrade() {
                   setToast('Richiesta Enterprise inviata. Ti contatteremo entro 24h.');
                   setTimeout(() => setToast(null), 4000);
                 }}
-                className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
                 Richiedi upgrade
               </button>
               <button
                 onClick={() => setShowModal(false)}
-                className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
                 Annulla
               </button>
@@ -144,7 +144,7 @@ export default function AppBillingUpgrade() {
           <ArrowLeft className="w-3.5 h-3.5" />
           Billing
         </Link>
-        <h1 className="text-2xl font-bold text-[#042C53]">Cambia piano</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Cambia piano</h1>
         <p className="text-sm text-gray-500 mt-0.5">Piano attuale: <strong>Business €199/mese</strong></p>
       </div>
 
@@ -155,7 +155,7 @@ export default function AppBillingUpgrade() {
           role="switch"
           aria-checked={annual}
           onClick={() => setAnnual((v) => !v)}
-          className={`relative w-12 h-6 rounded-full transition-colors ${annual ? 'bg-[#042C53]' : 'bg-gray-200'}`}
+          className={`relative w-12 h-6 rounded-full transition-colors ${annual ? 'bg-[#1a375b]' : 'bg-gray-200'}`}
         >
           <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${annual ? 'translate-x-6' : 'translate-x-0'}`} />
         </button>
@@ -174,21 +174,21 @@ export default function AppBillingUpgrade() {
             key={plan.id}
             className={`relative bg-white rounded-xl p-6 flex flex-col gap-4 ${
               plan.highlight
-                ? 'border-2 border-[#042C53] shadow-lg'
+                ? 'border-2 border-[#1a375b] shadow-lg'
                 : 'border border-[#C8C5BC]'
             }`}
           >
             {/* Ribbon */}
             {plan.current && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#042C53] text-white text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1a375b] text-white text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap">
                 Piano attuale
               </div>
             )}
 
             <div>
-              <h3 className="font-bold text-[#042C53] text-lg">{plan.name}</h3>
+              <h3 className="font-bold text-[#1a375b] text-lg">{plan.name}</h3>
               <div className="mt-1">
-                <span className="text-3xl font-bold text-[#042C53]">
+                <span className="text-3xl font-bold text-[#1a375b]">
                   €{annual ? plan.priceYearly : plan.priceMonthly}
                 </span>
                 <span className="text-gray-500 text-sm">/{annual ? 'anno' : 'mese'}</span>
@@ -216,8 +216,8 @@ export default function AppBillingUpgrade() {
                 plan.ctaDisabled
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                   : plan.id === 'enterprise'
-                  ? 'bg-[#042C53] hover:bg-[#185FA5] text-white'
-                  : 'border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53]'
+                  ? 'bg-[#1a375b] hover:bg-[#185FA5] text-white'
+                  : 'border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b]'
               }`}
             >
               {plan.cta}

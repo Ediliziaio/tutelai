@@ -100,7 +100,7 @@ function NotifCard({ notif, isRead, onRead, onDismiss }: NotifCardProps) {
       {/* Content */}
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
-          <p className={`text-sm leading-snug ${unread ? 'font-semibold text-[#042C53]' : 'font-medium text-gray-700'}`}>
+          <p className={`text-sm leading-snug ${unread ? 'font-semibold text-[#1a375b]' : 'font-medium text-gray-700'}`}>
             {notif.titolo}
           </p>
           <span className="text-[11px] text-gray-400 flex-shrink-0 mt-0.5 whitespace-nowrap">
@@ -200,7 +200,7 @@ export default function AppNotifications() {
         {/* ── Header ── */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center gap-3">
-            <h1 className="text-[22px] font-bold text-[#042C53]">Centro notifiche</h1>
+            <h1 className="text-[22px] font-bold text-[#1a375b]">Centro notifiche</h1>
             {unreadCount > 0 && (
               <span className="inline-flex items-center justify-center min-w-[20px] h-5 rounded-full bg-[#DC2626] text-white text-[10px] font-bold px-1.5">
                 {unreadCount > 9 ? '9+' : unreadCount}
@@ -211,7 +211,7 @@ export default function AppNotifications() {
             {unreadCount > 0 && (
               <button
                 onClick={markAllRead}
-                className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+                className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
               >
                 <CheckCheck className="w-4 h-4" />
                 Segna tutte come lette
@@ -219,7 +219,7 @@ export default function AppNotifications() {
             )}
             <Link
               to="/app/settings/notifications"
-              className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+              className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
             >
               <Settings className="w-4 h-4" />
               Impostazioni notifiche
@@ -234,7 +234,7 @@ export default function AppNotifications() {
               <Bell className="w-7 h-7 text-[#22A86B]" />
             </div>
             <div>
-              <p className="text-base font-semibold text-[#042C53]">Nessuna notifica</p>
+              <p className="text-base font-semibold text-[#1a375b]">Nessuna notifica</p>
               <p className="text-sm text-gray-500 mt-1">Sei in regola. Nuovi avvisi appariranno qui.</p>
             </div>
           </div>
@@ -281,7 +281,7 @@ export default function AppNotifications() {
             {!showAll && visibleNotifiche.length > PAGE_SIZE && (
               <button
                 onClick={() => setShowAll(true)}
-                className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-sm font-medium px-6 py-2.5 rounded-lg transition-colors"
+                className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-sm font-medium px-6 py-2.5 rounded-lg transition-colors"
               >
                 Carica altro ({visibleNotifiche.length - PAGE_SIZE} notifiche)
               </button>

@@ -224,7 +224,7 @@ export default function AppReadinessReport() {
       {/* ── Toolbar (no print) ── */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 no-print">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53]">AI Act Readiness Report</h1>
+          <h1 className="text-2xl font-bold text-[#1a375b]">AI Act Readiness Report</h1>
           <p className="text-sm text-gray-500 mt-0.5">
             Report di conformità aggiornato al {today} — da condividere con il CDA e i responsabili.
           </p>
@@ -236,7 +236,7 @@ export default function AppReadinessReport() {
           >
             <Printer className="h-4 w-4" /> Stampa
           </button>
-          <button className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          <button className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
             <Download className="h-4 w-4" /> Esporta PDF
           </button>
         </div>
@@ -246,11 +246,11 @@ export default function AppReadinessReport() {
       <div id="report-print-area" ref={printRef} className="space-y-5">
 
         {/* Cover / intestazione */}
-        <div className="bg-[#042C53] rounded-2xl p-6 text-white">
+        <div className="bg-[#1a375b] rounded-2xl p-6 text-white">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[#185FA5] font-extrabold text-xl">Tutel<span className="text-white">AI</span></span>
+                <span className="text-white font-extrabold text-xl">Tutel<span className="text-[#eab913]">AI</span></span>
                 <span className="text-gray-400 text-sm">|</span>
                 <span className="text-gray-300 text-sm font-medium">AI Act Readiness Report</span>
               </div>
@@ -272,15 +272,15 @@ export default function AppReadinessReport() {
 
         {/* Executive summary */}
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-sm font-bold text-[#042C53] uppercase tracking-wide mb-4 flex items-center gap-2">
-            <TrendingUp className="h-4 w-4 text-[#185FA5]" /> Executive Summary
+          <h3 className="text-sm font-bold text-[#1a375b] uppercase tracking-wide mb-4 flex items-center gap-2">
+            <TrendingUp className="h-4 w-4 text-[#eab913]" /> Executive Summary
           </h3>
           <p className="text-sm text-gray-700 leading-relaxed mb-4">
             <strong>{tenant?.ragione_sociale ?? 'AEDIX Srl'}</strong> ha raggiunto un <strong>Readiness Score complessivo del {score}%</strong> rispetto agli obblighi dell'AI Act (Reg. UE 2024/1689) e del GDPR. {readiness.sub}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
-              { label: 'Aree analizzate', value: REPORT_AREAS.length, color: 'text-[#042C53]' },
+              { label: 'Aree analizzate', value: REPORT_AREAS.length, color: 'text-[#1a375b]' },
               { label: 'Aree conformi', value: areeConformi, color: 'text-emerald-600' },
               { label: 'Aree con gap critici', value: areeNonConformi, color: 'text-red-600' },
               { label: 'Azioni prioritarie', value: REPORT_AREAS.reduce((s, a) => s + a.azioni_immediate.length, 0), color: 'text-amber-600' },
@@ -295,8 +295,8 @@ export default function AppReadinessReport() {
 
         {/* Score bar per area */}
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-sm font-bold text-[#042C53] uppercase tracking-wide mb-4 flex items-center gap-2">
-            <Shield className="h-4 w-4 text-[#185FA5]" /> Conformità per area
+          <h3 className="text-sm font-bold text-[#1a375b] uppercase tracking-wide mb-4 flex items-center gap-2">
+            <Shield className="h-4 w-4 text-[#eab913]" /> Conformità per area
           </h3>
           <div className="space-y-3">
             {REPORT_AREAS.map(area => {
@@ -308,7 +308,7 @@ export default function AppReadinessReport() {
                 <div key={area.id} className="flex items-center gap-3">
                   <AreaIcon className="h-4 w-4 text-gray-400 shrink-0" />
                   <div className="w-40 shrink-0">
-                    <p className="text-xs font-medium text-[#042C53] truncate">{area.titolo}</p>
+                    <p className="text-xs font-medium text-[#1a375b] truncate">{area.titolo}</p>
                   </div>
                   <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div className={`h-full ${barColor} rounded-full transition-all`} style={{ width: `${area.score}%` }} />
@@ -328,8 +328,8 @@ export default function AppReadinessReport() {
 
         {/* Dettaglio per area */}
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-sm font-bold text-[#042C53] uppercase tracking-wide mb-4 flex items-center gap-2">
-            <ClipboardList className="h-4 w-4 text-[#185FA5]" /> Analisi dettagliata per area
+          <h3 className="text-sm font-bold text-[#1a375b] uppercase tracking-wide mb-4 flex items-center gap-2">
+            <ClipboardList className="h-4 w-4 text-[#eab913]" /> Analisi dettagliata per area
           </h3>
           <div className="space-y-3">
             {REPORT_AREAS.map(area => {
@@ -346,7 +346,7 @@ export default function AppReadinessReport() {
                     <AreaIcon className="h-4 w-4 text-gray-400 shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-sm font-semibold text-[#042C53]">{area.titolo}</span>
+                        <span className="text-sm font-semibold text-[#1a375b]">{area.titolo}</span>
                         <div className="flex items-center gap-2 shrink-0">
                           <span className={`text-xs font-bold ${area.score >= 75 ? 'text-emerald-600' : area.score >= 50 ? 'text-amber-600' : 'text-red-600'}`}>
                             {area.score}%
@@ -386,7 +386,7 @@ export default function AppReadinessReport() {
 
                       {area.azioni_immediate.length > 0 && (
                         <div>
-                          <p className="text-[11px] font-semibold text-[#185FA5] uppercase tracking-wide mb-1.5">Azioni raccomandate</p>
+                          <p className="text-[11px] font-semibold text-[#eab913] uppercase tracking-wide mb-1.5">Azioni raccomandate</p>
                           <ul className="space-y-1">
                             {area.azioni_immediate.map((a, i) => (
                               <li key={i} className="flex items-start gap-2 text-xs text-gray-700">
@@ -407,7 +407,7 @@ export default function AppReadinessReport() {
 
         {/* Risk matrix */}
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-sm font-bold text-[#042C53] uppercase tracking-wide mb-4 flex items-center gap-2">
+          <h3 className="text-sm font-bold text-[#1a375b] uppercase tracking-wide mb-4 flex items-center gap-2">
             <AlertTriangle className="h-4 w-4 text-amber-500" /> Rischi sanzionatori identificati
           </h3>
           <div className="space-y-2">
@@ -429,8 +429,8 @@ export default function AppReadinessReport() {
 
         {/* Scadenze chiave */}
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-sm font-bold text-[#042C53] uppercase tracking-wide mb-4 flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-[#185FA5]" /> Scadenze chiave
+          <h3 className="text-sm font-bold text-[#1a375b] uppercase tracking-wide mb-4 flex items-center gap-2">
+            <Calendar className="h-4 w-4 text-[#eab913]" /> Scadenze chiave
           </h3>
           <div className="space-y-2">
             {[
@@ -444,7 +444,7 @@ export default function AppReadinessReport() {
               { data: '02/08/2026', azione: 'SCADENZA PRINCIPALE — Piena conformità sistemi AI alto rischio', urgenza: 'critica' },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
-                <span className="text-xs font-mono font-semibold text-[#042C53] w-24 shrink-0">{item.data}</span>
+                <span className="text-xs font-mono font-semibold text-[#1a375b] w-24 shrink-0">{item.data}</span>
                 <span className="text-xs text-gray-700 flex-1">{item.azione}</span>
                 <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border shrink-0 ${
                   item.urgenza === 'critica' ? 'bg-red-50 text-red-700 border-red-200' :

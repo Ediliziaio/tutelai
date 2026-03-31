@@ -121,8 +121,8 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
       {/* ── Logo + company switcher ── */}
       <div className="px-4 py-4 border-b border-[#C8C5BC] shrink-0">
         <div className="flex items-center justify-between mb-3">
-          <span className="font-display font-extrabold text-lg text-[#042C53]">
-            Tutel<span className="text-[#185FA5]">AI</span>
+          <span className="font-display font-extrabold text-lg text-[#1a375b]">
+            Tutel<span className="text-[#eab913]">AI</span>
           </span>
           {onClose && (
             <button onClick={onClose} className="lg:hidden text-gray-400 hover:text-gray-600">
@@ -133,11 +133,11 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
 
         {tenant && (
           <button className="flex w-full items-center gap-2.5 rounded-lg px-2 py-2 hover:bg-white transition-colors text-left">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#042C53] text-white text-xs font-bold">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1a375b] text-white text-xs font-bold">
               {tenant.ragione_sociale ? tenant.ragione_sociale.substring(0, 2).toUpperCase() : '??'}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-[13px] font-semibold text-[#042C53] truncate leading-tight">
+              <p className="text-[13px] font-semibold text-[#1a375b] truncate leading-tight">
                 {tenant.ragione_sociale || 'Nuova azienda'}
               </p>
               <span className={cn(
@@ -172,13 +172,13 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
                     className={cn(
                       'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] font-medium transition-all border-l-2',
                       active
-                        ? 'bg-[#E6F1FB] text-[#185FA5] border-[#185FA5]'
-                        : 'text-[#444] hover:bg-white border-transparent hover:text-[#042C53]'
+                        ? 'bg-[#FDF8E7] text-[#1a375b] border-[#eab913]'
+                        : 'text-[#444] hover:bg-white border-transparent hover:text-[#1a375b]'
                     )}
                   >
                     <item.icon className={cn(
                       'h-4 w-4 shrink-0 transition-colors',
-                      active ? 'text-[#185FA5]' : 'text-gray-400'
+                      active ? 'text-[#eab913]' : 'text-gray-400'
                     )} />
                     <span className="flex-1 leading-none">{item.label}</span>
                   </NavLink>
@@ -202,7 +202,7 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
           className={cn(
             'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] font-medium transition-all border-l-2',
             location.pathname === '/app/notifications'
-              ? 'bg-[#E6F1FB] text-[#185FA5] border-[#185FA5]'
+              ? 'bg-[#FDF8E7] text-[#1a375b] border-[#eab913]'
               : 'text-[#444] hover:bg-white border-transparent'
           )}
         >
@@ -264,7 +264,7 @@ function Topbar({ onMenuOpen }: { onMenuOpen: () => void }) {
         <div className="text-sm text-gray-400">
           <span>App</span>
           <span className="mx-1.5 text-gray-300">/</span>
-          <span className="font-semibold text-[#042C53]">{pageName}</span>
+          <span className="font-semibold text-[#1a375b]">{pageName}</span>
         </div>
       </div>
 
@@ -272,7 +272,7 @@ function Topbar({ onMenuOpen }: { onMenuOpen: () => void }) {
         {/* Notifications bell */}
         <NavLink
           to="/app/notifications"
-          className="relative p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-[#042C53] transition-colors"
+          className="relative p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-[#1a375b] transition-colors"
         >
           <Bell className="h-[18px] w-[18px]" />
           {unreadCount > 0 && (
@@ -288,11 +288,11 @@ function Topbar({ onMenuOpen }: { onMenuOpen: () => void }) {
             onClick={() => setUserMenuOpen((v) => !v)}
             className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-gray-100 transition-colors"
           >
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#042C53] text-white text-xs font-bold shrink-0">
+            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1a375b] text-white text-xs font-bold shrink-0">
               {initials}
             </div>
             <div className="hidden sm:block text-left">
-              <p className="text-xs font-semibold text-[#042C53] leading-none">{profile?.full_name}</p>
+              <p className="text-xs font-semibold text-[#1a375b] leading-none">{profile?.full_name}</p>
               <p className="text-[10px] text-gray-400 mt-0.5 leading-none">{tenant?.ragione_sociale ?? 'SuperAdmin'}</p>
             </div>
             <ChevronDown className="h-3.5 w-3.5 text-gray-400" />
@@ -303,7 +303,7 @@ function Topbar({ onMenuOpen }: { onMenuOpen: () => void }) {
               <div className="fixed inset-0 z-10" onClick={() => setUserMenuOpen(false)} />
               <div className="absolute right-0 top-full mt-1 z-20 w-52 rounded-xl bg-white border border-gray-200 shadow-lg py-1 text-sm">
                 <div className="px-4 py-2.5 border-b border-gray-100">
-                  <p className="font-semibold text-[#042C53] text-xs">{profile?.full_name}</p>
+                  <p className="font-semibold text-[#1a375b] text-xs">{profile?.full_name}</p>
                   <p className="text-gray-400 text-[11px] mt-0.5">{profile?.email}</p>
                 </div>
                 <NavLink

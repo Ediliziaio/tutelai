@@ -77,7 +77,7 @@ export default function AdminPiani() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-2xl font-bold text-[#042C53]">Piani & Pricing</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Piani & Pricing</h1>
       </div>
 
       {/* Plan cards */}
@@ -89,11 +89,11 @@ export default function AdminPiani() {
                 <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${plan.accent} mb-2`}>
                   {plan.nome}
                 </span>
-                <p className="text-2xl font-bold text-[#042C53]">€{plan.prezzo}<span className="text-sm font-normal text-gray-400">/mese</span></p>
+                <p className="text-2xl font-bold text-[#1a375b]">€{plan.prezzo}<span className="text-sm font-normal text-gray-400">/mese</span></p>
               </div>
               <button
                 onClick={() => setEditingPlan({ ...plan })}
-                className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors text-gray-400 hover:text-[#042C53]"
+                className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors text-gray-400 hover:text-[#1a375b]"
               >
                 <Pencil className="h-4 w-4" />
               </button>
@@ -112,7 +112,7 @@ export default function AdminPiani() {
             </ul>
             <button
               onClick={() => setEditingPlan({ ...plan })}
-              className="mt-4 w-full bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              className="mt-4 w-full bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               Modifica piano
             </button>
@@ -123,7 +123,7 @@ export default function AdminPiani() {
       {/* Add-on management */}
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
         <div className="px-5 py-4 border-b border-gray-100">
-          <h2 className="text-sm font-semibold text-[#042C53]">Add-on disponibili</h2>
+          <h2 className="text-sm font-semibold text-[#1a375b]">Add-on disponibili</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -137,7 +137,7 @@ export default function AdminPiani() {
             <tbody>
               {addons.map((addon) => (
                 <tr key={addon.id} className="border-b border-gray-50 hover:bg-gray-50/50">
-                  <td className="px-4 py-3 text-sm font-medium text-[#042C53]">{addon.nome}</td>
+                  <td className="px-4 py-3 text-sm font-medium text-[#1a375b]">{addon.nome}</td>
                   <td className="px-4 py-3 text-sm text-gray-600">€{addon.prezzo}/mese</td>
                   <td className="px-4 py-3">
                     <button onClick={() => toggleAddon(addon.id)} className="flex items-center gap-1.5">
@@ -163,7 +163,7 @@ export default function AdminPiani() {
 
       {/* Revenue metrics */}
       <div className="bg-white border border-gray-200 rounded-xl p-5">
-        <h2 className="text-sm font-semibold text-[#042C53] mb-4">Revenue breakdown per piano</h2>
+        <h2 className="text-sm font-semibold text-[#1a375b] mb-4">Revenue breakdown per piano</h2>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -176,16 +176,16 @@ export default function AdminPiani() {
             <tbody>
               {mrrByPlan.map((row) => (
                 <tr key={row.piano} className="border-b border-gray-50">
-                  <td className="px-4 py-2.5 text-sm font-medium text-[#042C53]">{row.piano}</td>
+                  <td className="px-4 py-2.5 text-sm font-medium text-[#1a375b]">{row.piano}</td>
                   <td className="px-4 py-2.5 text-sm text-gray-600">{row.aziende}</td>
-                  <td className="px-4 py-2.5 text-sm font-semibold text-[#042C53]">€{row.mrr}</td>
+                  <td className="px-4 py-2.5 text-sm font-semibold text-[#1a375b]">€{row.mrr}</td>
                   <td className="px-4 py-2.5 text-sm text-gray-600">{Math.round((row.mrr / 1444) * 100)}%</td>
                 </tr>
               ))}
               <tr className="bg-gray-50">
-                <td className="px-4 py-2.5 text-sm font-bold text-[#042C53]" colSpan={2}>Totale</td>
-                <td className="px-4 py-2.5 text-sm font-bold text-[#042C53]">€{mrrByPlan.reduce((s, r) => s + r.mrr, 0)}</td>
-                <td className="px-4 py-2.5 text-sm font-bold text-[#042C53]">100%</td>
+                <td className="px-4 py-2.5 text-sm font-bold text-[#1a375b]" colSpan={2}>Totale</td>
+                <td className="px-4 py-2.5 text-sm font-bold text-[#1a375b]">€{mrrByPlan.reduce((s, r) => s + r.mrr, 0)}</td>
+                <td className="px-4 py-2.5 text-sm font-bold text-[#1a375b]">100%</td>
               </tr>
             </tbody>
           </table>
@@ -197,7 +197,7 @@ export default function AdminPiani() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-[#042C53]">Modifica piano — {editingPlan.nome}</h2>
+              <h2 className="text-lg font-bold text-[#1a375b]">Modifica piano — {editingPlan.nome}</h2>
               <button onClick={() => setEditingPlan(null)} className="text-gray-400 hover:text-gray-600">
                 <X className="h-5 w-5" />
               </button>
@@ -209,7 +209,7 @@ export default function AdminPiani() {
                   type="text"
                   value={editingPlan.nome}
                   onChange={(e) => setEditingPlan({ ...editingPlan, nome: e.target.value })}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20"
                 />
               </div>
               <div>
@@ -218,7 +218,7 @@ export default function AdminPiani() {
                   type="number"
                   value={editingPlan.prezzo}
                   onChange={(e) => setEditingPlan({ ...editingPlan, prezzo: Number(e.target.value) })}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20"
                 />
               </div>
               <div>
@@ -227,7 +227,7 @@ export default function AdminPiani() {
                   type="text"
                   value={editingPlan.userLimit}
                   onChange={(e) => setEditingPlan({ ...editingPlan, userLimit: e.target.value })}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20"
                 />
               </div>
               <div>
@@ -236,7 +236,7 @@ export default function AdminPiani() {
                   type="text"
                   value={editingPlan.systemLimit}
                   onChange={(e) => setEditingPlan({ ...editingPlan, systemLimit: e.target.value })}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20"
                 />
               </div>
             </div>
@@ -244,7 +244,7 @@ export default function AdminPiani() {
               <button onClick={() => setEditingPlan(null)} className="flex-1 border border-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
                 Annulla
               </button>
-              <button onClick={() => setEditingPlan(null)} className="flex-1 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+              <button onClick={() => setEditingPlan(null)} className="flex-1 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                 Salva modifiche
               </button>
             </div>

@@ -116,7 +116,7 @@ export default function AppDocsEdit() {
         <p className="text-sm text-slate-500 mb-6">L'ID fornito non corrisponde a nessun documento.</p>
         <Link
           to="/app/docs"
-          className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           Torna ai documenti
         </Link>
@@ -136,16 +136,16 @@ export default function AppDocsEdit() {
             <ArrowLeft className="h-4 w-4" /> Documenti
           </Link>
           <span className="text-slate-300">|</span>
-          <span className="font-semibold text-[#042C53] text-sm truncate">{doc.titolo}</span>
+          <span className="font-semibold text-[#1a375b] text-sm truncate">{doc.titolo}</span>
           <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${cfg.badge} shrink-0`}>
             {cfg.label}
           </span>
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors">
+          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors">
             <History className="h-3.5 w-3.5" /> Cronologia versioni
           </button>
-          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors">
+          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors">
             <Download className="h-3.5 w-3.5" /> Esporta .docx
           </button>
         </div>
@@ -224,7 +224,7 @@ export default function AppDocsEdit() {
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <Sparkles className="h-4 w-4 text-[#185FA5]" />
-                  <h3 className="text-xs font-semibold text-[#042C53] uppercase tracking-wide">Suggerimenti AI</h3>
+                  <h3 className="text-xs font-semibold text-[#1a375b] uppercase tracking-wide">Suggerimenti AI</h3>
                 </div>
                 <div className="space-y-2">
                   {[
@@ -253,11 +253,11 @@ export default function AppDocsEdit() {
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <PenLine className="h-4 w-4 text-[#185FA5]" />
-                  <h3 className="text-xs font-semibold text-[#042C53] uppercase tracking-wide">Azioni</h3>
+                  <h3 className="text-xs font-semibold text-[#1a375b] uppercase tracking-wide">Azioni</h3>
                 </div>
                 <div className="space-y-2">
                   {doc.stato === 'bozza' && (
-                    <button className="w-full bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2.5 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
+                    <button className="w-full bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2.5 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
                       <Send className="h-3.5 w-3.5" /> Invia in revisione
                     </button>
                   )}
@@ -266,10 +266,10 @@ export default function AppDocsEdit() {
                       <PenLine className="h-3.5 w-3.5" /> Richiedi firma
                     </button>
                   )}
-                  <button className="w-full border border-[#C8C5BC] hover:bg-slate-50 text-[#042C53] px-4 py-2.5 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
+                  <button className="w-full border border-[#C8C5BC] hover:bg-slate-50 text-[#1a375b] px-4 py-2.5 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
                     <RefreshCw className="h-3.5 w-3.5" /> Rigenera sezione
                   </button>
-                  <button className="w-full border border-[#C8C5BC] hover:bg-slate-50 text-[#042C53] px-4 py-2.5 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
+                  <button className="w-full border border-[#C8C5BC] hover:bg-slate-50 text-[#1a375b] px-4 py-2.5 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
                     <MessageSquare className="h-3.5 w-3.5" /> Aggiungi nota
                   </button>
                 </div>

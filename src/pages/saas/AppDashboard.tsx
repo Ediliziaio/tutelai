@@ -89,7 +89,7 @@ function RiskGauge({ score }: { score: number }) {
           style={{ transition: 'stroke-dashoffset 0.6s ease' }}
         />
         {/* score text */}
-        <text x="100" y="88" textAnchor="middle" fontSize="32" fontWeight="700" fill="#042C53" fontFamily="Inter, sans-serif">
+        <text x="100" y="88" textAnchor="middle" fontSize="32" fontWeight="700" fill="#1a375b" fontFamily="Inter, sans-serif">
           {score}
         </text>
         <text x="100" y="104" textAnchor="middle" fontSize="11" fill="#6B7280" fontFamily="Inter, sans-serif">
@@ -108,7 +108,7 @@ function RiskGauge({ score }: { score: number }) {
 
 // ── Progress Bar ──────────────────────────────────────────────────────────────
 
-function ProgressBar({ value, color = '#185FA5' }: { value: number; color?: string }) {
+function ProgressBar({ value, color = '#eab913' }: { value: number; color?: string }) {
   return (
     <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
       <div
@@ -134,11 +134,11 @@ function StatCard({ icon, title, main, sub, link }: StatCardProps) {
     <Link to={link} className="block group">
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-5 hover:shadow-md transition-shadow h-full">
         <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2 text-[#185FA5]">{icon}</div>
-          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#185FA5] transition-colors" />
+          <div className="flex items-center gap-2 text-[#eab913]">{icon}</div>
+          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#eab913] transition-colors" />
         </div>
         <p className="text-xs text-gray-500 mb-1">{title}</p>
-        <p className="text-2xl font-bold text-[#042C53] mb-2">{main}</p>
+        <p className="text-2xl font-bold text-[#1a375b] mb-2">{main}</p>
         <div className="text-xs text-gray-500 space-y-0.5">{sub}</div>
       </div>
     </Link>
@@ -247,7 +247,7 @@ export default function AppDashboard() {
         {/* ── Header row ── */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-[22px] font-bold text-[#042C53]">
+            <h1 className="text-[22px] font-bold text-[#1a375b]">
               Buongiorno, {firstName}
             </h1>
             {companyName && (
@@ -266,13 +266,13 @@ export default function AppDashboard() {
           <div className="bg-white border border-[#C8C5BC] rounded-xl p-5 flex flex-col items-center gap-3">
             <div className="flex items-center gap-2 self-start w-full">
               <Shield className="w-4 h-4 text-[#185FA5]" />
-              <span className="text-sm font-semibold text-[#042C53]">AI Risk Score</span>
+              <span className="text-sm font-semibold text-[#1a375b]">AI Risk Score</span>
             </div>
             <RiskGauge score={34} />
             <p className="text-xs text-gray-500 text-center">
               Score calcolato su documentazione, formazione, sistemi e governance
             </p>
-            <button className="bg-[#042C53] hover:bg-[#185FA5] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+            <button className="bg-[#1a375b] hover:bg-[#185FA5] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
               <RefreshCw className="w-3.5 h-3.5" />
               Aggiorna score
             </button>
@@ -325,7 +325,7 @@ export default function AppDashboard() {
               main="127 giorni"
               sub={
                 <>
-                  <p className="font-medium text-[#042C53]">2 agosto 2026</p>
+                  <p className="font-medium text-[#1a375b]">2 agosto 2026</p>
                   <p>Trasparenza AI — pubblico</p>
                   <p className="text-[#854F0B]">Art. 50 AI Act</p>
                 </>
@@ -340,7 +340,7 @@ export default function AppDashboard() {
 
           {/* Azioni prioritarie */}
           <div className="bg-white border border-[#C8C5BC] rounded-xl p-5">
-            <h2 className="text-sm font-semibold text-[#042C53] mb-4 flex items-center gap-2">
+            <h2 className="text-sm font-semibold text-[#1a375b] mb-4 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 text-[#D97706]" />
               Azioni prioritarie
             </h2>
@@ -355,7 +355,7 @@ export default function AppDashboard() {
                   {action.actionLabel && action.actionLink && (
                     <Link
                       to={action.actionLink}
-                      className="flex-shrink-0 border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
+                      className="flex-shrink-0 border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
                     >
                       {action.actionLabel}
                     </Link>
@@ -370,7 +370,7 @@ export default function AppDashboard() {
 
             {/* Attività recente */}
             <div className="bg-white border border-[#C8C5BC] rounded-xl p-5">
-              <h2 className="text-sm font-semibold text-[#042C53] mb-4 flex items-center gap-2">
+              <h2 className="text-sm font-semibold text-[#1a375b] mb-4 flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#185FA5]" />
                 Attività recente
               </h2>
@@ -406,7 +406,7 @@ export default function AppDashboard() {
                 className="w-full flex items-center justify-between"
                 onClick={() => setRiskExpanded((v) => !v)}
               >
-                <h2 className="text-sm font-semibold text-[#042C53] flex items-center gap-2">
+                <h2 className="text-sm font-semibold text-[#1a375b] flex items-center gap-2">
                   <Shield className="w-4 h-4 text-[#185FA5]" />
                   Dettaglio AI Risk Score per categoria
                 </h2>
@@ -461,7 +461,7 @@ export default function AppDashboard() {
             <Link
               key={link.to}
               to={link.to}
-              className="flex items-center gap-1 text-xs text-[#185FA5] hover:text-[#042C53] transition-colors"
+              className="flex items-center gap-1 text-xs text-[#185FA5] hover:text-[#1a375b] transition-colors"
             >
               {link.label}
               <ExternalLink className="w-3 h-3" />

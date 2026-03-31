@@ -37,7 +37,7 @@ export default function AppAuditDetail() {
         <ChevronLeft className="h-4 w-4" /> Audit Trail
       </Link>
 
-      <h1 className="text-[22px] font-bold text-[#042C53]">Dettaglio Evento <code className="font-mono text-base text-gray-500">#{log.hash.slice(0,8)}</code></h1>
+      <h1 className="text-[22px] font-bold text-[#1a375b]">Dettaglio Evento <code className="font-mono text-base text-gray-500">#{log.hash.slice(0,8)}</code></h1>
 
       {/* Main fields */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl overflow-hidden">
@@ -48,7 +48,7 @@ export default function AppAuditDetail() {
           {fields.map(f => (
             <div key={f.label} className="flex px-5 py-3.5 gap-4">
               <span className="w-36 text-xs font-medium text-gray-400 uppercase tracking-wide shrink-0 mt-0.5">{f.label}</span>
-              <span className="text-sm text-[#042C53] font-medium break-all">{f.value}</span>
+              <span className="text-sm text-[#1a375b] font-medium break-all">{f.value}</span>
             </div>
           ))}
         </div>
@@ -62,7 +62,7 @@ export default function AppAuditDetail() {
         <div className="p-5 space-y-4">
           <div>
             <p className="text-xs text-gray-400 mb-1">Hash evento</p>
-            <code className="block text-xs font-mono text-[#042C53] bg-[#F5F5F3] px-3 py-2 rounded-lg break-all">{log.hash}d2c8b1e4f7a0c3d6e9</code>
+            <code className="block text-xs font-mono text-[#1a375b] bg-[#F5F5F3] px-3 py-2 rounded-lg break-all">{log.hash}d2c8b1e4f7a0c3d6e9</code>
           </div>
           {log.hash_precedente && (
             <div>
@@ -81,10 +81,10 @@ export default function AppAuditDetail() {
 
       {/* Actions */}
       <div className="flex gap-3">
-        <button className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+        <button className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
           <Download className="h-4 w-4" /> Scarica prova evento
         </button>
-        <button className="flex items-center gap-2 border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+        <button className="flex items-center gap-2 border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-sm font-medium px-4 py-2 rounded-lg transition-colors">
           <Shield className="h-4 w-4" /> Verifica integrità
         </button>
       </div>

@@ -53,14 +53,14 @@ export default function AppSettingsCompany() {
   return (
     <div className="p-6 space-y-6 bg-[#FAFAF8] min-h-full">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2">
           <Check className="w-4 h-4 text-green-300" />
           Modifiche salvate con successo.
         </div>
       )}
 
       <div>
-        <h1 className="text-2xl font-bold text-[#042C53]">Impostazioni</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Impostazioni</h1>
       </div>
 
       {/* Tab nav */}
@@ -74,7 +74,7 @@ export default function AppSettingsCompany() {
               className={`px-5 py-2.5 text-sm font-medium border-b-2 transition-colors -mb-px ${
                 active
                   ? 'border-[#185FA5] text-[#185FA5] bg-[#E6F1FB]'
-                  : 'border-transparent text-gray-600 hover:text-[#042C53] hover:border-gray-300'
+                  : 'border-transparent text-gray-600 hover:text-[#1a375b] hover:border-gray-300'
               }`}
             >
               {tab.label}
@@ -85,7 +85,7 @@ export default function AppSettingsCompany() {
 
       {/* Dati aziendali */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-5">
-        <h2 className="font-semibold text-[#042C53]">Dati aziendali</h2>
+        <h2 className="font-semibold text-[#1a375b]">Dati aziendali</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-1">Ragione sociale</label>
@@ -147,7 +147,7 @@ export default function AppSettingsCompany() {
 
       {/* Dati legali */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-5">
-        <h2 className="font-semibold text-[#042C53]">Dati legali</h2>
+        <h2 className="font-semibold text-[#1a375b]">Dati legali</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-1">Legale rappresentante</label>
@@ -188,7 +188,7 @@ export default function AppSettingsCompany() {
 
       <button
         onClick={handleSave}
-        className="bg-[#042C53] hover:bg-[#185FA5] text-white px-6 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
+        className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-6 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
       >
         <Save className="w-4 h-4" />
         Salva modifiche

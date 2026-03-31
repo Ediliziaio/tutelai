@@ -13,19 +13,26 @@ export default function Blog() {
   const [leadOpen, setLeadOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Tutti");
 
-  const filtered = activeCategory === "Tutti"
-    ? blogArticles
-    : blogArticles.filter(a => a.category === activeCategory);
+  const filtered =
+    activeCategory === "Tutti"
+      ? blogArticles
+      : blogArticles.filter((a) => a.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Blog & Risorse per PMI | Impresa Leggera</title>
-        <meta name="description" content="Guide pratiche, calcoli reali e strategie concrete per liberare la tua impresa dalla burocrazia. Articoli SEO per PMI, professionisti, edilizia e retail." />
-        <meta property="og:title" content="Blog & Risorse per PMI | Impresa Leggera" />
-        <meta property="og:description" content="Guide pratiche e strategie concrete per liberare la tua impresa dalla burocrazia." />
+        <title>Blog & Risorse | TutelAI — AI Compliance per PMI italiane</title>
+        <meta
+          name="description"
+          content="Tutto quello che devi sapere sull'AI compliance — in italiano, senza gergo. AI Act, Legge 132/2025, DPO, sanzioni. Articoli pratici per imprenditori italiani."
+        />
+        <meta property="og:title" content="Blog TutelAI — AI Compliance per PMI italiane" />
+        <meta
+          property="og:description"
+          content="Analisi settimanale delle novità normative che impattano le PMI italiane. Senza paroloni, con esempi concreti."
+        />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://impresaleggera.it/blog" />
+        <link rel="canonical" href="https://tutelai.it/blog" />
       </Helmet>
 
       <Navbar onCtaClick={() => setLeadOpen(true)} />
@@ -34,22 +41,31 @@ export default function Blog() {
       <section className="relative pt-28 pb-16 bg-gradient-to-br from-primary via-primary/90 to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary-foreground mb-4">
-            Blog & Risorse
+            Risorse — Blog TutelAI
           </h1>
-          <p className="font-body text-lg text-primary-foreground/80 max-w-2xl mx-auto">
-            Guide pratiche, calcoli reali e strategie concrete per liberare la tua impresa dalla burocrazia. Niente teoria: solo contenuti che puoi applicare subito.
+          <p className="font-body text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-6">
+            Tutto quello che devi sapere sull'AI compliance — in italiano, senza gergo.
+            Ogni settimana analizziamo le novità normative che impattano le PMI italiane.
+            Senza paroloni. Con esempi concreti.
           </p>
+          <button
+            onClick={() => setLeadOpen(true)}
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary-foreground text-foreground font-subtitle font-bold text-sm hover:opacity-90 transition-opacity"
+          >
+            Iscriviti alla newsletter — Novità AI compliance ogni lunedì
+            <ArrowRight size={14} />
+          </button>
         </div>
       </section>
 
-      {/* Category Filter */}
+      {/* Category filter */}
       <div className="container mx-auto px-4 lg:px-8 -mt-6 relative z-20">
         <div className="flex flex-wrap gap-2 justify-center bg-card rounded-2xl shadow-lg border border-border p-4">
-          {blogCategories.map(cat => (
+          {blogCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
@@ -65,71 +81,79 @@ export default function Blog() {
         </div>
       </div>
 
-      {/* Articles Grid */}
-      <section className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filtered.map((article, i) => (
-            <motion.div
-              key={article.slug}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-            >
-              <Link
-                to={`/blog/${article.slug}`}
-                className="group block bg-card rounded-2xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden h-full"
-              >
-                {/* Cover Image */}
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={article.coverImage}
-                    alt={article.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6 flex flex-col h-[calc(100%-theme(spacing.0))]">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Badge variant="secondary" className="text-xs font-subtitle">
-                      {article.category}
-                    </Badge>
-                    <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                      <Clock size={12} /> {article.readingTime} min
-                    </span>
-                  </div>
-
-                  <h2 className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-3 line-clamp-3">
-                    {article.title}
-                  </h2>
-
-                  <p className="font-body text-sm text-muted-foreground mb-6 line-clamp-3 flex-1">
-                    {article.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
-                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Calendar size={12} />
-                      {new Date(article.date).toLocaleDateString("it-IT", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
-                    </span>
-                    <span className="flex items-center gap-1 text-sm font-subtitle font-semibold text-primary group-hover:gap-2 transition-all">
-                      Leggi <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+      {/* Articoli */}
+      <section className="py-14 sm:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          {filtered.length === 0 ? (
+            <p className="text-center text-muted-foreground py-20">
+              Nessun articolo in questa categoria. Presto in arrivo.
+            </p>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {filtered.map((article, i) => (
+                <motion.article
+                  key={article.slug}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.08 }}
+                >
+                  <Link
+                    to={`/blog/${article.slug}`}
+                    className="group flex flex-col h-full p-6 rounded-2xl border border-border bg-card hover:border-primary/40 hover:shadow-md transition-all"
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <Badge variant="secondary" className="text-xs font-subtitle">
+                        {article.category}
+                      </Badge>
+                      <span className="text-xs text-muted-foreground flex items-center gap-1">
+                        <Clock size={12} />
+                        {article.readingTime} min
+                      </span>
+                    </div>
+                    <h2 className="font-display font-extrabold text-lg leading-snug mb-3 group-hover:text-primary transition-colors">
+                      {article.title}
+                    </h2>
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-5">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between pt-4 border-t border-border">
+                      <span className="text-xs text-muted-foreground flex items-center gap-1">
+                        <Calendar size={11} />
+                        {new Date(article.publishedAt).toLocaleDateString("it-IT", {
+                          day: "2-digit",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </span>
+                      <span className="text-xs font-subtitle font-semibold text-primary flex items-center gap-1">
+                        Leggi <ArrowRight size={12} />
+                      </span>
+                    </div>
+                  </Link>
+                </motion.article>
+              ))}
+            </div>
+          )}
         </div>
+      </section>
 
-        {filtered.length === 0 && (
-          <p className="text-center text-muted-foreground py-12">
-            Nessun articolo in questa categoria. Torna presto!
+      {/* Newsletter CTA */}
+      <section className="py-14 sm:py-20 bg-card border-t border-border">
+        <div className="container mx-auto px-4 lg:px-8 text-center max-w-2xl">
+          <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-4">
+            Non perdere le prossime novità normative.
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            Ogni lunedì, un aggiornamento sulle novità AI compliance che impattano le PMI italiane.
+            Breve, pratico, senza gergo legale.
           </p>
-        )}
+          <button
+            onClick={() => setLeadOpen(true)}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-cta text-primary-foreground font-subtitle font-bold hover:opacity-90 transition-opacity"
+          >
+            Iscriviti gratis <ArrowRight size={16} />
+          </button>
+        </div>
       </section>
 
       <Footer />

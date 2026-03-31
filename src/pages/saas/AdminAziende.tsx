@@ -99,8 +99,8 @@ export default function AdminAziende() {
     <div className="space-y-6" onClick={() => setOpenMenuId(null)}>
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-2xl font-bold text-[#042C53]">Aziende</h1>
-        <button className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+        <h1 className="text-2xl font-bold text-[#1a375b]">Aziende</h1>
+        <button className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
           <Plus className="h-4 w-4" /> Nuova azienda
         </button>
       </div>
@@ -108,7 +108,7 @@ export default function AdminAziende() {
       {/* Stats bar */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Totali', value: totali, color: 'text-[#042C53]' },
+          { label: 'Totali', value: totali, color: 'text-[#1a375b]' },
           { label: 'Attive', value: attive, color: 'text-emerald-600' },
           { label: 'Trial', value: trial, color: 'text-amber-600' },
           { label: 'Sospese', value: sospese, color: 'text-slate-500' },
@@ -130,7 +130,7 @@ export default function AdminAziende() {
               placeholder="Cerca azienda o P.IVA..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20 focus:border-[#042C53]"
+              className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20 focus:border-[#1a375b]"
             />
           </div>
           <select
@@ -195,7 +195,7 @@ export default function AdminAziende() {
                   onClick={() => navigate(`/admin/aziende/${az.id}`)}
                 >
                   <td className="px-4 py-3">
-                    <p className="text-sm font-semibold text-[#042C53]">{az.ragione_sociale}</p>
+                    <p className="text-sm font-semibold text-[#1a375b]">{az.ragione_sociale}</p>
                     <p className="text-xs text-gray-400 font-mono">{az.partita_iva}</p>
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">{az.settore}</td>
@@ -209,13 +209,13 @@ export default function AdminAziende() {
                     <div className="flex items-center gap-1 relative">
                       <button
                         onClick={() => navigate(`/admin/aziende/${az.id}`)}
-                        className="p-1.5 hover:bg-gray-100 rounded-md transition-colors text-gray-400 hover:text-[#042C53]"
+                        className="p-1.5 hover:bg-gray-100 rounded-md transition-colors text-gray-400 hover:text-[#1a375b]"
                         title="Dettaglio"
                       >
                         <ChevronRight className="h-4 w-4" />
                       </button>
                       <button
-                        className="p-1.5 hover:bg-gray-100 rounded-md transition-colors text-gray-400 hover:text-[#042C53]"
+                        className="p-1.5 hover:bg-gray-100 rounded-md transition-colors text-gray-400 hover:text-[#1a375b]"
                         title="Modifica"
                       >
                         <Pencil className="h-4 w-4" />
@@ -223,7 +223,7 @@ export default function AdminAziende() {
                       <div className="relative">
                         <button
                           onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === az.id ? null : az.id); }}
-                          className="p-1.5 hover:bg-gray-100 rounded-md transition-colors text-gray-400 hover:text-[#042C53]"
+                          className="p-1.5 hover:bg-gray-100 rounded-md transition-colors text-gray-400 hover:text-[#1a375b]"
                         >
                           <MoreVertical className="h-4 w-4" />
                         </button>

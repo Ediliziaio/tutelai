@@ -46,7 +46,7 @@ function AdminSidebarContent({ onClose }: { onClose?: () => void }) {
   const location = useLocation();
 
   return (
-    <div className="flex h-full flex-col bg-[#042C53] text-white">
+    <div className="flex h-full flex-col bg-[#1a375b] text-white">
       <div className="h-1 bg-gradient-to-r from-[#185FA5] to-[#22A86B] shrink-0" />
       <div className="px-4 py-4 border-b border-white/10">
         <div className="flex items-center justify-between mb-1">
@@ -110,14 +110,14 @@ function AdminTopbar({ onMenuOpen }: { onMenuOpen: () => void }) {
         <div className="text-sm">
           <span className="text-gray-400">SuperAdmin</span>
           <span className="mx-1.5 text-gray-300">/</span>
-          <span className="font-medium text-[#042C53]">{pageName}</span>
+          <span className="font-medium text-[#1a375b]">{pageName}</span>
         </div>
       </div>
       <div className="flex items-center gap-2">
         <NavLink to="/app/dashboard" className="hidden sm:flex items-center gap-1.5 text-xs text-[#185FA5] hover:underline px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-colors">
           <Shield className="h-3.5 w-3.5" /> Vista cliente
         </NavLink>
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#042C53] text-white text-sm font-bold">{initials}</div>
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1a375b] text-white text-sm font-bold">{initials}</div>
       </div>
     </header>
   );

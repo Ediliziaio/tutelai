@@ -46,7 +46,7 @@ export default function AppTrainingPlay() {
       <div className="min-h-screen bg-[#FAFAF8] flex items-center justify-center">
         <div className="text-center">
           <AlertTriangle className="w-12 h-12 text-[#D97706] mx-auto mb-3" />
-          <h2 className="text-xl font-bold text-[#042C53] mb-2">Corso non trovato</h2>
+          <h2 className="text-xl font-bold text-[#1a375b] mb-2">Corso non trovato</h2>
           <Link to="/app/training" className="text-[#185FA5] hover:underline text-sm">
             Torna ai corsi
           </Link>
@@ -87,16 +87,16 @@ export default function AppTrainingPlay() {
   const moduleTypeIcon = currentModule.tipo === 'video' ? '▶' : currentModule.tipo === 'slide' ? '📊' : '📄';
 
   return (
-    <div className="min-h-screen bg-[#042C53] flex flex-col">
+    <div className="min-h-screen bg-[#1a375b] flex flex-col">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-white text-[#042C53] px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-white text-[#1a375b] px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
           <CheckCircle2 className="w-4 h-4 text-[#22A86B]" />
           {toast}
         </div>
       )}
 
       {/* Top bar */}
-      <div className="bg-[#042C53] border-b border-white/10 px-6 py-3 flex items-center justify-between">
+      <div className="bg-[#1a375b] border-b border-white/10 px-6 py-3 flex items-center justify-between">
         <Link
           to="/app/training"
           className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition-colors"
@@ -144,7 +144,7 @@ export default function AppTrainingPlay() {
               {!isPlaying && (
                 <button
                   onClick={() => setIsPlaying(true)}
-                  className="mt-6 flex items-center gap-2 mx-auto px-6 py-3 bg-[#185FA5] hover:bg-[#042C53] text-white rounded-full text-sm font-medium transition-colors"
+                  className="mt-6 flex items-center gap-2 mx-auto px-6 py-3 bg-[#185FA5] hover:bg-[#1a375b] text-white rounded-full text-sm font-medium transition-colors"
                 >
                   <Play className="w-4 h-4" />
                   {progress > 0 ? 'Riprendi' : 'Inizia'}
@@ -160,7 +160,7 @@ export default function AppTrainingPlay() {
           </div>
 
           {/* Controls */}
-          <div className="bg-[#042C53] border-t border-white/10 px-6 py-4">
+          <div className="bg-[#1a375b] border-t border-white/10 px-6 py-4">
             {/* Progress bar */}
             <div className="flex items-center gap-3 mb-4">
               <span className="text-xs text-white/50 w-10">{formatTime(progressSec)}</span>
@@ -303,7 +303,7 @@ export default function AppTrainingPlay() {
 
         <button
           onClick={handleNext}
-          className="flex items-center gap-2 px-4 py-2 text-sm bg-[#185FA5] hover:bg-[#042C53] text-white rounded-lg transition-colors font-medium"
+          className="flex items-center gap-2 px-4 py-2 text-sm bg-[#185FA5] hover:bg-[#1a375b] text-white rounded-lg transition-colors font-medium"
         >
           {isLastModule && currentModule.ha_quiz ? (
             <>Completa e vai al Quiz <ChevronRight className="w-4 h-4" /></>

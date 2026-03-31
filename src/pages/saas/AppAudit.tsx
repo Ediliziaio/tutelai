@@ -33,14 +33,14 @@ export default function AppAudit() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-[22px] font-bold text-[#042C53]">Audit Trail — Log eventi</h1>
+          <h1 className="text-[22px] font-bold text-[#1a375b]">Audit Trail — Log eventi</h1>
           <p className="text-sm text-gray-500 mt-0.5">Log immutabile di ogni azione. Conforme AI Act per tracciabilità.</p>
         </div>
         <div className="flex gap-2 flex-wrap">
-          <button className="flex items-center gap-2 border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-sm font-medium px-3 py-2 rounded-lg transition-colors">
+          <button className="flex items-center gap-2 border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-sm font-medium px-3 py-2 rounded-lg transition-colors">
             <Download className="h-4 w-4" /> Esporta log
           </button>
-          <button className="flex items-center gap-2 border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-sm font-medium px-3 py-2 rounded-lg transition-colors">
+          <button className="flex items-center gap-2 border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-sm font-medium px-3 py-2 rounded-lg transition-colors">
             <Shield className="h-4 w-4" /> Firma digitalmente
           </button>
         </div>
@@ -96,10 +96,10 @@ export default function AppAudit() {
                     <div className="flex items-center gap-2">
                       {log.utente_nome ? (
                         <>
-                          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#042C53] text-white text-[10px] font-bold shrink-0">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1a375b] text-white text-[10px] font-bold shrink-0">
                             {log.utente_nome.split(' ').map(w => w[0]).join('').slice(0,2)}
                           </div>
-                          <span className="text-[#042C53] font-medium text-xs">{log.utente_nome}</span>
+                          <span className="text-[#1a375b] font-medium text-xs">{log.utente_nome}</span>
                         </>
                       ) : (
                         <>

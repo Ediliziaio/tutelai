@@ -317,7 +317,7 @@ function RenderContent({ text }: { text: string }) {
         const parts = line.split(/(\*\*[^*]+\*\*)/g);
         const rendered = parts.map((part, j) => {
           if (part.startsWith('**') && part.endsWith('**')) {
-            return <strong key={j} className="font-semibold text-[#042C53]">{part.slice(2, -2)}</strong>;
+            return <strong key={j} className="font-semibold text-[#1a375b]">{part.slice(2, -2)}</strong>;
           }
           return <span key={j}>{part}</span>;
         });
@@ -325,7 +325,7 @@ function RenderContent({ text }: { text: string }) {
           return <div key={i} className="flex gap-2 text-sm leading-relaxed"><span className="shrink-0">{line.slice(0, line.startsWith('📅') ? 2 : 2)}</span><span>{rendered.map((r, j) => <span key={j}>{r}</span>)}</span></div>;
         }
         if (line.startsWith('#')) {
-          return <div key={i} className="text-sm font-bold text-[#042C53] mt-1">{rendered}</div>;
+          return <div key={i} className="text-sm font-bold text-[#1a375b] mt-1">{rendered}</div>;
         }
         return <div key={i} className="text-sm leading-relaxed text-gray-700">{rendered}</div>;
       })}
@@ -411,7 +411,7 @@ export default function AppAILawyer() {
       {/* ── Header ── */}
       <div className="flex items-center justify-between mb-4 shrink-0">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53] flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-[#1a375b] flex items-center gap-2">
             <Sparkles className="h-6 w-6 text-[#185FA5]" />
             AI Legal Advisor
           </h1>
@@ -421,7 +421,7 @@ export default function AppAILawyer() {
         </div>
         <button
           onClick={handleReset}
-          className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#042C53] border border-gray-200 rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors"
+          className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#1a375b] border border-gray-200 rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors"
         >
           <RotateCcw className="h-4 w-4" /> Nuova chat
         </button>
@@ -445,7 +445,7 @@ export default function AppAILawyer() {
               <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 {/* Avatar */}
                 <div className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 ${
-                  msg.role === 'assistant' ? 'bg-[#042C53]' : 'bg-[#185FA5]'
+                  msg.role === 'assistant' ? 'bg-[#1a375b]' : 'bg-[#185FA5]'
                 }`}>
                   {msg.role === 'assistant'
                     ? <Bot className="h-4 w-4 text-white" />
@@ -494,7 +494,7 @@ export default function AppAILawyer() {
             {/* Typing indicator */}
             {isTyping && (
               <div className="flex gap-3">
-                <div className="h-8 w-8 rounded-full bg-[#042C53] flex items-center justify-center shrink-0">
+                <div className="h-8 w-8 rounded-full bg-[#1a375b] flex items-center justify-center shrink-0">
                   <Bot className="h-4 w-4 text-white" />
                 </div>
                 <div className="bg-white border border-gray-200 rounded-2xl rounded-tl-sm px-4 py-3">
@@ -511,7 +511,7 @@ export default function AppAILawyer() {
 
           {/* Input */}
           <div className="mt-3 shrink-0">
-            <div className="flex gap-2 items-end bg-white border border-gray-200 rounded-xl p-2 focus-within:ring-2 focus-within:ring-[#042C53]/20 focus-within:border-[#042C53] transition-all">
+            <div className="flex gap-2 items-end bg-white border border-gray-200 rounded-xl p-2 focus-within:ring-2 focus-within:ring-[#1a375b]/20 focus-within:border-[#1a375b] transition-all">
               <textarea
                 ref={inputRef}
                 value={input}
@@ -531,7 +531,7 @@ export default function AppAILawyer() {
               <button
                 onClick={() => sendMessage(input)}
                 disabled={!input.trim() || isTyping}
-                className="h-9 w-9 flex items-center justify-center rounded-lg bg-[#042C53] hover:bg-[#185FA5] text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+                className="h-9 w-9 flex items-center justify-center rounded-lg bg-[#1a375b] hover:bg-[#185FA5] text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
               >
                 <Send className="h-4 w-4" />
               </button>
@@ -561,7 +561,7 @@ export default function AppAILawyer() {
 
           {/* Context card */}
           <div className="bg-[#E6F1FB] border border-blue-200 rounded-xl p-4">
-            <h3 className="text-xs font-semibold text-[#042C53] mb-2">📚 Fonti normative</h3>
+            <h3 className="text-xs font-semibold text-[#1a375b] mb-2">📚 Fonti normative</h3>
             <div className="space-y-1.5 text-[11px] text-gray-600">
               <div>🇪🇺 Reg. UE 2024/1689 (AI Act)</div>
               <div>🇪🇺 Reg. UE 2016/679 (GDPR)</div>

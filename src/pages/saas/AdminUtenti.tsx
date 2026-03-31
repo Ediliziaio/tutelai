@@ -64,10 +64,10 @@ export default function AdminUtenti() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-2xl font-bold text-[#042C53]">Utenti — tutti</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Utenti — tutti</h1>
         <button
           onClick={() => setShowInviteModal(true)}
-          className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           <UserPlus className="h-4 w-4" /> Invita utente
         </button>
@@ -76,7 +76,7 @@ export default function AdminUtenti() {
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Totali', value: totali, color: 'text-[#042C53]' },
+          { label: 'Totali', value: totali, color: 'text-[#1a375b]' },
           { label: 'Owner', value: owner, color: 'text-violet-600' },
           { label: 'Admin', value: admin, color: 'text-blue-600' },
           { label: 'Member', value: member, color: 'text-gray-600' },
@@ -98,7 +98,7 @@ export default function AdminUtenti() {
               placeholder="Cerca per nome o email..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20 focus:border-[#042C53]"
+              className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20 focus:border-[#1a375b]"
             />
           </div>
           <select
@@ -141,11 +141,11 @@ export default function AdminUtenti() {
                 <tr key={u.id} className="border-b border-gray-50 hover:bg-gray-50/60 transition-colors">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="h-8 w-8 rounded-full bg-[#042C53] text-white text-xs font-bold flex items-center justify-center shrink-0">
+                      <div className="h-8 w-8 rounded-full bg-[#1a375b] text-white text-xs font-bold flex items-center justify-center shrink-0">
                         {u.avatar_initials}
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-[#042C53]">{u.nome}</p>
+                        <p className="text-sm font-semibold text-[#1a375b]">{u.nome}</p>
                         <p className="text-xs text-gray-400">{u.email}</p>
                       </div>
                     </div>
@@ -178,7 +178,7 @@ export default function AdminUtenti() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-[#042C53]">Invita utente</h2>
+              <h2 className="text-lg font-bold text-[#1a375b]">Invita utente</h2>
               <button onClick={() => setShowInviteModal(false)} className="text-gray-400 hover:text-gray-600">
                 <X className="h-5 w-5" />
               </button>
@@ -186,7 +186,7 @@ export default function AdminUtenti() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
-                <input type="email" placeholder="nome@azienda.it" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20" />
+                <input type="email" placeholder="nome@azienda.it" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Azienda</label>
@@ -207,7 +207,7 @@ export default function AdminUtenti() {
               <button onClick={() => setShowInviteModal(false)} className="flex-1 border border-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
                 Annulla
               </button>
-              <button onClick={() => setShowInviteModal(false)} className="flex-1 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+              <button onClick={() => setShowInviteModal(false)} className="flex-1 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                 Invia invito
               </button>
             </div>

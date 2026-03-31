@@ -63,7 +63,7 @@ export default function AppMonitorSettings() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
           <CheckCircle2 className="w-4 h-4 text-[#22A86B]" />
           {toast}
         </div>
@@ -76,7 +76,7 @@ export default function AppMonitorSettings() {
             Monitor
           </Link>
           <span className="text-gray-400">/</span>
-          <h1 className="text-xl font-bold text-[#042C53]">Impostazioni Alert Normativi</h1>
+          <h1 className="text-xl font-bold text-[#1a375b]">Impostazioni Alert Normativi</h1>
         </div>
 
         {/* Canali di notifica */}
@@ -88,14 +88,14 @@ export default function AppMonitorSettings() {
           <div className="space-y-4">
             <div className="flex items-center justify-between py-3 border-b border-[#F5F5F3]">
               <div>
-                <p className="text-sm font-medium text-[#042C53]">Email settimanale digest</p>
+                <p className="text-sm font-medium text-[#1a375b]">Email settimanale digest</p>
                 <p className="text-xs text-gray-500 mt-0.5">Riepilogo settimanale degli aggiornamenti — martedì ore 09:00</p>
               </div>
               <Toggle checked={emailDigest} onChange={setEmailDigest} />
             </div>
             <div className="flex items-center justify-between py-3 border-b border-[#F5F5F3]">
               <div>
-                <p className="text-sm font-medium text-[#042C53]">Email immediata urgenti</p>
+                <p className="text-sm font-medium text-[#1a375b]">Email immediata urgenti</p>
                 <p className="text-xs text-gray-500 mt-0.5">Notifica email immediata per aggiornamenti urgenti</p>
               </div>
               <Toggle checked={emailUrgente} onChange={setEmailUrgente} />
@@ -103,7 +103,7 @@ export default function AppMonitorSettings() {
             <div className="flex items-center justify-between py-3 border-b border-[#F5F5F3]">
               <div className="flex-1 pr-4">
                 <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-[#042C53]">WhatsApp / SMS</p>
+                  <p className="text-sm font-medium text-[#1a375b]">WhatsApp / SMS</p>
                   <span className="px-2 py-0.5 text-xs font-bold bg-[#FDF3E3] text-[#854F0B] rounded">Add-on</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-0.5">Ricezione alert normativi via WhatsApp Business o SMS</p>
@@ -117,7 +117,7 @@ export default function AppMonitorSettings() {
             </div>
             <div className="flex items-center justify-between py-3">
               <div>
-                <p className="text-sm font-medium text-[#042C53]">Notifica in-app</p>
+                <p className="text-sm font-medium text-[#1a375b]">Notifica in-app</p>
                 <p className="text-xs text-gray-500 mt-0.5">Sempre attivo — non disattivabile</p>
               </div>
               <Toggle checked={true} onChange={() => {}} disabled={true} />
@@ -141,14 +141,14 @@ export default function AppMonitorSettings() {
                   onChange={() => toggleFonte(fonte.id)}
                   className="w-4 h-4 rounded border-[#C8C5BC] text-[#185FA5] focus:ring-[#185FA5]"
                 />
-                <span className="text-sm text-[#042C53]">{fonte.label}</span>
+                <span className="text-sm text-[#1a375b]">{fonte.label}</span>
               </label>
             ))}
           </div>
           <div className="pt-4 border-t border-[#F5F5F3]">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-[#042C53]">Mostra solo aggiornamenti rilevanti per i miei sistemi</p>
+                <p className="text-sm font-medium text-[#1a375b]">Mostra solo aggiornamenti rilevanti per i miei sistemi</p>
                 <p className="text-xs text-gray-500 mt-0.5">Filtra in base ai sistemi AI registrati nel tuo registro</p>
               </div>
               <Toggle checked={soloRilevanti} onChange={setSoloRilevanti} />
@@ -178,7 +178,7 @@ export default function AppMonitorSettings() {
                   className="mt-0.5 w-4 h-4 text-[#185FA5] border-[#C8C5BC] focus:ring-[#185FA5]"
                 />
                 <div>
-                  <p className="text-sm font-medium text-[#042C53]">{opt.label}</p>
+                  <p className="text-sm font-medium text-[#1a375b]">{opt.label}</p>
                   <p className="text-xs text-gray-500">{opt.desc}</p>
                 </div>
               </label>
@@ -187,12 +187,12 @@ export default function AppMonitorSettings() {
         </div>
 
         <div className="flex items-center justify-between">
-          <Link to="/app/monitor" className="text-sm text-gray-500 hover:text-[#042C53]">
+          <Link to="/app/monitor" className="text-sm text-gray-500 hover:text-[#1a375b]">
             Annulla modifiche
           </Link>
           <button
             onClick={() => showToast('Impostazioni salvate con successo')}
-            className="flex items-center gap-2 px-6 py-2.5 bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
+            className="flex items-center gap-2 px-6 py-2.5 bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
           >
             <Zap className="w-4 h-4" />
             Salva impostazioni

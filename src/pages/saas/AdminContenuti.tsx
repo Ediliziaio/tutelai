@@ -60,10 +60,10 @@ export default function AdminContenuti() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-2xl font-bold text-[#042C53]">Contenuti AI Monitor</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Contenuti AI Monitor</h1>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           <Plus className="h-4 w-4" /> Nuovo aggiornamento
         </button>
@@ -84,7 +84,7 @@ export default function AdminContenuti() {
               {mockMonitorAggiornamenti.map((agg) => (
                 <tr key={agg.id} className="border-b border-gray-50 hover:bg-gray-50/60 transition-colors">
                   <td className="px-4 py-3">
-                    <p className="text-sm font-semibold text-[#042C53] max-w-xs">{agg.titolo}</p>
+                    <p className="text-sm font-semibold text-[#1a375b] max-w-xs">{agg.titolo}</p>
                     <p className="text-xs text-gray-400 mt-0.5 max-w-xs line-clamp-1">{agg.sintesi}</p>
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">{agg.fonte_label}</td>
@@ -116,7 +116,7 @@ export default function AdminContenuti() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 overflow-y-auto">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-xl p-6 my-4">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-[#042C53]">Nuovo aggiornamento</h2>
+              <h2 className="text-lg font-bold text-[#1a375b]">Nuovo aggiornamento</h2>
               <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600">
                 <X className="h-5 w-5" />
               </button>
@@ -129,7 +129,7 @@ export default function AdminContenuti() {
                   value={form.titolo}
                   onChange={(e) => update('titolo', e.target.value)}
                   placeholder="Es. Garante — Nuove linee guida AI"
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -212,7 +212,7 @@ export default function AdminContenuti() {
               <button
                 onClick={handleSave}
                 disabled={!form.titolo || !form.sintesi}
-                className="flex-1 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+                className="flex-1 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
               >
                 Pubblica aggiornamento
               </button>

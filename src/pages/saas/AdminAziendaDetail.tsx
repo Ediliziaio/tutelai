@@ -70,7 +70,7 @@ export default function AdminAziendaDetail() {
   if (!azienda) {
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-4">
-        <p className="text-2xl font-bold text-[#042C53]">404</p>
+        <p className="text-2xl font-bold text-[#1a375b]">404</p>
         <p className="text-gray-500">Azienda non trovata.</p>
         <Link to="/admin/aziende" className="text-sm text-[#185FA5] hover:underline font-medium">← Torna alle aziende</Link>
       </div>
@@ -94,17 +94,17 @@ export default function AdminAziendaDetail() {
         </Link>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold text-[#042C53]">{azienda.ragione_sociale}</h1>
+            <h1 className="text-2xl font-bold text-[#1a375b]">{azienda.ragione_sociale}</h1>
             <StatusBadge status={azienda.stato as 'attivo' | 'trial' | 'sospeso'} />
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => handleImpersonate(azienda)}
-              className="flex items-center gap-1.5 bg-[#185FA5] hover:bg-[#042C53] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              className="flex items-center gap-1.5 bg-[#185FA5] hover:bg-[#1a375b] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               <LogIn className="h-3.5 w-3.5" /> Accedi come cliente
             </button>
-            <button className="flex items-center gap-1.5 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            <button className="flex items-center gap-1.5 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
               <Pencil className="h-3.5 w-3.5" /> Modifica
             </button>
             <button className="flex items-center gap-1.5 border border-gray-200 text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors">
@@ -123,7 +123,7 @@ export default function AdminAziendaDetail() {
         <div className="lg:col-span-2 space-y-5">
           {/* Dati aziendali */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <h2 className="text-sm font-semibold text-[#042C53] mb-4">Dati aziendali</h2>
+            <h2 className="text-sm font-semibold text-[#1a375b] mb-4">Dati aziendali</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { label: 'Ragione sociale', value: azienda.ragione_sociale },
@@ -135,7 +135,7 @@ export default function AdminAziendaDetail() {
               ].map((f) => (
                 <div key={f.label} className="bg-gray-50 rounded-lg px-3 py-2.5">
                   <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wide">{f.label}</p>
-                  <p className="text-sm font-medium text-[#042C53] mt-0.5">{f.value}</p>
+                  <p className="text-sm font-medium text-[#1a375b] mt-0.5">{f.value}</p>
                 </div>
               ))}
             </div>
@@ -143,7 +143,7 @@ export default function AdminAziendaDetail() {
 
           {/* Piano & Billing */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <h2 className="text-sm font-semibold text-[#042C53] mb-4">Piano & Billing</h2>
+            <h2 className="text-sm font-semibold text-[#1a375b] mb-4">Piano & Billing</h2>
             <div className="flex items-center gap-3 mb-4">
               <PlanBadge piano={azienda.piano} />
               <span className="text-sm text-gray-500">Piano corrente</span>
@@ -151,17 +151,17 @@ export default function AdminAziendaDetail() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="bg-gray-50 rounded-lg px-3 py-2.5">
                 <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wide">MRR</p>
-                <p className="text-sm font-bold text-[#042C53] mt-0.5">
+                <p className="text-sm font-bold text-[#1a375b] mt-0.5">
                   {azienda.piano === 'starter' ? '€79' : azienda.piano === 'business' ? '€199' : '€490'}/mese
                 </p>
               </div>
               <div className="bg-gray-50 rounded-lg px-3 py-2.5">
                 <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wide">Prossimo rinnovo</p>
-                <p className="text-sm font-medium text-[#042C53] mt-0.5">{mockSubscription.prossimo_rinnovo}</p>
+                <p className="text-sm font-medium text-[#1a375b] mt-0.5">{mockSubscription.prossimo_rinnovo}</p>
               </div>
               <div className="bg-gray-50 rounded-lg px-3 py-2.5">
                 <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wide">Add-on attivi</p>
-                <p className="text-sm font-medium text-[#042C53] mt-0.5">
+                <p className="text-sm font-medium text-[#1a375b] mt-0.5">
                   {mockSubscription.add_ons.filter((a) => a.attivo).map((a) => a.nome).join(', ') || 'Nessuno'}
                 </p>
               </div>
@@ -170,14 +170,14 @@ export default function AdminAziendaDetail() {
 
           {/* AI Compliance */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <h2 className="text-sm font-semibold text-[#042C53] mb-4">AI Compliance overview</h2>
+            <h2 className="text-sm font-semibold text-[#1a375b] mb-4">AI Compliance overview</h2>
             <div className="mb-3">
               <p className="text-xs text-gray-500 mb-2">AI Risk Score</p>
               <RiskGauge score={azienda.ai_risk_score} />
             </div>
             <div className="grid grid-cols-2 gap-3 mt-4">
               <div className="bg-gray-50 rounded-lg px-3 py-2.5 text-center">
-                <p className="text-xl font-bold text-[#042C53]">{azienda.sistemi_ai}</p>
+                <p className="text-xl font-bold text-[#1a375b]">{azienda.sistemi_ai}</p>
                 <p className="text-[11px] text-gray-400 mt-0.5">Sistemi AI censiti</p>
               </div>
               <div className="bg-gray-50 rounded-lg px-3 py-2.5 text-center">
@@ -192,16 +192,16 @@ export default function AdminAziendaDetail() {
         <div className="space-y-5">
           {/* Utenti */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <h2 className="text-sm font-semibold text-[#042C53] mb-3">Utenti ({tenantTeam.length > 0 ? tenantTeam.length : azienda.utenti})</h2>
+            <h2 className="text-sm font-semibold text-[#1a375b] mb-3">Utenti ({tenantTeam.length > 0 ? tenantTeam.length : azienda.utenti})</h2>
             {tenantTeam.length > 0 ? (
               <div className="space-y-2">
                 {tenantTeam.map((u) => (
                   <div key={u.id} className="flex items-center gap-2.5">
-                    <div className="h-7 w-7 rounded-full bg-[#042C53] text-white text-[11px] font-bold flex items-center justify-center shrink-0">
+                    <div className="h-7 w-7 rounded-full bg-[#1a375b] text-white text-[11px] font-bold flex items-center justify-center shrink-0">
                       {u.avatar_initials}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs font-medium text-[#042C53] truncate">{u.nome}</p>
+                      <p className="text-xs font-medium text-[#1a375b] truncate">{u.nome}</p>
                       <p className="text-[11px] text-gray-400">{u.ruolo}</p>
                     </div>
                   </div>
@@ -217,14 +217,14 @@ export default function AdminAziendaDetail() {
 
           {/* Attività recente */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <h2 className="text-sm font-semibold text-[#042C53] mb-3">Attività recente</h2>
+            <h2 className="text-sm font-semibold text-[#1a375b] mb-3">Attività recente</h2>
             {tenantLogs.length > 0 ? (
               <div className="space-y-2.5">
                 {tenantLogs.map((log) => (
                   <div key={log.id} className="flex items-start gap-2">
                     <Clock className="h-3.5 w-3.5 text-gray-300 mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-xs text-[#042C53] font-medium">{log.azione}</p>
+                      <p className="text-xs text-[#1a375b] font-medium">{log.azione}</p>
                       <p className="text-[11px] text-gray-400">{log.timestamp.slice(0, 10)}</p>
                     </div>
                   </div>
@@ -237,9 +237,9 @@ export default function AdminAziendaDetail() {
 
           {/* Note interne */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <h2 className="text-sm font-semibold text-[#042C53] mb-3">Note interne</h2>
+            <h2 className="text-sm font-semibold text-[#1a375b] mb-3">Note interne</h2>
             <textarea
-              className="w-full border border-gray-200 rounded-lg p-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#042C53]/20 resize-none"
+              className="w-full border border-gray-200 rounded-lg p-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20 resize-none"
               rows={4}
               placeholder="Aggiungi note su questa azienda..."
               value={note}
@@ -247,7 +247,7 @@ export default function AdminAziendaDetail() {
             />
             <button
               onClick={handleSaveNote}
-              className="mt-2 w-full bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              className="mt-2 w-full bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               {noteSaved ? 'Salvato!' : 'Salva nota'}
             </button>

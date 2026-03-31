@@ -61,11 +61,11 @@ export default function AppMonitorDetail() {
       <div className="min-h-screen bg-[#FAFAF8] flex items-center justify-center">
         <div className="text-center">
           <AlertTriangle className="w-12 h-12 text-[#D97706] mx-auto mb-3" />
-          <h2 className="text-xl font-bold text-[#042C53] mb-2">Aggiornamento non trovato</h2>
+          <h2 className="text-xl font-bold text-[#1a375b] mb-2">Aggiornamento non trovato</h2>
           <p className="text-gray-500 mb-4">L'ID "{id}" non corrisponde a nessun aggiornamento nel feed.</p>
           <button
             onClick={() => navigate('/app/monitor')}
-            className="flex items-center gap-2 mx-auto px-4 py-2 bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
+            className="flex items-center gap-2 mx-auto px-4 py-2 bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Torna al Monitor
@@ -87,7 +87,7 @@ export default function AppMonitorDetail() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
           <CheckCircle2 className="w-4 h-4 text-[#22A86B]" />
           {toast}
         </div>
@@ -108,9 +108,9 @@ export default function AppMonitorDetail() {
           <div className="flex items-start gap-3 flex-wrap mb-3">
             <UrgencyBadgeLarge urgenza={item.urgenza} />
           </div>
-          <h1 className="text-2xl font-bold text-[#042C53] mb-4">{item.titolo}</h1>
+          <h1 className="text-2xl font-bold text-[#1a375b] mb-4">{item.titolo}</h1>
           <div className="flex items-center gap-4 flex-wrap text-sm text-gray-500">
-            <span className="font-medium text-[#042C53] bg-[#F5F5F3] px-3 py-1 rounded">{item.fonte_label}</span>
+            <span className="font-medium text-[#1a375b] bg-[#F5F5F3] px-3 py-1 rounded">{item.fonte_label}</span>
             <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{formatDate(item.data)}</span>
             {item.url_originale && (
               <a
@@ -159,7 +159,7 @@ export default function AppMonitorDetail() {
           <ol className="space-y-2">
             {obblighi.map((ob, idx) => (
               <li key={idx} className="flex gap-3 text-sm text-gray-700">
-                <span className="flex-shrink-0 w-6 h-6 bg-[#042C53] text-white rounded-full text-xs flex items-center justify-center font-bold">
+                <span className="flex-shrink-0 w-6 h-6 bg-[#1a375b] text-white rounded-full text-xs flex items-center justify-center font-bold">
                   {idx + 1}
                 </span>
                 <span className="leading-relaxed">{ob}</span>
@@ -181,7 +181,7 @@ export default function AppMonitorDetail() {
               {impactedSystems.map(sys => (
                 <div key={sys.id} className="flex items-center justify-between p-3 bg-[#F5F5F3] rounded-lg">
                   <div>
-                    <p className="text-sm font-medium text-[#042C53]">{sys.nome}</p>
+                    <p className="text-sm font-medium text-[#1a375b]">{sys.nome}</p>
                     <p className="text-xs text-gray-500">{sys.categoria} — {sys.fornitore}</p>
                   </div>
                   <div className="flex items-center gap-3">
@@ -214,7 +214,7 @@ export default function AppMonitorDetail() {
               >
                 <div className="flex items-center gap-3">
                   <Zap className="w-4 h-4 text-[#185FA5] flex-shrink-0" />
-                  <span className="text-sm font-medium text-[#042C53]">{azione}</span>
+                  <span className="text-sm font-medium text-[#1a375b]">{azione}</span>
                 </div>
                 <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#185FA5]" />
               </button>
@@ -247,7 +247,7 @@ export default function AppMonitorDetail() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => showToast('Email inviata al team')}
-              className="flex items-center gap-2 px-4 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#042C53] hover:bg-[#E6F1FB] transition-colors"
+              className="flex items-center gap-2 px-4 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#1a375b] hover:bg-[#E6F1FB] transition-colors"
             >
               <Mail className="w-4 h-4" />
               Invia per email al team
@@ -257,7 +257,7 @@ export default function AppMonitorDetail() {
                 navigator.clipboard.writeText(window.location.href);
                 showToast('Link copiato negli appunti');
               }}
-              className="flex items-center gap-2 px-4 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#042C53] hover:bg-[#E6F1FB] transition-colors"
+              className="flex items-center gap-2 px-4 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#1a375b] hover:bg-[#E6F1FB] transition-colors"
             >
               <Copy className="w-4 h-4" />
               Copia link

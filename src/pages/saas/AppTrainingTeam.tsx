@@ -78,7 +78,7 @@ function UserRow({ member, index }: { member: TeamMember; index: number }) {
   return (
     <>
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
           <CheckCircle2 className="w-4 h-4 text-[#22A86B]" />
           {toast}
         </div>
@@ -94,7 +94,7 @@ function UserRow({ member, index }: { member: TeamMember; index: number }) {
               {member.avatar_initials}
             </div>
             <div>
-              <p className="text-sm font-medium text-[#042C53]">{member.nome}</p>
+              <p className="text-sm font-medium text-[#1a375b]">{member.nome}</p>
               <p className="text-xs text-gray-500">{member.email}</p>
               <p className="text-xs text-gray-400">{member.ruolo}</p>
             </div>
@@ -108,7 +108,7 @@ function UserRow({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Avanzati */}
         <td className="px-4 py-4">
-          <span className="text-sm text-[#042C53] font-medium">
+          <span className="text-sm text-[#1a375b] font-medium">
             {stats.avanzatiCompletati}/{avanzatiCorsi.length}
           </span>
         </td>
@@ -126,13 +126,13 @@ function UserRow({ member, index }: { member: TeamMember; index: number }) {
           <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
             <button
               onClick={() => setExpanded(!expanded)}
-              className="flex items-center gap-1 px-3 py-1.5 text-xs border border-[#C8C5BC] rounded-lg text-[#042C53] hover:bg-[#E6F1FB] transition-colors"
+              className="flex items-center gap-1 px-3 py-1.5 text-xs border border-[#C8C5BC] rounded-lg text-[#1a375b] hover:bg-[#E6F1FB] transition-colors"
             >
               Dettaglio {expanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
             </button>
             <button
               onClick={() => showToast(`Sollecito inviato a ${member.nome}`)}
-              className="flex items-center gap-1 px-3 py-1.5 text-xs border border-[#C8C5BC] rounded-lg text-[#042C53] hover:bg-[#FDF3E3] transition-colors"
+              className="flex items-center gap-1 px-3 py-1.5 text-xs border border-[#C8C5BC] rounded-lg text-[#1a375b] hover:bg-[#FDF3E3] transition-colors"
             >
               <Bell className="w-3.5 h-3.5" />
               Sollecita
@@ -155,7 +155,7 @@ function UserRow({ member, index }: { member: TeamMember; index: number }) {
                 return (
                   <div key={corso.id} className="flex items-center justify-between p-2 bg-white rounded-lg border border-[#C8C5BC]">
                     <div>
-                      <p className="text-xs font-medium text-[#042C53]">{corso.titolo}</p>
+                      <p className="text-xs font-medium text-[#1a375b]">{corso.titolo}</p>
                       {corso.obbligatorio && <span className="text-xs text-[#8B1A1A]">Obbligatorio</span>}
                     </div>
                     <div className={`flex items-center gap-1 text-xs font-medium ${statoColor}`}>
@@ -197,7 +197,7 @@ export default function AppTrainingTeam() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {globalToast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
           <CheckCircle2 className="w-4 h-4 text-[#22A86B]" />
           {globalToast}
         </div>
@@ -212,7 +212,7 @@ export default function AppTrainingTeam() {
               Training Hub
             </Link>
             <span className="text-gray-400">/</span>
-            <h1 className="text-xl font-bold text-[#042C53]">Training Hub — Stato per utente</h1>
+            <h1 className="text-xl font-bold text-[#1a375b]">Training Hub — Stato per utente</h1>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -223,14 +223,14 @@ export default function AppTrainingTeam() {
                   showGlobalToast(`Sollecito inviato a ${inRitardo.length} utenti in ritardo`);
                 }
               }}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#042C53] border border-[#C8C5BC] rounded-lg hover:bg-[#FDF3E3] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#1a375b] border border-[#C8C5BC] rounded-lg hover:bg-[#FDF3E3] transition-colors"
             >
               <Bell className="w-4 h-4" />
               Sollecita tutti in ritardo
             </button>
             <button
               onClick={() => showGlobalToast('Esportazione report in corso...')}
-              className="flex items-center gap-1.5 px-4 py-2 text-sm bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-4 py-2 text-sm bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg transition-colors"
             >
               <Download className="w-4 h-4" />
               Esporta report
@@ -262,7 +262,7 @@ export default function AppTrainingTeam() {
         <div className="bg-white border border-[#C8C5BC] rounded-xl p-5">
           <div className="grid grid-cols-4 gap-4 text-center">
             <div>
-              <p className="text-2xl font-bold text-[#042C53]">{mockTeam.length}</p>
+              <p className="text-2xl font-bold text-[#1a375b]">{mockTeam.length}</p>
               <p className="text-xs text-gray-500 mt-1">Utenti totali</p>
             </div>
             <div>

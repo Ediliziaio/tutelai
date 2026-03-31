@@ -79,7 +79,7 @@ const Card = ({ title, icon: Icon, children }: { title?: string; icon?: React.Co
     {(title || Icon) && (
       <div className="flex items-center gap-2 mb-4">
         {Icon && <Icon className="h-4 w-4 text-[#185FA5]" />}
-        {title && <h3 className="font-semibold text-[#042C53] text-sm uppercase tracking-wide">{title}</h3>}
+        {title && <h3 className="font-semibold text-[#1a375b] text-sm uppercase tracking-wide">{title}</h3>}
       </div>
     )}
     {children}
@@ -104,7 +104,7 @@ export default function AppRegistryDetail() {
         <p className="text-sm text-slate-500 mb-6">L'ID fornito non corrisponde a nessun sistema nel registro.</p>
         <button
           onClick={() => navigate('/app/registry')}
-          className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           Torna al registro
         </button>
@@ -129,16 +129,16 @@ export default function AppRegistryDetail() {
         </Link>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3 flex-wrap">
-            <h1 className="text-2xl font-bold text-[#042C53]">{system.nome}</h1>
+            <h1 className="text-2xl font-bold text-[#1a375b]">{system.nome}</h1>
             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${sCfg.badge}`}>
               {sCfg.label}
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
+            <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
               <Pencil className="h-4 w-4" /> Modifica
             </button>
-            <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
+            <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
               <Archive className="h-4 w-4" /> Archivia
             </button>
             <button className="border border-red-200 hover:bg-red-50 text-red-700 px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
@@ -227,7 +227,7 @@ export default function AppRegistryDetail() {
                       <span className={`text-sm font-medium ${p.urgente ? 'text-[#8B1A1A]' : 'text-[#854F0B]'}`}>{p.descrizione}</span>
                     </div>
                     {p.azione_suggerita && (
-                      <button className="ml-6 text-xs bg-[#042C53] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg transition-colors">
+                      <button className="ml-6 text-xs bg-[#1a375b] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg transition-colors">
                         {p.azione_suggerita}
                       </button>
                     )}
@@ -248,7 +248,7 @@ export default function AppRegistryDetail() {
                     <div className="flex items-center gap-3">
                       <FileText className="h-4 w-4 text-[#185FA5]" />
                       <div>
-                        <p className="text-sm font-medium text-[#042C53]">{doc.titolo}</p>
+                        <p className="text-sm font-medium text-[#1a375b]">{doc.titolo}</p>
                         <p className="text-xs text-slate-500">v{doc.versione} · {formatDate(doc.updated_at)}</p>
                       </div>
                     </div>

@@ -68,7 +68,7 @@ const inputCls = "w-full px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm fo
 const errorCls = "text-xs text-red-600 mt-1";
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-base font-semibold text-[#042C53] border-b border-[#C8C5BC] pb-2 mb-4">{children}</h2>
+  <h2 className="text-base font-semibold text-[#1a375b] border-b border-[#C8C5BC] pb-2 mb-4">{children}</h2>
 );
 
 // ─── Main component ───────────────────────────────────────────────────────────
@@ -123,7 +123,7 @@ export default function AppRegistryNew() {
           <ArrowLeft className="h-4 w-4" />
           Torna al registro
         </Link>
-        <h1 className="text-2xl font-bold text-[#042C53]">Aggiungi Sistema AI</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Aggiungi Sistema AI</h1>
         <p className="text-sm text-slate-500 mt-0.5">Registra un nuovo strumento AI usato in azienda</p>
       </div>
 
@@ -162,7 +162,7 @@ export default function AppRegistryNew() {
                   ).map((f) => (
                     <li
                       key={f}
-                      className="px-3 py-2 cursor-pointer hover:bg-[#E6F1FB] text-[#042C53]"
+                      className="px-3 py-2 cursor-pointer hover:bg-[#E6F1FB] text-[#1a375b]"
                       onMouseDown={() => { setForm((prev) => ({ ...prev, fornitore: f })); setShowSuggestions(false); }}
                     >
                       {f}
@@ -308,13 +308,13 @@ export default function AppRegistryNew() {
         <div className="flex items-center justify-end gap-3 pb-6">
           <button
             onClick={() => navigate('/app/registry')}
-            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             Annulla
           </button>
           <button
             onClick={handleSave}
-            className="bg-[#042C53] hover:bg-[#185FA5] text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             Salva sistema AI
           </button>

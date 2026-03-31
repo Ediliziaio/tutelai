@@ -52,7 +52,7 @@ const Login = () => {
   return (
     <div className="flex min-h-screen">
       {/* Left panel — dark navy */}
-      <div className="hidden lg:flex lg:w-[45%] flex-col bg-[#042C53] px-12 xl:px-16 py-12 relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-[45%] flex-col bg-[#1a375b] px-12 xl:px-16 py-12 relative overflow-hidden">
         {/* Subtle background pattern */}
         <div
           className="absolute inset-0 opacity-5"
@@ -67,9 +67,9 @@ const Login = () => {
           <div className="mb-auto">
             <div className="mb-12">
               <span className="text-3xl font-extrabold text-white tracking-tight">
-                Tutel<span className="text-[#22A86B]">AI</span>
+                Tutel<span className="text-[#eab913]">AI</span>
               </span>
-              <span className="ml-3 text-[11px] font-bold bg-[#185FA5] text-white px-2 py-0.5 rounded uppercase tracking-wider align-middle">
+              <span className="ml-3 text-[11px] font-bold bg-[#eab913] text-[#1a375b] px-2 py-0.5 rounded uppercase tracking-wider align-middle">
                 Platform
               </span>
             </div>
@@ -96,11 +96,11 @@ const Login = () => {
           {/* Urgency badge */}
           <div className="bg-white/10 border border-white/20 rounded-xl p-4 backdrop-blur-sm">
             <div className="flex items-center gap-2 mb-1">
-              <div className="h-2 w-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
-              <p className="text-xs font-bold text-amber-300 uppercase tracking-wide">Scadenza AI Act</p>
+              <div className="h-2 w-2 rounded-full animate-pulse shrink-0" style={{ background: "#eab913" }} />
+              <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#eab913" }}>Scadenza AI Act</p>
             </div>
             <p className="text-white font-semibold text-sm">
-              2 agosto 2026 — <span className="text-amber-300 font-bold">{daysLeft} giorni</span>
+              2 agosto 2026 — <span className="font-bold" style={{ color: "#eab913" }}>{daysLeft} giorni</span>
             </p>
             <p className="text-white/50 text-xs mt-1">Le PMI devono essere conformi entro questa data.</p>
           </div>
@@ -112,7 +112,7 @@ const Login = () => {
         <div className="w-full max-w-sm">
           {/* Mobile logo */}
           <div className="lg:hidden mb-8 text-center">
-            <span className="text-2xl font-extrabold text-[#042C53]">
+            <span className="text-2xl font-extrabold text-[#1a375b]">
               Tutel<span className="text-[#22A86B]">AI</span>
             </span>
             <div className="mt-3 inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium px-3 py-1.5 rounded-full">
@@ -121,7 +121,7 @@ const Login = () => {
             </div>
           </div>
 
-          <h2 className="text-2xl font-bold text-[#042C53]">Accedi al tuo account</h2>
+          <h2 className="text-2xl font-bold text-[#1a375b]">Accedi al tuo account</h2>
           <p className="text-sm text-gray-500 mt-1 mb-7">Inserisci le tue credenziali per continuare.</p>
 
           {error && (
@@ -139,7 +139,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="nome@azienda.it"
-                className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#042C53]/20 focus:border-[#042C53] outline-none transition-all"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#1a375b]/20 focus:border-[#1a375b] outline-none transition-all"
               />
             </div>
             <div>
@@ -156,7 +156,7 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2.5 pr-10 text-sm focus:ring-2 focus:ring-[#042C53]/20 focus:border-[#042C53] outline-none transition-all"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2.5 pr-10 text-sm focus:ring-2 focus:ring-[#1a375b]/20 focus:border-[#1a375b] outline-none transition-all"
                 />
                 <button
                   type="button"
@@ -171,7 +171,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg px-5 py-2.5 font-semibold text-sm transition-all disabled:opacity-60 mt-2"
+              className="w-full flex items-center justify-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg px-5 py-2.5 font-semibold text-sm transition-all disabled:opacity-60 mt-2"
             >
               {loading ? (
                 <>

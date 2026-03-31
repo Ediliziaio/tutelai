@@ -205,7 +205,7 @@ function ScoreRing({ score }: { score: number }) {
         />
       </svg>
       <div className="absolute text-center">
-        <span className="text-2xl font-bold text-[#042C53]">{score}%</span>
+        <span className="text-2xl font-bold text-[#1a375b]">{score}%</span>
       </div>
     </div>
   );
@@ -232,7 +232,7 @@ function AreaCard({ area, expanded, onToggle }: { area: GapArea; expanded: boole
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1.5">
-            <h3 className="text-sm font-semibold text-[#042C53]">{area.titolo}</h3>
+            <h3 className="text-sm font-semibold text-[#1a375b]">{area.titolo}</h3>
             <span className={`text-sm font-bold ${score >= 75 ? 'text-emerald-600' : score >= 50 ? 'text-amber-600' : 'text-red-600'}`}>
               {score}%
             </span>
@@ -262,7 +262,7 @@ function AreaCard({ area, expanded, onToggle }: { area: GapArea; expanded: boole
                 <StatusIcon className={`h-4 w-4 mt-0.5 shrink-0 ${req.status === 'conforme' ? 'text-emerald-500' : req.status === 'parziale' ? 'text-amber-500' : req.status === 'non_conforme' ? 'text-red-500' : 'text-gray-300'}`} />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
-                    <span className="text-sm text-[#042C53] font-medium leading-snug">{req.label}</span>
+                    <span className="text-sm text-[#1a375b] font-medium leading-snug">{req.label}</span>
                     <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border shrink-0 ${cfg.badge}`}>{cfg.label}</span>
                   </div>
                   {req.note && <p className="text-xs text-gray-500 mt-0.5">{req.note}</p>}
@@ -300,7 +300,7 @@ export default function AppGapAnalysis() {
     <div className="space-y-5">
       {/* ── Header ── */}
       <div>
-        <h1 className="text-2xl font-bold text-[#042C53]">Gap Analysis & Roadmap</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Gap Analysis & Roadmap</h1>
         <p className="text-sm text-gray-500 mt-0.5">
           Stato di conformità AI Act e piano d'azione prioritizzato. Aggiornato al 25 marzo 2026.
         </p>
@@ -349,7 +349,7 @@ export default function AppGapAnalysis() {
             className={`px-5 py-2.5 text-sm font-medium border-b-2 transition-colors -mb-px ${
               activeTab === tab
                 ? 'border-[#185FA5] text-[#185FA5]'
-                : 'border-transparent text-gray-500 hover:text-[#042C53]'
+                : 'border-transparent text-gray-500 hover:text-[#1a375b]'
             }`}
           >
             {tab === 'overview' ? 'Analisi per area' : 'Piano d\'azione'}
@@ -383,7 +383,7 @@ export default function AppGapAnalysis() {
                 onClick={() => setFilterPriority(p)}
                 className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
                   filterPriority === p
-                    ? 'bg-[#042C53] text-white border-[#042C53]'
+                    ? 'bg-[#1a375b] text-white border-[#1a375b]'
                     : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                 }`}
               >
@@ -413,7 +413,7 @@ export default function AppGapAnalysis() {
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-2">
                             <ArrowRight className="h-3.5 w-3.5 text-gray-300 shrink-0" />
-                            <span className="text-sm font-medium text-[#042C53]">{action.titolo}</span>
+                            <span className="text-sm font-medium text-[#1a375b]">{action.titolo}</span>
                           </div>
                         </td>
                         <td className="px-4 py-3 text-xs text-gray-600 whitespace-nowrap">{action.area}</td>
@@ -424,7 +424,7 @@ export default function AppGapAnalysis() {
                         </td>
                         <td className="px-4 py-3">
                           <div>
-                            <span className="text-xs font-medium text-[#042C53]">{formatDateIT(action.scadenza)}</span>
+                            <span className="text-xs font-medium text-[#1a375b]">{formatDateIT(action.scadenza)}</span>
                             <div className={`text-[10px] font-medium ${days < 0 ? 'text-red-500' : days <= 30 ? 'text-amber-500' : 'text-gray-400'}`}>
                               {days < 0 ? `${Math.abs(days)}g scaduto` : `tra ${days}g`}
                             </div>

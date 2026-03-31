@@ -35,7 +35,7 @@ export default function AppGdpr() {
     <div className="p-6 space-y-6 bg-[#FAFAF8] min-h-full">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-[#042C53] flex items-center gap-2">
+        <h1 className="text-2xl font-bold text-[#1a375b] flex items-center gap-2">
           <Shield className="w-6 h-6 text-[#185FA5]" />
           GDPR + AI — Centro controllo privacy
         </h1>
@@ -62,7 +62,7 @@ export default function AppGdpr() {
             className={`px-5 py-2.5 text-sm font-medium border-b-2 transition-colors -mb-px ${
               activeTab === tab.id
                 ? 'border-[#185FA5] text-[#185FA5] bg-[#E6F1FB]'
-                : 'border-transparent text-gray-600 hover:text-[#042C53] hover:border-gray-300'
+                : 'border-transparent text-gray-600 hover:text-[#1a375b] hover:border-gray-300'
             }`}
           >
             {tab.label}
@@ -75,7 +75,7 @@ export default function AppGdpr() {
         <div className="space-y-6">
           {/* Azioni urgenti */}
           <div className="bg-white border border-[#C8C5BC] rounded-xl p-6">
-            <h2 className="text-base font-semibold text-[#042C53] mb-4 flex items-center gap-2">
+            <h2 className="text-base font-semibold text-[#1a375b] mb-4 flex items-center gap-2">
               <AlertOctagon className="w-4 h-4 text-amber-600" />
               Azioni urgenti
             </h2>
@@ -89,7 +89,7 @@ export default function AppGdpr() {
                 </div>
                 <button
                   onClick={() => navigate('/app/gdpr/register')}
-                  className="shrink-0 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                  className="shrink-0 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 >
                   Aggiorna
                 </button>
@@ -103,7 +103,7 @@ export default function AppGdpr() {
                 </div>
                 <button
                   onClick={() => navigate('/app/gdpr/dpia/new')}
-                  className="shrink-0 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                  className="shrink-0 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 >
                   Avvia DPIA
                 </button>
@@ -121,14 +121,14 @@ export default function AppGdpr() {
 
           {/* Statistiche */}
           <div>
-            <h2 className="text-base font-semibold text-[#042C53] mb-3 flex items-center gap-2">
+            <h2 className="text-base font-semibold text-[#1a375b] mb-3 flex items-center gap-2">
               <FileText className="w-4 h-4 text-[#185FA5]" />
               Statistiche
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {STATS.map((s) => (
                 <div key={s.label} className="bg-white border border-[#C8C5BC] rounded-xl p-5 text-center">
-                  <div className="text-3xl font-bold text-[#042C53]">{s.value}</div>
+                  <div className="text-3xl font-bold text-[#1a375b]">{s.value}</div>
                   <div className="text-xs text-gray-500 mt-1">{s.label}</div>
                 </div>
               ))}
@@ -142,7 +142,7 @@ export default function AppGdpr() {
               className="bg-white border border-[#C8C5BC] rounded-xl p-5 text-left hover:border-[#185FA5] hover:bg-[#E6F1FB] transition-colors"
             >
               <ClipboardList className="w-5 h-5 text-[#185FA5] mb-2" />
-              <div className="font-semibold text-[#042C53] text-sm">Registro Trattamenti</div>
+              <div className="font-semibold text-[#1a375b] text-sm">Registro Trattamenti</div>
               <div className="text-xs text-gray-500 mt-0.5">Art. 30 GDPR — 14 trattamenti</div>
             </button>
             <button
@@ -150,7 +150,7 @@ export default function AppGdpr() {
               className="bg-white border border-[#C8C5BC] rounded-xl p-5 text-left hover:border-[#185FA5] hover:bg-[#E6F1FB] transition-colors"
             >
               <FileText className="w-5 h-5 text-[#185FA5] mb-2" />
-              <div className="font-semibold text-[#042C53] text-sm">Avvia DPIA</div>
+              <div className="font-semibold text-[#1a375b] text-sm">Avvia DPIA</div>
               <div className="text-xs text-gray-500 mt-0.5">Wizard guidato 7 step</div>
             </button>
             <button
@@ -158,7 +158,7 @@ export default function AppGdpr() {
               className="bg-white border border-[#C8C5BC] rounded-xl p-5 text-left hover:border-[#185FA5] hover:bg-[#E6F1FB] transition-colors"
             >
               <AlertOctagon className="w-5 h-5 text-[#185FA5] mb-2" />
-              <div className="font-semibold text-[#042C53] text-sm">Data Breach</div>
+              <div className="font-semibold text-[#1a375b] text-sm">Data Breach</div>
               <div className="text-xs text-gray-500 mt-0.5">Workflow 72h — nessun breach attivo</div>
             </button>
           </div>

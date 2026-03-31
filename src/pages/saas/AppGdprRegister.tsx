@@ -105,7 +105,7 @@ export default function AppGdprRegister() {
   return (
     <div className="p-6 space-y-6 bg-[#FAFAF8] min-h-full">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2">
           <Check className="w-4 h-4 text-green-300" />
           {toast}
         </div>
@@ -117,24 +117,24 @@ export default function AppGdprRegister() {
             <ArrowLeft className="w-3.5 h-3.5" />
             GDPR+AI
           </Link>
-          <h1 className="text-2xl font-bold text-[#042C53]">Registro dei Trattamenti — Art. 30 GDPR</h1>
+          <h1 className="text-2xl font-bold text-[#1a375b]">Registro dei Trattamenti — Art. 30 GDPR</h1>
         </div>
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setShowForm(true)}
-            className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
+            className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
           >
             <Plus className="w-4 h-4" />
             Aggiungi trattamento
           </button>
           <button
             onClick={handleGenerateFromAI}
-            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
+            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
           >
             <Sparkles className="w-4 h-4 text-[#185FA5]" />
             Genera da AI Registry
           </button>
-          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
+          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
             <Download className="w-4 h-4" />
             Esporta XML/PDF
           </button>
@@ -144,7 +144,7 @@ export default function AppGdprRegister() {
       {showForm && (
         <div className="bg-white border border-[#185FA5] rounded-xl p-6 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-semibold text-[#042C53]">Nuovo trattamento</h3>
+            <h3 className="font-semibold text-[#1a375b]">Nuovo trattamento</h3>
             <button onClick={() => setShowForm(false)}>
               <X className="w-4 h-4 text-gray-400 hover:text-gray-700" />
             </button>
@@ -210,13 +210,13 @@ export default function AppGdprRegister() {
           <div className="flex gap-2">
             <button
               onClick={handleAdd}
-              className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               Aggiungi
             </button>
             <button
               onClick={() => setShowForm(false)}
-              className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               Annulla
             </button>
@@ -242,7 +242,7 @@ export default function AppGdprRegister() {
                 const dpia = DPIA_BADGE[row.stato_dpia];
                 return (
                   <tr key={row.id} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-4 py-3 font-medium text-[#042C53]">
+                    <td className="px-4 py-3 font-medium text-[#1a375b]">
                       {row.trattamento}
                       {row.trasferimento_internazionale && (
                         <span className="ml-2 text-xs text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">INT</span>
@@ -264,12 +264,12 @@ export default function AppGdprRegister() {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => navigate('/app/gdpr')}
-                          className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
+                          className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
                         >
                           <ChevronRight className="w-3.5 h-3.5" />
                           Dettaglio
                         </button>
-                        <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors">
+                        <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors">
                           <Pencil className="w-3.5 h-3.5" />
                           Modifica
                         </button>

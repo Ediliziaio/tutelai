@@ -78,7 +78,7 @@ const DocCard = ({ doc }: { doc: Documento }) => {
             <MoreHorizontal className="h-4 w-4" />
           </button>
         </div>
-        <h3 className="font-semibold text-[#042C53] text-sm mb-1 leading-snug">{doc.titolo}</h3>
+        <h3 className="font-semibold text-[#1a375b] text-sm mb-1 leading-snug">{doc.titolo}</h3>
         <p className="text-xs text-slate-500 mb-3">{TIPO_LABELS[doc.tipo] ?? doc.tipo}</p>
         <div className="flex items-center gap-2 flex-wrap">
           <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${cfg.badge}`}>{cfg.label}</span>
@@ -89,17 +89,17 @@ const DocCard = ({ doc }: { doc: Documento }) => {
       <div className="border-t border-[#C8C5BC] px-4 py-3 flex items-center gap-2 flex-wrap bg-slate-50/50">
         <button
           onClick={() => navigate(`/app/docs/${doc.id}/edit`)}
-          className="border border-[#C8C5BC] hover:bg-white text-[#042C53] px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
+          className="border border-[#C8C5BC] hover:bg-white text-[#1a375b] px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
         >
           Visualizza
         </button>
-        <button className="border border-[#C8C5BC] hover:bg-white text-[#042C53] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors">
+        <button className="border border-[#C8C5BC] hover:bg-white text-[#1a375b] px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors">
           <Download className="h-3.5 w-3.5" /> Esporta .docx
         </button>
         {doc.stato === 'bozza' && (
           <button
             onClick={() => navigate(`/app/docs/${doc.id}/edit`)}
-            className="ml-auto bg-[#042C53] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
+            className="ml-auto bg-[#1a375b] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
           >
             Continua <ArrowRight className="h-3 w-3" />
           </button>
@@ -136,12 +136,12 @@ export default function AppDocs() {
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53]">Doc Generator</h1>
+          <h1 className="text-2xl font-bold text-[#1a375b]">Doc Generator</h1>
           <p className="text-sm text-slate-500 mt-0.5">Genera e gestisci documenti di compliance AI</p>
         </div>
         <button
           onClick={() => navigate('/app/docs/new')}
-          className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors"
+          className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors"
         >
           <Plus className="h-4 w-4" />
           Genera nuovo documento
@@ -186,7 +186,7 @@ export default function AppDocs() {
         <select
           value={filterTipo}
           onChange={(e) => setFilterTipo(e.target.value)}
-          className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#042C53] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] bg-white"
+          className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#1a375b] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] bg-white"
         >
           <option value="">Tutti i tipi</option>
           {tipoOptions.map((t) => (
@@ -209,7 +209,7 @@ export default function AppDocs() {
           </p>
           <button
             onClick={() => navigate('/app/docs/new')}
-            className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors"
+            className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Genera il tuo primo documento

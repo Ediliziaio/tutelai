@@ -44,10 +44,10 @@ export default function AdminCorsi() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-2xl font-bold text-[#042C53]">Corsi Training</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Corsi Training</h1>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           <Plus className="h-4 w-4" /> Nuovo corso
         </button>
@@ -73,7 +73,7 @@ export default function AdminCorsi() {
                   <React.Fragment key={corso.id}>
                     <tr className="border-b border-gray-50 hover:bg-gray-50/60 transition-colors">
                       <td className="px-4 py-3">
-                        <p className="text-sm font-semibold text-[#042C53]">{corso.titolo}</p>
+                        <p className="text-sm font-semibold text-[#1a375b]">{corso.titolo}</p>
                         <p className="text-xs text-gray-400 mt-0.5 max-w-xs line-clamp-1">{corso.descrizione}</p>
                       </td>
                       <td className="px-4 py-3">
@@ -119,7 +119,7 @@ export default function AdminCorsi() {
                               <div className="space-y-2">
                                 <div className="bg-white rounded-lg px-3 py-2 border border-gray-200">
                                   <p className="text-[11px] text-gray-400">Riferimento normativo</p>
-                                  <p className="text-sm font-medium text-[#042C53]">{corso.riferimento_normativo}</p>
+                                  <p className="text-sm font-medium text-[#1a375b]">{corso.riferimento_normativo}</p>
                                 </div>
                                 <div className="bg-white rounded-lg px-3 py-2 border border-gray-200">
                                   <p className="text-[11px] text-gray-400">Descrizione</p>
@@ -133,7 +133,7 @@ export default function AdminCorsi() {
                                 {corso.moduli.map((m) => (
                                   <div key={m.id} className="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 border border-gray-200">
                                     <BookOpen className="h-3.5 w-3.5 text-gray-300 shrink-0" />
-                                    <span className="text-xs font-medium text-[#042C53] flex-1">{m.titolo}</span>
+                                    <span className="text-xs font-medium text-[#1a375b] flex-1">{m.titolo}</span>
                                     <span className="text-[11px] text-gray-400">{m.durata_minuti}min</span>
                                     <span className="text-[11px] text-gray-400 capitalize">{m.tipo}</span>
                                   </div>
@@ -142,7 +142,7 @@ export default function AdminCorsi() {
                             </div>
                           </div>
                           <div className="flex gap-2 mt-4">
-                            <button className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            <button className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                               Salva modifiche
                             </button>
                             <button onClick={() => setExpandedId(null)} className="border border-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
@@ -165,7 +165,7 @@ export default function AdminCorsi() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 overflow-y-auto">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 my-4">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-[#042C53]">Nuovo corso</h2>
+              <h2 className="text-lg font-bold text-[#1a375b]">Nuovo corso</h2>
               <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600">
                 <X className="h-5 w-5" />
               </button>
@@ -173,7 +173,7 @@ export default function AdminCorsi() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Titolo</label>
-                <input type="text" value={form.titolo} onChange={(e) => update('titolo', e.target.value)} placeholder="Es. Privacy AI per manager" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20" />
+                <input type="text" value={form.titolo} onChange={(e) => update('titolo', e.target.value)} placeholder="Es. Privacy AI per manager" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Descrizione</label>
@@ -201,7 +201,7 @@ export default function AdminCorsi() {
                 <button
                   type="button"
                   onClick={() => update('obbligatorio', !form.obbligatorio)}
-                  className={`relative h-6 w-11 rounded-full transition-colors ${form.obbligatorio ? 'bg-[#042C53]' : 'bg-gray-200'}`}
+                  className={`relative h-6 w-11 rounded-full transition-colors ${form.obbligatorio ? 'bg-[#1a375b]' : 'bg-gray-200'}`}
                 >
                   <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${form.obbligatorio ? 'translate-x-5' : 'translate-x-0.5'}`} />
                 </button>
@@ -215,7 +215,7 @@ export default function AdminCorsi() {
               <button
                 onClick={() => { setShowModal(false); setForm(emptyCorso); }}
                 disabled={!form.titolo}
-                className="flex-1 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+                className="flex-1 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
               >
                 Crea corso
               </button>

@@ -29,7 +29,7 @@ function CourseCard({ corso }: { corso: TrainingCourse }) {
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <h3 className="text-base font-bold text-[#042C53]">{corso.titolo}</h3>
+            <h3 className="text-base font-bold text-[#1a375b]">{corso.titolo}</h3>
             {corso.obbligatorio && (
               <span className="px-2 py-0.5 text-xs font-bold bg-[#FDEAEA] text-[#8B1A1A] rounded">
                 OBBLIGATORIO
@@ -81,14 +81,14 @@ function CourseCard({ corso }: { corso: TrainingCourse }) {
         <div className="flex flex-col gap-2 flex-shrink-0">
           <button
             onClick={() => navigate(`/app/training/courses/${corso.id}/play`)}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg font-medium transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg font-medium transition-colors"
           >
             <PlayCircle className="w-3.5 h-3.5" />
             Visualizza
           </button>
           <button
             onClick={() => navigate('/app/training/team')}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[#C8C5BC] text-[#042C53] hover:bg-[#E6F1FB] rounded-lg font-medium transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[#C8C5BC] text-[#1a375b] hover:bg-[#E6F1FB] rounded-lg font-medium transition-colors"
           >
             <UserPlus className="w-3.5 h-3.5" />
             Assegna
@@ -134,7 +134,7 @@ export default function AppTraining() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
           <CheckCircle2 className="w-4 h-4 text-[#22A86B]" />
           {toast}
         </div>
@@ -144,27 +144,27 @@ export default function AppTraining() {
         {/* Header */}
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-[#042C53]">Training Hub — Formazione AI</h1>
+            <h1 className="text-2xl font-bold text-[#1a375b]">Training Hub — Formazione AI</h1>
             <p className="text-sm text-gray-500 mt-1">Gestione corsi obbligatori e avanzati per il tuo team</p>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={() => navigate('/app/training/team')}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#042C53] border border-[#C8C5BC] rounded-lg hover:bg-[#E6F1FB] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#1a375b] border border-[#C8C5BC] rounded-lg hover:bg-[#E6F1FB] transition-colors"
             >
               <UserPlus className="w-4 h-4" />
               Assegna corsi
             </button>
             <button
               onClick={() => navigate('/app/training/team')}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#042C53] border border-[#C8C5BC] rounded-lg hover:bg-[#E6F1FB] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#1a375b] border border-[#C8C5BC] rounded-lg hover:bg-[#E6F1FB] transition-colors"
             >
               <BarChart2 className="w-4 h-4" />
               Vedi report
             </button>
             <button
               onClick={() => showToast('Esportazione attestati in corso...')}
-              className="flex items-center gap-1.5 px-4 py-2 text-sm bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-4 py-2 text-sm bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg transition-colors"
             >
               <Download className="w-4 h-4" />
               Esporta attestati
@@ -175,7 +175,7 @@ export default function AppTraining() {
         {/* Stats bar */}
         <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="bg-white border border-[#C8C5BC] rounded-xl p-4 text-center">
-            <p className="text-2xl font-bold text-[#042C53]">{obbligatoriEnrollments}</p>
+            <p className="text-2xl font-bold text-[#1a375b]">{obbligatoriEnrollments}</p>
             <p className="text-xs text-gray-500 mt-1">Completamenti obbligatori</p>
           </div>
           <div className="bg-white border border-[#C8C5BC] rounded-xl p-4 text-center">
@@ -193,7 +193,7 @@ export default function AppTraining() {
           <select
             value={categoriaFilter}
             onChange={e => setCategoriaFilter(e.target.value as typeof categoriaFilter)}
-            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm bg-white text-[#042C53] focus:outline-none focus:ring-2 focus:ring-[#185FA5]"
+            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm bg-white text-[#1a375b] focus:outline-none focus:ring-2 focus:ring-[#185FA5]"
           >
             <option value="all">Tutte le categorie</option>
             <option value="base">Base</option>
@@ -202,7 +202,7 @@ export default function AppTraining() {
           <select
             value={statoFilter}
             onChange={e => setStatoFilter(e.target.value as typeof statoFilter)}
-            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm bg-white text-[#042C53] focus:outline-none focus:ring-2 focus:ring-[#185FA5]"
+            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm bg-white text-[#1a375b] focus:outline-none focus:ring-2 focus:ring-[#185FA5]"
           >
             <option value="all">Tutti</option>
             <option value="obbligatorio">Obbligatorio</option>
@@ -215,7 +215,7 @@ export default function AppTraining() {
               placeholder="Cerca corso..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="flex-1 text-sm outline-none bg-transparent text-[#042C53] placeholder-gray-400"
+              className="flex-1 text-sm outline-none bg-transparent text-[#1a375b] placeholder-gray-400"
             />
           </div>
         </div>

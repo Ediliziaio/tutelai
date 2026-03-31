@@ -44,7 +44,7 @@ export default function AdminReport() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-2xl font-bold text-[#042C53]">Report & Analytics</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Report & Analytics</h1>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-2">
             <Calendar className="h-4 w-4 text-gray-400" />
@@ -52,7 +52,7 @@ export default function AdminReport() {
             <span className="text-gray-300">—</span>
             <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} className="text-sm border-none outline-none text-gray-700" />
           </div>
-          <button className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          <button className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
             <Download className="h-4 w-4" /> Esporta PDF
           </button>
           <button className="flex items-center gap-2 border border-gray-200 text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors">
@@ -63,7 +63,7 @@ export default function AdminReport() {
 
       {/* Section 1: Compliance Overview */}
       <div className="bg-white border border-gray-200 rounded-xl p-5">
-        <h2 className="text-sm font-semibold text-[#042C53] mb-4">1. Compliance Overview</h2>
+        <h2 className="text-sm font-semibold text-[#1a375b] mb-4">1. Compliance Overview</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Risk by plan */}
           <div>
@@ -115,10 +115,10 @@ export default function AdminReport() {
 
       {/* Section 2: Formazione */}
       <div className="bg-white border border-gray-200 rounded-xl p-5">
-        <h2 className="text-sm font-semibold text-[#042C53] mb-4">2. Formazione</h2>
+        <h2 className="text-sm font-semibold text-[#1a375b] mb-4">2. Formazione</h2>
         <div className="flex items-center gap-6 mb-4">
           <div className="text-center">
-            <p className="text-3xl font-bold text-[#042C53]">{overallRate}%</p>
+            <p className="text-3xl font-bold text-[#1a375b]">{overallRate}%</p>
             <p className="text-xs text-gray-500 mt-1">Tasso completamento globale</p>
           </div>
           <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
@@ -141,7 +141,7 @@ export default function AdminReport() {
                 const pct = enrolled > 0 ? Math.round((completed / enrolled) * 100) : 0;
                 return (
                   <tr key={corso.id} className="border-b border-gray-50">
-                    <td className="px-4 py-2.5 text-sm font-medium text-[#042C53]">{corso.titolo}</td>
+                    <td className="px-4 py-2.5 text-sm font-medium text-[#1a375b]">{corso.titolo}</td>
                     <td className="px-4 py-2.5 text-sm text-gray-600">{enrolled}</td>
                     <td className="px-4 py-2.5 text-sm text-gray-600">{completed}</td>
                     <td className="px-4 py-2.5">
@@ -149,7 +149,7 @@ export default function AdminReport() {
                         <div className="h-1.5 w-20 bg-gray-100 rounded-full overflow-hidden">
                           <div className={`h-full rounded-full ${pct >= 80 ? 'bg-emerald-500' : pct >= 50 ? 'bg-amber-500' : 'bg-red-400'}`} style={{ width: `${pct}%` }} />
                         </div>
-                        <span className="text-sm font-semibold text-[#042C53]">{pct}%</span>
+                        <span className="text-sm font-semibold text-[#1a375b]">{pct}%</span>
                       </div>
                     </td>
                   </tr>
@@ -162,7 +162,7 @@ export default function AdminReport() {
 
       {/* Section 3: Utilizzo piattaforma */}
       <div className="bg-white border border-gray-200 rounded-xl p-5">
-        <h2 className="text-sm font-semibold text-[#042C53] mb-4">3. Utilizzo piattaforma</h2>
+        <h2 className="text-sm font-semibold text-[#1a375b] mb-4">3. Utilizzo piattaforma</h2>
         <div className="space-y-3">
           {moduleUsage.map((m) => (
             <div key={m.nome} className="flex items-center gap-3">
@@ -170,7 +170,7 @@ export default function AdminReport() {
               <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
                 <div className="h-full bg-[#185FA5] rounded-full" style={{ width: `${m.pct}%` }} />
               </div>
-              <span className="text-sm font-semibold text-[#042C53] w-10 text-right">{m.pct}%</span>
+              <span className="text-sm font-semibold text-[#1a375b] w-10 text-right">{m.pct}%</span>
             </div>
           ))}
         </div>
@@ -178,7 +178,7 @@ export default function AdminReport() {
 
       {/* Section 4: Billing */}
       <div className="bg-white border border-gray-200 rounded-xl p-5">
-        <h2 className="text-sm font-semibold text-[#042C53] mb-4">4. Billing</h2>
+        <h2 className="text-sm font-semibold text-[#1a375b] mb-4">4. Billing</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
           {[
             { label: 'MRR', value: `€${totalMrr.toLocaleString('it-IT')}`, sub: 'Marzo 2026' },
@@ -188,7 +188,7 @@ export default function AdminReport() {
           ].map((s) => (
             <div key={s.label} className="bg-gray-50 rounded-xl p-4">
               <p className="text-xs font-medium text-gray-400 uppercase tracking-wide">{s.label}</p>
-              <p className="text-xl font-bold text-[#042C53] mt-1">{s.value}</p>
+              <p className="text-xl font-bold text-[#1a375b] mt-1">{s.value}</p>
               <p className="text-[11px] text-gray-400 mt-0.5">{s.sub}</p>
             </div>
           ))}
@@ -205,16 +205,16 @@ export default function AdminReport() {
             <tbody>
               {mrrTable.map((row) => (
                 <tr key={row.piano} className="border-b border-gray-50">
-                  <td className="px-4 py-2.5 text-sm font-medium text-[#042C53]">{row.piano}</td>
+                  <td className="px-4 py-2.5 text-sm font-medium text-[#1a375b]">{row.piano}</td>
                   <td className="px-4 py-2.5 text-sm text-gray-600">{row.aziende}</td>
-                  <td className="px-4 py-2.5 text-sm font-semibold text-[#042C53]">€{row.mrr}</td>
+                  <td className="px-4 py-2.5 text-sm font-semibold text-[#1a375b]">€{row.mrr}</td>
                   <td className="px-4 py-2.5 text-sm text-gray-600">{Math.round((row.mrr / totalMrr) * 100)}%</td>
                 </tr>
               ))}
               <tr className="bg-gray-50 font-bold">
-                <td className="px-4 py-2.5 text-sm text-[#042C53]" colSpan={2}>Totale</td>
-                <td className="px-4 py-2.5 text-sm text-[#042C53]">€{totalMrr}</td>
-                <td className="px-4 py-2.5 text-sm text-[#042C53]">100%</td>
+                <td className="px-4 py-2.5 text-sm text-[#1a375b]" colSpan={2}>Totale</td>
+                <td className="px-4 py-2.5 text-sm text-[#1a375b]">€{totalMrr}</td>
+                <td className="px-4 py-2.5 text-sm text-[#1a375b]">100%</td>
               </tr>
             </tbody>
           </table>

@@ -127,7 +127,7 @@ export default function AppExecutiveDashboard() {
       label: 'Readiness Score', value: `${globalScore}%`,
       sub: 'Conformità AI Act + GDPR',
       trend: { dir: 'up', label: `+4% vs mese scorso`, positive: true },
-      icon: Shield, color: 'text-[#185FA5]', bg: 'bg-[#E6F1FB]',
+      icon: Shield, color: 'text-[#eab913]', bg: 'bg-[#FDF8E7]',
     },
     {
       label: 'Gap Critici aperti', value: 3,
@@ -170,7 +170,7 @@ export default function AppExecutiveDashboard() {
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53] flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-[#1a375b] flex items-center gap-2">
             <BarChart2 className="h-6 w-6 text-[#185FA5]" />
             Executive Dashboard
           </h1>
@@ -180,7 +180,7 @@ export default function AppExecutiveDashboard() {
         </div>
         <button
           onClick={() => navigate('/app/report')}
-          className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           <FileText className="h-4 w-4" /> Genera Report PDF
         </button>
@@ -204,7 +204,7 @@ export default function AppExecutiveDashboard() {
                   </div>
                 )}
               </div>
-              <div className="text-2xl font-bold text-[#042C53]">{kpi.value}</div>
+              <div className="text-2xl font-bold text-[#1a375b]">{kpi.value}</div>
               <div className="text-xs font-medium text-gray-500 mt-0.5">{kpi.label}</div>
               <div className="text-[11px] text-gray-400 mt-0.5">{kpi.sub}</div>
             </div>
@@ -221,7 +221,7 @@ export default function AppExecutiveDashboard() {
           {/* Compliance score per area */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm font-semibold text-[#042C53]">Conformità per area</h2>
+              <h2 className="text-sm font-semibold text-[#1a375b]">Conformità per area</h2>
               <button onClick={() => navigate('/app/gap-analysis')} className="text-xs text-[#185FA5] hover:underline flex items-center gap-1 font-medium">
                 Analisi completa <ArrowRight className="h-3.5 w-3.5" />
               </button>
@@ -263,7 +263,7 @@ export default function AppExecutiveDashboard() {
               </div>
               <div className="flex-1">
                 <p className="text-[11px] text-gray-400 uppercase tracking-wide font-semibold mb-1">Trend ultimi 6 mesi</p>
-                <SparkBar values={[35, 38, 42, 47, 52, globalScore]} color="bg-[#185FA5]" />
+                <SparkBar values={[35, 38, 42, 47, 52, globalScore]} color="bg-[#eab913]" />
               </div>
             </div>
           </div>
@@ -271,14 +271,14 @@ export default function AppExecutiveDashboard() {
           {/* Alert / Priorità */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-semibold text-[#042C53]">Azioni prioritarie</h2>
+              <h2 className="text-sm font-semibold text-[#1a375b]">Azioni prioritarie</h2>
               <div className="flex items-center gap-2">
                 {(['tutti', 'critico', 'warning'] as const).map(f => (
                   <button
                     key={f}
                     onClick={() => setAlertFilter(f)}
                     className={`px-2 py-0.5 rounded-full text-[11px] font-medium border transition-colors ${
-                      alertFilter === f ? 'bg-[#042C53] text-white border-[#042C53]' : 'text-gray-500 border-gray-200 hover:bg-gray-50'
+                      alertFilter === f ? 'bg-[#1a375b] text-white border-[#1a375b]' : 'text-gray-500 border-gray-200 hover:bg-gray-50'
                     }`}
                   >
                     {f === 'tutti' ? `Tutti (${ALERTS.length})` : f === 'critico' ? `Critici (${criticalCount})` : `Warning (${warningCount})`}
@@ -299,7 +299,7 @@ export default function AppExecutiveDashboard() {
                     : <AlertTriangle className="h-4 w-4 text-amber-500 shrink-0" />
                   }
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-[#042C53] truncate">{alert.titolo}</p>
+                    <p className="text-sm font-medium text-[#1a375b] truncate">{alert.titolo}</p>
                     <p className={`text-[11px] font-medium ${alert.giorni < 0 ? 'text-red-600' : alert.giorni <= 30 ? 'text-amber-600' : 'text-gray-500'}`}>
                       Scadenza {alert.scadenza} · {alert.giorni < 0 ? `${Math.abs(alert.giorni)}g scaduto` : `tra ${alert.giorni}g`}
                     </p>
@@ -324,7 +324,7 @@ export default function AppExecutiveDashboard() {
         <div className="space-y-5">
 
           {/* Countdown scadenza critica */}
-          <div className="bg-[#042C53] rounded-xl p-5 text-white text-center">
+          <div className="bg-[#1a375b] rounded-xl p-5 text-white text-center">
             <p className="text-xs font-semibold uppercase tracking-widest text-blue-300 mb-1">Scadenza principale AI Act</p>
             <div className="text-5xl font-black text-amber-400 my-2">130</div>
             <p className="text-sm text-blue-200">giorni al 2 agosto 2026</p>
@@ -337,7 +337,7 @@ export default function AppExecutiveDashboard() {
           {/* Team compliance */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-semibold text-[#042C53]">Team & Formazione</h2>
+              <h2 className="text-sm font-semibold text-[#1a375b]">Team & Formazione</h2>
               <button onClick={() => navigate('/app/training/team')} className="text-xs text-[#185FA5] hover:underline font-medium">Dettaglio →</button>
             </div>
             <div className="space-y-2.5">
@@ -349,11 +349,11 @@ export default function AppExecutiveDashboard() {
                 { nome: 'Marco Bianchi', ruolo: 'Developer', literacy: false, avanzato: false },
               ].map(u => (
                 <div key={u.nome} className="flex items-center gap-2">
-                  <div className="h-7 w-7 rounded-full bg-[#042C53] text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                  <div className="h-7 w-7 rounded-full bg-[#1a375b] text-white text-[10px] font-bold flex items-center justify-center shrink-0">
                     {u.nome.split(' ').map(w => w[0]).join('')}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium text-[#042C53] truncate">{u.nome}</p>
+                    <p className="text-xs font-medium text-[#1a375b] truncate">{u.nome}</p>
                     <p className="text-[10px] text-gray-400">{u.ruolo}</p>
                   </div>
                   <div className="flex gap-1 shrink-0">
@@ -376,7 +376,7 @@ export default function AppExecutiveDashboard() {
           {/* Attività recente */}
           <div className="bg-white border border-gray-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-semibold text-[#042C53]">Attività recente</h2>
+              <h2 className="text-sm font-semibold text-[#1a375b]">Attività recente</h2>
               <button onClick={() => navigate('/app/audit')} className="text-xs text-[#185FA5] hover:underline font-medium">Audit trail →</button>
             </div>
             <div className="space-y-3">
@@ -386,7 +386,7 @@ export default function AppExecutiveDashboard() {
                   <div key={i} className="flex items-start gap-2.5">
                     <div className={`h-2 w-2 rounded-full ${cfg.dot} mt-1.5 shrink-0`} />
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs text-[#042C53] leading-snug">{act.descrizione}</p>
+                      <p className="text-xs text-[#1a375b] leading-snug">{act.descrizione}</p>
                       <p className="text-[10px] text-gray-400 mt-0.5">{act.data} · {act.utente}</p>
                     </div>
                   </div>

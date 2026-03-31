@@ -111,7 +111,7 @@ function MiniGauge({ score }: { score: number }) {
         <path d={`M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`} fill="none" stroke="#E5E7EB" strokeWidth="14" strokeLinecap="round" />
         <path d={`M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`} fill="none" stroke={color} strokeWidth="14" strokeLinecap="round"
           strokeDasharray={circumference} strokeDashoffset={dashOffset} />
-        <text x="100" y="88" textAnchor="middle" fontSize="28" fontWeight="700" fill="#042C53">{score}</text>
+        <text x="100" y="88" textAnchor="middle" fontSize="28" fontWeight="700" fill="#1a375b">{score}</text>
         <text x="100" y="103" textAnchor="middle" fontSize="10" fill="#6B7280">/ 100</text>
       </svg>
       <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full"
@@ -127,7 +127,7 @@ function MiniGauge({ score }: { score: number }) {
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block text-xs font-medium text-[#042C53] mb-1">
+      <label className="block text-xs font-medium text-[#1a375b] mb-1">
         {label}{required && <span className="text-[#DC2626] ml-0.5">*</span>}
       </label>
       {children}
@@ -196,14 +196,14 @@ export default function OnboardingWizard() {
               <Sparkles className="w-8 h-8 text-[#185FA5]" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-[#042C53]">Benvenuto in TutelAI</h2>
+              <h2 className="text-2xl font-bold text-[#1a375b]">Benvenuto in TutelAI</h2>
               <p className="text-gray-500 mt-2 max-w-md">
-                Ciao <span className="font-semibold text-[#042C53]">{firstName}</span>! Siamo pronti ad aiutarti a rendere la tua azienda conforme all'AI Act UE e alla legge 132/2025.
+                Ciao <span className="font-semibold text-[#1a375b]">{firstName}</span>! Siamo pronti ad aiutarti a rendere la tua azienda conforme all'AI Act UE e alla legge 132/2025.
               </p>
             </div>
             <div className="bg-[#E6F1FB] rounded-xl p-5 w-full max-w-sm text-left space-y-2">
               {['Censisci i tuoi sistemi AI', 'Genera documenti legali pronti', 'Forma il tuo team', 'Monitora le normative in tempo reale'].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm text-[#042C53]">
+                <div key={item} className="flex items-center gap-2 text-sm text-[#1a375b]">
                   <div className="w-5 h-5 rounded-full bg-[#22A86B] flex items-center justify-center flex-shrink-0">
                     <Check className="w-3 h-3 text-white" />
                   </div>
@@ -220,7 +220,7 @@ export default function OnboardingWizard() {
         return (
           <div className="space-y-4">
             <div>
-              <h2 className="text-xl font-bold text-[#042C53]">Dati aziendali</h2>
+              <h2 className="text-xl font-bold text-[#1a375b]">Dati aziendali</h2>
               <p className="text-sm text-gray-500 mt-1">Questi dati verranno usati per personalizzare i documenti legali.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -257,13 +257,13 @@ export default function OnboardingWizard() {
         return (
           <div className="space-y-5">
             <div>
-              <h2 className="text-xl font-bold text-[#042C53]">Piano attivo</h2>
+              <h2 className="text-xl font-bold text-[#1a375b]">Piano attivo</h2>
               <p className="text-sm text-gray-500 mt-1">Stai usando il piano Business. Puoi aggiungere moduli extra.</p>
             </div>
             <div className="bg-[#E6F1FB] rounded-xl p-5 border border-[#185FA5]/20">
               <div className="flex items-center justify-between mb-3">
-                <span className="font-bold text-[#042C53] text-lg">Piano Business</span>
-                <span className="text-2xl font-bold text-[#042C53]">€199<span className="text-sm font-normal text-gray-500">/mese</span></span>
+                <span className="font-bold text-[#1a375b] text-lg">Piano Business</span>
+                <span className="text-2xl font-bold text-[#1a375b]">€199<span className="text-sm font-normal text-gray-500">/mese</span></span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {[
@@ -276,7 +276,7 @@ export default function OnboardingWizard() {
                   'Supporto email prioritario',
                   'Dashboard compliance',
                 ].map((feat) => (
-                  <div key={feat} className="flex items-center gap-2 text-sm text-[#042C53]">
+                  <div key={feat} className="flex items-center gap-2 text-sm text-[#1a375b]">
                     <Check className="w-4 h-4 text-[#22A86B] flex-shrink-0" />
                     {feat}
                   </div>
@@ -284,7 +284,7 @@ export default function OnboardingWizard() {
               </div>
             </div>
             <div>
-              <p className="text-sm font-semibold text-[#042C53] mb-3">Add-on disponibili</p>
+              <p className="text-sm font-semibold text-[#1a375b] mb-3">Add-on disponibili</p>
               <div className="space-y-2">
                 {[
                   { key: 'addon_ai_lawyer' as const, label: 'AI Lawyer Chat', desc: 'Consulta un avvocato AI specializzato', price: '+€39/mese' },
@@ -299,7 +299,7 @@ export default function OnboardingWizard() {
                       onChange={(e) => update(addon.key, e.target.checked)}
                     />
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-[#042C53]">{addon.label}</p>
+                      <p className="text-sm font-medium text-[#1a375b]">{addon.label}</p>
                       <p className="text-xs text-gray-500">{addon.desc}</p>
                     </div>
                     <span className="text-sm font-semibold text-[#185FA5]">{addon.price}</span>
@@ -315,7 +315,7 @@ export default function OnboardingWizard() {
         return (
           <div className="space-y-4">
             <div>
-              <h2 className="text-xl font-bold text-[#042C53]">Censisci il tuo primo sistema AI</h2>
+              <h2 className="text-xl font-bold text-[#1a375b]">Censisci il tuo primo sistema AI</h2>
               <p className="text-sm text-gray-500 mt-1">Aggiungi il primo strumento AI che usi in azienda. Potrai aggiungerne altri in seguito.</p>
             </div>
             <Field label="Nome del sistema AI" required>
@@ -358,7 +358,7 @@ export default function OnboardingWizard() {
         return (
           <div className="space-y-4">
             <div>
-              <h2 className="text-xl font-bold text-[#042C53]">Invita il tuo team</h2>
+              <h2 className="text-xl font-bold text-[#1a375b]">Invita il tuo team</h2>
               <p className="text-sm text-gray-500 mt-1">Aggiungi fino a 5 colleghi per collaborare sulla compliance AI.</p>
             </div>
             <div className="space-y-2">
@@ -392,13 +392,13 @@ export default function OnboardingWizard() {
               <button
                 type="button"
                 onClick={() => update('inviti', [...formData.inviti, { email: '', ruolo: 'Member' }])}
-                className="text-sm text-[#185FA5] hover:text-[#042C53] font-medium transition-colors"
+                className="text-sm text-[#185FA5] hover:text-[#1a375b] font-medium transition-colors"
               >
                 + Aggiungi altro
               </button>
             )}
             <div className="bg-[#E6F1FB] rounded-lg p-3">
-              <p className="text-xs text-[#042C53]">Gli invitati riceveranno una email con le istruzioni per accedere a TutelAI.</p>
+              <p className="text-xs text-[#1a375b]">Gli invitati riceveranno una email con le istruzioni per accedere a TutelAI.</p>
             </div>
           </div>
         );
@@ -408,7 +408,7 @@ export default function OnboardingWizard() {
         return (
           <div className="space-y-5">
             <div>
-              <h2 className="text-xl font-bold text-[#042C53]">DPO e AI Officer</h2>
+              <h2 className="text-xl font-bold text-[#1a375b]">DPO e AI Officer</h2>
               <p className="text-sm text-gray-500 mt-1">La normativa richiede figure responsabili per la governance AI e GDPR.</p>
             </div>
             <div className="space-y-3">
@@ -429,7 +429,7 @@ export default function OnboardingWizard() {
                     onChange={() => update('dpo_scelta', opt.val)}
                   />
                   <div>
-                    <p className="text-sm font-medium text-[#042C53]">{opt.label}</p>
+                    <p className="text-sm font-medium text-[#1a375b]">{opt.label}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{opt.desc}</p>
                   </div>
                 </label>
@@ -443,13 +443,13 @@ export default function OnboardingWizard() {
         return (
           <div className="space-y-5">
             <div>
-              <h2 className="text-xl font-bold text-[#042C53]">Scansione rapida compliance</h2>
+              <h2 className="text-xl font-bold text-[#1a375b]">Scansione rapida compliance</h2>
               <p className="text-sm text-gray-500 mt-1">5 domande per calcolare il tuo AI Risk Score iniziale.</p>
             </div>
             <div className="space-y-3">
               {SCAN_QUESTIONS.map((q, idx) => (
                 <div key={q.id} className="bg-white border border-[#C8C5BC] rounded-xl p-4">
-                  <p className="text-sm font-medium text-[#042C53] mb-3">
+                  <p className="text-sm font-medium text-[#1a375b] mb-3">
                     <span className="text-[#185FA5] font-bold mr-1.5">{idx + 1}.</span>
                     {q.testo}
                   </p>
@@ -482,14 +482,14 @@ export default function OnboardingWizard() {
         return (
           <div className="space-y-5">
             <div>
-              <h2 className="text-xl font-bold text-[#042C53]">Il tuo AI Risk Score iniziale</h2>
+              <h2 className="text-xl font-bold text-[#1a375b]">Il tuo AI Risk Score iniziale</h2>
               <p className="text-sm text-gray-500 mt-1">Basato sulle risposte fornite, ecco la tua situazione attuale.</p>
             </div>
             <div className="flex justify-center py-2">
               <MiniGauge score={34} />
             </div>
             <div>
-              <p className="text-sm font-semibold text-[#042C53] mb-3">Gap rilevati</p>
+              <p className="text-sm font-semibold text-[#1a375b] mb-3">Gap rilevati</p>
               <div className="space-y-2">
                 {[
                   { urgency: 'red', text: 'Formazione obbligatoria mancante — 2 utenti non formati (Art. 4 AI Act)' },
@@ -510,7 +510,7 @@ export default function OnboardingWizard() {
               </div>
             </div>
             <div className="bg-[#E6F1FB] rounded-lg p-4">
-              <p className="text-xs text-[#042C53]">
+              <p className="text-xs text-[#1a375b]">
                 TutelAI genererà automaticamente i documenti necessari e assegnerà i corsi di formazione obbligatori per colmare questi gap.
               </p>
             </div>
@@ -522,7 +522,7 @@ export default function OnboardingWizard() {
         return (
           <div className="space-y-5">
             <div>
-              <h2 className="text-xl font-bold text-[#042C53]">Documenti pre-generati</h2>
+              <h2 className="text-xl font-bold text-[#1a375b]">Documenti pre-generati</h2>
               <p className="text-sm text-gray-500 mt-1">Abbiamo preparato questi documenti legali personalizzati per la tua azienda.</p>
             </div>
             <div className="space-y-3">
@@ -549,7 +549,7 @@ export default function OnboardingWizard() {
                 <div key={doc.titolo} className="bg-white border border-[#C8C5BC] rounded-xl p-4">
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <div className="flex-1">
-                      <p className="text-sm font-semibold text-[#042C53]">{doc.titolo}</p>
+                      <p className="text-sm font-semibold text-[#1a375b]">{doc.titolo}</p>
                       <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{doc.desc}</p>
                     </div>
                     <span className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full flex-shrink-0 ${
@@ -561,11 +561,11 @@ export default function OnboardingWizard() {
                     </span>
                   </div>
                   <div className="flex gap-2 mt-3">
-                    <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-xs font-medium px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5">
+                    <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-xs font-medium px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5">
                       <Eye className="w-3.5 h-3.5" />
                       Visualizza
                     </button>
-                    <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-xs font-medium px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5">
+                    <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-xs font-medium px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5">
                       <Download className="w-3.5 h-3.5" />
                       Scarica bozza
                     </button>
@@ -584,7 +584,7 @@ export default function OnboardingWizard() {
               <Rocket className="w-8 h-8 text-[#22A86B]" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-[#042C53]">Setup completato!</h2>
+              <h2 className="text-2xl font-bold text-[#1a375b]">Setup completato!</h2>
               <p className="text-gray-500 mt-2">TutelAI è pronto. Ecco cosa abbiamo configurato per te.</p>
             </div>
             <div className="w-full max-w-sm text-left space-y-2">
@@ -601,13 +601,13 @@ export default function OnboardingWizard() {
                   <div className="w-5 h-5 rounded-full bg-[#22A86B] flex items-center justify-center flex-shrink-0">
                     <Check className="w-3 h-3 text-white" />
                   </div>
-                  <p className="text-sm text-[#042C53]">{item}</p>
+                  <p className="text-sm text-[#1a375b]">{item}</p>
                 </div>
               ))}
             </div>
             <button
               onClick={finish}
-              className="bg-[#042C53] hover:bg-[#185FA5] text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"
+              className="bg-[#1a375b] hover:bg-[#185FA5] text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"
             >
               Vai alla Dashboard
               <ChevronRight className="w-5 h-5" />
@@ -627,7 +627,7 @@ export default function OnboardingWizard() {
 
       {/* Top bar with logo */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#C8C5BC] bg-white flex-shrink-0">
-        <span className="font-display text-lg font-bold text-[#042C53]">TutelAI</span>
+        <span className="font-display text-lg font-bold text-[#1a375b]">TutelAI</span>
         <span className="text-xs text-gray-400">Configurazione iniziale</span>
       </div>
 
@@ -690,7 +690,7 @@ export default function OnboardingWizard() {
                 <button
                   onClick={prev}
                   disabled={currentStep === 1}
-                  className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] text-sm font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] text-sm font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   Indietro
@@ -707,7 +707,7 @@ export default function OnboardingWizard() {
                   )}
                   <button
                     onClick={next}
-                    className="bg-[#042C53] hover:bg-[#185FA5] text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors flex items-center gap-2"
+                    className="bg-[#1a375b] hover:bg-[#185FA5] text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors flex items-center gap-2"
                   >
                     {currentStep === 9 ? 'Completa' : 'Avanti'}
                     <ChevronRight className="w-4 h-4" />

@@ -50,7 +50,7 @@ export default function AppGdprBreach() {
   return (
     <div className="p-6 space-y-6 bg-[#FAFAF8] min-h-full">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-5 py-3 rounded-xl shadow-lg text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-5 py-3 rounded-xl shadow-lg text-sm">
           {toast}
         </div>
       )}
@@ -60,7 +60,7 @@ export default function AppGdprBreach() {
         <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-xl shadow-xl w-full max-w-lg p-6 space-y-5">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-[#042C53]">Segnala nuovo breach</h2>
+              <h2 className="text-lg font-semibold text-[#1a375b]">Segnala nuovo breach</h2>
               <button onClick={() => setShowModal(false)}>
                 <X className="w-5 h-5 text-gray-400 hover:text-gray-700" />
               </button>
@@ -93,7 +93,7 @@ export default function AppGdprBreach() {
                       onClick={() => toggleSistema(s.id)}
                       className={`px-3 py-1 rounded-lg text-xs font-medium border transition-colors ${
                         form.sistemi_coinvolti.includes(s.id)
-                          ? 'bg-[#042C53] text-white border-[#042C53]'
+                          ? 'bg-[#1a375b] text-white border-[#1a375b]'
                           : 'border-[#C8C5BC] text-gray-700 hover:bg-gray-50'
                       }`}
                     >
@@ -122,7 +122,7 @@ export default function AppGdprBreach() {
               </button>
               <button
                 onClick={() => setShowModal(false)}
-                className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
                 Annulla
               </button>
@@ -138,7 +138,7 @@ export default function AppGdprBreach() {
             <ArrowLeft className="w-3.5 h-3.5" />
             GDPR+AI
           </Link>
-          <h1 className="text-2xl font-bold text-[#042C53] flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-[#1a375b] flex items-center gap-2">
             <AlertOctagon className="w-6 h-6 text-[#185FA5]" />
             Gestione Data Breach AI — Workflow 72h
           </h1>
@@ -154,7 +154,7 @@ export default function AppGdprBreach() {
 
       {/* Active breaches */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6">
-        <h2 className="font-semibold text-[#042C53] mb-4 flex items-center gap-2">
+        <h2 className="font-semibold text-[#1a375b] mb-4 flex items-center gap-2">
           <Clock className="w-4 h-4 text-[#185FA5]" />
           Breach attivi
         </h2>
@@ -180,13 +180,13 @@ export default function AppGdprBreach() {
 
       {/* Storico */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6">
-        <h2 className="font-semibold text-[#042C53] mb-4">Storico breach</h2>
+        <h2 className="font-semibold text-[#1a375b] mb-4">Storico breach</h2>
         <div className="text-center py-8 text-gray-400 text-sm">Nessun breach registrato</div>
       </div>
 
       {/* Processo */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-5">
-        <h2 className="font-semibold text-[#042C53] flex items-center gap-2">
+        <h2 className="font-semibold text-[#1a375b] flex items-center gap-2">
           <Shield className="w-4 h-4 text-[#185FA5]" />
           Processo di riferimento
         </h2>
@@ -218,7 +218,7 @@ export default function AppGdprBreach() {
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${s.color}`}>{s.time}</span>
-                  <span className="font-medium text-[#042C53] text-sm">{s.title}</span>
+                  <span className="font-medium text-[#1a375b] text-sm">{s.title}</span>
                 </div>
                 <p className="text-xs text-gray-600">{s.desc}</p>
                 {s.cta && (

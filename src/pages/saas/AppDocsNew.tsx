@@ -107,7 +107,7 @@ export default function AppDocsNew() {
           <ArrowLeft className="h-4 w-4" />
           Doc Generator
         </Link>
-        <h1 className="text-2xl font-bold text-[#042C53]">Genera nuovo documento</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Genera nuovo documento</h1>
         <p className="text-sm text-slate-500 mt-0.5">Seleziona il tipo di documento da generare</p>
       </div>
 
@@ -119,7 +119,7 @@ export default function AppDocsNew() {
             <div key={section.id}>
               <div className="flex items-center gap-2 mb-4">
                 <SectionIcon className="h-4 w-4 text-[#185FA5]" />
-                <h2 className="text-sm font-semibold text-[#042C53] uppercase tracking-wide">{section.titolo}</h2>
+                <h2 className="text-sm font-semibold text-[#1a375b] uppercase tracking-wide">{section.titolo}</h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {section.tipi.map((tipo) => {
@@ -140,7 +140,7 @@ export default function AppDocsNew() {
                           <Icon className={`h-4 w-4 ${isSelected ? 'text-white' : 'text-slate-500'}`} />
                         </div>
                         <div>
-                          <p className={`text-sm font-semibold mb-0.5 ${isSelected ? 'text-[#042C53]' : 'text-slate-800'}`}>{tipo.nome}</p>
+                          <p className={`text-sm font-semibold mb-0.5 ${isSelected ? 'text-[#1a375b]' : 'text-slate-800'}`}>{tipo.nome}</p>
                           <p className="text-xs text-slate-500 leading-relaxed">{tipo.descrizione}</p>
                         </div>
                       </div>
@@ -157,7 +157,7 @@ export default function AppDocsNew() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#C8C5BC] px-6 py-4 flex items-center justify-between z-30">
         <div className="text-sm text-slate-500">
           {selectedDoc ? (
-            <span>Selezionato: <strong className="text-[#042C53]">{selectedDoc.nome}</strong></span>
+            <span>Selezionato: <strong className="text-[#1a375b]">{selectedDoc.nome}</strong></span>
           ) : (
             'Seleziona un tipo di documento per continuare'
           )}
@@ -165,7 +165,7 @@ export default function AppDocsNew() {
         <div className="flex items-center gap-3">
           <Link
             to="/app/docs"
-            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             Annulla
           </Link>
@@ -174,7 +174,7 @@ export default function AppDocsNew() {
             disabled={!selected}
             className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors ${
               selected
-                ? 'bg-[#042C53] hover:bg-[#185FA5] text-white'
+                ? 'bg-[#1a375b] hover:bg-[#185FA5] text-white'
                 : 'bg-slate-100 text-slate-400 cursor-not-allowed'
             }`}
           >

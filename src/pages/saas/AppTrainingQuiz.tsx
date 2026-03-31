@@ -120,13 +120,13 @@ export default function AppTrainingQuiz() {
               <div className="w-16 h-16 bg-[#EAF5EE] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Trophy className="w-8 h-8 text-[#22A86B]" />
               </div>
-              <h2 className="text-2xl font-bold text-[#042C53] mb-2">Complimenti!</h2>
+              <h2 className="text-2xl font-bold text-[#1a375b] mb-2">Complimenti!</h2>
               <p className="text-gray-600 mb-4">Hai superato il quiz con successo.</p>
               <div className="text-4xl font-bold text-[#22A86B] mb-1">{score}/5</div>
               <p className="text-sm text-gray-500 mb-6">Risposte corrette</p>
               <button
                 onClick={() => navigate(`/app/training/courses/${id}/certificate`)}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 Visualizza attestato
@@ -138,13 +138,13 @@ export default function AppTrainingQuiz() {
               <div className="w-16 h-16 bg-[#FDEAEA] rounded-full flex items-center justify-center mx-auto mb-4">
                 <XCircle className="w-8 h-8 text-[#DC2626]" />
               </div>
-              <h2 className="text-2xl font-bold text-[#042C53] mb-2">Punteggio insufficiente</h2>
+              <h2 className="text-2xl font-bold text-[#1a375b] mb-2">Punteggio insufficiente</h2>
               <p className="text-gray-600 mb-4">Devi rispondere correttamente ad almeno 4 domande su 5.</p>
               <div className="text-4xl font-bold text-[#DC2626] mb-1">{score}/5</div>
               <p className="text-sm text-gray-500 mb-6">Risposte corrette</p>
               <button
                 onClick={handleRetry}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
               >
                 <RefreshCw className="w-4 h-4" />
                 Riprova il quiz
@@ -153,7 +153,7 @@ export default function AppTrainingQuiz() {
           )}
           <button
             onClick={() => navigate('/app/training')}
-            className="mt-3 w-full px-6 py-2 text-sm text-gray-500 hover:text-[#042C53] transition-colors"
+            className="mt-3 w-full px-6 py-2 text-sm text-gray-500 hover:text-[#1a375b] transition-colors"
           >
             Torna ai corsi
           </button>
@@ -169,7 +169,7 @@ export default function AppTrainingQuiz() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Quiz finale</p>
-            <p className="text-sm font-medium text-[#042C53]">Domanda {currentQ + 1} di {totalQ}</p>
+            <p className="text-sm font-medium text-[#1a375b]">Domanda {currentQ + 1} di {totalQ}</p>
           </div>
           <div className="flex items-center gap-1.5 text-sm font-medium text-[#22A86B]">
             <CheckCircle2 className="w-4 h-4" />
@@ -194,21 +194,21 @@ export default function AppTrainingQuiz() {
         </div>
 
         {/* Question */}
-        <h2 className="text-lg font-bold text-[#042C53] mb-5">{question.domanda}</h2>
+        <h2 className="text-lg font-bold text-[#1a375b] mb-5">{question.domanda}</h2>
 
         {/* Options */}
         <div className="space-y-3 mb-6">
           {question.opzioni.map(opt => {
             const isSelected = selectedOption === opt.key;
             const isCorrectOpt = opt.key === question.corretto;
-            let optStyle = 'border-[#C8C5BC] text-[#042C53] hover:border-[#185FA5] hover:bg-[#E6F1FB]';
+            let optStyle = 'border-[#C8C5BC] text-[#1a375b] hover:border-[#185FA5] hover:bg-[#E6F1FB]';
 
             if (answerState !== 'idle') {
               if (isCorrectOpt) optStyle = 'border-[#22A86B] bg-[#EAF5EE] text-[#1D6B3A]';
               else if (isSelected && !isCorrectOpt) optStyle = 'border-[#DC2626] bg-[#FDEAEA] text-[#8B1A1A]';
               else optStyle = 'border-gray-200 text-gray-400';
             } else if (isSelected) {
-              optStyle = 'border-[#185FA5] bg-[#E6F1FB] text-[#042C53]';
+              optStyle = 'border-[#185FA5] bg-[#E6F1FB] text-[#1a375b]';
             }
 
             return (
@@ -259,7 +259,7 @@ export default function AppTrainingQuiz() {
               }
             }}
             disabled={currentQ === 0}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm text-gray-500 hover:text-[#042C53] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="flex items-center gap-1.5 px-4 py-2 text-sm text-gray-500 hover:text-[#1a375b] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
             Domanda precedente
@@ -269,7 +269,7 @@ export default function AppTrainingQuiz() {
             <button
               onClick={handleConfirm}
               disabled={!selectedOption}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Conferma risposta
               <ChevronRight className="w-4 h-4" />
@@ -277,7 +277,7 @@ export default function AppTrainingQuiz() {
           ) : (
             <button
               onClick={handleNext}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg text-sm font-medium transition-colors"
             >
               {currentQ < totalQ - 1 ? 'Prossima domanda' : 'Vedi risultato'}
               <ChevronRight className="w-4 h-4" />

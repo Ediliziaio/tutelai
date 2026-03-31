@@ -25,6 +25,12 @@ export default {
         "stat-tight": "-0.04em",
       },
       colors: {
+        // ── TutelAI brand palette ──────────────────────────────────────────
+        'tutelai-navy':  '#1a375b',   // primary navy (dark brand)
+        'tutelai-blue':  '#185FA5',   // secondary blue (actions/links)
+        'tutelai-gold':  '#eab913',   // gold accent (highlights/CTAs)
+        'tutelai-gold-light': '#FDF8E7', // soft gold background
+        // ──────────────────────────────────────────────────────────────────
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

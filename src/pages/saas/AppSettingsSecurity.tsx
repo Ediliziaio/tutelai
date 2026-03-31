@@ -46,14 +46,14 @@ export default function AppSettingsSecurity() {
   return (
     <div className="p-6 space-y-6 bg-[#FAFAF8] min-h-full">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2">
           <Check className="w-4 h-4 text-green-300" />
           {toast}
         </div>
       )}
 
       <div>
-        <h1 className="text-2xl font-bold text-[#042C53]">Impostazioni — Sicurezza</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Impostazioni — Sicurezza</h1>
       </div>
 
       {/* Tab nav */}
@@ -67,7 +67,7 @@ export default function AppSettingsSecurity() {
               className={`px-5 py-2.5 text-sm font-medium border-b-2 transition-colors -mb-px ${
                 active
                   ? 'border-[#185FA5] text-[#185FA5] bg-[#E6F1FB]'
-                  : 'border-transparent text-gray-600 hover:text-[#042C53] hover:border-gray-300'
+                  : 'border-transparent text-gray-600 hover:text-[#1a375b] hover:border-gray-300'
               }`}
             >
               {tab.label}
@@ -78,7 +78,7 @@ export default function AppSettingsSecurity() {
 
       {/* Autenticazione */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-5">
-        <h2 className="font-semibold text-[#042C53] flex items-center gap-2">
+        <h2 className="font-semibold text-[#1a375b] flex items-center gap-2">
           <Lock className="w-4 h-4 text-[#185FA5]" />
           Autenticazione — Cambia password
         </h2>
@@ -131,7 +131,7 @@ export default function AppSettingsSecurity() {
         </div>
         <button
           onClick={handleChangePwd}
-          className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           Cambia password
         </button>
@@ -139,7 +139,7 @@ export default function AppSettingsSecurity() {
 
       {/* 2FA */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-4">
-        <h2 className="font-semibold text-[#042C53] flex items-center gap-2">
+        <h2 className="font-semibold text-[#1a375b] flex items-center gap-2">
           <Shield className="w-4 h-4 text-[#185FA5]" />
           Autenticazione a due fattori (2FA)
         </h2>
@@ -152,13 +152,13 @@ export default function AppSettingsSecurity() {
         <div className="flex gap-2">
           <button
             onClick={() => showToastMsg('2FA disattivato.')}
-            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             Disattiva 2FA
           </button>
           <button
             onClick={() => showToastMsg('Codici di backup visualizzati.')}
-            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             Visualizza codici di backup
           </button>
@@ -167,17 +167,17 @@ export default function AppSettingsSecurity() {
 
       {/* SSO */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-4">
-        <h2 className="font-semibold text-[#042C53] flex items-center gap-2">
+        <h2 className="font-semibold text-[#1a375b] flex items-center gap-2">
           <Shield className="w-4 h-4 text-[#185FA5]" />
           Single Sign-On (SSO)
         </h2>
         <div className="flex items-center gap-3">
           <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">Non configurato</span>
-          <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-[#042C53] text-white">solo Enterprise</span>
+          <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-[#1a375b] text-white">solo Enterprise</span>
         </div>
         <button
           onClick={() => showToastMsg('SSO disponibile solo sul piano Enterprise.')}
-          className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           Configura SSO
         </button>
@@ -185,7 +185,7 @@ export default function AppSettingsSecurity() {
 
       {/* Sessioni */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-4">
-        <h2 className="font-semibold text-[#042C53] flex items-center gap-2">
+        <h2 className="font-semibold text-[#1a375b] flex items-center gap-2">
           <Monitor className="w-4 h-4 text-[#185FA5]" />
           Sessioni attive
         </h2>
@@ -193,7 +193,7 @@ export default function AppSettingsSecurity() {
         <div className="flex gap-2">
           <button
             onClick={() => showToastMsg('Sessioni visualizzate.')}
-            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             Vedi sessioni
           </button>
@@ -209,7 +209,7 @@ export default function AppSettingsSecurity() {
 
       {/* Log accessi */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-4">
-        <h2 className="font-semibold text-[#042C53]">Log accessi recenti</h2>
+        <h2 className="font-semibold text-[#1a375b]">Log accessi recenti</h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="border-b border-gray-100">

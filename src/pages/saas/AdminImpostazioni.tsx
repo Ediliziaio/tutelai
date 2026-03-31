@@ -23,7 +23,7 @@ function Toggle({ checked, onChange }: { checked: boolean; onChange: () => void 
     <button
       type="button"
       onClick={onChange}
-      className={`relative h-6 w-11 rounded-full transition-colors ${checked ? 'bg-[#042C53]' : 'bg-gray-200'}`}
+      className={`relative h-6 w-11 rounded-full transition-colors ${checked ? 'bg-[#1a375b]' : 'bg-gray-200'}`}
     >
       <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-5' : 'translate-x-0.5'}`} />
     </button>
@@ -45,7 +45,7 @@ function FormField({ label, value, onChange, type = 'text', disabled = false }: 
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         disabled={disabled}
-        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20 disabled:bg-gray-50 disabled:text-gray-400"
+        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20 disabled:bg-gray-50 disabled:text-gray-400"
       />
     </div>
   );
@@ -89,7 +89,7 @@ export default function AdminImpostazioni() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-[#042C53]">Impostazioni piattaforma</h1>
+      <h1 className="text-2xl font-bold text-[#1a375b]">Impostazioni piattaforma</h1>
 
       {/* Tabs */}
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -98,7 +98,7 @@ export default function AdminImpostazioni() {
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`px-5 py-3 text-sm font-medium transition-colors ${tab === t.id ? 'text-[#042C53] border-b-2 border-[#042C53] -mb-px' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`px-5 py-3 text-sm font-medium transition-colors ${tab === t.id ? 'text-[#1a375b] border-b-2 border-[#1a375b] -mb-px' : 'text-gray-500 hover:text-gray-700'}`}
             >
               {t.label}
             </button>
@@ -120,8 +120,8 @@ export default function AdminImpostazioni() {
                 <Toggle checked={maintenanceMode} onChange={() => setMaintenanceMode(!maintenanceMode)} />
               </div>
               <div className="bg-gray-50 rounded-lg px-4 py-3">
-                <p className="text-xs text-gray-500">Versione piattaforma: <span className="font-mono font-medium text-[#042C53]">v1.4.2</span></p>
-                <p className="text-xs text-gray-500 mt-0.5">Build: <span className="font-mono font-medium text-[#042C53]">2026-03-25</span></p>
+                <p className="text-xs text-gray-500">Versione piattaforma: <span className="font-mono font-medium text-[#1a375b]">v1.4.2</span></p>
+                <p className="text-xs text-gray-500 mt-0.5">Build: <span className="font-mono font-medium text-[#1a375b]">2026-03-25</span></p>
               </div>
             </div>
           )}
@@ -138,7 +138,7 @@ export default function AdminImpostazioni() {
               <div className="bg-gray-50 rounded-lg px-4 py-3 border border-gray-200">
                 <p className="text-xs font-semibold text-gray-600 mb-2">Anteprima template email</p>
                 <div className="bg-white border border-gray-200 rounded-lg p-3 text-xs text-gray-600">
-                  <p className="font-semibold text-[#042C53] mb-1">Benvenuto su TutelAI</p>
+                  <p className="font-semibold text-[#1a375b] mb-1">Benvenuto su TutelAI</p>
                   <p>Il tuo account è pronto. Accedi alla piattaforma per iniziare la compliance AI Act.</p>
                   <p className="mt-2 text-gray-400">— Il team TutelAI</p>
                 </div>
@@ -160,7 +160,7 @@ export default function AdminImpostazioni() {
                       )}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-[#042C53]">{intg.nome}</p>
+                      <p className="text-sm font-semibold text-[#1a375b]">{intg.nome}</p>
                       <p className="text-xs text-gray-400">{intg.descrizione}</p>
                       {intg.configured && intg.keyPreview && (
                         <div className="flex items-center gap-1.5 mt-1">
@@ -181,7 +181,7 @@ export default function AdminImpostazioni() {
                     <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${intg.configured ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-50 text-gray-500'}`}>
                       {intg.configured ? 'Configurato' : 'Non configurato'}
                     </span>
-                    <button className="bg-[#042C53] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
+                    <button className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
                       {intg.configured ? 'Aggiorna' : 'Configura'}
                     </button>
                   </div>
@@ -231,7 +231,7 @@ export default function AdminImpostazioni() {
             <div className="mt-6 pt-4 border-t border-gray-100">
               <button
                 onClick={handleSave}
-                className="bg-[#042C53] hover:bg-[#185FA5] text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors"
+                className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors"
               >
                 {saved ? 'Salvato!' : 'Salva modifiche'}
               </button>

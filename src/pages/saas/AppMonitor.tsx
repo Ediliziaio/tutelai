@@ -86,7 +86,7 @@ export default function AppMonitor() {
     <div className="min-h-screen bg-[#FAFAF8]">
       {/* Toast */}
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 text-sm">
           <Check className="w-4 h-4 text-[#22A86B]" />
           {toast}
         </div>
@@ -97,7 +97,7 @@ export default function AppMonitor() {
         <div className="flex items-start justify-between mb-6">
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold text-[#042C53]">AI Monitor — Aggiornamenti normativi</h1>
+              <h1 className="text-2xl font-bold text-[#1a375b]">AI Monitor — Aggiornamenti normativi</h1>
               {unreadCount > 0 && (
                 <span className="bg-[#DC2626] text-white text-xs font-bold px-2 py-0.5 rounded-full">
                   {unreadCount}
@@ -109,21 +109,21 @@ export default function AppMonitor() {
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={markAllRead}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#042C53] border border-[#C8C5BC] rounded-lg hover:bg-[#E6F1FB] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#1a375b] border border-[#C8C5BC] rounded-lg hover:bg-[#E6F1FB] transition-colors"
             >
               <CheckCheck className="w-4 h-4" />
               Segna tutti come letti
             </button>
             <Link
               to="/app/monitor/settings"
-              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#042C53] border border-[#C8C5BC] rounded-lg hover:bg-[#E6F1FB] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#1a375b] border border-[#C8C5BC] rounded-lg hover:bg-[#E6F1FB] transition-colors"
             >
               <Settings className="w-4 h-4" />
               Impostazioni alert
             </Link>
             <button
               onClick={() => showToast('Esportazione feed in corso...')}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg transition-colors"
             >
               <Download className="w-4 h-4" />
               Esporta feed
@@ -136,7 +136,7 @@ export default function AppMonitor() {
           <select
             value={fonteFilter}
             onChange={e => setFonteFilter(e.target.value as FonteFilter)}
-            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm bg-white text-[#042C53] focus:outline-none focus:ring-2 focus:ring-[#185FA5]"
+            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm bg-white text-[#1a375b] focus:outline-none focus:ring-2 focus:ring-[#185FA5]"
           >
             <option value="all">Tutte le fonti</option>
             <option value="acn">ACN</option>
@@ -148,7 +148,7 @@ export default function AppMonitor() {
           <select
             value={urgenzaFilter}
             onChange={e => setUrgenzaFilter(e.target.value as UrgenzaFilter)}
-            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm bg-white text-[#042C53] focus:outline-none focus:ring-2 focus:ring-[#185FA5]"
+            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm bg-white text-[#1a375b] focus:outline-none focus:ring-2 focus:ring-[#185FA5]"
           >
             <option value="all">Tutte le urgenze</option>
             <option value="critico">Critico</option>
@@ -162,7 +162,7 @@ export default function AppMonitor() {
               placeholder="Cerca aggiornamenti..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="flex-1 text-sm outline-none bg-transparent text-[#042C53] placeholder-gray-400"
+              className="flex-1 text-sm outline-none bg-transparent text-[#1a375b] placeholder-gray-400"
             />
           </div>
           <span className="text-sm text-gray-500">{filtered.length} aggiornamenti</span>
@@ -191,7 +191,7 @@ export default function AppMonitor() {
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
                   {urgencyBadge(item.urgenza)}
                   <span className="text-xs text-gray-500">{formatDate(item.data)}</span>
-                  <span className="text-xs font-medium text-[#042C53] bg-[#F5F5F3] px-2 py-0.5 rounded">
+                  <span className="text-xs font-medium text-[#1a375b] bg-[#F5F5F3] px-2 py-0.5 rounded">
                     {item.fonte_label}
                   </span>
                   {item.letto && (
@@ -200,7 +200,7 @@ export default function AppMonitor() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-base font-bold text-[#042C53] mb-2">{item.titolo}</h3>
+                <h3 className="text-base font-bold text-[#1a375b] mb-2">{item.titolo}</h3>
 
                 {/* Sintesi */}
                 <p className="text-sm text-gray-600 line-clamp-3 mb-3">{item.sintesi}</p>
@@ -228,7 +228,7 @@ export default function AppMonitor() {
                 <div className="flex items-center gap-2 flex-wrap">
                   <button
                     onClick={() => navigate(`/app/monitor/${item.id}`)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#042C53] hover:bg-[#185FA5] text-white rounded-lg font-medium transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#1a375b] hover:bg-[#185FA5] text-white rounded-lg font-medium transition-colors"
                   >
                     <BookOpen className="w-3.5 h-3.5" />
                     Leggi

@@ -169,7 +169,7 @@ function NewDocModal({ onClose }: { onClose: () => void }) {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
         <div className="bg-white rounded-xl shadow-2xl p-8 text-center max-w-sm w-full mx-4">
           <CheckCircle2 className="h-12 w-12 text-emerald-500 mx-auto mb-3" />
-          <p className="text-lg font-bold text-[#042C53]">Documento inviato!</p>
+          <p className="text-lg font-bold text-[#1a375b]">Documento inviato!</p>
           <p className="text-sm text-gray-500 mt-1">I firmatari riceveranno una email con il link per firmare.</p>
         </div>
       </div>
@@ -180,13 +180,13 @@ function NewDocModal({ onClose }: { onClose: () => void }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6">
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-bold text-[#042C53]">Nuovo documento da firmare</h2>
+          <h2 className="text-lg font-bold text-[#1a375b]">Nuovo documento da firmare</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl leading-none">×</button>
         </div>
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">Titolo documento</label>
-            <input value={form.titolo} onChange={e => upd('titolo', e.target.value)} placeholder="Es. DPA con Fornitore XYZ" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20" />
+            <input value={form.titolo} onChange={e => upd('titolo', e.target.value)} placeholder="Es. DPA con Fornitore XYZ" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20" />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">Tipo documento</label>
@@ -229,7 +229,7 @@ function NewDocModal({ onClose }: { onClose: () => void }) {
           <button
             onClick={handleSend}
             disabled={!form.titolo || !form.email1}
-            className="flex-1 flex items-center justify-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+            className="flex-1 flex items-center justify-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
           >
             <Send className="h-4 w-4" /> Invia per firma
           </button>
@@ -261,7 +261,7 @@ export default function AppFirmaDigitale() {
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53] flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-[#1a375b] flex items-center gap-2">
             <FileSignature className="h-6 w-6 text-[#185FA5]" />
             Firma Digitale
           </h1>
@@ -269,7 +269,7 @@ export default function AppFirmaDigitale() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           <Plus className="h-4 w-4" /> Nuovo documento
         </button>
@@ -278,7 +278,7 @@ export default function AppFirmaDigitale() {
       {/* ── Stats ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Totali', value: stats.totali, color: 'text-[#042C53]', bg: 'bg-white' },
+          { label: 'Totali', value: stats.totali, color: 'text-[#1a375b]', bg: 'bg-white' },
           { label: 'Firmati', value: stats.firmati, color: 'text-emerald-600', bg: 'bg-white' },
           { label: 'In attesa', value: stats.attesa, color: 'text-blue-600', bg: 'bg-white' },
           { label: 'Scadenza 30gg', value: stats.urgenti, color: 'text-amber-600', bg: 'bg-amber-50' },
@@ -302,7 +302,7 @@ export default function AppFirmaDigitale() {
                 key={s}
                 onClick={() => setFilterStato(s)}
                 className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
-                  filterStato === s ? 'bg-[#042C53] text-white border-[#042C53]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                  filterStato === s ? 'bg-[#1a375b] text-white border-[#1a375b]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                 }`}
               >
                 {s === 'tutti' ? 'Tutti' : STATUS_CONFIG[s].label}
@@ -333,7 +333,7 @@ export default function AppFirmaDigitale() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-2 mb-1">
-                        <p className="text-sm font-semibold text-[#042C53] leading-snug">{doc.titolo}</p>
+                        <p className="text-sm font-semibold text-[#1a375b] leading-snug">{doc.titolo}</p>
                         <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border shrink-0 flex items-center gap-1 ${cfg.badge}`}>
                           <StatusIcon className="h-3 w-3" />
                           {cfg.label}
@@ -376,7 +376,7 @@ export default function AppFirmaDigitale() {
             <div className="px-5 py-4 border-b border-gray-100">
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <p className="text-sm font-bold text-[#042C53] leading-snug">{selected.titolo}</p>
+                  <p className="text-sm font-bold text-[#1a375b] leading-snug">{selected.titolo}</p>
                   <div className="flex items-center gap-2 mt-1">
                     <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${DOC_TYPE_CONFIG[selected.tipo].bg} ${DOC_TYPE_CONFIG[selected.tipo].text}`}>
                       {DOC_TYPE_CONFIG[selected.tipo].label}
@@ -395,11 +395,11 @@ export default function AppFirmaDigitale() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-gray-50 rounded-lg px-3 py-2.5">
                   <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Creato il</p>
-                  <p className="text-sm font-medium text-[#042C53] mt-0.5">{formatDate(selected.created_at)}</p>
+                  <p className="text-sm font-medium text-[#1a375b] mt-0.5">{formatDate(selected.created_at)}</p>
                 </div>
                 <div className="bg-gray-50 rounded-lg px-3 py-2.5">
                   <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Scadenza</p>
-                  <p className={`text-sm font-medium mt-0.5 ${daysUntil(selected.scadenza) < 0 ? 'text-red-600' : daysUntil(selected.scadenza) <= 30 ? 'text-amber-600' : 'text-[#042C53]'}`}>
+                  <p className={`text-sm font-medium mt-0.5 ${daysUntil(selected.scadenza) < 0 ? 'text-red-600' : daysUntil(selected.scadenza) <= 30 ? 'text-amber-600' : 'text-[#1a375b]'}`}>
                     {formatDate(selected.scadenza)}
                   </p>
                 </div>
@@ -422,7 +422,7 @@ export default function AppFirmaDigitale() {
                         {sig.signed ? <CheckCircle2 className="h-4 w-4 text-white" /> : <User className="h-4 w-4 text-white" />}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-[#042C53]">{sig.nome}</p>
+                        <p className="text-sm font-medium text-[#1a375b]">{sig.nome}</p>
                         <p className="text-xs text-gray-400">{sig.email}</p>
                         <p className="text-[10px] text-gray-400">{sig.ruolo}</p>
                       </div>
@@ -445,12 +445,12 @@ export default function AppFirmaDigitale() {
             {/* Actions */}
             <div className="px-5 py-4 border-t border-gray-100 space-y-2">
               {(selected.stato === 'inviato' || selected.stato === 'firmato_parziale') && (
-                <button className="w-full flex items-center justify-center gap-2 bg-[#185FA5] hover:bg-[#042C53] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                <button className="w-full flex items-center justify-center gap-2 bg-[#185FA5] hover:bg-[#1a375b] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                   <RefreshCw className="h-4 w-4" /> Invia sollecito
                 </button>
               )}
               {selected.stato === 'bozza' && (
-                <button className="w-full flex items-center justify-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                <button className="w-full flex items-center justify-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                   <Send className="h-4 w-4" /> Invia per firma
                 </button>
               )}

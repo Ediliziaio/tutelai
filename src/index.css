@@ -10,12 +10,12 @@
     --card-foreground: 222 84% 5%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 5%;
-    --primary: 199 89% 48%;
+    --primary: 199 89% 48%;  /* sky blue — works on both dark & light sections */
     --primary-foreground: 0 0% 100%;
-    --secondary: 160 84% 39%;
+    --secondary: 160 84% 39%; /* emerald */
     --secondary-foreground: 0 0% 100%;
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 46 85% 50%;    /* #eab913 brand gold */
+    --accent-foreground: 213 56% 23%; /* navy text on gold */
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
     --destructive: 0 84% 60%;
@@ -83,15 +83,30 @@
   .font-mono-accent {
     font-family: 'JetBrains Mono', monospace;
   }
+  /* Gold gradient — brand accent, readable on BOTH dark & light backgrounds (large headings) */
   .text-gradient-primary {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(199 89% 48%), hsl(160 84% 39%));
+    background-image: linear-gradient(135deg, #eab913, #d97706);
+  }
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #eab913, #d97706);
+  }
+  /* Navy-to-blue gradient for light-bg headings where you need dark text */
+  .text-gradient-navy {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #1a375b, #185FA5);
   }
   .bg-gradient-hero {
-    background: linear-gradient(135deg, hsl(199 89% 48% / 0.08) 0%, hsl(160 84% 39% / 0.08) 50%, hsl(38 92% 50% / 0.06) 100%);
+    background: linear-gradient(135deg, hsl(213 56% 23% / 0.05) 0%, hsl(212 72% 37% / 0.07) 50%, hsl(46 85% 50% / 0.05) 100%);
   }
+  /* Primary CTA — navy→blue for light section buttons */
   .bg-gradient-cta {
-    background: linear-gradient(135deg, hsl(199 89% 48%), hsl(160 84% 39%));
+    background: linear-gradient(135deg, #1a375b, #185FA5);
+  }
+  /* Gold CTA — for dark section buttons (max visibility + brand) */
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, #eab913, #d97706);
   }
   .bg-dark-section {
     background: hsl(222 84% 5%);
@@ -108,8 +123,11 @@
   .glow-sky {
     box-shadow: 0 0 30px hsl(199 89% 48% / 0.4);
   }
+  .glow-gold {
+    box-shadow: 0 0 30px hsl(46 85% 50% / 0.45);
+  }
   .glow-amber {
-    box-shadow: 0 0 30px hsl(38 92% 50% / 0.4);
+    box-shadow: 0 0 30px hsl(46 85% 50% / 0.4);
   }
 }
 

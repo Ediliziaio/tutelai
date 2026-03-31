@@ -239,7 +239,7 @@ function EventCard({ event, compact = false }: { event: CalendarEvent; compact?:
       <div className="flex items-start justify-between gap-2 mb-2">
         <div className="flex items-center gap-2 min-w-0">
           <CatIcon className={`h-4 w-4 shrink-0 ${cat.text}`} />
-          <span className="text-sm font-semibold text-[#042C53] leading-snug">{event.titolo}</span>
+          <span className="text-sm font-semibold text-[#1a375b] leading-snug">{event.titolo}</span>
         </div>
         <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1 ${urg.badge}`}>
           <UrgIcon className="h-3 w-3" />
@@ -346,7 +346,7 @@ export default function AppCalendario() {
     <div className="space-y-5">
       {/* ── Header ── */}
       <div>
-        <h1 className="text-2xl font-bold text-[#042C53] flex items-center gap-2">
+        <h1 className="text-2xl font-bold text-[#1a375b] flex items-center gap-2">
           <Calendar className="h-6 w-6 text-[#185FA5]" />
           Calendario Scadenze
         </h1>
@@ -380,7 +380,7 @@ export default function AppCalendario() {
               <ChevronLeft className="h-5 w-5 text-gray-500" />
             </button>
             <div className="flex items-center gap-3">
-              <h2 className="text-base font-bold text-[#042C53]">
+              <h2 className="text-base font-bold text-[#1a375b]">
                 {MONTHS_IT[viewMonth]} {viewYear}
               </h2>
               <button
@@ -426,7 +426,7 @@ export default function AppCalendario() {
                   `}
                 >
                   <span className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold mb-1
-                    ${isToday ? 'bg-[#042C53] text-white' : 'text-gray-700'}
+                    ${isToday ? 'bg-[#1a375b] text-white' : 'text-gray-700'}
                   `}>
                     {date.getDate()}
                   </span>
@@ -466,7 +466,7 @@ export default function AppCalendario() {
         <div className="bg-white border border-[#C8C5BC] rounded-xl flex flex-col overflow-hidden">
           {/* Panel header */}
           <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-[#042C53]">
+            <h3 className="text-sm font-semibold text-[#1a375b]">
               {selectedDate
                 ? formatDateIT(selectedDate)
                 : `${MONTHS_IT[viewMonth]} ${viewYear}`}
@@ -506,7 +506,7 @@ export default function AppCalendario() {
                 if (!next) return <p className="text-xs text-gray-400">Nessuna scadenza urgente futura.</p>;
                 return (
                   <div className="flex items-center justify-between">
-                    <p className="text-xs font-medium text-[#042C53] truncate pr-2">{next.titolo}</p>
+                    <p className="text-xs font-medium text-[#1a375b] truncate pr-2">{next.titolo}</p>
                     <span className="text-xs font-bold text-red-600 shrink-0">tra {daysUntil(next.data)}g</span>
                   </div>
                 );

@@ -183,14 +183,14 @@ function VendorCard({ vendor, selected, onSelect }: { vendor: Vendor; selected: 
     >
       <div className="flex items-start gap-3">
         <div className={`h-10 w-10 rounded-xl flex items-center justify-center shrink-0 text-sm font-bold text-white ${
-          selected ? 'bg-[#185FA5]' : 'bg-[#042C53]'
+          selected ? 'bg-[#185FA5]' : 'bg-[#1a375b]'
         }`}>
           {vendor.nome.slice(0, 2).toUpperCase()}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2 mb-1">
             <div>
-              <p className="text-sm font-semibold text-[#042C53]">{vendor.nome}</p>
+              <p className="text-sm font-semibold text-[#1a375b]">{vendor.nome}</p>
               <p className="text-xs text-gray-400">{vendor.categoria} · {vendor.paese}</p>
             </div>
             <div className="flex items-center gap-1.5 shrink-0">
@@ -251,7 +251,7 @@ export default function AppVendorManagement() {
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53] flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-[#1a375b] flex items-center gap-2">
             <Building2 className="h-6 w-6 text-[#185FA5]" />
             Vendor Management
           </h1>
@@ -265,7 +265,7 @@ export default function AppVendorManagement() {
           </button>
           <button
             onClick={() => setShowNewModal(true)}
-            className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             <Plus className="h-4 w-4" /> Aggiungi fornitore
           </button>
@@ -275,7 +275,7 @@ export default function AppVendorManagement() {
       {/* ── Stats ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Fornitori AI', value: stats.totali, color: 'text-[#042C53]' },
+          { label: 'Fornitori AI', value: stats.totali, color: 'text-[#1a375b]' },
           { label: 'Conformi', value: stats.conformi, color: 'text-emerald-600' },
           { label: 'Rischio alto/critico', value: stats.critici, color: 'text-red-600' },
           { label: 'Doc. da aggiornare', value: stats.da_aggiornare, color: 'text-amber-600' },
@@ -301,7 +301,7 @@ export default function AppVendorManagement() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Cerca fornitore..."
-                className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20"
+                className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20"
               />
             </div>
             {(['tutti', 'basso', 'medio', 'alto', 'critico'] as const).map(r => (
@@ -309,7 +309,7 @@ export default function AppVendorManagement() {
                 key={r}
                 onClick={() => setFilterRisk(r)}
                 className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
-                  filterRisk === r ? 'bg-[#042C53] text-white border-[#042C53]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                  filterRisk === r ? 'bg-[#1a375b] text-white border-[#1a375b]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                 }`}
               >
                 {r === 'tutti' ? 'Tutti' : RISK_CONFIG[r].label}
@@ -335,12 +335,12 @@ export default function AppVendorManagement() {
             {/* Header */}
             <div className="px-5 py-4 border-b border-gray-100">
               <div className="flex items-start gap-3">
-                <div className="h-11 w-11 rounded-xl bg-[#042C53] flex items-center justify-center text-white font-bold shrink-0">
+                <div className="h-11 w-11 rounded-xl bg-[#1a375b] flex items-center justify-center text-white font-bold shrink-0">
                   {selected.nome.slice(0, 2).toUpperCase()}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-base font-bold text-[#042C53]">{selected.nome}</h2>
+                    <h2 className="text-base font-bold text-[#1a375b]">{selected.nome}</h2>
                     {selected.gpai && (
                       <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">GPAI</span>
                     )}
@@ -364,7 +364,7 @@ export default function AppVendorManagement() {
                   <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Rischio</p>
                   <div className="flex items-center gap-1.5 mt-1">
                     <span className={`h-2 w-2 rounded-full ${RISK_CONFIG[selected.rischio].dot}`} />
-                    <span className="text-sm font-semibold text-[#042C53]">{RISK_CONFIG[selected.rischio].label}</span>
+                    <span className="text-sm font-semibold text-[#1a375b]">{RISK_CONFIG[selected.rischio].label}</span>
                   </div>
                 </div>
                 <div className="bg-gray-50 rounded-lg px-3 py-2.5">
@@ -376,11 +376,11 @@ export default function AppVendorManagement() {
                 </div>
                 <div className="bg-gray-50 rounded-lg px-3 py-2.5">
                   <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Ultima verifica</p>
-                  <p className="text-sm font-medium text-[#042C53] mt-0.5">{formatDate(selected.data_verifica)}</p>
+                  <p className="text-sm font-medium text-[#1a375b] mt-0.5">{formatDate(selected.data_verifica)}</p>
                 </div>
                 <div className="bg-gray-50 rounded-lg px-3 py-2.5">
                   <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Prossima revisione</p>
-                  <p className={`text-sm font-medium mt-0.5 ${daysUntil(selected.prossima_revisione) <= 30 ? 'text-amber-600' : 'text-[#042C53]'}`}>
+                  <p className={`text-sm font-medium mt-0.5 ${daysUntil(selected.prossima_revisione) <= 30 ? 'text-amber-600' : 'text-[#1a375b]'}`}>
                     {formatDate(selected.prossima_revisione)}
                   </p>
                 </div>
@@ -443,7 +443,7 @@ export default function AppVendorManagement() {
             {/* Actions */}
             <div className="px-5 py-4 border-t border-gray-100 space-y-2">
               {(selected.status === 'non_conforme' || selected.status === 'da_verificare') && (
-                <button className="w-full flex items-center justify-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                <button className="w-full flex items-center justify-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                   Avvia richiesta documentazione
                 </button>
               )}
@@ -467,12 +467,12 @@ export default function AppVendorManagement() {
             {addedMsg ? (
               <div className="text-center py-4">
                 <CheckCircle2 className="h-12 w-12 text-emerald-500 mx-auto mb-3" />
-                <p className="text-lg font-bold text-[#042C53]">Fornitore aggiunto!</p>
+                <p className="text-lg font-bold text-[#1a375b]">Fornitore aggiunto!</p>
               </div>
             ) : (
               <>
                 <div className="flex items-center justify-between mb-5">
-                  <h2 className="text-lg font-bold text-[#042C53]">Aggiungi fornitore AI</h2>
+                  <h2 className="text-lg font-bold text-[#1a375b]">Aggiungi fornitore AI</h2>
                   <button onClick={() => setShowNewModal(false)} className="text-gray-400 hover:text-gray-600 text-xl">×</button>
                 </div>
                 <div className="space-y-3">
@@ -482,7 +482,7 @@ export default function AppVendorManagement() {
                       value={newVendorName}
                       onChange={e => setNewVendorName(e.target.value)}
                       placeholder="Es. Microsoft Azure AI"
-                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#042C53]/20"
+                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a375b]/20"
                     />
                   </div>
                   <div>
@@ -528,7 +528,7 @@ export default function AppVendorManagement() {
                   <button
                     onClick={handleAddVendor}
                     disabled={!newVendorName}
-                    className="flex-1 bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50 transition-colors"
+                    className="flex-1 bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50 transition-colors"
                   >
                     Aggiungi
                   </button>

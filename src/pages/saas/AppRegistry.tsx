@@ -77,7 +77,7 @@ export default function AppRegistry() {
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#042C53]">
+          <h1 className="text-2xl font-bold text-[#1a375b]">
             AI Registry
             {tenant?.ragione_sociale && (
               <span className="text-slate-400 font-normal"> — {tenant.ragione_sociale}</span>
@@ -86,17 +86,17 @@ export default function AppRegistry() {
           <p className="text-sm text-slate-500 mt-0.5">Gestisci e monitora tutti i sistemi AI aziendali</p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
+          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
             <Upload className="h-4 w-4" />
             Importa CSV
           </button>
-          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
+          <button className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors">
             <Download className="h-4 w-4" />
             Esporta
           </button>
           <button
             onClick={() => navigate('/app/registry/new')}
-            className="bg-[#042C53] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors"
+            className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Aggiungi sistema AI
@@ -120,7 +120,7 @@ export default function AppRegistry() {
           <select
             value={filterRischio}
             onChange={(e) => setFilterRischio(e.target.value)}
-            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#042C53] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] bg-white"
+            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#1a375b] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] bg-white"
           >
             <option value={ALL}>Tutti i rischi</option>
             <option value="inaccettabile">Inaccettabile</option>
@@ -131,7 +131,7 @@ export default function AppRegistry() {
           <select
             value={filterStato}
             onChange={(e) => setFilterStato(e.target.value)}
-            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#042C53] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] bg-white"
+            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#1a375b] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] bg-white"
           >
             <option value={ALL}>Tutti gli stati</option>
             <option value="conforme">Conforme</option>
@@ -141,7 +141,7 @@ export default function AppRegistry() {
           <select
             value={filterCategoria}
             onChange={(e) => setFilterCategoria(e.target.value)}
-            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#042C53] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] bg-white"
+            className="px-3 py-2 border border-[#C8C5BC] rounded-lg text-sm text-[#1a375b] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] bg-white"
           >
             <option value={ALL}>Tutte le categorie</option>
             {categorie.map((c) => <option key={c} value={c}>{c}</option>)}
@@ -185,7 +185,7 @@ export default function AppRegistry() {
                     className={`border-b border-slate-100 last:border-0 cursor-pointer hover:bg-[#E6F1FB]/40 transition-colors ${idx % 2 === 1 ? 'bg-slate-50/40' : 'bg-white'}`}
                   >
                     <td className="px-4 py-3">
-                      <div className="font-medium text-[#042C53]">{system.nome}</div>
+                      <div className="font-medium text-[#1a375b]">{system.nome}</div>
                       {system.problemi.length > 0 && (
                         <div className="flex items-center gap-1 text-xs text-red-600 mt-0.5">
                           <AlertCircle className="h-3 w-3" />

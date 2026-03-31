@@ -113,14 +113,14 @@ export default function AppSettingsIntegrations() {
   return (
     <div className="p-6 space-y-6 bg-[#FAFAF8] min-h-full">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-[#042C53] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2">
+        <div className="fixed top-4 right-4 z-50 bg-[#1a375b] text-white px-5 py-3 rounded-xl shadow-lg text-sm flex items-center gap-2">
           <Check className="w-4 h-4 text-green-300" />
           {toast}
         </div>
       )}
 
       <div>
-        <h1 className="text-2xl font-bold text-[#042C53]">Impostazioni — Integrazioni</h1>
+        <h1 className="text-2xl font-bold text-[#1a375b]">Impostazioni — Integrazioni</h1>
         <p className="text-sm text-gray-500 mt-1">Servizi e strumenti connessi al tuo account TutelAI.</p>
       </div>
 
@@ -135,7 +135,7 @@ export default function AppSettingsIntegrations() {
               className={`px-5 py-2.5 text-sm font-medium border-b-2 transition-colors -mb-px ${
                 active
                   ? 'border-[#185FA5] text-[#185FA5] bg-[#E6F1FB]'
-                  : 'border-transparent text-gray-600 hover:text-[#042C53] hover:border-gray-300'
+                  : 'border-transparent text-gray-600 hover:text-[#1a375b] hover:border-gray-300'
               }`}
             >
               {tab.label}
@@ -181,12 +181,12 @@ export default function AppSettingsIntegrations() {
                   {/* Info */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <p className="text-sm font-semibold text-[#042C53]">{intg.nome}</p>
+                      <p className="text-sm font-semibold text-[#1a375b]">{intg.nome}</p>
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${cfg.badgeCls}`}>
                         {cfg.label}
                       </span>
                       {intg.piano_richiesto && (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-[#042C53] text-white">
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-[#1a375b] text-white">
                           {intg.piano_richiesto}
                         </span>
                       )}
@@ -214,7 +214,7 @@ export default function AppSettingsIntegrations() {
                       <button
                         onClick={() => handleSync(intg.id)}
                         disabled={syncing === intg.id}
-                        className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 disabled:opacity-60"
+                        className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 disabled:opacity-60"
                       >
                         <RefreshCw className={`w-3.5 h-3.5 ${syncing === intg.id ? 'animate-spin' : ''}`} />
                         {syncing === intg.id ? 'Sync...' : 'Sincronizza'}
@@ -229,7 +229,7 @@ export default function AppSettingsIntegrations() {
                     ) : (
                       <button
                         onClick={() => setToast(`Configurazione ${intg.nome} — contattaci per l'attivazione.`)}
-                        className="bg-[#042C53] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
+                        className="bg-[#1a375b] hover:bg-[#185FA5] text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
                       >
                         Configura
                       </button>
@@ -252,7 +252,7 @@ export default function AppSettingsIntegrations() {
 
       {/* API Key section */}
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6 space-y-4">
-        <h2 className="font-semibold text-[#042C53]">Chiave API TutelAI</h2>
+        <h2 className="font-semibold text-[#1a375b]">Chiave API TutelAI</h2>
         <p className="text-sm text-gray-600">
           Usa questa chiave per integrare TutelAI con i tuoi sistemi interni o webhook personalizzati.
         </p>
@@ -265,7 +265,7 @@ export default function AppSettingsIntegrations() {
           />
           <button
             onClick={() => setToast('Chiave API copiata negli appunti.')}
-            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#042C53] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="border border-[#C8C5BC] hover:bg-gray-50 text-[#1a375b] px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             Copia
           </button>

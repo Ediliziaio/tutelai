@@ -12,7 +12,7 @@ const tabs = [
 ];
 
 const roleBadge: Record<string, string> = {
-  Owner: 'bg-[#042C53] text-white',
+  Owner: 'bg-[#1a375b] text-white',
   Admin: 'bg-blue-100 text-blue-800',
   Member: 'bg-gray-100 text-gray-700',
   Viewer: 'bg-gray-50 text-gray-500',
@@ -39,14 +39,14 @@ export default function AppSettingsTeam() {
 
   return (
     <div className="max-w-4xl">
-      <h1 className="text-[22px] font-bold text-[#042C53] mb-6">Impostazioni</h1>
+      <h1 className="text-[22px] font-bold text-[#1a375b] mb-6">Impostazioni</h1>
       <div className="bg-white border border-[#C8C5BC] rounded-xl p-6">
         <div className="flex gap-1 border-b border-[#C8C5BC] mb-6 overflow-x-auto">
           {tabs.map(t => {
             const active = location.pathname === t.to;
             return (
               <NavLink key={t.to} to={t.to}
-                className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium whitespace-nowrap border-b-2 -mb-px transition-colors ${active ? 'border-[#185FA5] text-[#185FA5]' : 'border-transparent text-gray-500 hover:text-[#042C53]'}`}
+                className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium whitespace-nowrap border-b-2 -mb-px transition-colors ${active ? 'border-[#185FA5] text-[#185FA5]' : 'border-transparent text-gray-500 hover:text-[#1a375b]'}`}
               >
                 <t.icon className="h-4 w-4" /> {t.label}
               </NavLink>
@@ -56,17 +56,17 @@ export default function AppSettingsTeam() {
 
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p className="text-sm text-gray-500">Utenti attivi: <span className="font-semibold text-[#042C53]">5/5</span> (piano Business)</p>
+            <p className="text-sm text-gray-500">Utenti attivi: <span className="font-semibold text-[#1a375b]">5/5</span> (piano Business)</p>
           </div>
           <button onClick={() => setShowInvite(v => !v)}
-            className="flex items-center gap-2 bg-[#042C53] hover:bg-[#185FA5] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+            className="flex items-center gap-2 bg-[#1a375b] hover:bg-[#185FA5] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
             <Mail className="h-4 w-4" /> + Invita utente
           </button>
         </div>
 
         {showInvite && (
           <div className="mb-4 p-4 bg-[#E6F1FB] border border-[#185FA5]/30 rounded-xl">
-            <p className="text-sm font-semibold text-[#042C53] mb-3">Invita nuovo membro</p>
+            <p className="text-sm font-semibold text-[#1a375b] mb-3">Invita nuovo membro</p>
             <div className="flex gap-3 flex-wrap">
               <input value={inviteEmail} onChange={e => setInviteEmail(e.target.value)} placeholder="email@azienda.it"
                 className="flex-1 h-9 px-3 border border-[#C8C5BC] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#185FA5]" />
@@ -75,7 +75,7 @@ export default function AppSettingsTeam() {
                 {['Admin','Member','Viewer','AI Officer'].map(r => <option key={r}>{r}</option>)}
               </select>
               <button onClick={() => { setSent(true); setTimeout(() => { setShowInvite(false); setSent(false); setInviteEmail(''); }, 2000); }}
-                className="bg-[#042C53] text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-[#185FA5] transition-colors">
+                className="bg-[#1a375b] text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-[#185FA5] transition-colors">
                 {sent ? '✓ Inviato!' : 'Invia invito'}
               </button>
             </div>
@@ -96,8 +96,8 @@ export default function AppSettingsTeam() {
               <tr key={m.id} className="hover:bg-[#FAFAF8]">
                 <td className="py-3">
                   <div className="flex items-center gap-2.5">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#042C53] text-white text-xs font-bold">{m.avatar_initials}</div>
-                    <span className="font-medium text-[#042C53]">{m.nome}</span>
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1a375b] text-white text-xs font-bold">{m.avatar_initials}</div>
+                    <span className="font-medium text-[#1a375b]">{m.nome}</span>
                   </div>
                 </td>
                 <td className="py-3 text-gray-500 text-xs">{m.email}</td>
@@ -121,12 +121,12 @@ export default function AppSettingsTeam() {
         </table>
 
         <div className="mt-6 pt-4 border-t border-[#C8C5BC]">
-          <p className="text-sm font-bold text-[#042C53] mb-3">Ruoli speciali TutelAI</p>
+          <p className="text-sm font-bold text-[#1a375b] mb-3">Ruoli speciali TutelAI</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[['DPO esterno','Dr. Rossi — TutelAI'],['AI Officer est.','Bianchi — TutelAI']].map(([r,n]) => (
               <div key={r} className="flex items-center justify-between p-3 border border-[#C8C5BC] rounded-xl">
                 <div>
-                  <p className="text-xs font-bold text-[#042C53]">{r}</p>
+                  <p className="text-xs font-bold text-[#1a375b]">{r}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{n}</p>
                 </div>
                 <div className="flex items-center gap-2">

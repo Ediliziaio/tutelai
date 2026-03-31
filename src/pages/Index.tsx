@@ -295,60 +295,60 @@ const aiTools = [
 ];
 
 const stats = [
-  { to: 6_200_000, suffix: "+", label: "PMI italiane esposte all'AI Act", icon: Building2 },
-  { to: 98, suffix: "%", label: "Delle PMI non è ancora in regola", icon: AlertTriangle },
-  { to: 35, prefix: "€", suffix: "M", label: "Sanzione massima violazione grave", icon: Scale },
-  { to: 5, suffix: " giorni", label: "Per il tuo primo AI Risk Report", icon: Zap },
+  { to: 6_200_000, suffix: "+", label: "PMI italiane già soggette all'AI Act", icon: Building2 },
+  { to: 98, suffix: "%", label: "Non ha ancora un documento di conformità AI", icon: AlertTriangle },
+  { to: 35, prefix: "€", suffix: "M", label: "Sanzione massima per violazione grave (Art. 99)", icon: Scale },
+  { to: 5, suffix: " giorni", label: "Dal primo contatto al tuo AI Risk Report", icon: Zap },
 ];
 
 const problems = [
   {
     icon: Users,
-    title: "Il tuo consulente non conosce l'AI Act.",
-    desc: "Il commercialista gestisce le tasse. L'avvocato fa i contratti. L'IT configura i sistemi. Nessuno dei tre sa cosa sia un \"sistema AI ad alto rischio\" o cosa preveda la Legge 132/2025. E nessuno te lo dirà finché non arriva la multa.",
-    stat: "92% degli studi legali italiani",
-    statSub: "non ha ancora aggiornato i propri servizi sull'AI Act",
+    title: "Il tuo consulente storico non copre questo.",
+    desc: "Il commercialista gestisce le tasse. L'avvocato fa i contratti. L'IT sistema i server. Ma nessuno dei tre sa risponderti se il tuo chatbot è conforme, se il software HR che usi classifica dipendenti in modo 'automatizzato' — che è già soggetto all'AI Act — o cosa serve per mettere in regola un voice agent. E non lo diranno finché non arriva una contestazione.",
+    stat: "9 studi su 10",
+    statSub: "non offrono ancora un servizio strutturato sull'AI Act",
   },
   {
     icon: FileText,
-    title: "Usi AI ogni giorno senza una riga di documentazione.",
-    desc: "ChatGPT per i testi, Copilot per Excel, un chatbot sul sito, un gestionale con scoring automatico. Li usi tutti. Senza policy interna, senza clausole nei contratti, senza formazione documentata dei dipendenti.",
+    title: "Usare l'AI non è il problema. Farlo senza documenti, sì.",
+    desc: "ChatGPT per i preventivi, Copilot per i report, un chatbot sul sito, un gestionale con scoring automatico. Nessuno di questi strumenti è vietato. Ma tutti richiedono una policy interna, l'informativa ai lavoratori, clausole specifiche con i fornitori e — in alcuni casi — una DPIA. Documenti che quasi nessuna PMI italiana ha oggi.",
     stat: "Zero documenti",
-    statSub: "= massima esposizione alle sanzioni",
+    statSub: "= responsabilità piena in caso di ispezione o contestazione",
   },
   {
     icon: Clock,
-    title: "Le scadenze non aspettano.",
-    desc: "Il 2 febbraio 2025 sono già scattate le prime sanzioni. Il 2 agosto 2026 — mancano pochi mesi — arriva l'obbligo di disclosure per chatbot e voice agent. È già successo con il GDPR. Questa volta la normativa è più ampia, più tecnica, più rapida.",
-    stat: "Fino al 7% del fatturato",
-    statSub: "per una PMI con €2M → fino a €140.000 di multa",
+    title: "Ci sono scadenze già passate. E altre che si avvicinano.",
+    desc: "Dal 2 febbraio 2025 le sanzioni per pratiche AI vietate sono già operative. Dal 2 agosto 2025 il regime sanzionatorio completo è attivo. Il 2 agosto 2026 — tra pochi mesi — scatta l'obbligo di disclosure per tutti i chatbot, voice agent e sistemi generativi. Se hai un e-commerce con raccomandazioni automatiche, rientri già nella norma adesso.",
+    stat: "2 agosto 2026",
+    statSub: "prossima scadenza critica — mancano mesi, non anni",
   },
 ];
 
 const steps = [
   {
     num: "01",
-    title: "Capiamo dove sei",
-    desc: "In 5 giorni lavorativi mappiamo tutti i sistemi AI che la tua azienda usa, li classifichiamo per livello di rischio (inaccettabile, alto, limitato, minimo) e identifichiamo i gap rispetto all'AI Act e alla Legge 132/2025.",
+    title: "Scopriamo cosa hai e cosa rischi",
+    desc: "Mappiamo tutti i sistemi AI che la tua azienda usa — compresi quelli che non chiami 'AI': chatbot, gestionali con scoring, software HR, strumenti di analisi predittiva. Li classifichiamo per livello di rischio e identifichiamo i gap concreti rispetto all'AI Act e alla Legge 132/2025. In 5 giorni lavorativi hai un quadro chiaro.",
     icon: Eye,
     badge: "AI Risk Scan — €990",
-    deliverable: "Report completo + priorità di intervento",
+    deliverable: "Report con rischi reali, gap e priorità di intervento",
   },
   {
     num: "02",
-    title: "Ti mettiamo in regola",
-    desc: "Redigiamo i documenti che la legge richiede: policy interna AI, informativa ai lavoratori, clausole AI nei contratti con clienti e fornitori, disclaimer obbligatori, piano formazione. Non template: tutto personalizzato sul tuo settore.",
+    title: "Produciamo i documenti che la legge richiede",
+    desc: "Non template scaricati da internet. Documenti personalizzati per il tuo settore, i tuoi strumenti e la tua struttura: policy interna AI, informativa ai lavoratori, clausole per fornitori e clienti, disclaimer per il chatbot, attestati del piano formazione. Quello che tiene in piedi un audit.",
     icon: FileText,
     badge: "AI Compliance Pack — €2.900",
-    deliverable: "Tutti i documenti legali pronti all'uso",
+    deliverable: "Documenti legali completi, pronti all'uso",
   },
   {
     num: "03",
-    title: "Ti teniamo aggiornato",
-    desc: "La normativa AI evolve ogni mese. Con il retainer TutelAI hai un DPO esterno e un AI Officer esterno a costo fisso, aggiornati in tempo reale, pronti a intervenire a ogni nuova scadenza o modifica normativa.",
+    title: "Manteniamo tutto aggiornato mentre la normativa cambia",
+    desc: "L'AI Act viene aggiornato, arrivano nuove linee guida, cambiano le interpretazioni. Con il retainer mensile hai un team fisso — legale e tecnologico — che monitora le novità, ti avvisa prima delle scadenze e interviene quando serve. Nessuna rincorsa dell'ultimo minuto.",
     icon: ShieldCheck,
     badge: "AI Shield Retainer — da €290/mese",
-    deliverable: "Presidio continuativo 12 mesi",
+    deliverable: "Presidio continuativo, aggiornamenti inclusi",
   },
 ];
 
@@ -356,8 +356,8 @@ const services = [
   {
     title: "AI Risk Scan",
     price: "€990",
-    time: "5 giorni",
-    desc: "Analisi completa di tutti i sistemi AI che usi, classificazione del rischio, gap analysis rispetto all'AI Act e Legge 132/2025.",
+    time: "5 giorni lavorativi",
+    desc: "Partiamo da qui con tutte le aziende. Mappatura di ogni sistema AI in uso, classificazione per livello di rischio, gap analysis rispetto ad AI Act e Legge 132/2025. Ricevi un report con priorità chiare: cosa rischi, cosa manca, cosa fare subito.",
     href: "/servizi",
     hot: false,
     icon: Eye,
@@ -365,8 +365,8 @@ const services = [
   {
     title: "AI Compliance Pack",
     price: "€2.900",
-    time: "15 giorni",
-    desc: "Policy interna, informative lavoratori, clausole contrattuali, disclaimer e piano formazione. Tutto personalizzato.",
+    time: "15 giorni lavorativi",
+    desc: "Tutti i documenti che la legge richiede: policy interna AI, informativa ai lavoratori, clausole per fornitori e clienti, disclaimer chatbot, piano formazione con attestati. Non template generici — tutto scritto su misura per la tua azienda e il tuo settore.",
     href: "/servizi",
     hot: true,
     icon: FileText,
@@ -374,8 +374,8 @@ const services = [
   {
     title: "AI Governance Setup",
     price: "€5.900",
-    time: "30 giorni",
-    desc: "Struttura di governance AI completa: ruoli, processi, comitato AI, audit trail e sistema di monitoraggio continuo.",
+    time: "30 giorni lavorativi",
+    desc: "Per chi ha più sistemi AI o è già soggetto a vigilanza: struttura di governance completa con ruoli definiti, processi documentati, registro AI attivo e audit trail. La base per resistere a qualsiasi ispezione.",
     href: "/servizi",
     hot: false,
     icon: ShieldCheck,
@@ -384,7 +384,7 @@ const services = [
     title: "AI Shield Retainer",
     price: "Da €290/mese",
     time: "Continuativo",
-    desc: "DPO + AI Officer esterno. Aggiornamenti normativi in tempo reale, interventi on-demand, report trimestrale.",
+    desc: "DPO e AI Officer esterni a costo fisso mensile. Aggiornamenti normativi in tempo reale, interventi on-demand su ogni novità, report trimestrale. Per chi non vuole pensarci ogni volta che esce una nuova circolare.",
     href: "/servizi",
     hot: false,
     icon: Shield,
@@ -392,28 +392,28 @@ const services = [
 ];
 
 const differentiators = [
-  { icon: BookOpen, title: "Avvocati specializzati in AI", desc: "Non generalisti. Professionisti che hanno letto l'AI Act articolo per articolo, conoscono la Legge 132/2025 e seguono l'evoluzione normativa europea in tempo reale." },
-  { icon: Zap, title: "Tecnologi che capiscono l'AI", desc: "Sappiamo come funzionano ChatGPT, i voice agent e i gestionali con AI. Non ci fermiamo alla superficie normativa: analizziamo il sistema reale che usi." },
-  { icon: Globe, title: "Consulenti operativi, non teorici", desc: "Traduciamo la norma in azioni concrete. Documenti pronti, processi attivi, attestati firmati. Niente PowerPoint: solo output che tiene in piedi un audit." },
+  { icon: BookOpen, title: "Legali che lavorano sull'AI Act dal 2021", desc: "I nostri avvocati seguono l'AI Act dall'iter legislativo europeo, prima che diventasse legge. Conoscono ogni articolo, ogni linea guida, ogni interpretazione ufficiale — e sanno come si applicano a un'azienda reale, non solo su carta." },
+  { icon: Zap, title: "Tecnologi che capiscono cosa fa davvero il tuo software", desc: "Non classifichiamo i sistemi dal nome commerciale. Analizziamo cosa fanno: come il software HR valuta i dipendenti, cosa elabora il chatbot, se il tuo sistema di scoring rientra nella categoria 'alto rischio'. Questo è il lavoro che nessun legale tradizionale può fare da solo." },
+  { icon: Globe, title: "Output reali, non relazioni da riunione", desc: "Un documento firmato. Un attestato di formazione. Un disclaimer aggiornato. Cose concrete che esistono e si possono mostrare in caso di audit. Non slide, non 'piani strategici', non riunioni. Solo quello che ti mette davvero in regola." },
 ];
 
 const testimonials = [
   {
-    quote: "Con TutelAI abbiamo completato l'adeguamento all'AI Act in 3 settimane. Prima non sapevamo nemmeno da dove cominciare. Il report iniziale ci ha aperto gli occhi su quanti sistemi AI stavamo usando senza saperlo.",
+    quote: "Prima dell'AI Risk Scan pensavo di avere 2 o 3 strumenti AI in azienda. Ne avevamo 9, di cui 3 con obblighi immediati che non sapevo nemmeno esistessero. Il report ci ha dato un quadro chiaro e ci ha detto esattamente da dove partire.",
     name: "Marco R.",
     role: "CEO",
     company: "Azienda manifatturiera, 45 dipendenti",
     stars: 5,
   },
   {
-    quote: "Il nostro studio usava ChatGPT ogni giorno senza una policy interna. TutelAI ci ha messo in regola in pochi giorni. Ora possiamo dirlo ai nostri clienti — ed è diventato un vantaggio competitivo.",
+    quote: "Tutto lo studio usava ChatGPT senza una policy interna. In due settimane TutelAI ci ha messo in regola con documenti personalizzati, non template. Ora lo diciamo ai clienti — essere conformi all'AI Act è diventato un argomento commerciale.",
     name: "Avv. Giulia M.",
     role: "Partner",
     company: "Studio legale, Milano",
     stars: 5,
   },
   {
-    quote: "Pensavo fosse roba per le grandi aziende. Invece il mio e-commerce con 12 dipendenti era già soggetto all'AI Act per i sistemi di raccomandazione prodotti. L'AI Risk Scan valeva 10 volte il costo.",
+    quote: "Con 12 dipendenti pensavo che l'AI Act fosse roba da multinazionali. I sistemi di raccomandazione del mio e-commerce mi rendevano già soggetto alla normativa. L'AI Risk Scan a €990 mi ha evitato un'esposizione che stavo ignorando completamente.",
     name: "Luca B.",
     role: "Founder",
     company: "E-commerce, Torino",
@@ -484,19 +484,19 @@ export default function Index() {
                   style={{ background: "rgba(234,185,19,0.12)", borderColor: "rgba(234,185,19,0.35)" }}>
                   <Sparkles size={14} style={{ color: "#eab913" }} />
                   <span className="text-xs font-subtitle font-semibold uppercase tracking-widest" style={{ color: "#eab913" }}>
-                    AI Act · Legge 132/2025 · Compliance
+                    ChatGPT in ufficio · chatbot sul sito · AI nei gestionali
                   </span>
                 </div>
 
                 <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-6">
-                  Stai usando l'AI in azienda{" "}
-                  <span className="text-gradient-primary">senza sapere se stai violando la legge.</span>
+                  Stai usando AI in azienda.{" "}
+                  <span className="text-gradient-primary">Dal 2025, questo crea obblighi legali che quasi nessuna PMI sta rispettando.</span>
                 </h1>
 
                 <p className="text-primary-foreground/75 text-lg sm:text-xl leading-relaxed mb-8 max-w-xl font-subtitle">
-                  Dal 2025 in Italia è obbligatorio rispettare l'AI Act europeo e la Legge 132/2025.
-                  La maggior parte delle PMI non lo sa ancora.{" "}
-                  <strong className="text-primary-foreground">Le sanzioni sono già operative.</strong>
+                  L'AI Act europeo e la Legge 132/2025 italiana sono già in vigore e sanzionabili.
+                  Se hai un chatbot, usi ChatGPT nei processi aziendali o hai un software che valuta persone in automatico, hai obblighi specifici di documentazione e trasparenza.{" "}
+                  <strong className="text-primary-foreground">Non devi smettere di usare l'AI — devi mettere in ordine quello che la legge richiede.</strong>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -591,10 +591,10 @@ export default function Index() {
             className="text-center mb-10"
           >
             <p className="text-muted-foreground text-sm font-subtitle font-semibold uppercase tracking-widest mb-3">
-              Tutti questi strumenti nella tua azienda sono soggetti all'AI Act
+              Strumenti che usi ogni giorno — già soggetti all'AI Act
             </p>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-heading-tight">
-              Li usi. Ma sei <span className="text-gradient-primary">in regola?</span>
+              Ognuno di questi crea <span className="text-gradient-primary">obblighi specifici.</span>
             </h2>
           </motion.div>
 
@@ -624,13 +624,13 @@ export default function Index() {
             className="text-center"
           >
             <p className="text-muted-foreground text-sm font-subtitle mb-4">
-              + qualsiasi altro sistema con raccomandazioni automatiche, scoring, classificazione o generazione di contenuti
+              + qualsiasi sistema con raccomandazioni automatiche, scoring, classificazione o generazione di contenuti. Non basta usarli responsabilmente: servono policy, clausole contrattuali e formazione documentata.
             </p>
             <button
               onClick={openModal}
               className="inline-flex items-center gap-2 text-sm font-subtitle font-bold text-primary hover:opacity-80 transition-opacity"
             >
-              Verifica gratuitamente la tua esposizione <ArrowRight size={14} />
+              Scopri gratis a cosa sei esposto <ArrowRight size={14} />
             </button>
           </motion.div>
         </div>
@@ -813,11 +813,11 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              Tre problemi che{" "}
-              <span className="text-gradient-primary">nessuno ti sta risolvendo</span>
+              Perché la tua azienda{" "}
+              <span className="text-gradient-primary">è ancora esposta</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto font-subtitle">
-              Non è colpa tua. La normativa AI è nuova, tecnica e in rapida evoluzione. Ma l'ignoranza non è un'esimente legale.
+              Non è mancanza di attenzione. È che questa normativa è nuova, tecnica e nessuno te ne ha ancora parlato in modo concreto.
             </p>
           </motion.div>
 
@@ -854,8 +854,8 @@ export default function Index() {
             style={{ background: "linear-gradient(135deg, rgba(14,165,233,0.06), rgba(16,185,129,0.06))", border: "1px solid rgba(14,165,233,0.15)" }}
           >
             <p className="text-foreground font-subtitle font-semibold text-lg">
-              TutelAI è nata esattamente per questo gap. Siamo la prima realtà italiana che unisce
-              competenza legale specializzata in AI, tecnologia e consulenza operativa in un <strong>unico interlocutore.</strong>
+              TutelAI nasce per chiudere questo gap: un unico interlocutore con competenza legale, tecnologica e operativa sull'AI. Non devi diventare un esperto di normativa.{" "}
+              <strong>Devi avere i documenti giusti e qualcuno che ti avvisi quando le cose cambiano.</strong>
             </p>
           </motion.div>
         </div>
@@ -871,11 +871,11 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              Tre passi per essere a norma —{" "}
-              <span className="text-gradient-primary">e dormire tranquillo</span>
+              Come lavoriamo{" "}
+              <span className="text-gradient-primary">insieme</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto font-subtitle">
-              Dal primo contatto alla compliance certificata. Tempi certi, output concreti, zero burocrazia inutile.
+              Tre fasi chiare, dalla diagnosi alla conformità documentata. Tempi certi, costi fissi, nessuna sorpresa.
             </p>
           </motion.div>
 
@@ -929,12 +929,12 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              Scegli come vuoi{" "}
-              <span className="text-gradient-primary">lavorare con noi</span>
+              I nostri{" "}
+              <span className="text-gradient-primary">interventi</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-subtitle">
-              Puoi partire da un singolo intervento e crescere verso un presidio continuativo.
-              Ogni servizio ha output concreti, tempi certi e zero sorprese.
+              Se non sai ancora dove sei, parti dall'AI Risk Scan — è il punto di partenza che usiamo con tutte le aziende.
+              Da lì, puoi crescere verso un presidio continuativo.
             </p>
           </motion.div>
 
@@ -999,7 +999,7 @@ export default function Index() {
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-cta text-primary-foreground font-subtitle font-bold text-base hover:opacity-90 transition-opacity shadow-lg"
             >
               <Phone size={16} />
-              Prenota una call gratuita — Scopri cosa fa per te
+              Parla con noi — capiamo insieme da dove partire
               <ArrowRight size={16} />
             </button>
           </motion.div>
@@ -1019,12 +1019,12 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              Non siamo consulenti.{" "}
-              <span className="text-gradient-primary">Siamo il tuo team legale-tecnologico sull'AI.</span>
+              Cosa ci distingue{" "}
+              <span className="text-gradient-primary">da uno studio legale tradizionale</span>
             </h2>
             <p className="text-primary-foreground/65 text-lg max-w-2xl mx-auto font-subtitle">
-              Gli studi legali trattano l'AI come un contratto. I consulenti IT come una configurazione. Le agenzie come un adempimento.
-              Nessuno tiene insieme i tre livelli. <strong className="text-primary-foreground">Noi sì.</strong>
+              Conoscere la norma non basta. Bisogna capire cosa fa davvero un voice agent, quando un software HR è considerato 'ad alto rischio' e cosa significa in pratica un sistema di raccomandazione soggetto all'AI Act.{" "}
+              <strong className="text-primary-foreground">Questo è il lavoro che facciamo ogni giorno.</strong>
             </p>
           </motion.div>
 
@@ -1064,15 +1064,14 @@ export default function Index() {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-subtitle font-semibold mb-5">
                 <Sparkles size={12} />
-                TutelAI Platform — SaaS
+                TutelAI Platform — per il presidio quotidiano
               </div>
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-5">
-                Gestisci tutta la compliance AI{" "}
-                <span className="text-gradient-primary">in un'unica dashboard.</span>
+                Tutto sotto controllo,{" "}
+                <span className="text-gradient-primary">in un'unica piattaforma.</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8 font-subtitle">
-                Non solo consulenza: TutelAI ha anche una piattaforma SaaS che ti permette di monitorare
-                i tuoi sistemi AI, generare documenti aggiornati automaticamente e ricevere alert normativi in tempo reale.
+                La consulenza ti mette in regola. La piattaforma ti aiuta a restarci. Registro AI sempre aggiornato, monitoraggio normativo in tempo reale, documenti attuali e formazione tracciata per ogni dipendente — senza doverci pensare ogni settimana.
               </p>
               <div className="space-y-4 mb-8">
                 {[
@@ -1125,10 +1124,10 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-4">
-              Le aziende che ci hanno{" "}
-              <span className="text-gradient-primary">già scelto</span>
+              Cosa ci dicono le aziende{" "}
+              <span className="text-gradient-primary">che abbiamo già aiutato</span>
             </h2>
-            <p className="text-muted-foreground font-subtitle">Risultati reali, aziende reali.</p>
+            <p className="text-muted-foreground font-subtitle">Tre casi reali. Tre situazioni diverse. Un problema comune.</p>
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -1144,7 +1143,7 @@ export default function Index() {
               >
                 <div className="flex gap-1 mb-5">
                   {[...Array(t.stars)].map((_, j) => (
-                    <Star key={j} size={15} className="fill-primary text-primary" />
+                    <Star key={j} size={15} style={{ fill: "#eab913", color: "#eab913" }} />
                   ))}
                 </div>
                 <p className="text-foreground font-subtitle leading-relaxed mb-6 flex-1 italic text-sm">
@@ -1217,12 +1216,11 @@ export default function Index() {
             </div>
 
             <h2 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-5">
-              Scopri in 30 minuti{" "}
-              <span className="text-gradient-primary">cosa rischia la tua azienda.</span>
+              Prima di sapere cosa fare,{" "}
+              <span className="text-gradient-primary">devi sapere dove sei.</span>
             </h2>
             <p className="text-primary-foreground/70 text-lg sm:text-xl mb-10 max-w-xl mx-auto font-subtitle leading-relaxed">
-              Una call gratuita con un esperto TutelAI. Nessun impegno, nessuna pressione.
-              Solo chiarezza su dove sei e cosa fare.
+              Una call di 30 minuti con un esperto TutelAI. Ti diciamo cosa rischi concretamente, quali strumenti AI sei tenuto a documentare e qual è il primo passo per la tua situazione specifica. Senza impegno, senza offerte commerciali durante la call.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
@@ -1233,7 +1231,7 @@ export default function Index() {
                 className="inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full bg-primary-foreground text-foreground font-subtitle font-bold text-lg shadow-2xl hover:opacity-90 transition-opacity"
               >
                 <Phone size={20} />
-                Prenota la call gratuita
+                Prenota la call — è gratuita
                 <ArrowRight size={18} />
               </motion.button>
             </div>

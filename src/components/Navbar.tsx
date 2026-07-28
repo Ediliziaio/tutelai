@@ -7,10 +7,10 @@ import { Button } from "./ui/button";
 import { Link, useLocation } from "react-router-dom";
 
 const serviceLinks = [
-  { icon: Shield,    title: "AI Risk Scan",        desc: "Da €990 · 5 giorni",    href: "/servizi" },
-  { icon: FileText,  title: "AI Compliance Pack",  desc: "Da €2.900 · 15 giorni", href: "/servizi" },
-  { icon: Building2, title: "AI Governance Setup", desc: "Da €5.900 · 30 giorni", href: "/servizi" },
-  { icon: Zap,       title: "Retainer AI Shield",  desc: "Da €290/mese",           href: "/servizi" },
+  { icon: Shield,    title: "AI Risk Scan",        desc: "Mappatura e classificazione · 5 giorni",  href: "/servizi" },
+  { icon: FileText,  title: "AI Compliance Pack",  desc: "Documentazione adottabile · 15 giorni",   href: "/servizi" },
+  { icon: Building2, title: "AI Governance Setup", desc: "Struttura di governance · 30 giorni",     href: "/servizi" },
+  { icon: Zap,       title: "Retainer AI Shield",  desc: "Presidio continuativo",                   href: "/servizi" },
 ];
 
 const navLinks = [

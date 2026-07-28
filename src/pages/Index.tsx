@@ -245,7 +245,7 @@ const steps = [
     title: "Scopriamo cosa hai e cosa rischi",
     desc: "Mappiamo tutti i sistemi AI che la tua azienda usa — compresi quelli che non chiami 'AI': chatbot, gestionali con scoring, software HR, strumenti di analisi predittiva. Li classifichiamo per livello di rischio e identifichiamo i gap concreti rispetto all'AI Act e alla Legge 132/2025. In 5 giorni lavorativi hai un quadro chiaro.",
     icon: Eye,
-    badge: "AI Risk Scan — €990",
+    badge: "AI Risk Scan — 5 giorni lavorativi",
     deliverable: "Report con rischi reali, gap e priorità di intervento",
   },
   {
@@ -253,15 +253,15 @@ const steps = [
     title: "Produciamo i documenti che la legge richiede",
     desc: "Non template scaricati da internet. Documenti personalizzati per il tuo settore, i tuoi strumenti e la tua struttura: policy interna AI, informativa ai lavoratori, clausole per fornitori e clienti, disclaimer per il chatbot, attestati del piano formazione. Quello che tiene in piedi un audit.",
     icon: FileText,
-    badge: "AI Compliance Pack — €2.900",
+    badge: "AI Compliance Pack — 15 giorni lavorativi",
     deliverable: "Documenti legali completi, pronti all'uso",
   },
   {
     num: "03",
     title: "Manteniamo tutto aggiornato mentre la normativa cambia",
-    desc: "L'AI Act viene aggiornato, arrivano nuove linee guida, cambiano le interpretazioni. Con il retainer mensile hai un team fisso — legale e tecnologico — che monitora le novità, ti avvisa prima delle scadenze e interviene quando serve. Nessuna rincorsa dell'ultimo minuto.",
+    desc: "L'AI Act viene aggiornato, arrivano nuove linee guida, cambiano le interpretazioni. Con il retainer hai un presidio fisso — legale e tecnologico — che monitora le novità, ti avvisa prima delle scadenze e interviene quando serve. Nessuna rincorsa dell'ultimo minuto.",
     icon: ShieldCheck,
-    badge: "AI Shield Retainer — da €290/mese",
+    badge: "AI Shield Retainer — presidio continuativo",
     deliverable: "Presidio continuativo, aggiornamenti inclusi",
   },
 ];
@@ -269,7 +269,7 @@ const steps = [
 const services = [
   {
     title: "AI Risk Scan",
-    price: "€990",
+    price: "Su preventivo",
     time: "5 giorni lavorativi",
     desc: "Partiamo da qui con tutte le aziende. Mappatura di ogni sistema AI in uso, classificazione per livello di rischio, gap analysis rispetto ad AI Act e Legge 132/2025. Ricevi un report con priorità chiare: cosa rischi, cosa manca, cosa fare subito.",
     href: "/servizi",
@@ -278,7 +278,7 @@ const services = [
   },
   {
     title: "AI Compliance Pack",
-    price: "€2.900",
+    price: "Su preventivo",
     time: "15 giorni lavorativi",
     desc: "Tutti i documenti che la legge richiede: policy interna AI, informativa ai lavoratori, clausole per fornitori e clienti, disclaimer chatbot, piano formazione con attestati. Non template generici — tutto scritto su misura per la tua azienda e il tuo settore.",
     href: "/servizi",
@@ -287,7 +287,7 @@ const services = [
   },
   {
     title: "AI Governance Setup",
-    price: "€5.900",
+    price: "Su preventivo",
     time: "30 giorni lavorativi",
     desc: "Per chi ha più sistemi AI o è già soggetto a vigilanza: struttura di governance completa con ruoli definiti, processi documentati, registro AI attivo e audit trail. La base per resistere a qualsiasi ispezione.",
     href: "/servizi",
@@ -296,9 +296,9 @@ const services = [
   },
   {
     title: "AI Shield Retainer",
-    price: "Da €290/mese",
+    price: "Su preventivo",
     time: "Continuativo",
-    desc: "DPO e AI Officer esterni a costo fisso mensile. Aggiornamenti normativi in tempo reale, interventi on-demand su ogni novità, report trimestrale. Per chi non vuole pensarci ogni volta che esce una nuova circolare.",
+    desc: "DPO e AI Officer esterni con incarico continuativo. Aggiornamenti normativi in tempo reale, interventi on-demand su ogni novità, report trimestrale. Per chi non vuole pensarci ogni volta che esce una nuova circolare.",
     href: "/servizi",
     hot: false,
     icon: Shield,
@@ -327,7 +327,7 @@ const testimonials = [
     stars: 5,
   },
   {
-    quote: "Con 12 dipendenti pensavo che l'AI Act fosse roba da multinazionali. I sistemi di raccomandazione del mio e-commerce mi rendevano già soggetto alla normativa. L'AI Risk Scan a €990 mi ha evitato un'esposizione che stavo ignorando completamente.",
+    quote: "Con 12 dipendenti pensavo che l'AI Act fosse roba da multinazionali. I sistemi di raccomandazione del mio e-commerce mi rendevano già soggetto alla normativa. L'AI Risk Scan mi ha evitato un'esposizione che stavo ignorando completamente.",
     name: "Luca B.",
     role: "Founder",
     company: "E-commerce, Torino",
@@ -541,7 +541,7 @@ export default function Index() {
       <section className="py-20 sm:py-28 bg-dark-gradient text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0" style={{
-            backgroundImage: "radial-gradient(circle at 20% 50%, rgba(239,68,68,0.1) 0%, transparent 60%), radial-gradient(circle at 80% 50%, rgba(14,165,233,0.08) 0%, transparent 60%)"
+            backgroundImage: "radial-gradient(circle at 20% 50%, hsl(356 52% 40% / 0.08) 0%, transparent 60%), radial-gradient(circle at 80% 50%, hsl(213 56% 23% / 0.08) 0%, transparent 60%)"
           }} />
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -641,7 +641,7 @@ export default function Index() {
                   key={i}
                   className={`relative flex items-start gap-5 p-5 rounded-2xl border transition-all ${
                     d.urgent
-                      ? "border-destructive/40 bg-destructive/5 shadow-[0_0_30px_rgba(239,68,68,0.1)]"
+                      ? "border-destructive/40 bg-destructive/5 shadow-[0_0_30px_hsl(356 52% 40% / 0.08)]"
                       : "border-border bg-background"
                   }`}
                 >
@@ -862,7 +862,7 @@ export default function Index() {
       {/* ── WHY TUTELAI ──────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 bg-dark-gradient text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{
-          backgroundImage: "radial-gradient(circle at 50% 100%, rgba(14,165,233,0.12) 0%, transparent 60%)"
+          backgroundImage: "radial-gradient(circle at 50% 100%, hsl(213 56% 23% / 0.10) 0%, transparent 60%)"
         }} />
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10">
           <motion.div
@@ -939,7 +939,7 @@ export default function Index() {
                   Scopri la piattaforma <ArrowRight size={14} />
                 </Link>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground font-subtitle">
-                  Da <strong className="text-foreground">€79/mese</strong>
+                  Prova gratuita di 14 giorni
                 </div>
               </div>
             </motion.div>
@@ -1034,7 +1034,7 @@ export default function Index() {
           <motion.div
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border"
-              style={{ background: "rgba(239,68,68,0.1)", borderColor: "rgba(239,68,68,0.25)" }}>
+              style={{ background: "hsl(356 52% 40% / 0.08)", borderColor: "rgba(239,68,68,0.25)" }}>
               <AlertTriangle size={14} className="text-red-400" />
               <span className="text-red-400 text-xs font-subtitle font-semibold uppercase tracking-widest">
                 Termine 2 agosto 2026 — {conteggio(APPLICAZIONE_GENERALE)}

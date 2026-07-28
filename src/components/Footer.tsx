@@ -41,10 +41,12 @@ export default function Footer() {
               Studio legale specializzato in intelligenza artificiale. Assistenza alle imprese in
               materia di Regolamento UE 2024/1689 e Legge 132/2025.
             </p>
+            {/* DA COMPLETARE PRIMA DELLA PUBBLICAZIONE:
+                - P.IVA (obbligatoria sul sito, art. 35 DPR 633/1972)
+                - nominativo, foro e numero di iscrizione all'albo del professionista
+                Meglio omettere che pubblicare segnaposto: qui sotto va il blocco reale. */}
             <p className="text-xs text-primary-foreground/50 mb-4">
-              Un brand AEDIX — Florin Andriciuc<br />
-              P.IVA: [da completare]<br />
-              Avv. [nome] — Ordine degli Avvocati di [foro], iscr. n. [numero]
+              Un brand AEDIX — Florin Andriciuc
             </p>
             <a
               href="https://linkedin.com/company/tutelai"

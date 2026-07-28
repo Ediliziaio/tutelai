@@ -63,9 +63,9 @@ const modules = [
 const plans = [
   {
     name: "Starter",
-    price: "€79",
-    period: "/mese",
-    annual: "€790/anno · 2 mesi gratis",
+    price: "Su richiesta",
+    period: "",
+    annual: "Canone annuale agevolato",
     desc: "Per chi vuole iniziare in autonomia con i fondamentali.",
     features: [
       "AI Registry (fino a 10 sistemi)",
@@ -80,9 +80,9 @@ const plans = [
   },
   {
     name: "Business",
-    price: "€199",
-    period: "/mese",
-    annual: "€1.990/anno · 2 mesi gratis",
+    price: "Su richiesta",
+    period: "",
+    annual: "Canone annuale agevolato",
     desc: "La versione completa per PMI che usano AI attivamente.",
     features: [
       "AI Registry illimitato",
@@ -100,9 +100,9 @@ const plans = [
   },
   {
     name: "Enterprise",
-    price: "€490",
-    period: "/mese",
-    annual: "€4.900/anno · White label disponibile",
+    price: "Su richiesta",
+    period: "",
+    annual: "White label disponibile",
     desc: "Per gruppi, multi-sede e partner che rivendono la piattaforma.",
     features: [
       "Utenti illimitati",
@@ -120,10 +120,10 @@ const plans = [
 ];
 
 const addons = [
-  { icon: Bell, name: "WhatsApp/SMS alert normativo", price: "+€19/mese", desc: "Notifiche urgenti su mobile quando scatta un obbligo critico o una scadenza imminente." },
-  { icon: Lock, name: "Firma digitale FEA integrata", price: "+€29/mese", desc: "Firma i documenti compliance dalla piattaforma. Conformità eIDAS, valore legale completo." },
-  { icon: Globe, name: "AI Lawyer chat", price: "+€39/mese", desc: "Chat con AI specializzata in AI Act e GDPR. Per le domande operative quotidiane del team." },
-  { icon: Users, name: "Pack 5 utenti aggiuntivi", price: "+€49/mese", desc: "Estendi l'accesso al Training Hub e all'AI Registry a team più grandi." },
+  { icon: Bell, name: "WhatsApp/SMS alert normativo", price: "Su richiesta", desc: "Notifiche urgenti su mobile quando scatta un obbligo critico o una scadenza imminente." },
+  { icon: Lock, name: "Firma digitale FEA integrata", price: "Su richiesta", desc: "Firma i documenti compliance dalla piattaforma. Conformità eIDAS, valore legale completo." },
+  { icon: Globe, name: "AI Lawyer chat", price: "Su richiesta", desc: "Chat con AI specializzata in AI Act e GDPR. Per le domande operative quotidiane del team." },
+  { icon: Users, name: "Pack 5 utenti aggiuntivi", price: "Su richiesta", desc: "Estendi l'accesso al Training Hub e all'AI Registry a team più grandi." },
 ];
 
 const benefits = [
@@ -189,7 +189,7 @@ export default function Piattaforma() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
-        <title>TutelAI Platform — Il SaaS per la compliance AI | Da €79/mese</title>
+        <title>TutelAI Platform — L'applicativo per la compliance AI</title>
         <meta name="description" content="Registro dei sistemi AI, generazione documentale, monitoraggio normativo, formazione e audit trail in un unico applicativo, sotto supervisione legale. Prova gratuita 14 giorni, senza carta di credito." />
         <link rel="canonical" href="https://tutelai.it/piattaforma" />
       </Helmet>
@@ -199,7 +199,7 @@ export default function Piattaforma() {
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 bg-dark-gradient text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{
-          backgroundImage: "radial-gradient(circle at 15% 50%, rgba(14,165,233,0.12) 0%, transparent 60%), radial-gradient(circle at 85% 30%, rgba(16,185,129,0.1) 0%, transparent 60%)"
+          backgroundImage: "radial-gradient(circle at 15% 50%, hsl(213 56% 23% / 0.10) 0%, transparent 60%), radial-gradient(circle at 85% 30%, hsl(46 85% 50% / 0.07) 0%, transparent 60%)"
         }} />
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
@@ -323,7 +323,7 @@ export default function Piattaforma() {
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-4">
               Piani e <span className="text-gradient-primary">prezzi</span>
             </h2>
-            <p className="text-muted-foreground font-subtitle">14 giorni gratis su tutti i piani. Nessuna carta di credito richiesta.</p>
+            <p className="text-muted-foreground font-subtitle">Prova gratuita di 14 giorni su tutti i piani, senza carta di credito.</p>
           </motion.div>
           <div className="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {plans.map((p, i) => (

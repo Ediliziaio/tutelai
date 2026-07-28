@@ -15,7 +15,7 @@ const onetimeServices = [
     id: "risk-scan",
     icon: Eye,
     name: "AI Risk Scan",
-    price: "€990",
+    price: "Su preventivo",
     delivery: "5 giorni lavorativi",
     tagline: "Il punto di partenza obbligatorio.",
     desc: "Prima di capire cosa fare, devi capire dove sei. L'AI Risk Scan è la fotografia completa dello stato di compliance AI della tua azienda: ogni sistema, ogni rischio, ogni gap.",
@@ -36,13 +36,13 @@ const onetimeServices = [
     id: "compliance-pack",
     icon: FileText,
     name: "AI Compliance Pack",
-    price: "€2.900",
+    price: "Su preventivo",
     delivery: "15 giorni lavorativi",
     tagline: "Tutto il necessario per essere a norma oggi.",
     desc: "Il pacchetto più richiesto. Chiudi il capitolo compliance AI in una volta sola. Documenti personalizzati per il tuo settore — non template scaricati da internet.",
     for: "Aziende tra 20 e 100 dipendenti che usano AI attivamente e hanno bisogno di documentazione professionale e definitiva.",
     includes: [
-      "AI Risk Scan completo (incluso nel prezzo)",
+      "AI Risk Scan completo (compreso nell'incarico)",
       "Policy uso AI interno — personalizzata per il tuo settore",
       "Informativa lavoratori AI (art. 11 Legge 132/2025) — pronta alla firma",
       "Clausole AI per contratti con clienti e fornitori",
@@ -59,13 +59,13 @@ const onetimeServices = [
     id: "governance-setup",
     icon: ShieldCheck,
     name: "AI Governance Setup",
-    price: "€5.900",
+    price: "Su preventivo",
     delivery: "30 giorni lavorativi",
     tagline: "Il framework completo per chi fa sul serio.",
     desc: "Per le aziende strutturate, con sistemi AI ad alto rischio, o che vogliono anticipare gli obblighi 2026-2027 senza correre ai ripari.",
     for: "Aziende con 100+ dipendenti, o con sistemi AI che impattano su HR, credito, selezione del personale, customer scoring.",
     includes: [
-      "AI Compliance Pack completo (incluso nel prezzo)",
+      "AI Compliance Pack completo (compreso nell'incarico)",
       "DPIA per i sistemi AI critici",
       "Aggiornamento Modello 231 con rischi AI (art. 21 Legge 132/2025)",
       "AI Governance Framework: ruoli, responsabilità, supervisione",
@@ -90,28 +90,28 @@ const specialistServices = [
   {
     icon: Zap,
     name: "Voice & Agent Compliance",
-    price: "da €800",
+    price: "Su preventivo",
     urgent: true,
     desc: "Setup legale per chi usa chatbot, voice agent AI, assistenti vocali. Disclosure script obbligatori (dal 2 ago 2026), GDPR per chiamate registrate, contrattualistica con fornitori LLM.",
   },
   {
     icon: FileText,
     name: "Contratto SaaS / Software AI",
-    price: "da €600",
+    price: "Su preventivo",
     urgent: false,
     desc: "Termini e condizioni, licenze, SLA e clausole di esonero responsabilità per prodotti software con AI integrata. Per chi sviluppa o rivende software AI.",
   },
   {
     icon: Scale,
     name: "Due Diligence AI pre-M&A",
-    price: "da €3.000",
+    price: "Su preventivo",
     urgent: false,
     desc: "Analisi legale e tecnica della compliance AI di un'azienda target. Relazione strutturata per advisor, investitori, board. Obbligatoria nelle operazioni di M&A.",
   },
   {
     icon: Shield,
     name: "AI Litigation Support",
-    price: "€150–€250/ora",
+    price: "Su preventivo",
     urgent: false,
     desc: "Supporto legale in caso di contestazioni, data breach AI, ispezioni da ACN, AgID o Garante. Intervento rapido, competenza tecnica della normativa.",
   },
@@ -120,9 +120,9 @@ const specialistServices = [
 const retainerPlans = [
   {
     name: "AI Shield Base",
-    price: "€290",
-    period: "/mese",
-    annual: "€3.480/anno — risparmia €696",
+    price: "Su preventivo",
+    period: "",
+    annual: "Canone determinato in sede di incarico",
     commitment: "Min. 6 mesi",
     tagline: "La tranquillità senza il peso.",
     desc: "Per le PMI che vogliono stare aggiornate senza seguire ogni settimana l'evoluzione normativa.",
@@ -138,19 +138,19 @@ const retainerPlans = [
   },
   {
     name: "AI Shield Pro",
-    price: "€590",
-    period: "/mese",
-    annual: "€7.080/anno — risparmia €1.416",
+    price: "Su preventivo",
+    period: "",
+    annual: "Canone determinato in sede di incarico",
     commitment: "Min. 6 mesi",
     tagline: "DPO esterno + AI Officer esterno. Un unico interlocutore.",
-    desc: "Il piano più richiesto. Ti dà due figure obbligatorie in outsourcing completo, a meno del costo di un consulente generalista.",
+    desc: "Il piano più richiesto. Ti dà due figure in outsourcing completo, con un unico interlocutore e un canone determinato in sede di incarico.",
     includes: [
       "Tutto di AI Shield Base",
       "DPO esterno formalmente nominato (tutti gli obblighi GDPR coperti)",
       "AI Compliance Officer esterno (raccomandato dall'AI Act)",
       "2 call mensili da 30 min — check-up + consulenza operativa",
       "Gestione data breach AI entro 72h dalla segnalazione",
-      "Revisione 1 contratto AI/mese incluso",
+      "Revisione di un contratto AI al mese",
       "Accesso TutelAI Platform (piano Pro)",
     ],
     cta: "Attiva AI Shield Pro",
@@ -158,9 +158,9 @@ const retainerPlans = [
   },
   {
     name: "AI Shield Enterprise",
-    price: "€1.490",
-    period: "/mese",
-    annual: "€17.880/anno",
+    price: "Su preventivo",
+    period: "",
+    annual: "Canone determinato in sede di incarico",
     commitment: "Min. 12 mesi",
     tagline: "Per chi non può permettersi sorprese.",
     desc: "Banche, assicurazioni, sanità privata, studi strutturati, aziende con AI ad alto rischio. Risposta 4h, audit trimestrale, rappresentanza formale.",
@@ -182,7 +182,7 @@ const retainerPlans = [
 const faqRetainer = [
   {
     q: "Posso attivare un retainer senza aver acquistato un servizio una tantum?",
-    a: "Sì. Il primo mese include sempre un onboarding equivalente all'AI Risk Scan per capire la tua situazione di partenza. Il costo è incluso nel primo mese, senza sovrapprezzo.",
+    a: "Sì. Il primo mese include sempre un onboarding equivalente all'AI Risk Scan per capire la tua situazione di partenza. È compreso nel primo mese, senza integrazione di onorario.",
   },
   {
     q: "Posso cambiare piano nel corso del contratto?",
@@ -210,7 +210,7 @@ export default function Servizi() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
         <title>Servizi AI Compliance | TutelAI — Una tantum e Retainer mensili</title>
-        <meta name="description" content="AI Risk Scan €990, AI Compliance Pack €2.900, AI Governance Setup €5.900. Retainer mensili da €290. Conformità AI Act e Legge 132/2025 per PMI italiane." />
+        <meta name="description" content="AI Risk Scan, AI Compliance Pack, AI Governance Setup e retainer continuativi per la conformità all'AI Act e alla Legge 132/2025. Onorari a preventivo scritto." />
         <link rel="canonical" href="https://tutelai.it/servizi" />
       </Helmet>
 
@@ -219,7 +219,7 @@ export default function Servizi() {
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 bg-dark-gradient text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{
-          backgroundImage: "radial-gradient(circle at 20% 50%, rgba(14,165,233,0.12) 0%, transparent 60%), radial-gradient(circle at 80% 30%, rgba(16,185,129,0.1) 0%, transparent 60%)"
+          backgroundImage: "radial-gradient(circle at 20% 50%, hsl(213 56% 23% / 0.10) 0%, transparent 60%), radial-gradient(circle at 80% 30%, hsl(46 85% 50% / 0.07) 0%, transparent 60%)"
         }} />
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
@@ -266,7 +266,7 @@ export default function Servizi() {
               </button>
             </div>
             <p className="text-primary-foreground/40 text-xs font-subtitle">
-              {tab === "onetime" ? "Interventi chirurgici con output tangibili" : "Presidio continuativo a costo fisso prevedibile"}
+              {tab === "onetime" ? "Interventi chirurgici con output tangibili" : "Presidio continuativo, con canone concordato per iscritto"}
             </p>
           </motion.div>
         </div>
@@ -475,7 +475,7 @@ export default function Servizi() {
                   </h2>
                   <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-subtitle">
                     La normativa AI evolve ogni mese. Chi la presidia in modo continuativo dorme meglio —
-                    e costa molto meno di chi corre ai ripari dopo una sanzione.
+                    e comporta un impegno assai minore di quello richiesto dopo una contestazione.
                   </p>
                 </motion.div>
 
@@ -581,7 +581,7 @@ export default function Servizi() {
           <div className="grid sm:grid-cols-2 gap-6">
             {[
               { q: "L'AI Compliance Pack ci ha salvato da un audit a sorpresa. Documenti perfetti, tutto in 15 giorni come promesso.", name: "Marco R.", role: "CEO — Manifattura, 45 dip." },
-              { q: "Con l'AI Shield Pro ho un DPO e un AI Officer disponibili ogni mese. Costa meno di un consulente generalista e lavora su cose reali.", name: "Avv. Giulia M.", role: "Partner — Studio legale, Milano" },
+              { q: "Con l'AI Shield Pro ho un DPO e un AI Officer disponibili ogni mese, e lavorano su adempimenti concreti invece che su relazioni.", name: "Avv. Giulia M.", role: "Partner — Studio legale, Milano" },
             ].map((t, i) => (
               <motion.div key={i}
                 className="p-7 rounded-3xl border border-border bg-card"

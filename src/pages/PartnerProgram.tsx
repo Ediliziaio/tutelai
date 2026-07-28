@@ -55,15 +55,15 @@ const opportunityStats = [
     isStatic: true,
   },
   {
-    label: "20%",
-    sublabel: "Commissione ricorrente",
-    desc: "Fino a 24 mesi per ogni cliente referral. Entrate passive che si accumulano.",
+    label: "Referral",
+    sublabel: "Segnalazione qualificata",
+    desc: "Istruttoria e delivery restano in capo allo studio. Condizioni nell’accordo.",
     isStatic: true,
   },
   {
     label: "€35M",
-    sublabel: "Multa massima AI Act",
-    desc: "Il numero che spaventa i tuoi clienti — e che ti apre la porta alla conversazione.",
+    sublabel: "Sanzione massima (art. 99)",
+    desc: "L’ordine di grandezza che rende la materia non rinviabile per i tuoi assistiti.",
     isStatic: true,
   },
 ];
@@ -72,14 +72,14 @@ const partnerTypes = [
   {
     icon: TrendingUp,
     name: "Referral Partner",
-    badge: "Commissione 20%",
+    badge: "Referral",
     badgeStyle: "text-primary bg-primary/10",
-    desc: "Segnali i tuoi clienti a TutelAI. Noi gestiamo tutto — dalla proposta alla delivery. Tu ricevi il 20% ricorrente su ogni contratto firmato, per 24 mesi.",
+    desc: "Segnali la posizione allo studio, che cura proposta, istruttoria e delivery. Le condizioni della collaborazione sono definite nell’accordo scritto.",
     bullets: [
       "Nessun obbligo di volume minimo",
       "Nessuna formazione obbligatoria",
       "Accesso al portale partner con tracking referral",
-      "Commissioni pagate mensilmente",
+      "Rendicontazione periodica delle posizioni segnalate",
     ],
     ideal: "Commercialisti, consulenti del lavoro, associazioni di categoria",
     featured: false,
@@ -87,11 +87,11 @@ const partnerTypes = [
   {
     icon: Briefcase,
     name: "Reseller Partner",
-    badge: "Margine 30%",
+    badge: "Rivendita",
     badgeStyle: "text-primary-foreground bg-gradient-cta",
-    desc: "Acquisti i nostri servizi a prezzo riservato e li rivendi ai tuoi clienti al tuo prezzo. Hai il controllo della relazione commerciale — noi facciamo il delivery.",
+    desc: "Mantieni tu la relazione con l’assistito e ne curi la proposta; lo studio esegue l’incarico. Condizioni riservate, definite nell’accordo.",
     bullets: [
-      "Accesso a tutti i servizi con sconto 30%",
+      "Accesso a tutti i servizi a condizioni riservate",
       "Materiali di vendita e presentazioni clienti",
       "Formazione dedicata per il tuo team",
       "Supporto tecnico-legale su ogni progetto",
@@ -109,7 +109,7 @@ const partnerTypes = [
       "Piattaforma completa white label",
       "Dominio e brand personalizzati",
       "Setup e onboarding dedicato",
-      "Revenue share su abbonamenti clienti",
+      "Condizioni di collaborazione definite nell'accordo",
     ],
     ideal: "Studi legali strutturati, reti professionali, big consulting",
     featured: false,
@@ -141,9 +141,9 @@ const processSteps = [
   {
     num: "04",
     icon: Calculator,
-    title: "Inizia a guadagnare",
+    title: "Avvio della collaborazione",
     time: "Dal primo referral",
-    desc: "Il primo cliente che porti attiva le commissioni. Le ricevi ogni mese, per 24 mesi. Costruisci un flusso di entrate ricorrenti.",
+    desc: "Dalla prima posizione segnalata la collaborazione entra a regime, secondo quanto previsto dall’accordo sottoscritto.",
   },
 ];
 
@@ -180,17 +180,11 @@ const benefits = [
   },
   {
     icon: CheckCircle2,
-    title: "Commissioni ricorrenti 24 mesi",
-    desc: "Non una tantum. Per ogni cliente che porti, ricevi il 20% per 24 mesi. Entrate passive che crescono nel tempo.",
+    title: "Collaborazione continuativa",
+    desc: "La collaborazione non si esaurisce nella singola segnalazione: è regolata su base continuativa dall’accordo scritto.",
   },
 ];
 
-// Earning calculator data
-const earningExamples = [
-  { clients: 5, monthly: "€290–€580", annual: "€3.480–€6.960" },
-  { clients: 10, monthly: "€580–€1.160", annual: "€6.960–€13.920" },
-  { clients: 20, monthly: "€1.160–€2.320", annual: "€13.920–€27.840" },
-];
 
 // ── PAGE ────────────────────────────────────────────────────────────────────
 export default function PartnerProgram() {
@@ -200,10 +194,10 @@ export default function PartnerProgram() {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Partner Program | TutelAI — Guadagna con la compliance AI</title>
+        <title>Programma di collaborazione | TutelAI</title>
         <meta
           name="description"
-          content="Aggiungi €50.000+ di ricavi annui al tuo studio. Referral 20%, Reseller 30%, White Label. Per commercialisti, studi legali, consulenti IT. Nessun costo di iscrizione."
+          content="Programma di collaborazione TutelAI per commercialisti, studi legali e consulenti IT: referral, rivendita e white label. Condizioni definite nell’accordo, senza costi di adesione."
         />
         <link rel="canonical" href="https://tutelai.it/partner" />
         <meta property="og:title" content="Partner Program | TutelAI" />
@@ -229,10 +223,8 @@ export default function PartnerProgram() {
               Partner Program
             </span>
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-heading-tight leading-[1.04] mb-6">
-              Aggiungi{" "}
-              <span className="text-gradient-primary">€50.000+</span>
-              <br />
-              di ricavi annui al tuo studio.
+              Porta ai tuoi assistiti{" "}
+              <span className="text-gradient-primary">una risposta all’AI Act.</span>
             </h1>
             <p className="text-primary-foreground/70 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
               Con l'applicazione generale del Regolamento dal 2 agosto 2026, i tuoi assistiti devono
@@ -331,57 +323,26 @@ export default function PartnerProgram() {
                 La tua opportunità
               </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-6">
-                Ogni cliente è una{" "}
-                <span className="text-gradient-primary">commissione ricorrente.</span>
+                Una collaborazione{" "}
+                <span className="text-gradient-primary">strutturata e continuativa.</span>
               </h2>
               <p className="text-muted-foreground text-base mb-7 leading-relaxed">
-                Con TutelAI trasformi un problema urgente dei tuoi clienti in entrate passive per
-                te. Ecco cosa puoi guadagnare come Referral Partner (20%):
+                Con TutelAI il tuo assistito trova una risposta strutturata a un adempimento
+                urgente, e la collaborazione è regolata da un accordo scritto.
               </p>
 
-              {/* Earning calculator visual */}
-              <div
-                className="p-px rounded-2xl"
-                style={{
-                  background: "linear-gradient(135deg, hsl(199 89% 48%), hsl(160 84% 39%))",
-                }}
-              >
-                <div className="bg-card rounded-2xl overflow-hidden">
-                  {/* Header */}
-                  <div className="bg-gradient-cta px-5 py-3 flex items-center gap-2">
-                    <Calculator size={16} className="text-primary-foreground" />
-                    <span className="font-mono-accent text-xs font-bold text-primary-foreground uppercase tracking-widest">
-                      Simulatore commissioni
-                    </span>
-                  </div>
-                  {/* Rows */}
-                  <div className="divide-y divide-border">
-                    <div className="grid grid-cols-3 px-5 py-2.5 bg-muted/50">
-                      <span className="text-xs font-mono-accent text-muted-foreground uppercase">Clienti</span>
-                      <span className="text-xs font-mono-accent text-muted-foreground uppercase">/ mese</span>
-                      <span className="text-xs font-mono-accent text-muted-foreground uppercase">/ anno</span>
-                    </div>
-                    {earningExamples.map((row, i) => (
-                      <div key={i} className="grid grid-cols-3 px-5 py-3.5 hover:bg-muted/30 transition-colors">
-                        <span className="font-display font-extrabold text-base text-foreground">
-                          {row.clients}
-                        </span>
-                        <span className="font-subtitle font-bold text-base text-gradient-primary">
-                          {row.monthly}
-                        </span>
-                        <span className="font-subtitle font-semibold text-sm text-muted-foreground">
-                          {row.annual}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="px-5 py-3 bg-muted/20">
-                    <p className="text-xs text-muted-foreground font-subtitle">
-                      * Stime basate su servizi TutelAI da €145–€290/mese. Commissione 20% per 24 mesi.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <ul className="space-y-3 border-t border-border pt-6">
+                {[
+                  "Segnalazione qualificata: istruttoria e delivery restano in capo allo studio.",
+                  "Rendicontazione periodica delle posizioni segnalate e del relativo stato.",
+                  "Condizioni economiche definite nell'accordo di collaborazione, non pubblicate.",
+                ].map((t) => (
+                  <li key={t} className="flex gap-3 text-sm text-muted-foreground font-subtitle leading-relaxed">
+                    <span className="mt-2 h-px w-4 shrink-0 bg-accent" />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
         </div>
@@ -485,7 +446,7 @@ export default function PartnerProgram() {
               <span className="text-gradient-primary">4 passi</span>
             </h2>
             <p className="text-muted-foreground text-lg">
-              Da zero a commissioni ricorrenti in meno di due settimane.
+              Dalla candidatura all’operatività in meno di due settimane.
             </p>
           </motion.div>
 
@@ -533,7 +494,7 @@ export default function PartnerProgram() {
               <span className="text-gradient-primary">partner</span>
             </h2>
             <p className="text-muted-foreground text-lg">
-              Non solo commissioni. Un ecosistema completo per servire i tuoi clienti.
+              Non solo segnalazioni: metodo, strumenti e formazione per servire i tuoi assistiti.
             </p>
           </motion.div>
 
@@ -584,7 +545,7 @@ export default function PartnerProgram() {
               {[
                 "Nessun costo di iscrizione",
                 "Formazione inclusa",
-                "Commissioni ricorrenti",
+                "Collaborazione continuativa",
               ].map((trust, i) => (
                 <span key={i} className="flex items-center gap-1.5 text-sm text-primary-foreground/50 font-subtitle">
                   <CheckCircle2 size={14} className="text-primary/60" />

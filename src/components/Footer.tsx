@@ -38,11 +38,13 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-relaxed mb-4">
-              La prima Tech Legal Company italiana per la sicurezza nell'AI.
+              Studio legale specializzato in intelligenza artificiale. Assistenza alle imprese in
+              materia di Regolamento UE 2024/1689 e Legge 132/2025.
             </p>
             <p className="text-xs text-primary-foreground/50 mb-4">
               Un brand AEDIX — Florin Andriciuc<br />
-              P.IVA: [da completare]
+              P.IVA: [da completare]<br />
+              Avv. [nome] — Ordine degli Avvocati di [foro], iscr. n. [numero]
             </p>
             <a
               href="https://linkedin.com/company/tutelai"
@@ -108,9 +110,10 @@ export default function Footer() {
         <div className="border-t border-primary-foreground/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
           <p>© 2026 TutelAI — Un brand AEDIX S.r.l.</p>
           <p className="text-primary-foreground/40 text-center max-w-xl">
-            TutelAI fornisce servizi di consulenza legale e tecnologica in materia di compliance AI.
-            Le informazioni presenti su questo sito hanno carattere informativo e non costituiscono parere legale.
-            Per assistenza specifica consulta il nostro team.
+            I contenuti di questo sito sono diffusi ai sensi dell'art. 35 del Codice Deontologico Forense
+            e hanno finalità esclusivamente informativa: non costituiscono parere legale né instaurano
+            un rapporto professionale. L'assistenza è prestata da avvocati iscritti all'albo, previo
+            conferimento di incarico e preventivo scritto.
           </p>
           <div className="flex gap-4">
             <Link to="/privacy" className="hover:text-primary-foreground transition-colors">Privacy Policy</Link>

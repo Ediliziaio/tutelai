@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, ArrowRight, Shield, FileText, ShieldCheck, Eye, Clock, AlertTriangle, Zap, Scale, Users, Phone, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { APPLICAZIONE_GENERALE, conteggio } from "@/lib/scadenze";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -232,12 +233,12 @@ export default function Servizi() {
               <span className="text-xs font-subtitle font-semibold text-primary uppercase tracking-widest">Servizi</span>
             </div>
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-6">
-              Protezione reale,{" "}
-              <span className="text-gradient-primary">non consulenza generica.</span>
+              Incarichi a perimetro definito,{" "}
+              <span className="text-gradient-primary">con deliverable e termini certi.</span>
             </h1>
             <p className="text-primary-foreground/75 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-8 font-subtitle">
-              Output concreti, tempi certi, prezzi fissi. Ogni servizio ha un deliverable chiaro
-              — non un PDF di buone intenzioni.
+              Ogni servizio indica gli atti che vengono prodotti, i tempi di consegna e l'onorario,
+              determinato in via forfettaria e concordato per iscritto prima del conferimento.
             </p>
 
             {/* Tab switcher */}
@@ -409,8 +410,8 @@ export default function Servizi() {
                   className="mt-10 max-w-3xl mx-auto flex items-center gap-4 p-4 rounded-2xl border border-destructive/25 bg-destructive/5">
                   <AlertTriangle size={20} className="text-destructive shrink-0" />
                   <p className="text-sm font-subtitle text-foreground">
-                    <strong className="text-destructive">Scadenza 2 agosto 2026:</strong> obbligo disclosure per chatbot e voice agent.
-                    Se usi un chatbot sul sito, <strong>hai pochi mesi</strong> per essere in regola.
+                    <strong className="text-destructive">Termine 2 agosto 2026:</strong> obblighi di trasparenza ex art. 50 per chatbot e voice agent.
+                    Se il tuo sito ne impiega uno, <strong>{conteggio(APPLICAZIONE_GENERALE)}</strong> per adeguarti.
                   </p>
                   <button onClick={openModal} className="shrink-0 text-xs font-subtitle font-bold text-destructive hover:opacity-70 transition-opacity whitespace-nowrap">
                     Agisci ora →
@@ -447,7 +448,7 @@ export default function Servizi() {
                           <div className="flex items-center gap-2 mb-1">
                             <h3 className="font-subtitle font-bold text-base">{s.name}</h3>
                             {s.urgent && (
-                              <span className="text-[10px] font-subtitle font-bold bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">URGENTE 2026</span>
+                              <span className="text-[10px] font-subtitle font-bold bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">TERMINE 2 AGO 2026</span>
                             )}
                           </div>
                           <span className="text-sm font-mono-accent font-bold text-primary">{s.price}</span>

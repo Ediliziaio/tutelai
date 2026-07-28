@@ -61,23 +61,23 @@ const stats = [
 const values = [
   {
     icon: Scale,
-    title: "Competenza legale specializzata",
-    desc: "Non generalisti. Avvocati che hanno studiato l'AI Act articolo per articolo e conoscono la normativa italiana sull'intelligenza artificiale dalla sua pubblicazione in Gazzetta Ufficiale.",
+    title: "Specializzazione, non consulenza generalista",
+    desc: "Avvocati che hanno studiato il Regolamento articolo per articolo e seguono la normativa italiana sull'intelligenza artificiale dalla pubblicazione in Gazzetta Ufficiale, con aggiornamento continuo sugli orientamenti applicativi.",
   },
   {
     icon: Cpu,
-    title: "Comprensione tecnica dell'AI",
-    desc: "Sappiamo come funzionano ChatGPT, i voice agent, i CRM con AI e i gestionali predittivi. La norma non si applica nel vuoto — serve capire la tecnologia prima di regolarla.",
+    title: "Istruttoria tecnica interna",
+    desc: "Conosciamo il funzionamento dei modelli linguistici, dei voice agent, dei CRM con componenti predittive e dei gestionali con scoring. La qualificazione giuridica presuppone l'accertamento di cosa il sistema esegua in concreto.",
   },
   {
     icon: Users,
-    title: "Approccio operativo, non teorico",
-    desc: "Non crediamo nella compliance come adempimento burocratico. Traduciamo la norma in documenti pronti all'uso, processi attivi, formazione documentata e controllata.",
+    title: "Atti, non pareri interlocutori",
+    desc: "L'assistenza si conclude con documenti adottabili: policy, informative, clausole contrattuali, registro dei sistemi e attestati di formazione nominativi. Materiale opponibile in sede di verifica, non relazioni descrittive.",
   },
   {
     icon: Target,
-    title: "Focus esclusivo sulle PMI italiane",
-    desc: "Le grandi aziende hanno team legali interni. Le PMI no. Siamo nati per colmare questo gap — con la stessa qualità dei grandi studi, a costi accessibili alle piccole imprese.",
+    title: "Assistenza dedicata alle PMI",
+    desc: "Le imprese strutturate dispongono di direzioni legali interne; le PMI no. Operiamo su questo segmento con onorari determinati in via forfettaria e preventivati per iscritto, come prescrive l'art. 13 della Legge 247/2012.",
   },
 ];
 
@@ -94,8 +94,13 @@ const timeline = [
   },
   {
     year: "2025",
-    title: "TutelAI nasce",
-    desc: "Prima tech-legal company italiana specializzata in compliance AI per le PMI. Un team ibrido: legale, tecnologico, operativo.",
+    title: "Costituzione di TutelAI",
+    desc: "Nasce lo studio dedicato alla materia: una rete di avvocati specializzati sul Regolamento, affiancata da un presidio tecnico interno per l'istruttoria sui sistemi.",
+  },
+  {
+    year: "2026",
+    title: "Il termine del 2 agosto",
+    desc: "Con l'applicazione generale del Regolamento prevista dall'art. 113, gli obblighi di trasparenza dell'art. 50 e la disciplina dell'Allegato III diventano esigibili nei confronti delle imprese che impiegano sistemi di AI.",
   },
 ];
 
@@ -125,14 +130,14 @@ export default function ChiSiamo() {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Chi Siamo | TutelAI — La prima Tech Legal Company italiana per l'AI Act</title>
+        <title>Chi Siamo | TutelAI — Studio legale specializzato in AI Act</title>
         <meta
           name="description"
-          content="TutelAI è la prima tech-legal company italiana specializzata in compliance AI per le PMI. Un brand AEDIX, fondato da Florin Andriciuc. Non siamo uno studio legale — siamo la risposta italiana all'AI Act."
+          content="TutelAI è lo studio legale che assiste le PMI italiane in materia di intelligenza artificiale: una rete di avvocati iscritti all'albo, specializzati sul Regolamento UE 2024/1689 e sulla Legge 132/2025, affiancata da competenze tecniche interne."
         />
         <link rel="canonical" href="https://tutelai.it/chi-siamo" />
         <meta property="og:title" content="Chi Siamo | TutelAI" />
-        <meta property="og:description" content="La prima tech-legal company italiana per la compliance AI delle PMI." />
+        <meta property="og:description" content="Studio legale e rete di avvocati specializzati in AI Act per le PMI italiane." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -154,16 +159,17 @@ export default function ChiSiamo() {
               Chi Siamo
             </span>
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-heading-tight leading-[1.04] mb-6">
-              Non siamo uno studio legale.
+              Uno studio legale
               <br />
               <span className="text-gradient-primary">
-                Siamo la risposta italiana all'AI Act.
+                dedicato all'intelligenza artificiale.
               </span>
             </h1>
             <p className="text-primary-foreground/70 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-              La prima tech-legal company italiana nata con un solo scopo: rendere la compliance AI
-              accessibile, comprensibile e sostenibile per le 4 milioni di PMI italiane che usano già
-              l'intelligenza artificiale senza saperlo.
+              Una rete di avvocati iscritti all'albo, specializzati sul Regolamento UE 2024/1689 e sulla
+              Legge 132/2025, affiancata da competenze tecniche interne. Assistiamo le PMI italiane che
+              impiegano sistemi di intelligenza artificiale nei processi aziendali, spesso senza averli
+              ancora qualificati come tali.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
@@ -204,31 +210,32 @@ export default function ChiSiamo() {
 
             <div className="space-y-7 text-foreground/70 text-lg leading-relaxed">
               <p>
-                In Italia ci sono oltre <strong className="text-foreground">4 milioni di PMI</strong>.
-                Quasi tutte usano già AI in qualche forma — ChatGPT per i testi, un chatbot sul sito,
-                un gestionale con raccomandazioni automatiche, un voice agent per il customer service.{" "}
-                <strong className="text-foreground">Nessuna ha una policy AI interna.</strong> Quasi
-                nessuna ha aggiornato i contratti con i propri clienti. Pochissime sanno cosa dice
-                l'articolo 4 dell'AI Act sull'AI Literacy obbligatoria.
+                In Italia operano oltre <strong className="text-foreground">4 milioni di PMI</strong>.
+                Una parte consistente impiega già sistemi di intelligenza artificiale in qualche forma —
+                modelli linguistici per la redazione di testi, chatbot sul sito, gestionali con
+                raccomandazioni automatiche, voice agent nel servizio clienti — senza averli qualificati
+                come tali.{" "}
+                <strong className="text-foreground">Nella maggior parte dei casi manca una policy interna</strong>,
+                i contratti con clienti e fornitori non sono stati adeguati e l'obbligo di alfabetizzazione
+                previsto dall'art. 4 del Regolamento non risulta assolto.
               </p>
               <p>
-                Vai da un avvocato tradizionale. Ti ascolta, ti chiede di tornare con tutti i
-                documenti, ti manda un parere legale da 30 pagine che non capisci e ti fa pagare
-                €3.000. Ma{" "}
-                <strong className="text-foreground">non sa come funziona ChatGPT</strong>, non sa
-                distinguere un sistema AI ad alto rischio da uno a rischio limitato, non può dirti
-                cosa devi cambiare nel tuo software gestionale.
+                La materia richiede due competenze che raramente coesistono. Da un lato la qualificazione
+                giuridica: stabilire se un sistema ricada fra le pratiche vietate dell'art. 5, fra i
+                sistemi ad alto rischio dell'Allegato III o fra quelli soggetti ai soli obblighi di
+                trasparenza dell'art. 50. Dall'altro l'accertamento tecnico: capire con quali criteri
+                il software valuta le persone, quali dati tratta e dove è collocato il fornitore.
               </p>
               <p>
-                Vai da un consulente IT. Ti spiega benissimo come funziona l'algoritmo. Ma{" "}
-                <strong className="text-foreground">non sa cosa dice il Regolamento UE 2024/1689</strong>
-                , non può redigere una policy AI valida, non può aggiornare i tuoi contratti di
-                servizio. Non è il suo mestiere.
+                <strong className="text-foreground">Senza il primo accertamento, il secondo non è
+                difendibile.</strong> Una classificazione fondata sul nome commerciale del software —
+                anziché sulle funzioni che esegue — non regge a una verifica, e le conseguenze ricadono
+                sull'impresa che ha adottato il sistema, non su chi glielo ha fornito.
               </p>
               <p>
-                <strong className="text-foreground">TutelAI è il ponte.</strong> Un team ibrido —
-                legale, tecnologico, operativo — che capisce sia la norma che la tecnologia, e
-                trasforma la compliance in un processo gestito, non in un'angoscia permanente.
+                Per questo lo studio riunisce entrambe le competenze: avvocati specializzati sul
+                Regolamento e sulla Legge 132/2025, e un presidio tecnico interno che istruisce
+                l'analisi dei sistemi prima che se ne valutino gli effetti giuridici.
               </p>
             </div>
 

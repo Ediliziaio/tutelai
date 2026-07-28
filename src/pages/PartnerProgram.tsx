@@ -253,9 +253,13 @@ export default function PartnerProgram() {
               di ricavi annui al tuo studio.
             </h1>
             <p className="text-primary-foreground/70 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-              Il mercato della compliance AI vale miliardi. I tuoi clienti ne hanno bisogno{" "}
-              <em>adesso</em>. TutelAI ti dà gli strumenti, la piattaforma e la formazione per
-              servirli subito — senza costruire nulla da zero.
+              Con l'applicazione generale del Regolamento dal 2 agosto 2026, i tuoi assistiti devono
+              adeguarsi in tempi brevi. TutelAI mette a disposizione metodologia, applicativo e
+              formazione per erogare il servizio senza sviluppare una competenza interna da zero.
+            </p>
+            <p className="text-primary-foreground/45 text-xs max-w-2xl mx-auto leading-relaxed mb-10">
+              Le forme di collaborazione con professionisti iscritti ad albi sono definite nel rispetto
+              dei rispettivi ordinamenti deontologici e concordate caso per caso.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button

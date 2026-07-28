@@ -8,6 +8,7 @@ import {
   Scale, TrendingUp, ShieldCheck, BarChart3,
   Globe, Award, Eye, Building2, Sparkles,
 } from "lucide-react";
+import { APPLICAZIONE_GENERALE, conteggio, etichettaBreve } from "@/lib/scadenze";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -304,24 +305,24 @@ const stats = [
 const problems = [
   {
     icon: Users,
-    title: "Il tuo consulente storico non copre questo.",
-    desc: "Il commercialista gestisce le tasse. L'avvocato fa i contratti. L'IT sistema i server. Ma nessuno dei tre sa risponderti se il tuo chatbot è conforme, se il software HR che usi classifica dipendenti in modo 'automatizzato' — che è già soggetto all'AI Act — o cosa serve per mettere in regola un voice agent. E non lo diranno finché non arriva una contestazione.",
-    stat: "9 studi su 10",
-    statSub: "non offrono ancora un servizio strutturato sull'AI Act",
+    title: "La materia non rientra nel perimetro dei tuoi consulenti abituali.",
+    desc: "Il commercialista presidia gli adempimenti fiscali, il consulente del lavoro quelli giuslavoristici, il fornitore IT l'infrastruttura. Nessuno di questi ruoli è tenuto a valutare se il tuo chatbot integri un obbligo di trasparenza ai sensi dell'art. 50 del Regolamento, o se il gestionale HR che utilizzi rientri fra i sistemi ad alto rischio dell'Allegato III. La qualificazione giuridica del sistema è un'attività riservata, e va svolta prima della contestazione.",
+    stat: "Attività riservata",
+    statSub: "la classificazione del rischio richiede una valutazione legale, non tecnica",
   },
   {
     icon: FileText,
-    title: "Usare l'AI non è il problema. Farlo senza documenti, sì.",
-    desc: "ChatGPT per i preventivi, Copilot per i report, un chatbot sul sito, un gestionale con scoring automatico. Nessuno di questi strumenti è vietato. Ma tutti richiedono una policy interna, l'informativa ai lavoratori, clausole specifiche con i fornitori e — in alcuni casi — una DPIA. Documenti che quasi nessuna PMI italiana ha oggi.",
-    stat: "Zero documenti",
-    statSub: "= responsabilità piena in caso di ispezione o contestazione",
+    title: "L'impiego dell'AI è lecito. L'impiego non documentato, no.",
+    desc: "ChatGPT per i preventivi, Copilot per la reportistica, un chatbot sul sito, un gestionale con scoring automatico: nessuno di questi strumenti è vietato dal Regolamento. Ciascuno però presuppone una policy interna sull'uso dell'AI, l'informativa ai lavoratori richiesta dall'art. 11 della Legge 132/2025, clausole contrattuali dedicate verso i fornitori e, ove ricorrano i presupposti, una valutazione d'impatto ai sensi dell'art. 35 GDPR.",
+    stat: "Onere della prova",
+    statSub: "in sede ispettiva la conformità va dimostrata con documenti datati",
   },
   {
     icon: Clock,
-    title: "Ci sono scadenze già passate. E altre che si avvicinano.",
-    desc: "Dal 2 febbraio 2025 le sanzioni per pratiche AI vietate sono già operative. Dal 2 agosto 2025 il regime sanzionatorio completo è attivo. Il 2 agosto 2026 — tra pochi mesi — scatta l'obbligo di disclosure per tutti i chatbot, voice agent e sistemi generativi. Se hai un e-commerce con raccomandazioni automatiche, rientri già nella norma adesso.",
+    title: "Una parte dei termini è già decorsa. Il più rilevante scade adesso.",
+    desc: `Dal 2 febbraio 2025 sono applicabili i divieti dell'art. 5 e l'obbligo di alfabetizzazione dell'art. 4. Dal 2 agosto 2025 è operativo l'apparato sanzionatorio degli artt. 99 e 100. Il 2 agosto 2026 — ${conteggio(APPLICAZIONE_GENERALE)} — matura il termine di applicazione generale previsto dall'art. 113: da quella data rilevano gli obblighi di trasparenza dell'art. 50 e la disciplina dei sistemi ad alto rischio dell'Allegato III.`,
     stat: "2 agosto 2026",
-    statSub: "prossima scadenza critica — mancano mesi, non anni",
+    statSub: "termine di applicazione generale del Regolamento (art. 113)",
   },
 ];
 
@@ -392,9 +393,9 @@ const services = [
 ];
 
 const differentiators = [
-  { icon: BookOpen, title: "Legali che lavorano sull'AI Act dal 2021", desc: "I nostri avvocati seguono l'AI Act dall'iter legislativo europeo, prima che diventasse legge. Conoscono ogni articolo, ogni linea guida, ogni interpretazione ufficiale — e sanno come si applicano a un'azienda reale, non solo su carta." },
-  { icon: Zap, title: "Tecnologi che capiscono cosa fa davvero il tuo software", desc: "Non classifichiamo i sistemi dal nome commerciale. Analizziamo cosa fanno: come il software HR valuta i dipendenti, cosa elabora il chatbot, se il tuo sistema di scoring rientra nella categoria 'alto rischio'. Questo è il lavoro che nessun legale tradizionale può fare da solo." },
-  { icon: Globe, title: "Output reali, non relazioni da riunione", desc: "Un documento firmato. Un attestato di formazione. Un disclaimer aggiornato. Cose concrete che esistono e si possono mostrare in caso di audit. Non slide, non 'piani strategici', non riunioni. Solo quello che ti mette davvero in regola." },
+  { icon: BookOpen, title: "Avvocati che seguono l'AI Act dal 2021", desc: "I professionisti della nostra rete hanno seguito il Regolamento fin dalla proposta della Commissione dell'aprile 2021, prima che assumesse veste definitiva. Conoscono l'articolato, gli orientamenti applicativi e il raccordo con la Legge 132/2025 — e sanno come si traducono negli adempimenti concreti di un'impresa." },
+  { icon: Zap, title: "Qualificazione tecnica prima di quella giuridica", desc: "Un sistema non si classifica dal nome commerciale. Verifichiamo cosa fa in concreto: con quali criteri il software HR valuta i dipendenti, quali dati elabora il chatbot, se il motore di scoring integri una delle fattispecie dell'Allegato III. È l'istruttoria tecnica che rende difendibile la valutazione legale." },
+  { icon: Globe, title: "Documenti opponibili, non relazioni interlocutorie", desc: "Una policy adottata e datata. Un'informativa consegnata ai lavoratori. Un registro dei sistemi AI aggiornato. Attestati di formazione nominativi. Atti che in sede di verifica assolvono l'onere della prova, non slide o piani programmatici." },
 ];
 
 const testimonials = [
@@ -422,11 +423,11 @@ const testimonials = [
 ];
 
 const deadlines = [
-  { date: "2 feb 2025", label: "Pratiche AI vietate sanzionabili + AI Literacy obbligatoria", done: true },
-  { date: "2 ago 2025", label: "Regime sanzionatorio formale attivo, governance europea operativa", done: true },
-  { date: "2 ago 2026", label: "Obbligo di disclosure per chatbot, voice agent e sistemi generativi", done: false, urgent: true },
-  { date: "2 ago 2027", label: "Sistemi HR, credito, infrastrutture critiche: conformità totale", done: false },
-  { date: "2 ago 2028", label: "Tutti i sistemi AI ad alto rischio: conformità completa o shutdown", done: false },
+  { date: "1 ago 2024", label: "Entrata in vigore del Regolamento UE 2024/1689", done: true },
+  { date: "2 feb 2025", label: "Divieti dell'art. 5 e obbligo di alfabetizzazione AI dell'art. 4", done: true },
+  { date: "2 ago 2025", label: "Obblighi sui modelli per finalità generali, governance e apparato sanzionatorio", done: true },
+  { date: "2 ago 2026", label: "Applicazione generale del Regolamento (art. 113): trasparenza ex art. 50 e sistemi ad alto rischio dell'Allegato III", done: false, urgent: true },
+  { date: "2 ago 2027", label: "Sistemi ad alto rischio incorporati in prodotti già regolati (art. 6, par. 1, Allegato I)", done: false },
 ];
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────────
@@ -437,10 +438,10 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
-        <title>TutelAI — La prima Tech Legal Company italiana per la sicurezza nell'AI</title>
-        <meta name="description" content="Stai usando AI in azienda senza sapere se stai violando la legge? TutelAI ti aiuta a essere conforme all'AI Act europeo e alla Legge 132/2025. AI Risk Scan gratuito." />
-        <meta property="og:title" content="TutelAI — Compliance AI per PMI italiane" />
-        <meta property="og:description" content="La prima Tech Legal Company italiana per la sicurezza nell'AI. AI Act, Legge 132/2025, DPO + AI Officer esterno." />
+        <title>TutelAI — Studio legale specializzato in AI Act e compliance AI</title>
+        <meta name="description" content="Dal 2 agosto 2026 il Regolamento UE 2024/1689 si applica per intero. Avvocati specializzati in AI Act e Legge 132/2025 assistono la tua azienda: AI Risk Scan, documentazione, DPO e AI Officer esterni." />
+        <meta property="og:title" content="TutelAI — Studio legale specializzato in AI Act" />
+        <meta property="og:description" content="Assistenza legale in materia di intelligenza artificiale per le PMI italiane. AI Act, Legge 132/2025, DPO e AI Officer esterni." />
         <link rel="canonical" href="https://tutelai.it" />
       </Helmet>
 
@@ -484,19 +485,20 @@ export default function Index() {
                   style={{ background: "rgba(234,185,19,0.12)", borderColor: "rgba(234,185,19,0.35)" }}>
                   <Sparkles size={14} style={{ color: "#eab913" }} />
                   <span className="text-xs font-subtitle font-semibold uppercase tracking-widest" style={{ color: "#eab913" }}>
-                    ChatGPT in ufficio · chatbot sul sito · AI nei gestionali
+                    2 agosto 2026 · {etichettaBreve(APPLICAZIONE_GENERALE)} · Reg. UE 2024/1689
                   </span>
                 </div>
 
                 <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-6">
-                  Stai usando AI in azienda.{" "}
-                  <span className="text-gradient-primary">Dal 2025, questo crea obblighi legali che quasi nessuna PMI sta rispettando.</span>
+                  Dal 2 agosto l'AI Act si applica per intero.{" "}
+                  <span className="text-gradient-primary">I sistemi che usi già oggi vanno documentati.</span>
                 </h1>
 
                 <p className="text-primary-foreground/75 text-lg sm:text-xl leading-relaxed mb-8 max-w-xl font-subtitle">
-                  L'AI Act europeo e la Legge 132/2025 italiana sono già in vigore e sanzionabili.
-                  Se hai un chatbot, usi ChatGPT nei processi aziendali o hai un software che valuta persone in automatico, hai obblighi specifici di documentazione e trasparenza.{" "}
-                  <strong className="text-primary-foreground">Non devi smettere di usare l'AI — devi mettere in ordine quello che la legge richiede.</strong>
+                  Il 2 agosto 2026 — {conteggio(APPLICAZIONE_GENERALE)} — decorre il termine di applicazione
+                  generale del Regolamento UE 2024/1689 (art. 113). Da quella data gli obblighi di trasparenza
+                  dell'art. 50 vincolano chiunque impieghi chatbot, voice agent o sistemi generativi.{" "}
+                  <strong className="text-primary-foreground">Non è richiesto rinunciare all'AI: è richiesto documentarne l'uso.</strong>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -522,9 +524,9 @@ export default function Index() {
                 {/* Trust badges */}
                 <div className="flex flex-wrap gap-4">
                   {[
-                    { icon: ShieldCheck, text: "GDPR-aligned" },
-                    { icon: Award, text: "Avvocati specializzati in AI" },
-                    { icon: TrendingUp, text: "Prima Tech Legal Company italiana" },
+                    { icon: ShieldCheck, text: "Conforme al GDPR" },
+                    { icon: Award, text: "Avvocati iscritti all'albo" },
+                    { icon: TrendingUp, text: "Specializzati in AI Act dal 2021" },
                   ].map((b, i) => (
                     <div key={i} className="flex items-center gap-2 text-xs font-subtitle text-primary-foreground/50">
                       <b.icon size={13} className="text-primary-foreground/40" />
@@ -736,10 +738,10 @@ export default function Index() {
           >
             <div className="inline-flex items-center gap-2 text-destructive text-sm font-subtitle font-bold mb-4">
               <Clock size={16} className="animate-pulse" />
-              Il 2 agosto 2026 scatta il prossimo obbligo — mancano pochi mesi
+              Termine del 2 agosto 2026 — {conteggio(APPLICAZIONE_GENERALE)}
             </div>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight">
-              Le scadenze che non puoi ignorare
+              I termini di decorrenza del Regolamento
             </h2>
           </motion.div>
 
@@ -1019,12 +1021,12 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              Cosa ci distingue{" "}
-              <span className="text-gradient-primary">da uno studio legale tradizionale</span>
+              Perché serve{" "}
+              <span className="text-gradient-primary">una specializzazione dedicata</span>
             </h2>
             <p className="text-primary-foreground/65 text-lg max-w-2xl mx-auto font-subtitle">
-              Conoscere la norma non basta. Bisogna capire cosa fa davvero un voice agent, quando un software HR è considerato 'ad alto rischio' e cosa significa in pratica un sistema di raccomandazione soggetto all'AI Act.{" "}
-              <strong className="text-primary-foreground">Questo è il lavoro che facciamo ogni giorno.</strong>
+              La conoscenza dell'articolato non è sufficiente. Occorre stabilire cosa esegue in concreto un voice agent, a quali condizioni un software HR ricada nell'Allegato III e quali obblighi gravino su chi impiega un sistema di raccomandazione.{" "}
+              <strong className="text-primary-foreground">È su questo raccordo fra istruttoria tecnica e qualificazione giuridica che lavoriamo.</strong>
             </p>
           </motion.div>
 
@@ -1211,7 +1213,7 @@ export default function Index() {
               style={{ background: "rgba(239,68,68,0.1)", borderColor: "rgba(239,68,68,0.25)" }}>
               <AlertTriangle size={14} className="text-red-400" />
               <span className="text-red-400 text-xs font-subtitle font-semibold uppercase tracking-widest">
-                Scadenza 2 agosto 2026 — Mancano pochi mesi
+                Termine 2 agosto 2026 — {conteggio(APPLICAZIONE_GENERALE)}
               </span>
             </div>
 

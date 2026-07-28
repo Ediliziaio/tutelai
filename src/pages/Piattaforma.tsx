@@ -192,7 +192,7 @@ export default function Piattaforma() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
         <title>TutelAI Platform — Il SaaS per la compliance AI | Da €79/mese</title>
-        <meta name="description" content="Gestisci tutta la compliance AI in un unico posto. AI Registry, Doc Generator, Monitor normativo, Training Hub, Audit Trail. Prova gratuita 14 giorni. Nessuna carta di credito." />
+        <meta name="description" content="Registro dei sistemi AI, generazione documentale, monitoraggio normativo, formazione e audit trail in un unico applicativo, sotto supervisione legale. Prova gratuita 14 giorni, senza carta di credito." />
         <link rel="canonical" href="https://tutelai.it/piattaforma" />
       </Helmet>
 
@@ -220,8 +220,9 @@ export default function Piattaforma() {
                 <span className="text-gradient-primary">compliance AI della tua azienda.</span>
               </h1>
               <p className="text-primary-foreground/75 text-lg leading-relaxed mb-8 font-subtitle">
-                Non aspettare il prossimo appuntamento con il consulente per sapere se sei a norma.
-                Monitora, genera documenti, forma il team — tutto in un'unica piattaforma. In tempo reale.
+                Il registro dei sistemi, la documentazione adottata, gli attestati di formazione e le
+                evidenze richieste in sede di verifica, mantenuti aggiornati in un unico applicativo —
+                sotto la supervisione dei professionisti dello studio.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mb-8">
                 <motion.button onClick={openModal}
@@ -426,7 +427,7 @@ export default function Piattaforma() {
           <div className="grid sm:grid-cols-2 gap-6">
             {[
               { q: "L'AI Registry ci ha aperto gli occhi: usavamo 12 sistemi AI senza saperlo. In 10 minuti avevo una mappa completa del rischio.", name: "Luca B.", role: "Founder — E-commerce, Torino" },
-              { q: "Il Doc Generator ha prodotto la nostra policy AI in 8 minuti. Il nostro avvocato ci avrebbe fatto pagare 2.000€ e 3 settimane.", name: "Sara V.", role: "HR Manager — Studio di architettura" },
+              { q: "La bozza di policy AI è stata generata in pochi minuti e revisionata dallo studio prima dell'adozione. Avere il testo già impostato ha ridotto di settimane il lavoro di verifica.", name: "Sara V.", role: "HR Manager — Studio di architettura" },
             ].map((t, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, y: 20 }}

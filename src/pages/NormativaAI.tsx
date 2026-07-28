@@ -17,6 +17,7 @@ import {
   Users,
   MessageSquare,
 } from "lucide-react";
+import { APPLICAZIONE_GENERALE, conteggio } from "@/lib/scadenze";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -42,7 +43,7 @@ const riskCategories = [
     borderClass: "border-orange-400/30",
     bgClass: "bg-orange-500/5",
     examples: ["AI in HR e selezione personale", "Valutazione del credito", "AI in infrastrutture critiche"],
-    when: "Dal 2 agosto 2027",
+    when: "Dal 2 agosto 2026 (Allegato III)",
     whenClass: "text-orange-600",
     highlight: false,
   },
@@ -94,19 +95,13 @@ const deadlines = [
   },
   {
     date: "2 ago 2026",
-    label: "Disclosure chatbot/voice agent, obblighi deployer rischio limitato — LEGGE 132/2025",
+    label: "Applicazione generale (art. 113): trasparenza ex art. 50 per chatbot e voice agent, sistemi ad alto rischio dell'Allegato III — HR, credito, infrastrutture critiche",
     passed: false,
     urgent: true,
   },
   {
     date: "2 ago 2027",
-    label: "Sistemi ad alto rischio: HR, credito, infrastrutture critiche",
-    passed: false,
-    urgent: false,
-  },
-  {
-    date: "2 ago 2028",
-    label: "AI in prodotti regolamentati (macchinari, dispositivi medici)",
+    label: "Sistemi ad alto rischio incorporati in prodotti già regolati: macchinari, dispositivi medici (art. 6, par. 1, Allegato I)",
     passed: false,
     urgent: false,
   },
@@ -145,7 +140,7 @@ const checklist = [
   { text: "Crea e distribuisci una policy uso AI interno", icon: FileText },
   { text: "Aggiorna le informative privacy includendo l'uso di AI", icon: Shield },
   {
-    text: "Implementa la disclosure per chatbot e voice agent entro agosto 2026",
+    text: "Adempi agli obblighi di trasparenza ex art. 50 per chatbot e voice agent entro il 2 agosto 2026",
     icon: MessageSquare,
     urgent: true,
   },
@@ -216,7 +211,7 @@ export default function NormativaAI() {
         <title>Normativa AI Italia 2025-2026 | AI Act e Legge 132/2025 per PMI — TutelAI</title>
         <meta
           name="description"
-          content="Guida completa all'AI Act europeo e alla Legge 132/2025 italiana. Obblighi, sanzioni, scadenze e checklist per le PMI italiane. Aggiornata a marzo 2026."
+          content="Guida completa all'AI Act europeo e alla Legge 132/2025 italiana. Obblighi, sanzioni, scadenze e checklist per le PMI italiane. Aggiornata a luglio 2026."
         />
         <link rel="canonical" href="https://tutelai.it/normativa-ai" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -241,7 +236,7 @@ export default function NormativaAI() {
             {/* badge */}
             <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-semibold tracking-widest uppercase text-primary mb-6 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
               <Globe size={12} />
-              Guida aggiornata — Marzo 2026
+              Guida aggiornata — Luglio 2026
             </span>
 
             <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-6">
@@ -261,7 +256,7 @@ export default function NormativaAI() {
 
             {/* chips */}
             <div className="flex flex-wrap justify-center gap-3">
-              {["✓ AI Act europeo", "✓ Legge 132/2025 italiana", "✓ Aggiornata a marzo 2026"].map(
+              {["✓ AI Act europeo", "✓ Legge 132/2025 italiana", "✓ Aggiornata a luglio 2026"].map(
                 (chip) => (
                   <span
                     key={chip}
@@ -282,8 +277,8 @@ export default function NormativaAI() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-destructive-foreground font-subtitle font-semibold text-sm sm:text-base text-center sm:text-left">
               <span className="font-mono-accent font-bold text-lg">⚠</span>{" "}
-              Il <strong>2 agosto 2026</strong> scatta l'obbligo di disclosure per chatbot e
-              voice agent. Mancano pochi mesi.
+              Il <strong>2 agosto 2026</strong> decorre il termine di applicazione generale del
+              Regolamento: {conteggio(APPLICAZIONE_GENERALE)}.
             </p>
             <button
               onClick={openModal}

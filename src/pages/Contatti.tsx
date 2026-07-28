@@ -144,7 +144,7 @@ export default function Contatti() {
         <title>Contatti | TutelAI — Prenota una call gratuita di 30 minuti</title>
         <meta
           name="description"
-          content="Prenota una call gratuita di 30 minuti con il team TutelAI. Capiamo la tua situazione, ti diciamo cosa rischi, ti proponiamo un percorso. Nessuna vendita forzata."
+          content="Primo colloquio gratuito di 30 minuti con i professionisti dello studio: inquadriamo i sistemi AI in uso, la tua esposizione rispetto al Regolamento UE 2024/1689 e il percorso di adeguamento, con preventivo scritto."
         />
         <link rel="canonical" href="https://tutelai.it/contatti" />
       </Helmet>
@@ -179,8 +179,9 @@ export default function Contatti() {
             </h1>
 
             <p className="text-muted-foreground text-lg lg:text-xl max-w-xl mx-auto leading-relaxed mb-8">
-              Non sapere da dove iniziare è normale. È normale non avere tempo per seguire
-              ogni aggiornamento normativo. Siamo qui per questo.
+              Un primo colloquio conoscitivo, senza impegno e senza onorario, per inquadrare i sistemi
+              in uso e la relativa esposizione normativa. Ogni incarico successivo è preceduto da
+              preventivo scritto, come prescrive l'art. 13 della Legge 247/2012.
             </p>
 
             {/* trust badges */}

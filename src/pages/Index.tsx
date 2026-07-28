@@ -7,7 +7,7 @@ import {
   Scale, TrendingUp, ShieldCheck, BarChart3,
   Globe, Award, Eye, Building2, Sparkles,
 } from "lucide-react";
-import { APPLICAZIONE_GENERALE, conteggio, etichettaBreve } from "@/lib/scadenze";
+import { APPLICAZIONE_GENERALE, conteggio } from "@/lib/scadenze";
 import SEOHead from "@/components/SEOHead";
 import AutoreSection from "@/components/AutoreSection";
 import Reveal from "@/components/Reveal";
@@ -354,9 +354,9 @@ export default function Index() {
     <div className="min-h-screen bg-background overflow-x-hidden">
             <SEOHead
         title="TutelAI — Studio legale specializzato in AI Act e compliance AI"
-        description="Dal 2 agosto 2026 il Regolamento UE 2024/1689 si applica per intero. Avvocati specializzati in AI Act e Legge 132/2025 assistono la tua azienda: AI Risk Scan, documentazione, DPO e AI Officer esterni."
+        description="Se ti contestano l'uso dell'AI, la prova di essere in regola devi darla tu — e oggi non esiste. Avvocati specializzati in AI Act e Legge 132/2025 producono policy, informative e registro dei sistemi. Sanzioni fino al 7% del fatturato mondiale."
         ogTitle="TutelAI — Studio legale specializzato in AI Act"
-        ogDescription="Assistenza legale in materia di intelligenza artificiale per le PMI italiane. AI Act, Legge 132/2025, DPO e AI Officer esterni."
+        ogDescription="La prova di essere in regola con l'AI Act devi darla tu. Noi la mettiamo per iscritto: policy, informative ai lavoratori, registro dei sistemi."
         canonical="https://tutelai.it"
       />
 
@@ -400,20 +400,21 @@ export default function Index() {
                   style={{ background: "rgba(234,185,19,0.12)", borderColor: "rgba(234,185,19,0.35)" }}>
                   <Sparkles size={14} style={{ color: "#eab913" }} />
                   <span className="text-xs font-subtitle font-semibold uppercase tracking-widest" style={{ color: "#eab913" }}>
-                    2 agosto 2026 · {etichettaBreve(APPLICAZIONE_GENERALE)} · Reg. UE 2024/1689
+                    ChatGPT in ufficio · chatbot sul sito · AI nei gestionali
                   </span>
                 </div>
 
                 <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-6">
-                  Dal 2 agosto l'AI Act si applica per intero.{" "}
-                  <span className="text-gradient-primary">I sistemi che usi già oggi vanno documentati.</span>
+                  Se domani ti contestano l'uso dell'AI,{" "}
+                  <span className="text-gradient-primary">la prova di essere in regola devi darla tu.</span>
                 </h1>
 
                 <p className="text-primary-foreground/75 text-lg sm:text-xl leading-relaxed mb-8 max-w-xl font-subtitle">
-                  Il 2 agosto 2026 — {conteggio(APPLICAZIONE_GENERALE)} — decorre il termine di applicazione
-                  generale del Regolamento UE 2024/1689 (art. 113). Da quella data gli obblighi di trasparenza
-                  dell'art. 50 vincolano chiunque impieghi chatbot, voice agent o sistemi generativi.{" "}
-                  <strong className="text-primary-foreground">Non è richiesto rinunciare all'AI: è richiesto documentarne l'uso.</strong>
+                  E oggi quella prova non esiste: nessuna policy sull'uso dell'AI, nessuna informativa
+                  ai lavoratori, nessun registro dei sistemi. Il Regolamento UE 2024/1689 arriva a
+                  35 milioni o al 7% del fatturato mondiale — per un'impresa da 2 milioni sono
+                  140.000 euro.{" "}
+                  <strong className="text-primary-foreground">Noi mettiamo per iscritto quello che ti verrà chiesto di dimostrare.</strong>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -626,10 +627,10 @@ export default function Index() {
           >
             <div className="inline-flex items-center gap-2 text-destructive text-sm font-subtitle font-bold mb-4">
               <Clock size={16} className="animate-pulse" />
-              Termine del 2 agosto 2026 — {conteggio(APPLICAZIONE_GENERALE)}
+              Obblighi già esigibili, non futuri
             </div>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight">
-              I termini di decorrenza del Regolamento
+              Da quando ti possono contestare
             </h2>
           </Reveal>
 
@@ -693,11 +694,11 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              Perché la tua azienda{" "}
-              <span className="text-gradient-primary">è ancora esposta</span>
+              Il problema non è l'AI che usi.{" "}
+              <span className="text-gradient-primary">È che non puoi dimostrare come la usi.</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto font-subtitle">
-              Non è mancanza di attenzione. È che questa normativa è nuova, tecnica e nessuno te ne ha ancora parlato in modo concreto.
+              In sede di verifica non conta cosa hai fatto: conta cosa riesci a produrre. Senza documenti datati, la posizione è indifendibile.
             </p>
           </Reveal>
 
@@ -740,11 +741,11 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              Come lavoriamo{" "}
-              <span className="text-gradient-primary">insieme</span>
+              Da esposto a difendibile,{" "}
+              <span className="text-gradient-primary">in tre passaggi.</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto font-subtitle">
-              Tre fasi chiare, dalla diagnosi alla conformità documentata. Tempi certi, costi fissi, nessuna sorpresa.
+              Prima scopriamo cosa hai in casa e cosa rischi. Poi produciamo gli atti che ti mancano. Infine li teniamo aggiornati mentre la norma cambia.
             </p>
           </Reveal>
 
@@ -791,12 +792,11 @@ export default function Index() {
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              I nostri{" "}
-              <span className="text-gradient-primary">interventi</span>
+              Quello che ti serve avere{" "}
+              <span className="text-gradient-primary">prima della contestazione.</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-subtitle">
-              Se non sai ancora dove sei, parti dall'AI Risk Scan — è il punto di partenza che usiamo con tutte le aziende.
-              Da lì, puoi crescere verso un presidio continuativo.
+              Se non sai da dove partire, si comincia sempre dall'AI Risk Scan: in cinque giorni sai quali sistemi usi, in che classe di rischio ricadono e cosa manca.
             </p>
           </Reveal>
 
@@ -1042,16 +1042,16 @@ export default function Index() {
               style={{ background: "hsl(356 52% 40% / 0.08)", borderColor: "rgba(239,68,68,0.25)" }}>
               <AlertTriangle size={14} className="text-red-400" />
               <span className="text-red-400 text-xs font-subtitle font-semibold uppercase tracking-widest">
-                Termine 2 agosto 2026 — {conteggio(APPLICAZIONE_GENERALE)}
+                Il primo che se ne accorge non sei tu
               </span>
             </div>
 
             <h2 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-5">
-              Prima di sapere cosa fare,{" "}
-              <span className="text-gradient-primary">devi sapere dove sei.</span>
+              Scoprirlo da un ispettore{" "}
+              <span className="text-gradient-primary">costa molto più che scoprirlo adesso.</span>
             </h2>
             <p className="text-primary-foreground/70 text-lg sm:text-xl mb-10 max-w-xl mx-auto font-subtitle leading-relaxed">
-              Una call di 30 minuti con un esperto TutelAI. Ti diciamo cosa rischi concretamente, quali strumenti AI sei tenuto a documentare e qual è il primo passo per la tua situazione specifica. Senza impegno, senza offerte commerciali durante la call.
+              Trenta minuti con un avvocato dello studio: quali sistemi AI stai già usando senza saperlo, quali obblighi hai su ciascuno e cosa manca nel tuo fascicolo. Senza impegno e senza proposte commerciali durante il colloquio.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">

@@ -215,8 +215,8 @@ export default function Piattaforma() {
                 <span className="text-xs font-subtitle font-semibold text-primary uppercase tracking-widest">TutelAI Platform · SaaS</span>
               </div>
               <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-6">
-                Il centro di controllo{" "}
-                <span className="text-gradient-primary">compliance AI della tua azienda.</span>
+                Un documento firmato una volta{" "}
+                <span className="text-gradient-primary">non ti protegge per sempre.</span>
               </h1>
               <p className="text-primary-foreground/75 text-lg leading-relaxed mb-8 font-subtitle">
                 Il registro dei sistemi, la documentazione adottata, gli attestati di formazione e le
@@ -254,8 +254,8 @@ export default function Piattaforma() {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <Reveal   >
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-5">
-                La compliance non è un documento.{" "}
-                <span className="text-gradient-primary">È un processo continuo.</span>
+                Il rischio non è sbagliare oggi.{" "}
+                <span className="text-gradient-primary">È restare fermi mentre la norma si muove.</span>
               </h2>
               <div className="space-y-4 text-muted-foreground font-subtitle leading-relaxed">
                 <p>Puoi avere la policy più bella del mondo. Ma se non c'è un sistema che la mantiene aggiornata, che monitora i cambi normativi, che tiene traccia di chi ha fatto la formazione — <strong className="text-foreground">sei fuori norma nel giro di qualche mese.</strong></p>
@@ -284,10 +284,10 @@ export default function Piattaforma() {
           <Reveal
             className="text-center mb-14">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-              6 moduli. <span className="text-gradient-primary">Una sola piattaforma.</span>
+              Sei moduli. <span className="text-gradient-primary">Un solo posto in cui trovare tutto.</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto font-subtitle">
-              Tutto quello che serve per la compliance AI della tua PMI, integrato e aggiornato in tempo reale.
+              Quando arriva una verifica, le evidenze si cercano in un posto solo — non in tre cartelle e due caselle di posta.
             </p>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
@@ -322,7 +322,7 @@ export default function Piattaforma() {
           <Reveal
             className="text-center mb-14">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-4">
-              Piani e <span className="text-gradient-primary">prezzi</span>
+              Piani e <span className="text-gradient-primary">livelli di presidio</span>
             </h2>
             <p className="text-muted-foreground font-subtitle">Prova gratuita di 14 giorni su tutti i piani, senza carta di credito.</p>
           </Reveal>

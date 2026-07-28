@@ -234,12 +234,11 @@ export default function Servizi() {
               <span className="text-xs font-subtitle font-semibold text-primary uppercase tracking-widest">Servizi</span>
             </div>
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-heading-tight leading-[1.05] mb-6">
-              Incarichi a perimetro definito,{" "}
-              <span className="text-gradient-primary">con deliverable e termini certi.</span>
+              Oggi non hai un solo documento{" "}
+              <span className="text-gradient-primary">da mettere sul tavolo di un ispettore.</span>
             </h1>
             <p className="text-primary-foreground/75 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-8 font-subtitle">
-              Ogni servizio indica gli atti che vengono prodotti, i tempi di consegna e l'onorario,
-              determinato in via forfettaria e concordato per iscritto prima del conferimento.
+              Ogni incarico si chiude con atti che quel tavolo lo reggono: policy adottate e datate, informative consegnate, registro dei sistemi, attestati nominativi. Perimetro, tempi e onorario concordati per iscritto prima di iniziare.
             </p>
 
             {/* Tab switcher */}
@@ -325,8 +324,8 @@ export default function Servizi() {
                 <Reveal
                   className="text-center mb-14">
                   <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-                    Interventi mirati,{" "}
-                    <span className="text-gradient-primary">risultati concreti</span>
+                    Chiudi il buco una volta,{" "}
+                    <span className="text-gradient-primary">con atti che restano.</span>
                   </h2>
                   <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-subtitle">
                     Non hai bisogno di un consulente a tempo indeterminato per iniziare.
@@ -471,8 +470,8 @@ export default function Servizi() {
                 <Reveal
                   className="text-center mb-14">
                   <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
-                    Il tuo team legale-AI,{" "}
-                    <span className="text-gradient-primary">sempre operativo</span>
+                    La norma cambia.{" "}
+                    <span className="text-gradient-primary">I tuoi documenti devono cambiare con lei.</span>
                   </h2>
                   <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-subtitle">
                     La normativa AI evolve ogni mese. Chi la presidia in modo continuativo dorme meglio —

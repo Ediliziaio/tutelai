@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { APPLICAZIONE_GENERALE, conteggio } from "@/lib/scadenze";
 import SEOHead from "@/components/SEOHead";
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -293,7 +294,7 @@ export default function NormativaAI() {
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* left: editorial explanation */}
-            <motion.div
+            <Reveal
             >
               <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-semibold tracking-widest uppercase text-primary mb-4 px-3 py-1.5 rounded-full bg-primary/10">
                 <Scale size={12} />
@@ -326,10 +327,10 @@ export default function NormativaAI() {
                   intellettuali e un nuovo reato penale per i deepfake.
                 </p>
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* right: "a chi si applica" card */}
-            <motion.div
+            <Reveal
               className="rounded-2xl border-2 border-primary bg-primary/5 p-6 sm:p-8"
             >
               <p className="font-mono-accent text-xs font-bold tracking-widest uppercase text-primary mb-5">
@@ -363,7 +364,7 @@ export default function NormativaAI() {
                   Gli obblighi AI Act si applicano a te.
                 </p>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -371,7 +372,7 @@ export default function NormativaAI() {
       {/* ── 4. RISK CATEGORIES ───────────────────────────────────── */}
       <section className="py-16 sm:py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <motion.div
+          <Reveal
             className="text-center mb-12"
           >
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl tracking-heading-tight mb-4">
@@ -380,11 +381,11 @@ export default function NormativaAI() {
             <p className="text-muted-foreground max-w-xl mx-auto">
               Ogni sistema AI deve essere classificato. Gli obblighi dipendono dalla categoria.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-2 gap-5">
             {riskCategories.map((cat, i) => (
-              <motion.div
+              <Reveal
                 key={cat.level}
                 className={`relative rounded-2xl border-2 p-6 ${cat.borderClass} ${cat.bgClass} ${cat.highlight ? "ring-2 ring-primary ring-offset-2" : ""}`}
               >
@@ -412,7 +413,7 @@ export default function NormativaAI() {
                   <Clock size={12} className="inline mr-1" />
                   {cat.when}
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -421,7 +422,7 @@ export default function NormativaAI() {
       {/* ── 5. SANCTIONS ─────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 lg:py-28 bg-dark-gradient text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <motion.div
+          <Reveal
             className="text-center mb-12"
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-bold tracking-widest uppercase text-red-400 mb-4 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/30">
@@ -431,7 +432,7 @@ export default function NormativaAI() {
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl tracking-heading-tight text-white">
               Le sanzioni che nessuno ti ha raccontato
             </h2>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-3 gap-5 mb-12">
             {[
@@ -457,7 +458,7 @@ export default function NormativaAI() {
                 textColor: "text-accent",
               },
             ].map((tier, i) => (
-              <motion.div
+              <Reveal
                 key={tier.label}
                 className={`rounded-2xl border-2 p-6 text-center ${tier.color}`}
               >
@@ -468,11 +469,11 @@ export default function NormativaAI() {
                   {tier.pct}
                 </p>
                 <p className="text-white/70 text-sm font-subtitle font-semibold">{tier.label}</p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
 
-          <motion.div
+          <Reveal
             className="rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8 text-center"
           >
             <p className="text-white/90 text-base sm:text-lg font-subtitle leading-relaxed max-w-2xl mx-auto">
@@ -485,28 +486,28 @@ export default function NormativaAI() {
                 automaticamente, senza un procedimento complesso.
               </span>
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
       {/* ── 6. TIMELINE ──────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <motion.div
+          <Reveal
             className="text-center mb-12"
           >
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl tracking-heading-tight mb-4">
               La timeline dell'AI Act
             </h2>
             <p className="text-muted-foreground">Dove siamo e cosa si avvicina.</p>
-          </motion.div>
+          </Reveal>
 
           <div className="relative">
             {/* vertical line */}
             <div className="absolute left-5 top-2 bottom-2 w-0.5 bg-border" />
             <div className="space-y-6">
               {deadlines.map((d, i) => (
-                <motion.div
+                <Reveal
                   key={d.date}
                   className="relative flex gap-5 items-start"
                 >
@@ -545,7 +546,7 @@ export default function NormativaAI() {
                       {d.label}
                     </p>
                   </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -555,7 +556,7 @@ export default function NormativaAI() {
       {/* ── 7. LEGGE 132/2025 ────────────────────────────────────── */}
       <section className="py-16 sm:py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <motion.div
+          <Reveal
             className="text-center mb-12"
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
@@ -569,11 +570,11 @@ export default function NormativaAI() {
               In aggiunta all'AI Act europeo, l'Italia ha introdotto obblighi specifici con la
               Legge 132/2025. Tre articoli che cambiano tutto.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-3 gap-6">
             {legge132Articles.map((art, i) => (
-              <motion.div
+              <Reveal
                 key={art.article}
                 className="rounded-2xl border border-border bg-background p-6 flex flex-col"
               >
@@ -589,7 +590,7 @@ export default function NormativaAI() {
                   {art.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">{art.desc}</p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -598,7 +599,7 @@ export default function NormativaAI() {
       {/* ── 8. COMPLIANCE CHECKLIST ──────────────────────────────── */}
       <section className="py-16 sm:py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <motion.div
+          <Reveal
             className="text-center mb-10"
           >
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl tracking-heading-tight mb-4">
@@ -607,13 +608,13 @@ export default function NormativaAI() {
             <p className="text-muted-foreground">
               Quante di queste 8 attività hai già completato?
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="space-y-3 mb-10">
             {checklist.map((item, i) => {
               const Icon = item.icon;
               return (
-                <motion.div
+                <Reveal
                   key={i}
                   className={`flex items-start gap-4 p-4 rounded-xl border ${
                     item.urgent
@@ -642,12 +643,12 @@ export default function NormativaAI() {
                     )}
                   </div>
                   <div className="w-5 h-5 rounded border-2 border-border shrink-0 mt-0.5" />
-                </motion.div>
+                </Reveal>
               );
             })}
           </div>
 
-          <motion.div
+          <Reveal
             className="text-center"
           >
             <p className="text-muted-foreground text-sm mb-5">
@@ -659,14 +660,14 @@ export default function NormativaAI() {
             >
               Parti dall'AI Risk Scan <ArrowRight size={16} />
             </button>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
       {/* ── 9. CTA ───────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 lg:py-28 bg-dark-gradient text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl text-center">
-          <motion.div
+          <Reveal
           >
             <Shield size={40} className="mx-auto mb-6 text-primary/70" />
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-heading-tight text-white mb-5 leading-[1.08]">
@@ -688,7 +689,7 @@ export default function NormativaAI() {
             <p className="text-white/40 text-xs mt-4 font-mono-accent">
               Nessuna vendita forzata. Se non siamo la soluzione giusta, te lo diciamo.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 

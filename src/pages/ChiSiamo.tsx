@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Scale, Cpu, Users, Target, ArrowRight, Building2 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -173,7 +174,7 @@ export default function ChiSiamo() {
       {/* ── MANIFESTO ─────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <motion.div
+          <Reveal
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
               Il nostro manifesto
@@ -232,7 +233,7 @@ export default function ChiSiamo() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -242,7 +243,7 @@ export default function ChiSiamo() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 max-w-5xl mx-auto">
             {stats.map((s, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="text-center"
               >
@@ -252,7 +253,7 @@ export default function ChiSiamo() {
                 <p className="text-primary-foreground/60 text-sm font-subtitle leading-snug">
                   {s.label}
                 </p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -261,7 +262,7 @@ export default function ChiSiamo() {
       {/* ── STORIA E DNA ──────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <motion.div
+          <Reveal
             className="text-center mb-16"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -271,11 +272,11 @@ export default function ChiSiamo() {
               Il DNA di{" "}
               <span className="text-gradient-primary">TutelAI</span>
             </h2>
-          </motion.div>
+          </Reveal>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: text */}
-            <motion.div
+            <Reveal
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-gradient-cta flex items-center justify-center shrink-0">
@@ -309,10 +310,10 @@ export default function ChiSiamo() {
                   capacità operativa per tradurre tutto in azioni concrete.
                 </p>
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* Right: timeline */}
-            <motion.div
+            <Reveal
               className="space-y-0"
             >
               {timeline.map((ev, i) => (
@@ -333,7 +334,7 @@ export default function ChiSiamo() {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -341,7 +342,7 @@ export default function ChiSiamo() {
       {/* ── TEAM ──────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-dark-gradient text-primary-foreground relative overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -351,11 +352,11 @@ export default function ChiSiamo() {
               Chi c'è dietro{" "}
               <span className="text-gradient-primary">TutelAI</span>
             </h2>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {/* Florin */}
-            <motion.div
+            <Reveal
               className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/8 transition-colors"
             >
               <div className="flex items-center gap-4 mb-5">
@@ -378,10 +379,10 @@ export default function ChiSiamo() {
                 AI. Ha guidato decine di PMI attraverso la transizione digitale — ora guida la loro
                 transizione verso la compliance AI.
               </p>
-            </motion.div>
+            </Reveal>
 
             {/* Co-founder legale placeholder */}
-            <motion.div
+            <Reveal
               className="p-6 rounded-2xl border border-dashed border-white/20 bg-white/3 backdrop-blur-sm"
             >
               <div className="flex items-center gap-4 mb-5">
@@ -405,7 +406,7 @@ export default function ChiSiamo() {
               <span className="inline-block text-xs font-mono-accent text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                 Profilo in arrivo
               </span>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -413,7 +414,7 @@ export default function ChiSiamo() {
       {/* ── I NOSTRI VALORI ───────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -426,11 +427,11 @@ export default function ChiSiamo() {
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4">
               Quattro principi che guidano ogni decisione, ogni documento, ogni chiamata con un cliente.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-2 gap-6">
             {values.map((v, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="group p-7 rounded-2xl border border-border bg-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
               >
@@ -441,7 +442,7 @@ export default function ChiSiamo() {
                   {v.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -450,7 +451,7 @@ export default function ChiSiamo() {
       {/* ── COME LAVORIAMO ────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -463,11 +464,11 @@ export default function ChiSiamo() {
             <p className="text-muted-foreground text-lg mt-4">
               Tre fasi. Zero burocrazia inutile. Risultati concreti.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="space-y-0">
             {steps.map((s, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="flex gap-6 items-start"
               >
@@ -485,7 +486,7 @@ export default function ChiSiamo() {
                   <h3 className="font-subtitle font-bold text-xl mb-2">{s.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{s.desc}</p>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -495,7 +496,7 @@ export default function ChiSiamo() {
       <section className="py-20 sm:py-28 lg:py-36 bg-dark-gradient text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-cta opacity-10 pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative">
-          <motion.div
+          <Reveal
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-6">
               Vuoi conoscerci?
@@ -518,7 +519,7 @@ export default function ChiSiamo() {
             <p className="mt-5 text-primary-foreground/40 text-sm font-subtitle">
               Risposta garantita entro 2 ore lavorative · Nessun impegno
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 

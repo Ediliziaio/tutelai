@@ -4,6 +4,7 @@ import { CheckCircle2, ArrowRight, Shield, FileText, ShieldCheck, Eye, Clock, Al
 import { Link } from "react-router-dom";
 import { APPLICAZIONE_GENERALE, conteggio } from "@/lib/scadenze";
 import SEOHead from "@/components/SEOHead";
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -284,16 +285,16 @@ export default function Servizi() {
             {/* ── BEFORE/AFTER ─────────────────────────────────────────────────── */}
             <section className="py-16 sm:py-20 bg-card border-b border-border">
               <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-                <motion.div
+                <Reveal
                   className="text-center mb-10">
                   <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-3">
                     La differenza è <span className="text-gradient-primary">tutto</span>
                   </h2>
                   <p className="text-muted-foreground font-subtitle">Stessa azienda, stesso AI Act. Ma una è esposta, l'altra è protetta.</p>
-                </motion.div>
+                </Reveal>
                 <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
                   {comparison.map((col, ci) => (
-                    <motion.div key={ci}
+                    <Reveal key={ci}
                       className={`rounded-2xl p-6 border ${col.bad
                         ? "border-destructive/20 bg-destructive/5"
                         : "border-primary/20 bg-primary/5"
@@ -312,7 +313,7 @@ export default function Servizi() {
                           </li>
                         ))}
                       </ul>
-                    </motion.div>
+                    </Reveal>
                   ))}
                 </div>
               </div>
@@ -321,7 +322,7 @@ export default function Servizi() {
             {/* ── ONE-TIME SERVICES ─────────────────────────────────────────────── */}
             <section className="py-16 sm:py-24">
               <div className="container mx-auto px-4 lg:px-8">
-                <motion.div
+                <Reveal
                   className="text-center mb-14">
                   <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
                     Interventi mirati,{" "}
@@ -331,7 +332,7 @@ export default function Servizi() {
                     Non hai bisogno di un consulente a tempo indeterminato per iniziare.
                     I nostri servizi sono interventi chirurgici: analisi, documenti, setup. Consegnati in tempi certi.
                   </p>
-                </motion.div>
+                </Reveal>
 
                 <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                   {onetimeServices.map((s, i) => (
@@ -398,7 +399,7 @@ export default function Servizi() {
                 </div>
 
                 {/* Urgency strip */}
-                <motion.div
+                <Reveal
                   className="mt-10 max-w-3xl mx-auto flex items-center gap-4 p-4 rounded-2xl border border-destructive/25 bg-destructive/5">
                   <AlertTriangle size={20} className="text-destructive shrink-0" />
                   <p className="text-sm font-subtitle text-foreground">
@@ -408,20 +409,20 @@ export default function Servizi() {
                   <button onClick={openModal} className="shrink-0 text-xs font-subtitle font-bold text-destructive hover:opacity-70 transition-opacity whitespace-nowrap">
                     Agisci ora →
                   </button>
-                </motion.div>
+                </Reveal>
               </div>
             </section>
 
             {/* ── SPECIALIST SERVICES ──────────────────────────────────────────── */}
             <section className="py-16 sm:py-20 bg-card">
               <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-                <motion.div
+                <Reveal
                   className="text-center mb-12">
                   <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-3">
                     Servizi <span className="text-gradient-primary">specialistici</span>
                   </h2>
                   <p className="text-muted-foreground font-subtitle">Hai un'esigenza specifica? Abbiamo la risposta.</p>
-                </motion.div>
+                </Reveal>
                 <div className="grid sm:grid-cols-2 gap-5">
                   {specialistServices.map((s, i) => (
                     <motion.div key={i}
@@ -446,13 +447,13 @@ export default function Servizi() {
                     </motion.div>
                   ))}
                 </div>
-                <motion.div
+                <Reveal
                   className="text-center mt-8">
                   <button onClick={openModal}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-subtitle font-semibold hover:bg-card transition-colors">
                     Hai un'esigenza specifica? Parliamone <ArrowRight size={14} />
                   </button>
-                </motion.div>
+                </Reveal>
               </div>
             </section>
           </motion.div>
@@ -467,7 +468,7 @@ export default function Servizi() {
             {/* ── RETAINER PLANS ───────────────────────────────────────────────── */}
             <section className="py-16 sm:py-24">
               <div className="container mx-auto px-4 lg:px-8">
-                <motion.div
+                <Reveal
                   className="text-center mb-14">
                   <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
                     Il tuo team legale-AI,{" "}
@@ -477,7 +478,7 @@ export default function Servizi() {
                     La normativa AI evolve ogni mese. Chi la presidia in modo continuativo dorme meglio —
                     e comporta un impegno assai minore di quello richiesto dopo una contestazione.
                   </p>
-                </motion.div>
+                </Reveal>
 
                 <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                   {retainerPlans.map((p, i) => (
@@ -540,7 +541,7 @@ export default function Servizi() {
                 </motion.h2>
                 <div className="space-y-3">
                   {faqRetainer.map((f, i) => (
-                    <motion.div key={i}
+                    <Reveal key={i}
                       className="rounded-2xl border border-border bg-background overflow-hidden"
                     >
                       <button
@@ -562,7 +563,7 @@ export default function Servizi() {
                           </motion.div>
                         )}
                       </AnimatePresence>
-                    </motion.div>
+                    </Reveal>
                   ))}
                 </div>
               </div>
@@ -583,7 +584,7 @@ export default function Servizi() {
               { q: "L'AI Compliance Pack ci ha salvato da un audit a sorpresa. Documenti perfetti, tutto in 15 giorni come promesso.", name: "Marco R.", role: "CEO — Manifattura, 45 dip." },
               { q: "Con l'AI Shield Pro ho un DPO e un AI Officer disponibili ogni mese, e lavorano su adempimenti concreti invece che su relazioni.", name: "Avv. Giulia M.", role: "Partner — Studio legale, Milano" },
             ].map((t, i) => (
-              <motion.div key={i}
+              <Reveal key={i}
                 className="p-7 rounded-3xl border border-border bg-card"
               >
                 <div className="flex gap-1 mb-4">
@@ -599,7 +600,7 @@ export default function Servizi() {
                     <p className="text-xs text-muted-foreground">{t.role}</p>
                   </div>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -608,7 +609,7 @@ export default function Servizi() {
       {/* ── FINAL CTA ────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 bg-dark-gradient text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <motion.div   >
+          <Reveal   >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-5">
               Non sai da dove iniziare?
             </h2>
@@ -628,7 +629,7 @@ export default function Servizi() {
                 Oppure prova la piattaforma →
               </Link>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 

@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 import { APPLICAZIONE_GENERALE, conteggio, etichettaBreve } from "@/lib/scadenze";
 import SEOHead from "@/components/SEOHead";
+import AutoreSection from "@/components/AutoreSection";
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -41,7 +43,7 @@ function ScannerCard() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        className="relative border border-white/15 bg-white/[0.04] px-7 py-6"
+        className="panel-glass relative rounded-2xl px-7 py-6"
       >
         {/* Intestazione */}
         <div className="flex items-baseline justify-between gap-4 border-b border-white/15 pb-3">
@@ -475,7 +477,7 @@ export default function Index() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {stats.map((s, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="text-center"
               >
@@ -486,7 +488,7 @@ export default function Index() {
                   <Counter to={s.to} prefix={s.prefix} suffix={s.suffix} />
                 </p>
                 <p className="text-xs text-muted-foreground font-subtitle leading-snug max-w-[140px] mx-auto">{s.label}</p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -495,7 +497,7 @@ export default function Index() {
       {/* ── AI TOOLS LOGO CLOUD ──────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
+          <Reveal
             className="text-center mb-10"
           >
             <p className="text-muted-foreground text-sm font-subtitle font-semibold uppercase tracking-widest mb-3">
@@ -504,7 +506,7 @@ export default function Index() {
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-heading-tight">
               Ognuno di questi crea <span className="text-gradient-primary">obblighi specifici.</span>
             </h2>
-          </motion.div>
+          </Reveal>
 
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto mb-8">
             {aiTools.map((tool, i) => (
@@ -521,7 +523,7 @@ export default function Index() {
             ))}
           </div>
 
-          <motion.div
+          <Reveal
             className="text-center"
           >
             <p className="text-muted-foreground text-sm font-subtitle mb-4">
@@ -533,7 +535,7 @@ export default function Index() {
             >
               Scopri gratis a cosa sei esposto <ArrowRight size={14} />
             </button>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -546,7 +548,7 @@ export default function Index() {
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <motion.div
+            <Reveal
             >
               <p className="text-red-400 text-sm font-subtitle font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
                 <AlertTriangle size={14} /> Sanzioni già operative
@@ -567,19 +569,19 @@ export default function Index() {
                   { tier: "Violazioni standard (obblighi deployer)", amount: "€15M o 3% fatturato globale", color: "#fbbf24" },
                   { tier: "Informazioni false all'autorità", amount: "€7,5M o 1% fatturato globale", color: "#34d399" },
                 ].map((item, i) => (
-                  <motion.div
+                  <Reveal
                     key={i}
                     className="flex items-center justify-between p-4 rounded-xl"
                     style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
                   >
                     <span className="text-primary-foreground/70 text-sm font-subtitle">{item.tier}</span>
                     <span className="font-subtitle font-bold text-sm whitespace-nowrap ml-4" style={{ color: item.color }}>{item.amount}</span>
-                  </motion.div>
+                  </Reveal>
                 ))}
               </div>
-            </motion.div>
+            </Reveal>
 
-            <motion.div
+            <Reveal
               className="p-8 rounded-3xl"
               style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
             >
@@ -611,7 +613,7 @@ export default function Index() {
               >
                 Mettiti in regola ora <ArrowRight size={16} />
               </button>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -619,7 +621,7 @@ export default function Index() {
       {/* ── TIMELINE ─────────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-24 bg-card border-y border-border">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <motion.div
+          <Reveal
             className="text-center mb-10"
           >
             <div className="inline-flex items-center gap-2 text-destructive text-sm font-subtitle font-bold mb-4">
@@ -629,7 +631,7 @@ export default function Index() {
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight">
               I termini di decorrenza del Regolamento
             </h2>
-          </motion.div>
+          </Reveal>
 
           <div className="relative">
             {/* Connecting line */}
@@ -637,7 +639,7 @@ export default function Index() {
 
             <div className="space-y-4">
               {deadlines.map((d, i) => (
-                <motion.div
+                <Reveal
                   key={i}
                   className={`relative flex items-start gap-5 p-5 rounded-2xl border transition-all ${
                     d.urgent
@@ -670,7 +672,7 @@ export default function Index() {
                       d.done ? "text-muted-foreground/60 line-through" : d.urgent ? "text-foreground font-semibold" : "text-foreground"
                     }`}>{d.label}</p>
                   </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
 
@@ -687,7 +689,7 @@ export default function Index() {
       {/* ── PROBLEMS ─────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
@@ -697,7 +699,7 @@ export default function Index() {
             <p className="text-muted-foreground text-lg max-w-xl mx-auto font-subtitle">
               Non è mancanza di attenzione. È che questa normativa è nuova, tecnica e nessuno te ne ha ancora parlato in modo concreto.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {problems.map((p, i) => (
@@ -719,7 +721,7 @@ export default function Index() {
             ))}
           </div>
 
-          <motion.div
+          <Reveal
             className="text-center mt-12 p-6 rounded-2xl max-w-3xl mx-auto"
             style={{ background: "linear-gradient(135deg, rgba(14,165,233,0.06), rgba(16,185,129,0.06))", border: "1px solid rgba(14,165,233,0.15)" }}
           >
@@ -727,14 +729,14 @@ export default function Index() {
               TutelAI nasce per chiudere questo gap: un unico interlocutore con competenza legale, tecnologica e operativa sull'AI. Non devi diventare un esperto di normativa.{" "}
               <strong>Devi avere i documenti giusti e qualcuno che ti avvisi quando le cose cambiano.</strong>
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
       {/* ── HOW IT WORKS ─────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
@@ -744,11 +746,11 @@ export default function Index() {
             <p className="text-muted-foreground text-lg max-w-xl mx-auto font-subtitle">
               Tre fasi chiare, dalla diagnosi alla conformità documentata. Tempi certi, costi fissi, nessuna sorpresa.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="space-y-6">
             {steps.map((s, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="group flex flex-col sm:flex-row gap-6 items-start p-7 rounded-3xl border border-border bg-background hover:border-primary/30 hover:shadow-lg transition-all"
               >
@@ -776,7 +778,7 @@ export default function Index() {
                     <span className="font-subtitle font-semibold text-foreground">{s.deliverable}</span>
                   </div>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -785,7 +787,7 @@ export default function Index() {
       {/* ── SERVICES ─────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
@@ -796,7 +798,7 @@ export default function Index() {
               Se non sai ancora dove sei, parti dall'AI Risk Scan — è il punto di partenza che usiamo con tutte le aziende.
               Da lì, puoi crescere verso un presidio continuativo.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
             {services.map((s, i) => (
@@ -844,7 +846,7 @@ export default function Index() {
             ))}
           </div>
 
-          <motion.div
+          <Reveal
             className="text-center mt-10"
           >
             <button
@@ -855,9 +857,12 @@ export default function Index() {
               Parla con noi — capiamo insieme da dove partire
               <ArrowRight size={16} />
             </button>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
+
+      {/* ── L'AVVOCATO E IL LIBRO ────────────────────────────────────────────── */}
+      <AutoreSection onCtaClick={openModal} />
 
       {/* ── WHY TUTELAI ──────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 bg-dark-gradient text-primary-foreground relative overflow-hidden">
@@ -865,7 +870,7 @@ export default function Index() {
           backgroundImage: "radial-gradient(circle at 50% 100%, hsl(213 56% 23% / 0.10) 0%, transparent 60%)"
         }} />
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
@@ -876,7 +881,7 @@ export default function Index() {
               La conoscenza dell'articolato non è sufficiente. Occorre stabilire cosa esegue in concreto un voice agent, a quali condizioni un software HR ricada nell'Allegato III e quali obblighi gravino su chi impiega un sistema di raccomandazione.{" "}
               <strong className="text-primary-foreground">È su questo raccordo fra istruttoria tecnica e qualificazione giuridica che lavoriamo.</strong>
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-3 gap-6">
             {differentiators.map((d, i) => (
@@ -903,7 +908,7 @@ export default function Index() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             {/* Left */}
-            <motion.div
+            <Reveal
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-subtitle font-semibold mb-5">
                 <Sparkles size={12} />
@@ -942,13 +947,13 @@ export default function Index() {
                   Prova gratuita di 14 giorni
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* Right — mockup */}
-            <motion.div
+            <Reveal
             >
               <PlatformMockup />
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -956,7 +961,7 @@ export default function Index() {
       {/* ── TESTIMONIALS ─────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-4">
@@ -964,7 +969,7 @@ export default function Index() {
               <span className="text-gradient-primary">che abbiamo già aiutato</span>
             </h2>
             <p className="text-muted-foreground font-subtitle">Tre casi reali. Tre situazioni diverse. Un problema comune.</p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {testimonials.map((t, i) => (
@@ -999,7 +1004,7 @@ export default function Index() {
       {/* ── GUARANTEE ────────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <motion.div
+          <Reveal
             className="flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl"
             style={{ background: "linear-gradient(135deg, rgba(14,165,233,0.06), rgba(16,185,129,0.06))", border: "1px solid rgba(14,165,233,0.2)" }}
           >
@@ -1016,7 +1021,7 @@ export default function Index() {
                 <strong className="text-foreground"> Paghi solo quello che usi.</strong>
               </p>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -1031,7 +1036,7 @@ export default function Index() {
           />
         </div>
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative z-10">
-          <motion.div
+          <Reveal
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border"
               style={{ background: "hsl(356 52% 40% / 0.08)", borderColor: "rgba(239,68,68,0.25)" }}>
@@ -1068,7 +1073,7 @@ export default function Index() {
                 <span key={i}>{item}</span>
               ))}
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 

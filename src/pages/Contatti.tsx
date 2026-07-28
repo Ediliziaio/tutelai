@@ -13,6 +13,7 @@ import {
   Star,
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -410,7 +411,7 @@ export default function Contatti() {
                 {callSteps.map((step, i) => {
                   const Icon = step.icon;
                   return (
-                    <motion.div
+                    <Reveal
                       key={i}
                       className="flex gap-5 items-start"
                     >
@@ -427,7 +428,7 @@ export default function Contatti() {
                         </div>
                         <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
                       </div>
-                    </motion.div>
+                    </Reveal>
                   );
                 })}
               </div>
@@ -438,7 +439,7 @@ export default function Contatti() {
                   Cosa dicono chi ha già fatto la call
                 </p>
                 {testimonials.map((t, i) => (
-                  <motion.div
+                  <Reveal
                     key={i}
                     className="rounded-xl border border-border bg-card p-4"
                   >
@@ -454,7 +455,7 @@ export default function Contatti() {
                       — {t.name},{" "}
                       <span className="font-normal">{t.company}</span>
                     </p>
-                  </motion.div>
+                  </Reveal>
                 ))}
               </div>
 
@@ -478,7 +479,7 @@ export default function Contatti() {
       {/* ── 3. FAQ ───────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <motion.div
+          <Reveal
             className="text-center mb-10"
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-semibold tracking-widest uppercase text-primary mb-4 px-3 py-1.5 rounded-full bg-primary/10">
@@ -488,11 +489,11 @@ export default function Contatti() {
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight">
               Hai domande? Ecco le risposte.
             </h2>
-          </motion.div>
+          </Reveal>
 
           <div className="space-y-3">
             {faqItems.map((item, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="rounded-xl border border-border bg-background overflow-hidden"
               >
@@ -516,7 +517,7 @@ export default function Contatti() {
                     <p className="text-sm text-muted-foreground leading-relaxed">{item.a}</p>
                   </div>
                 )}
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -525,7 +526,7 @@ export default function Contatti() {
       {/* ── 4. FINAL CTA ─────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 lg:py-28 bg-dark-gradient text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl text-center">
-          <motion.div
+          <Reveal
           >
             <Phone size={40} className="mx-auto mb-6 text-primary/60" />
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-heading-tight text-white mb-5 leading-[1.08]">
@@ -548,7 +549,7 @@ export default function Contatti() {
             <p className="text-white/40 text-xs mt-4 font-mono-accent">
               Nessuna vendita forzata · Risposta entro 24h
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 

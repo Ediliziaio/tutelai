@@ -27,7 +27,7 @@
     --border: 40 12% 86%;            /* filetto */
     --input: 40 12% 86%;
     --ring: 213 56% 23%;
-    --radius: 0.125rem;              /* squadrato: è un documento, non un'app */
+    --radius: 1.25rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5% 26%;
     --sidebar-primary: 240 6% 10%;
@@ -67,14 +67,13 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'Inter', sans-serif;
     font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
   h1, h2, h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-variation-settings: 'SOFT' 0, 'WONK' 0;
+    font-family: 'Bricolage Grotesque', sans-serif;
   }
   /* Il corpo del testo non deve superare la misura leggibile. */
   p {
@@ -94,54 +93,77 @@
 
 @layer utilities {
   .font-display {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
   }
   .font-subtitle {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   .font-body {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'Inter', sans-serif;
   }
   .font-mono-accent {
-    font-family: 'DM Mono', ui-monospace, monospace;
-    letter-spacing: 0.02em;
+    font-family: 'JetBrains Mono', monospace;
   }
 
-  /* L'enfasi nei titoli non è più cromatica ma tipografica: il corsivo della
-     Fraunces. Funziona su carta e su navy, non dipende dal contrasto di un
-     gradiente e non produce l'effetto "landing page generata dall'AI". */
+  /* Enfasi nei titoli: gradiente oro. La disciplina sta nella palette — due
+     soli colori di marca — non nel togliere ogni rilievo. */
   .text-gradient-primary,
-  .text-gradient-gold,
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #f5cd3f 0%, #eab913 45%, #b8860b 100%);
+  }
   .text-gradient-navy {
-    background-image: none;
-    -webkit-text-fill-color: currentColor;
-    color: inherit;
-    font-style: italic;
-    font-variation-settings: 'SOFT' 0, 'WONK' 1;
-    opacity: 0.82;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #1a375b 0%, #2c5a94 100%);
   }
 
-  /* Filetto d'oro: l'accento si usa come segno, non come campitura. */
   .rule-accent {
     border-bottom: 2px solid hsl(var(--accent));
     padding-bottom: 0.15em;
   }
 
-  /* Fondi piatti. Nessun gradiente decorativo. */
-  .bg-gradient-hero { background: hsl(var(--background)); }
-  .bg-gradient-cta { background: hsl(var(--primary)); }
-  .bg-gradient-gold { background: hsl(var(--accent)); }
-  .bg-dark-section { background: hsl(213 40% 10%); }
-  .bg-dark-gradient { background: hsl(213 40% 10%); }
-  .bg-inaction-gradient { background: hsl(40 16% 93%); }
-  .bg-datawall { background: hsl(var(--primary)); }
+  /* Fondi con profondità: navy stratificato e velature d'oro. Niente
+     azzurro/smeraldo/arancione — la ricchezza viene dalla luce, non da
+     altre tinte. */
+  .bg-gradient-hero {
+    background:
+      radial-gradient(1200px 600px at 15% -10%, hsl(46 85% 50% / 0.06), transparent 60%),
+      radial-gradient(900px 500px at 90% 10%, hsl(213 56% 23% / 0.07), transparent 60%),
+      hsl(var(--background));
+  }
+  .bg-gradient-cta {
+    background: linear-gradient(135deg, #1a375b 0%, #24507f 100%);
+  }
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, #f5cd3f 0%, #eab913 50%, #c99a0b 100%);
+  }
+  .bg-dark-section { background: hsl(213 42% 9%); }
+  .bg-dark-gradient {
+    background:
+      radial-gradient(1000px 700px at 12% -5%, hsl(213 60% 26% / 0.55), transparent 62%),
+      radial-gradient(900px 600px at 92% 8%, hsl(46 85% 50% / 0.10), transparent 58%),
+      linear-gradient(168deg, hsl(213 44% 12%) 0%, hsl(213 46% 8%) 55%, hsl(214 50% 6%) 100%);
+  }
+  .bg-inaction-gradient {
+    background: linear-gradient(135deg, hsl(40 30% 96%) 0%, hsl(46 40% 94%) 100%);
+  }
+  .bg-datawall {
+    background: radial-gradient(ellipse at center, hsl(213 52% 27%) 0%, hsl(213 56% 17%) 100%);
+  }
 
-  /* I glow diventano filetti: profondità per contorno, non per alone. */
-  .glow-sky,
+  /* Alone d'oro: usato sui pochi elementi che devono staccare davvero. */
   .glow-gold,
-  .glow-amber {
-    box-shadow: none;
-    border: 1px solid hsl(var(--accent) / 0.45);
+  .glow-amber,
+  .glow-sky {
+    box-shadow: 0 0 0 1px hsl(46 85% 50% / 0.28), 0 18px 60px -20px hsl(46 85% 50% / 0.45);
+  }
+
+  /* Vetro sui pannelli scuri: dà spessore senza aggiungere colore. */
+  .panel-glass {
+    background: linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 30px 80px -40px rgba(0,0,0,0.9);
   }
 
   /* Texture di carta: grana appena percettibile, dà materia senza colore. */
@@ -186,15 +208,13 @@
   100% { height: 100%; }
 }
 
-/* Le animazioni perpetue (galleggiamento, alone pulsante, shimmer) sono la
-   firma visiva delle landing generate: distraggono dalla lettura e non
-   comunicano nulla. Neutralizzate qui, così valgono su tutto il sito senza
-   dover ripulire ogni componente. Restano le rivelazioni una tantum. */
-.animate-float-slow,
-.animate-float-medium,
-.animate-shimmer,
-.animate-pulse-ring { animation: none; }
-
+.animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+.animate-float-medium { animation: float-medium 11s ease-in-out infinite; }
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+.animate-pulse-ring { animation: pulse-ring 2.4s ease-out infinite; }
 .animate-marquee { animation: marquee 30s linear infinite; }
 .animate-line-draw { animation: line-draw 1s ease-out forwards; }
 .animate-grow-line { animation: grow-line 1.5s ease-out forwards; }

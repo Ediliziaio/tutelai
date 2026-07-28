@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight, Database, FileText, Bell, BookOpen, Shield, ClipboardList, Zap, BarChart3, Lock, Globe, Users, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -251,7 +252,7 @@ export default function Piattaforma() {
       <section className="py-16 sm:py-20 bg-card border-b border-border">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <motion.div   >
+            <Reveal   >
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-5">
                 La compliance non è un documento.{" "}
                 <span className="text-gradient-primary">È un processo continuo.</span>
@@ -260,17 +261,17 @@ export default function Piattaforma() {
                 <p>Puoi avere la policy più bella del mondo. Ma se non c'è un sistema che la mantiene aggiornata, che monitora i cambi normativi, che tiene traccia di chi ha fatto la formazione — <strong className="text-foreground">sei fuori norma nel giro di qualche mese.</strong></p>
                 <p>TutelAI Platform non è un archivio di documenti. È il sistema operativo per la governance AI della tua azienda.</p>
               </div>
-            </motion.div>
+            </Reveal>
             <div className="grid grid-cols-2 gap-4">
               {benefits.map((b, i) => (
-                <motion.div key={i}
+                <Reveal key={i}
                   className="p-5 rounded-2xl border border-border bg-background">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
                     <b.icon size={18} className="text-primary" />
                   </div>
                   <h3 className="font-subtitle font-bold text-sm mb-1">{b.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{b.desc}</p>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -280,7 +281,7 @@ export default function Piattaforma() {
       {/* ── 6 MODULES ────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
+          <Reveal
             className="text-center mb-14">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
               6 moduli. <span className="text-gradient-primary">Una sola piattaforma.</span>
@@ -288,7 +289,7 @@ export default function Piattaforma() {
             <p className="text-muted-foreground text-lg max-w-xl mx-auto font-subtitle">
               Tutto quello che serve per la compliance AI della tua PMI, integrato e aggiornato in tempo reale.
             </p>
-          </motion.div>
+          </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
             {modules.map((m, i) => (
               <motion.div key={i}
@@ -318,13 +319,13 @@ export default function Piattaforma() {
       {/* ── PLANS ────────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
+          <Reveal
             className="text-center mb-14">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-4">
               Piani e <span className="text-gradient-primary">prezzi</span>
             </h2>
             <p className="text-muted-foreground font-subtitle">Prova gratuita di 14 giorni su tutti i piani, senza carta di credito.</p>
-          </motion.div>
+          </Reveal>
           <div className="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {plans.map((p, i) => (
               <motion.div key={p.name}
@@ -376,16 +377,16 @@ export default function Piattaforma() {
       {/* ── ADD-ONS ──────────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <motion.div
+          <Reveal
             className="text-center mb-10">
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-3">
               Add-on <span className="text-gradient-primary">disponibili</span>
             </h2>
             <p className="text-muted-foreground font-subtitle text-sm">Aggiungi solo quello che ti serve, quando ti serve.</p>
-          </motion.div>
+          </Reveal>
           <div className="grid sm:grid-cols-2 gap-4">
             {addons.map((a, i) => (
-              <motion.div key={i}
+              <Reveal key={i}
                 className="flex items-start gap-4 p-5 rounded-2xl border border-border bg-card hover:border-primary/25 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                   <a.icon size={18} className="text-primary" />
@@ -397,7 +398,7 @@ export default function Piattaforma() {
                   </div>
                   <p className="text-xs text-muted-foreground leading-relaxed font-subtitle">{a.desc}</p>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -411,7 +412,7 @@ export default function Piattaforma() {
               { q: "L'AI Registry ci ha aperto gli occhi: usavamo 12 sistemi AI senza saperlo. In 10 minuti avevo una mappa completa del rischio.", name: "Luca B.", role: "Founder — E-commerce, Torino" },
               { q: "La bozza di policy AI è stata generata in pochi minuti e revisionata dallo studio prima dell'adozione. Avere il testo già impostato ha ridotto di settimane il lavoro di verifica.", name: "Sara V.", role: "HR Manager — Studio di architettura" },
             ].map((t, i) => (
-              <motion.div key={i}
+              <Reveal key={i}
                 className="p-7 rounded-3xl border border-border bg-background">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => <Star key={j} size={14} className="fill-primary text-primary" />)}
@@ -426,7 +427,7 @@ export default function Piattaforma() {
                     <p className="text-xs text-muted-foreground">{t.role}</p>
                   </div>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -438,7 +439,7 @@ export default function Piattaforma() {
           backgroundImage: "radial-gradient(circle at 50% 50%, rgba(14,165,233,0.15) 0%, transparent 70%)"
         }} />
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative z-10">
-          <motion.div   >
+          <Reveal   >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-5">
               Prova TutelAI Platform{" "}
               <span className="text-gradient-primary">gratis per 14 giorni.</span>
@@ -456,7 +457,7 @@ export default function Piattaforma() {
               Oppure hai bisogno di consulenza?{" "}
               <Link to="/servizi" className="text-primary hover:opacity-80 transition-opacity font-semibold">Scopri i servizi una tantum →</Link>
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 

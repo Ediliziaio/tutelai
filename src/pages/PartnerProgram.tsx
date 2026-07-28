@@ -15,6 +15,7 @@ import {
   Phone,
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -259,7 +260,7 @@ export default function PartnerProgram() {
           </motion.p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {opportunityStats.map((s, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="text-center p-6 rounded-2xl border border-border bg-background hover:border-primary/30 transition-colors"
               >
@@ -268,7 +269,7 @@ export default function PartnerProgram() {
                 </p>
                 <p className="font-subtitle font-bold text-sm text-foreground mb-2">{s.sublabel}</p>
                 <p className="text-xs text-muted-foreground leading-snug">{s.desc}</p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -279,7 +280,7 @@ export default function PartnerProgram() {
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: il problema */}
-            <motion.div
+            <Reveal
             >
               <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-destructive mb-4 px-3 py-1.5 rounded-full bg-destructive/10 border border-destructive/20">
                 Il problema
@@ -308,10 +309,10 @@ export default function PartnerProgram() {
                   La scadenza del 2 agosto 2026 si avvicina. Chi arriva dopo, paga le conseguenze.
                 </p>
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* Right: la tua opportunità + earning calc */}
-            <motion.div
+            <Reveal
             >
               <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
                 La tua opportunità
@@ -337,7 +338,7 @@ export default function PartnerProgram() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -345,7 +346,7 @@ export default function PartnerProgram() {
       {/* ── THREE PARTNERSHIP MODELS ──────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -358,11 +359,11 @@ export default function PartnerProgram() {
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Scegli quello che si adatta alla tua struttura. Puoi cambiare modello in qualsiasi momento.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid lg:grid-cols-3 gap-6">
             {partnerTypes.map((p, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className={`flex flex-col rounded-2xl border overflow-hidden transition-all duration-300 ${
                   p.featured
@@ -420,7 +421,7 @@ export default function PartnerProgram() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -429,7 +430,7 @@ export default function PartnerProgram() {
       {/* ── PROCESS ───────────────────────────────────────────────────────── */}
       <section id="come-funziona" className="py-20 sm:py-28 lg:py-36 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -442,11 +443,11 @@ export default function PartnerProgram() {
             <p className="text-muted-foreground text-lg">
               Dalla candidatura all’operatività in meno di due settimane.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-2 gap-6">
             {processSteps.map((step, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="flex gap-5 p-6 rounded-2xl border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all duration-300"
               >
@@ -468,7 +469,7 @@ export default function PartnerProgram() {
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -477,7 +478,7 @@ export default function PartnerProgram() {
       {/* ── BENEFITS ──────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <motion.div
+          <Reveal
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -490,11 +491,11 @@ export default function PartnerProgram() {
             <p className="text-muted-foreground text-lg">
               Non solo segnalazioni: metodo, strumenti e formazione per servire i tuoi assistiti.
             </p>
-          </motion.div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-2 gap-5">
             {benefits.map((b, i) => (
-              <motion.div
+              <Reveal
                 key={i}
                 className="flex gap-4 p-5 rounded-xl border border-border bg-background hover:border-primary/30 hover:shadow-sm transition-all duration-300"
               >
@@ -505,7 +506,7 @@ export default function PartnerProgram() {
                   <h4 className="font-subtitle font-bold text-sm text-foreground mb-1">{b.title}</h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">{b.desc}</p>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -515,7 +516,7 @@ export default function PartnerProgram() {
       <section className="py-20 sm:py-28 lg:py-36 bg-dark-gradient text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-gradient-cta pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative">
-          <motion.div
+          <Reveal
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-6">
               Unisciti al programma
@@ -547,7 +548,7 @@ export default function PartnerProgram() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 

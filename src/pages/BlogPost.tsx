@@ -25,45 +25,54 @@ export default function BlogPost() {
   const article = blogArticles.find((a) => a.slug === slug);
   if (!article) return <Navigate to="/blog" replace />;
 
-  const related = blogArticles.filter((a) => article.relatedSlugs.includes(a.slug));
+  // Correlati: stessa categoria, poi riempi con i più recenti finché non arrivi a 2.
+  const related = [
+    ...blogArticles.filter((a) => a.slug !== article.slug && a.category === article.category),
+    ...blogArticles.filter((a) => a.slug !== article.slug && a.category !== article.category),
+  ].slice(0, 2);
+
+  const coverImage = article.coverImage ?? "/placeholder.svg";
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
-    description: article.metaDescription,
-    datePublished: article.date,
-    dateModified: article.date,
+    description: article.seo.metaDescription,
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
     author: {
       "@type": "Organization",
-      name: "Impresa Leggera",
+      name: "TutelAI",
     },
     publisher: {
       "@type": "Organization",
-      name: "Impresa Leggera",
+      name: "TutelAI",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://impresaleggera.it/blog/${article.slug}`,
+      "@id": `https://tutelai.it/blog/${article.slug}`,
     },
-    image: article.coverImage,
-    wordCount: article.sections.reduce((acc, s) => acc + (s.content?.split(" ").length || 0) + (s.items?.join(" ").split(" ").length || 0), 0),
+    image: coverImage,
+    wordCount: article.content.reduce((acc, s) => {
+      const text = "content" in s ? s.content : "items" in s ? s.items.join(" ") : s.text;
+      return acc + text.split(/\s+/).filter(Boolean).length;
+    }, 0),
     timeRequired: `PT${article.readingTime}M`,
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{article.title} | Impresa Leggera</title>
-        <meta name="description" content={article.metaDescription} />
+        <title>{article.seo.metaTitle}</title>
+        <meta name="description" content={article.seo.metaDescription} />
         <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.metaDescription} />
+        <meta property="og:description" content={article.seo.metaDescription} />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={article.coverImage} />
-        <meta property="og:url" content={`https://impresaleggera.it/blog/${article.slug}`} />
-        <meta property="article:published_time" content={article.date} />
+        <meta property="og:image" content={coverImage} />
+        <meta property="og:url" content={`https://tutelai.it/blog/${article.slug}`} />
+        <meta property="article:published_time" content={article.publishedAt} />
         <meta property="article:tag" content={article.tags.join(", ")} />
-        <link rel="canonical" href={`https://impresaleggera.it/blog/${article.slug}`} />
+        <link rel="canonical" href={`https://tutelai.it/blog/${article.slug}`} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
@@ -105,7 +114,7 @@ export default function BlogPost() {
           <div className="flex flex-wrap items-center gap-4 text-primary-foreground/70 text-sm">
             <span className="flex items-center gap-1.5">
               <Calendar size={14} />
-              {new Date(article.date).toLocaleDateString("it-IT", {
+              {new Date(article.publishedAt).toLocaleDateString("it-IT", {
                 day: "numeric",
                 month: "long",
                 year: "numeric",
@@ -122,7 +131,7 @@ export default function BlogPost() {
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl -mt-8 relative z-10">
         <div className="rounded-2xl overflow-hidden shadow-xl">
           <img
-            src={article.coverImage}
+            src={coverImage}
             alt={article.title}
             className="w-full aspect-video object-cover"
           />
@@ -137,7 +146,7 @@ export default function BlogPost() {
           transition={{ duration: 0.5 }}
           className="prose-custom"
         >
-          {article.sections.map((section, i) => {
+          {article.content.map((section, i) => {
             switch (section.type) {
               case "h2":
                 return <h2 key={i} className="font-display text-2xl md:text-3xl font-bold text-foreground mt-12 mb-4">{section.content}</h2>;
@@ -148,11 +157,8 @@ export default function BlogPost() {
               case "list":
                 return (
                   <div key={i} className="mb-6">
-                    {section.content && (
-                      <p className="font-body text-base md:text-lg text-muted-foreground mb-3">{section.content}</p>
-                    )}
                     <ul className="space-y-2 ml-1">
-                      {section.items?.map((item, j) => (
+                      {section.items.map((item, j) => (
                         <li key={j} className="flex items-start gap-3 font-body text-base text-muted-foreground">
                           <span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                           <span>{item}</span>
@@ -170,9 +176,8 @@ export default function BlogPost() {
               case "cta":
                 return (
                   <div key={i} className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 rounded-2xl p-8 my-10 text-center">
-                    <p className="font-body text-base md:text-lg text-foreground mb-4">{section.content}</p>
                     <Button asChild className="bg-gradient-cta text-primary-foreground rounded-full px-8 font-subtitle font-semibold hover:opacity-90">
-                      <Link to={section.ctaLink || "/come-funziona"}>{section.ctaText}</Link>
+                      <Link to={section.href}>{section.text}</Link>
                     </Button>
                   </div>
                 );
@@ -205,7 +210,7 @@ export default function BlogPost() {
                 >
                   <div className="aspect-video overflow-hidden">
                     <img
-                      src={r.coverImage}
+                      src={r.coverImage ?? "/placeholder.svg"}
                       alt={r.title}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -232,10 +237,10 @@ export default function BlogPost() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl text-center">
           <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Vuoi Liberare la Tua Impresa dalla Burocrazia?
+            La tua azienda è in regola con l'AI Act?
           </h2>
           <p className="font-body text-muted-foreground mb-8 max-w-xl mx-auto">
-            Prenota una call gratuita di 30 minuti. Ti mostreremo quanto stai spendendo davvero — e quanto puoi risparmiare.
+            Fai l'AI Risk Scan gratuito: in pochi minuti scopri quali sistemi AI usi, in che classe di rischio ricadono e cosa ti manca per essere a norma.
           </p>
           <Button
             onClick={() => setLeadOpen(true)}
@@ -247,7 +252,7 @@ export default function BlogPost() {
         </div>
       </section>
 
-      <Link to="/blog" className="fixed bottom-16 sm:bottom-6 left-4 sm: sm:bottom-6 left-4 sm:left-6 z-40 bg-card border border-border rounded-full px-4 py-2 shadow-lg flex items-center gap-2 text-sm font-subtitle font-semibold text-muted-foreground hover:text-foreground transition-colors">
+      <Link to="/blog" className="fixed bottom-16 sm:bottom-6 left-4 sm:left-6 z-40 bg-card border border-border rounded-full px-4 py-2 shadow-lg flex items-center gap-2 text-sm font-subtitle font-semibold text-muted-foreground hover:text-foreground transition-colors">
         <ArrowLeft size={14} /> Blog
       </Link>
 

@@ -5,8 +5,9 @@ import Footer from '@/components/Footer';
 const Termini = () => (
   <>
     <Helmet>
-      <title>Termini di Servizio — Impresa Leggera</title>
-      <meta name="description" content="Termini e condizioni del servizio Impresa Leggera." />
+      <title>Termini di Servizio — TutelAI</title>
+      <meta name="description" content="Termini e condizioni del servizio TutelAI." />
+      <link rel="canonical" href="https://tutelai.it/termini" />
     </Helmet>
     <Navbar onCtaClick={() => {}} />
     <main className="min-h-screen pt-24 pb-16 px-6 max-w-3xl mx-auto">

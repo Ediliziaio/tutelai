@@ -10,7 +10,7 @@ type ExtUser = {
   email: string;
   ruolo: string;
   stato: 'attivo';
-  ultimo_accesso: string;
+  ultimo_accesso?: string;
   avatar_initials: string;
   azienda_nome: string;
 };
@@ -27,7 +27,8 @@ const extendedUsers: ExtUser[] = [
   { id: 'u-ext-003', tenant_id: 't-004', nome: 'Elena Russo', email: 'elena@retailplus.it', ruolo: 'Member', stato: 'attivo', ultimo_accesso: '2026-03-18T09:00:00Z', avatar_initials: 'ER', azienda_nome: 'RetailPlus S.p.A.' },
 ];
 
-function timeAgo(iso: string) {
+function timeAgo(iso?: string) {
+  if (!iso) return 'Mai';
   const diff = Date.now() - new Date(iso).getTime();
   const days = Math.floor(diff / 86400000);
   if (days === 0) return 'Oggi';

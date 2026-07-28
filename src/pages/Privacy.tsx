@@ -5,8 +5,9 @@ import Footer from '@/components/Footer';
 const Privacy = () => (
   <>
     <Helmet>
-      <title>Privacy Policy — Impresa Leggera</title>
-      <meta name="description" content="Informativa sulla privacy di Impresa Leggera." />
+      <title>Privacy Policy — TutelAI</title>
+      <meta name="description" content="Informativa sulla privacy di TutelAI." />
+      <link rel="canonical" href="https://tutelai.it/privacy" />
     </Helmet>
     <Navbar onCtaClick={() => {}} />
     <main className="min-h-screen pt-24 pb-16 px-6 max-w-3xl mx-auto">

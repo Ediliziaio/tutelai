@@ -14,170 +14,85 @@ import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
 
 // ── ANIMATED COUNTER ──────────────────────────────────────────────────────────
+// Il conteggio animato partiva da 0 e si avviava solo entrando in viewport:
+// chi atterrava a metà pagina leggeva "0+" e "€0M". Il numero si scrive.
 function Counter({
-  to, suffix = "", prefix = "", duration = 1800,
-}: { to: number; suffix?: string; prefix?: string; duration?: number }) {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  useEffect(() => {
-    if (!inView) return;
-    const t0 = performance.now();
-    const tick = (t: number) => {
-      const p = Math.min((t - t0) / duration, 1);
-      setVal(Math.floor((1 - (1 - p) ** 3) * to));
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView, to, duration]);
-  return <span ref={ref}>{prefix}{val.toLocaleString("it-IT")}{suffix}</span>;
+  to, suffix = "", prefix = "",
+}: { to: number; suffix?: string; prefix?: string }) {
+  return <span>{prefix}{to.toLocaleString("it-IT")}{suffix}</span>;
 }
 
-// ── AI RISK SCANNER CARD ──────────────────────────────────────────────────────
+// ── ESTRATTO REGISTRO SISTEMI AI ──────────────────────────────────────────────
+// Sostituisce il radar animato: un prospetto di classificazione comunica cosa
+// produce davvero lo studio, e regge lo sguardo di un imprenditore adulto.
+const RIGHE_REGISTRO = [
+  { sistema: "Chatbot sito web", rif: "art. 50, par. 1", esito: "Obbligo di informativa", grave: true },
+  { sistema: "Assistente generativo interno", rif: "art. 4", esito: "Alfabetizzazione non assolta", grave: true },
+  { sistema: "Gestionale HR con scoring", rif: "All. III, p.to 4", esito: "Alto rischio — da istruire", grave: true },
+  { sistema: "Filtro antispam", rif: "art. 6, par. 3", esito: "Fuori ambito", grave: false },
+];
+
 function ScannerCard() {
   return (
     <div className="relative select-none">
-      {/* Ambient glow */}
-      <div className="absolute inset-0 bg-primary/25 blur-3xl scale-125 rounded-full pointer-events-none" />
 
-      {/* Glass card */}
+      {/* Prospetto */}
       <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="relative rounded-3xl border border-white/15 p-6 shadow-2xl"
-        style={{ background: "rgba(255,255,255,0.07)", backdropFilter: "blur(24px)" }}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        className="relative border border-white/15 bg-white/[0.04] px-7 py-6"
       >
-        {/* Card header */}
-        <div className="flex items-center justify-between mb-5">
-          <div>
-            <p className="text-white/40 text-[10px] font-mono-accent uppercase tracking-widest">TutelAI Scanner</p>
-            <p className="text-white font-subtitle font-bold text-sm mt-0.5">Compliance AI — PMI Italiana</p>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full" style={{ background: "rgba(52,211,153,0.15)" }}>
-            <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-            <span className="text-emerald-400 text-[10px] font-mono-accent font-bold">LIVE SCAN</span>
-          </div>
+        {/* Intestazione */}
+        <div className="flex items-baseline justify-between gap-4 border-b border-white/15 pb-3">
+          <p className="font-mono-accent text-[10px] uppercase tracking-[0.18em] text-white/45">
+            Estratto registro sistemi AI
+          </p>
+          <p className="font-mono-accent text-[10px] text-white/35">Rif. 2026/0412</p>
         </div>
 
-        {/* Radar SVG */}
-        <div className="flex justify-center mb-5">
-          <svg width="190" height="190" viewBox="0 0 200 200">
-            {/* Background rings */}
-            {[90, 70, 50, 30].map((r, i) => (
-              <circle key={i} cx="100" cy="100" r={r} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
-            ))}
-            {/* Grid spokes */}
-            {[0, 45, 90, 135].map((a, i) => (
-              <line key={i}
-                x1={100 + 90 * Math.cos((a * Math.PI) / 180)}
-                y1={100 + 90 * Math.sin((a * Math.PI) / 180)}
-                x2={100 - 90 * Math.cos((a * Math.PI) / 180)}
-                y2={100 - 90 * Math.sin((a * Math.PI) / 180)}
-                stroke="rgba(255,255,255,0.04)" strokeWidth="0.5"
-              />
-            ))}
+        <p className="mt-4 font-display text-lg text-white">
+          Impresa manifatturiera, 45 addetti
+        </p>
+        <p className="mt-1 font-subtitle text-[13px] leading-relaxed text-white/50">
+          Quattro sistemi rilevati, tre con obblighi esigibili dal 2 agosto 2026.
+        </p>
 
-            {/* Critical arc (red) */}
-            <circle cx="100" cy="100" r="80" fill="none"
-              stroke="url(#arcRed)" strokeWidth="6" strokeOpacity="0.9"
-              strokeDasharray="190 312" strokeDashoffset="0"
-              strokeLinecap="round"
-              style={{ transform: "rotate(-90deg)", transformOrigin: "center" }} />
-            {/* Warning arc (orange) */}
-            <circle cx="100" cy="100" r="80" fill="none"
-              stroke="#f97316" strokeWidth="6" strokeOpacity="0.7"
-              strokeDasharray="80 422" strokeDashoffset="-190"
-              strokeLinecap="round"
-              style={{ transform: "rotate(-90deg)", transformOrigin: "center" }} />
-            {/* OK arc (green) */}
-            <circle cx="100" cy="100" r="80" fill="none"
-              stroke="#34d399" strokeWidth="6" strokeOpacity="0.6"
-              strokeDasharray="32 470" strokeDashoffset="-270"
-              strokeLinecap="round"
-              style={{ transform: "rotate(-90deg)", transformOrigin: "center" }} />
-
-            {/* Scanner beam */}
-            <line x1="100" y1="100" x2="100" y2="16" stroke="rgba(14,165,233,0.85)" strokeWidth="1.5">
-              <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="3.5s" repeatCount="indefinite" />
-            </line>
-            <circle cx="100" cy="16" r="3" fill="#0ea5e9" opacity="0.9">
-              <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="3.5s" repeatCount="indefinite" />
-            </circle>
-            {/* Beam sweep glow */}
-            <path d="M100,100 L88,10 A12,12 0 0,1 112,10 Z" fill="rgba(14,165,233,0.06)">
-              <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="3.5s" repeatCount="indefinite" />
-            </path>
-
-            {/* Risk dots */}
-            {[
-              { a: 35, c: "#ef4444" }, { a: 110, c: "#ef4444" },
-              { a: 195, c: "#f97316" }, { a: 285, c: "#34d399" },
-            ].map(({ a, c }, i) => (
-              <circle key={i}
-                cx={100 + 80 * Math.cos(((a - 90) * Math.PI) / 180)}
-                cy={100 + 80 * Math.sin(((a - 90) * Math.PI) / 180)}
-                r="4.5" fill={c} opacity="0.85"
-              />
-            ))}
-
-            {/* Center */}
-            <circle cx="100" cy="100" r="30" fill="rgba(0,0,0,0.55)" />
-            <circle cx="100" cy="100" r="30" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
-            <text x="100" y="97" textAnchor="middle" fill="white" fontSize="22" fontWeight="800" fontFamily="system-ui">73%</text>
-            <text x="100" y="111" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="system-ui" letterSpacing="1">RISK SCORE</text>
-
-            <defs>
-              <linearGradient id="arcRed" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#ef4444" />
-                <stop offset="100%" stopColor="#f97316" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
-        {/* Status rows */}
-        <div className="space-y-2">
-          {[
-            { label: "Chatbot sito web", status: "CRITICO", dot: "#ef4444" },
-            { label: "ChatGPT aziendale", status: "CRITICO", dot: "#ef4444" },
-            { label: "AI Literacy docs", status: "MANCANTE", dot: "#f97316" },
-            { label: "Policy interna AI", status: "OK", dot: "#34d399" },
-          ].map((item, i) => (
-            <motion.div key={i}
-              initial={{ opacity: 0, x: 12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.9 + i * 0.12 }}
-              className="flex items-center justify-between rounded-xl px-3 py-2.5"
-              style={{ background: "rgba(255,255,255,0.05)" }}
+        {/* Righe */}
+        <div className="mt-6">
+          {RIGHE_REGISTRO.map((r, i) => (
+            <motion.div
+              key={r.sistema}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 + i * 0.09, duration: 0.4 }}
+              className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-1 border-t border-white/10 py-3"
             >
-              <div className="flex items-center gap-2.5">
-                <div className="w-1.5 h-1.5 rounded-full" style={{ background: item.dot }} />
-                <span className="text-white/65 text-xs font-subtitle">{item.label}</span>
-              </div>
-              <span className="text-xs font-mono-accent font-bold" style={{ color: item.dot }}>{item.status}</span>
+              <span className="font-subtitle text-[13px] leading-snug text-white/85">
+                {r.sistema}
+              </span>
+              <span
+                className={`self-start font-mono-accent text-[10px] uppercase tracking-wider ${
+                  r.grave ? "text-[#eab913]" : "text-white/35"
+                }`}
+              >
+                {r.grave ? "da adeguare" : "fuori ambito"}
+              </span>
+              <span className="font-mono-accent text-[10px] text-white/35">{r.rif}</span>
+              <span className="text-right font-subtitle text-[11px] italic text-white/45">
+                {r.esito}
+              </span>
             </motion.div>
           ))}
         </div>
-      </motion.div>
 
-      {/* Floating chips */}
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-5 -right-5 text-white text-xs font-subtitle font-bold px-4 py-2.5 rounded-2xl shadow-2xl whitespace-nowrap"
-        style={{ background: "linear-gradient(135deg, #dc2626, #b91c1c)", border: "1px solid rgba(239,68,68,0.3)" }}
-      >
-        ⚠️ Multa fino a €35.000.000
-      </motion.div>
-
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
-        className="absolute -bottom-5 -left-5 text-white text-xs font-subtitle font-bold px-4 py-2.5 rounded-2xl shadow-2xl whitespace-nowrap"
-        style={{ background: "linear-gradient(135deg, #059669, #047857)", border: "1px solid rgba(52,211,153,0.3)" }}
-      >
-        ✓ In regola in 5 giorni
+        {/* Piede */}
+        <div className="mt-5 flex items-baseline justify-between border-t border-white/15 pt-3">
+          <span className="font-mono-accent text-[10px] uppercase tracking-[0.18em] text-white/35">
+            Termine
+          </span>
+          <span className="font-mono-accent text-[11px] text-[#eab913]">2 agosto 2026</span>
+        </div>
       </motion.div>
     </div>
   );
@@ -187,12 +102,11 @@ function ScannerCard() {
 function PlatformMockup() {
   return (
     <div className="relative">
-      <div className="absolute inset-0 bg-primary/15 blur-3xl scale-110 rounded-3xl pointer-events-none" />
       <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ background: "#0d1117", border: "1px solid rgba(255,255,255,0.1)" }}>
         {/* Window chrome */}
         <div className="flex items-center gap-2 px-4 py-3" style={{ background: "rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-accent/70" />
           <div className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
           <div className="ml-3 flex-1 rounded-md h-5 flex items-center px-2.5" style={{ background: "rgba(255,255,255,0.07)" }}>
             <span className="text-white/30 text-[10px] font-mono-accent">app.tutelai.it/dashboard</span>
@@ -270,8 +184,7 @@ function PlatformMockup() {
               </div>
               <div className="w-full h-1.5 rounded-full mt-2 overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
                 <motion.div className="h-full rounded-full" style={{ background: "#ef4444" }}
-                  initial={{ width: 0 }} whileInView={{ width: "27%" }} viewport={{ once: true }}
-                  transition={{ duration: 1.2, delay: 0.3 }} />
+                   />
               </div>
             </div>
           </div>
@@ -564,10 +477,6 @@ export default function Index() {
             {stats.map((s, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
@@ -587,9 +496,6 @@ export default function Index() {
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-10"
           >
             <p className="text-muted-foreground text-sm font-subtitle font-semibold uppercase tracking-widest mb-3">
@@ -604,10 +510,6 @@ export default function Index() {
             {aiTools.map((tool, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border cursor-default"
                 style={{ background: tool.bg, borderColor: tool.border }}
@@ -620,9 +522,6 @@ export default function Index() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
             className="text-center"
           >
             <p className="text-muted-foreground text-sm font-subtitle mb-4">
@@ -648,9 +547,6 @@ export default function Index() {
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
             >
               <p className="text-red-400 text-sm font-subtitle font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
                 <AlertTriangle size={14} /> Sanzioni già operative
@@ -673,10 +569,6 @@ export default function Index() {
                 ].map((item, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 + i * 0.1 }}
                     className="flex items-center justify-between p-4 rounded-xl"
                     style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
                   >
@@ -688,9 +580,6 @@ export default function Index() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
               className="p-8 rounded-3xl"
               style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
             >
@@ -731,9 +620,6 @@ export default function Index() {
       <section className="py-16 sm:py-24 bg-card border-y border-border">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-10"
           >
             <div className="inline-flex items-center gap-2 text-destructive text-sm font-subtitle font-bold mb-4">
@@ -753,10 +639,6 @@ export default function Index() {
               {deadlines.map((d, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
                   className={`relative flex items-start gap-5 p-5 rounded-2xl border transition-all ${
                     d.urgent
                       ? "border-destructive/40 bg-destructive/5 shadow-[0_0_30px_rgba(239,68,68,0.1)]"
@@ -793,9 +675,6 @@ export default function Index() {
             </div>
 
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
               className="mt-6 text-sm text-muted-foreground leading-relaxed text-center"
             >
               Le sanzioni arrivano fino al <strong className="text-foreground">7% del fatturato mondiale</strong>.
@@ -809,9 +688,6 @@ export default function Index() {
       <section className="py-20 sm:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
@@ -827,10 +703,6 @@ export default function Index() {
             {problems.map((p, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
                 whileHover={{ y: -4 }}
                 className="group relative p-8 rounded-3xl border border-border bg-card hover:border-destructive/30 hover:shadow-[0_20px_60px_rgba(239,68,68,0.08)] transition-all duration-300"
               >
@@ -848,10 +720,6 @@ export default function Index() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
             className="text-center mt-12 p-6 rounded-2xl max-w-3xl mx-auto"
             style={{ background: "linear-gradient(135deg, rgba(14,165,233,0.06), rgba(16,185,129,0.06))", border: "1px solid rgba(14,165,233,0.15)" }}
           >
@@ -867,9 +735,6 @@ export default function Index() {
       <section className="py-20 sm:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
@@ -885,10 +750,6 @@ export default function Index() {
             {steps.map((s, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 + i * 0.15 }}
                 className="group flex flex-col sm:flex-row gap-6 items-start p-7 rounded-3xl border border-border bg-background hover:border-primary/30 hover:shadow-lg transition-all"
               >
                 {/* Step icon */}
@@ -925,9 +786,6 @@ export default function Index() {
       <section className="py-20 sm:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
@@ -944,10 +802,6 @@ export default function Index() {
             {services.map((s, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
               >
                 <Link
@@ -991,9 +845,6 @@ export default function Index() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
             className="text-center mt-10"
           >
             <button
@@ -1015,9 +866,6 @@ export default function Index() {
         }} />
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
@@ -1034,10 +882,6 @@ export default function Index() {
             {differentiators.map((d, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
                 whileHover={{ y: -4 }}
                 className="p-8 rounded-3xl text-center transition-all duration-300"
                 style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
@@ -1060,9 +904,6 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             {/* Left */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-subtitle font-semibold mb-5">
                 <Sparkles size={12} />
@@ -1105,10 +946,6 @@ export default function Index() {
 
             {/* Right — mockup */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
             >
               <PlatformMockup />
             </motion.div>
@@ -1120,9 +957,6 @@ export default function Index() {
       <section className="py-20 sm:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-14"
           >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-4">
@@ -1136,10 +970,6 @@ export default function Index() {
             {testimonials.map((t, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
                 whileHover={{ y: -4 }}
                 className="flex flex-col p-8 rounded-3xl border border-border bg-background hover:border-primary/30 hover:shadow-lg transition-all duration-300"
               >
@@ -1170,9 +1000,6 @@ export default function Index() {
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl"
             style={{ background: "linear-gradient(135deg, rgba(14,165,233,0.06), rgba(16,185,129,0.06))", border: "1px solid rgba(14,165,233,0.2)" }}
           >
@@ -1205,9 +1032,6 @@ export default function Index() {
         </div>
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border"
               style={{ background: "rgba(239,68,68,0.1)", borderColor: "rgba(239,68,68,0.25)" }}>

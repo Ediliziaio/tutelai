@@ -23,28 +23,13 @@ function Counter({
   isString?: boolean;
   stringVal?: string;
 }) {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
-  useEffect(() => {
-    if (!inView || isString || to === undefined) return;
-    const t0 = performance.now();
-    const tick = (t: number) => {
-      const p = Math.min((t - t0) / duration, 1);
-      setVal(Math.floor((1 - (1 - p) ** 3) * to));
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView, to, duration, isString]);
-
   if (isString) {
-    return <span ref={ref}>{stringVal}</span>;
+    return <span>{stringVal}</span>;
   }
   return (
-    <span ref={ref}>
+    <span>
       {prefix}
-      {val.toLocaleString("it-IT")}
+      {(to ?? 0).toLocaleString("it-IT")}
       {suffix}
     </span>
   );
@@ -146,9 +131,6 @@ export default function ChiSiamo() {
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="bg-dark-gradient text-primary-foreground pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-36 relative overflow-hidden">
         {/* Ambient glows */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/15 rounded-full blur-3xl pointer-events-none" />
-
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-4xl relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -195,10 +177,6 @@ export default function ChiSiamo() {
       <section className="py-20 sm:py-28 lg:py-36 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
               Il nostro manifesto
@@ -269,10 +247,6 @@ export default function ChiSiamo() {
             {stats.map((s, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="text-center"
               >
                 <p className="font-display font-extrabold text-4xl sm:text-5xl tracking-stat-tight text-gradient-primary mb-2">
@@ -291,10 +265,6 @@ export default function ChiSiamo() {
       <section className="py-20 sm:py-28 lg:py-36 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -309,10 +279,6 @@ export default function ChiSiamo() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: text */}
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-gradient-cta flex items-center justify-center shrink-0">
@@ -350,10 +316,6 @@ export default function ChiSiamo() {
 
             {/* Right: timeline */}
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
               className="space-y-0"
             >
               {timeline.map((ev, i) => (
@@ -381,13 +343,8 @@ export default function ChiSiamo() {
 
       {/* ── TEAM ──────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-dark-gradient text-primary-foreground relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -402,10 +359,6 @@ export default function ChiSiamo() {
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {/* Florin */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.5 }}
               className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/8 transition-colors"
             >
               <div className="flex items-center gap-4 mb-5">
@@ -432,10 +385,6 @@ export default function ChiSiamo() {
 
             {/* Co-founder legale placeholder */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.5 }}
               className="p-6 rounded-2xl border border-dashed border-white/20 bg-white/3 backdrop-blur-sm"
             >
               <div className="flex items-center gap-4 mb-5">
@@ -468,10 +417,6 @@ export default function ChiSiamo() {
       <section className="py-20 sm:py-28 lg:py-36 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -490,10 +435,6 @@ export default function ChiSiamo() {
             {values.map((v, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="group p-7 rounded-2xl border border-border bg-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-xl bg-gradient-cta flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
@@ -513,10 +454,6 @@ export default function ChiSiamo() {
       <section className="py-20 sm:py-28 lg:py-36 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -535,10 +472,6 @@ export default function ChiSiamo() {
             {steps.map((s, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 + i * 0.15, duration: 0.5 }}
                 className="flex gap-6 items-start"
               >
                 {/* Badge + connector */}
@@ -564,14 +497,8 @@ export default function ChiSiamo() {
       {/* ── FINAL CTA ─────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-dark-gradient text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-cta opacity-10 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-6">
               Vuoi conoscerci?

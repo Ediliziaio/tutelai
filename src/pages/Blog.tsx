@@ -40,8 +40,6 @@ export default function Blog() {
       {/* Hero */}
       <section className="relative pt-28 pb-16 bg-gradient-to-br from-primary via-primary/90 to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary-foreground mb-4">

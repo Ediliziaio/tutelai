@@ -25,8 +25,8 @@ const ForgotPassword = () => {
       >
         {sent ? (
           <div className="text-center">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-50">
-              <Mail className="h-7 w-7 text-sky-500" />
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+              <Mail className="h-7 w-7 text-primary" />
             </div>
             <h2 className="text-xl font-bold font-subtitle text-slate-900 mb-2">Controlla la tua email</h2>
             <p className="text-sm text-slate-500 mb-6">
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
             </p>
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 text-sm text-sky-500 hover:text-sky-600 font-medium"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary font-medium"
             >
               <ArrowLeft className="h-4 w-4" /> Torna al login
             </Link>
@@ -54,13 +54,13 @@ const ForgotPassword = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="nome@azienda.it"
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-400 outline-none transition-all"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-sky-500 text-white hover:bg-sky-600 rounded-full px-5 py-2.5 font-semibold text-sm transition-all disabled:opacity-60"
+                className="w-full flex items-center justify-center gap-2 bg-primary text-white hover:bg-primary rounded-full px-5 py-2.5 font-semibold text-sm transition-all disabled:opacity-60"
               >
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Invia istruzioni'}
               </button>

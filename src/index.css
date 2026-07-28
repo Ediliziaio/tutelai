@@ -3,27 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  /* ── "Atto": inchiostro su carta ─────────────────────────────────────────
+     Due soli colori di marca — navy #1a375b come inchiostro, oro #eab913
+     come accento scarso. Niente azzurro, verde smeraldo o arancione: la
+     credibilità di uno studio legale sta nella sobrietà cromatica.        */
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 84% 5%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 84% 5%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 5%;
-    --primary: 199 89% 48%;  /* sky blue — works on both dark & light sections */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 160 84% 39%; /* emerald */
-    --secondary-foreground: 0 0% 100%;
-    --accent: 46 85% 50%;    /* #eab913 brand gold */
-    --accent-foreground: 213 56% 23%; /* navy text on gold */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 199 89% 48%;
-    --radius: 1.25rem;
+    --background: 40 24% 97%;        /* carta calda */
+    --foreground: 213 30% 13%;       /* inchiostro */
+    --card: 40 30% 99%;
+    --card-foreground: 213 30% 13%;
+    --popover: 40 30% 99%;
+    --popover-foreground: 213 30% 13%;
+    --primary: 213 56% 23%;          /* #1a375b navy di marca */
+    --primary-foreground: 40 24% 97%;
+    --secondary: 213 22% 38%;        /* navy schiarito, non un secondo colore */
+    --secondary-foreground: 40 24% 97%;
+    --accent: 46 85% 50%;            /* #eab913 oro — unico accento */
+    --accent-foreground: 213 56% 23%;
+    --muted: 40 16% 93%;
+    --muted-foreground: 213 12% 42%;
+    --destructive: 356 52% 40%;      /* rosso desaturato, da annotazione */
+    --destructive-foreground: 40 24% 97%;
+    --border: 40 12% 86%;            /* filetto */
+    --input: 40 12% 86%;
+    --ring: 213 56% 23%;
+    --radius: 0.125rem;              /* squadrato: è un documento, non un'app */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5% 26%;
     --sidebar-primary: 240 6% 10%;
@@ -35,25 +39,25 @@
   }
 
   .dark {
-    --background: 222 84% 5%;
-    --foreground: 210 40% 98%;
-    --card: 222 84% 5%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 84% 5%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 199 89% 48%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 160 84% 39%;
-    --secondary-foreground: 0 0% 100%;
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 100%;
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 199 89% 48%;
+    --background: 213 40% 10%;
+    --foreground: 40 20% 94%;
+    --card: 213 36% 13%;
+    --card-foreground: 40 20% 94%;
+    --popover: 213 36% 13%;
+    --popover-foreground: 40 20% 94%;
+    --primary: 46 85% 50%;           /* sul fondo scuro l'oro fa da primario */
+    --primary-foreground: 213 56% 15%;
+    --secondary: 213 20% 30%;
+    --secondary-foreground: 40 20% 94%;
+    --accent: 46 85% 50%;
+    --accent-foreground: 213 56% 15%;
+    --muted: 213 28% 18%;
+    --muted-foreground: 40 10% 68%;
+    --destructive: 356 48% 52%;
+    --destructive-foreground: 40 20% 94%;
+    --border: 213 22% 22%;
+    --input: 213 22% 22%;
+    --ring: 46 85% 50%;
   }
 }
 
@@ -63,71 +67,91 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Newsreader', Georgia, serif;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   h1, h2, h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'SOFT' 0, 'WONK' 0;
+  }
+  /* Il corpo del testo non deve superare la misura leggibile. */
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+  ::selection {
+    background: hsl(var(--accent) / 0.28);
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--accent));
+    outline-offset: 2px;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: 'Fraunces', Georgia, serif;
   }
   .font-subtitle {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Newsreader', Georgia, serif;
   }
   .font-body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Newsreader', Georgia, serif;
   }
   .font-mono-accent {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    letter-spacing: 0.02em;
   }
-  /* Gold gradient — brand accent, readable on BOTH dark & light backgrounds (large headings) */
-  .text-gradient-primary {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #eab913, #d97706);
-  }
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #eab913, #d97706);
-  }
-  /* Navy-to-blue gradient for light-bg headings where you need dark text */
+
+  /* L'enfasi nei titoli non è più cromatica ma tipografica: il corsivo della
+     Fraunces. Funziona su carta e su navy, non dipende dal contrasto di un
+     gradiente e non produce l'effetto "landing page generata dall'AI". */
+  .text-gradient-primary,
+  .text-gradient-gold,
   .text-gradient-navy {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #1a375b, #185FA5);
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: inherit;
+    font-style: italic;
+    font-variation-settings: 'SOFT' 0, 'WONK' 1;
+    opacity: 0.82;
   }
-  .bg-gradient-hero {
-    background: linear-gradient(135deg, hsl(213 56% 23% / 0.05) 0%, hsl(212 72% 37% / 0.07) 50%, hsl(46 85% 50% / 0.05) 100%);
+
+  /* Filetto d'oro: l'accento si usa come segno, non come campitura. */
+  .rule-accent {
+    border-bottom: 2px solid hsl(var(--accent));
+    padding-bottom: 0.15em;
   }
-  /* Primary CTA — navy→blue for light section buttons */
-  .bg-gradient-cta {
-    background: linear-gradient(135deg, #1a375b, #185FA5);
-  }
-  /* Gold CTA — for dark section buttons (max visibility + brand) */
-  .bg-gradient-gold {
-    background: linear-gradient(135deg, #eab913, #d97706);
-  }
-  .bg-dark-section {
-    background: hsl(222 84% 5%);
-  }
-  .bg-dark-gradient {
-    background: linear-gradient(135deg, hsl(222 97% 3%) 0%, hsl(222 84% 5%) 50%, hsl(213 80% 6%) 100%);
-  }
-  .bg-inaction-gradient {
-    background: linear-gradient(135deg, hsl(0 86% 97%) 0%, hsl(33 100% 96%) 100%);
-  }
-  .bg-datawall {
-    background: radial-gradient(ellipse at center, hsl(199 89% 48%) 0%, hsl(199 78% 38%) 100%);
-  }
-  .glow-sky {
-    box-shadow: 0 0 30px hsl(199 89% 48% / 0.4);
-  }
-  .glow-gold {
-    box-shadow: 0 0 30px hsl(46 85% 50% / 0.45);
-  }
+
+  /* Fondi piatti. Nessun gradiente decorativo. */
+  .bg-gradient-hero { background: hsl(var(--background)); }
+  .bg-gradient-cta { background: hsl(var(--primary)); }
+  .bg-gradient-gold { background: hsl(var(--accent)); }
+  .bg-dark-section { background: hsl(213 40% 10%); }
+  .bg-dark-gradient { background: hsl(213 40% 10%); }
+  .bg-inaction-gradient { background: hsl(40 16% 93%); }
+  .bg-datawall { background: hsl(var(--primary)); }
+
+  /* I glow diventano filetti: profondità per contorno, non per alone. */
+  .glow-sky,
+  .glow-gold,
   .glow-amber {
-    box-shadow: 0 0 30px hsl(46 85% 50% / 0.4);
+    box-shadow: none;
+    border: 1px solid hsl(var(--accent) / 0.45);
+  }
+
+  /* Texture di carta: grana appena percettibile, dà materia senza colore. */
+  .paper-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
@@ -162,26 +186,27 @@
   100% { height: 100%; }
 }
 
-.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-.animate-float-medium { animation: float-medium 8s ease-in-out infinite; }
-.animate-shimmer {
-  background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
-}
+/* Le animazioni perpetue (galleggiamento, alone pulsante, shimmer) sono la
+   firma visiva delle landing generate: distraggono dalla lettura e non
+   comunicano nulla. Neutralizzate qui, così valgono su tutto il sito senza
+   dover ripulire ogni componente. Restano le rivelazioni una tantum. */
+.animate-float-slow,
+.animate-float-medium,
+.animate-shimmer,
+.animate-pulse-ring { animation: none; }
+
 .animate-marquee { animation: marquee 30s linear infinite; }
-.animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
 .animate-line-draw { animation: line-draw 1s ease-out forwards; }
 .animate-grow-line { animation: grow-line 1.5s ease-out forwards; }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-float-slow,
-  .animate-float-medium,
-  .animate-shimmer,
-  .animate-marquee,
-  .animate-pulse-ring,
-  .animate-line-draw,
-  .animate-grow-line {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

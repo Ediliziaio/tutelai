@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/saas/ProtectedRoute";
@@ -97,6 +98,9 @@ const PageLoader = () => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      {/* reducedMotion="user": rispetta l'impostazione di sistema anche per le
+          animazioni framer-motion, che il CSS non può disattivare. */}
+      <MotionConfig reducedMotion="user">
       <AuthProvider>
         <ErrorBoundary>
           <Toaster />
@@ -225,6 +229,7 @@ const App = () => (
           </BrowserRouter>
         </ErrorBoundary>
       </AuthProvider>
+      </MotionConfig>
     </TooltipProvider>
   </QueryClientProvider>
 );

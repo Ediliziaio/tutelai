@@ -137,11 +137,10 @@ const benefits = [
 function MiniMockup() {
   return (
     <div className="relative">
-      <div className="absolute inset-0 bg-primary/10 blur-3xl scale-110 rounded-3xl pointer-events-none" />
       <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ background: "#0d1117", border: "1px solid rgba(255,255,255,0.1)" }}>
         <div className="flex items-center gap-2 px-4 py-3" style={{ background: "rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-accent/70" />
           <div className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
           <div className="ml-3 flex-1 rounded-md h-5 flex items-center px-2.5" style={{ background: "rgba(255,255,255,0.07)" }}>
             <span className="text-white/30 text-[10px] font-mono-accent">app.tutelai.it/registry</span>
@@ -169,8 +168,7 @@ function MiniMockup() {
                 <span className="text-white/50 text-[10px] flex-1 truncate font-subtitle">{sys.n}</span>
                 <div className="w-16 h-1.5 rounded-full overflow-hidden shrink-0" style={{ background: "rgba(255,255,255,0.08)" }}>
                   <motion.div className="h-full rounded-full" style={{ background: sys.c, opacity: 0.75 }}
-                    initial={{ width: 0 }} whileInView={{ width: `${sys.pct}%` }} viewport={{ once: true }}
-                    transition={{ duration: 1, delay: i * 0.15 }} />
+                     />
                 </div>
                 <span className="text-white/30 text-[9px] font-mono-accent w-5 text-right">{sys.pct}%</span>
               </div>
@@ -253,7 +251,7 @@ export default function Piattaforma() {
       <section className="py-16 sm:py-20 bg-card border-b border-border">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div   >
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-5">
                 La compliance non è un documento.{" "}
                 <span className="text-gradient-primary">È un processo continuo.</span>
@@ -266,10 +264,6 @@ export default function Piattaforma() {
             <div className="grid grid-cols-2 gap-4">
               {benefits.map((b, i) => (
                 <motion.div key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
                   className="p-5 rounded-2xl border border-border bg-background">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
                     <b.icon size={18} className="text-primary" />
@@ -286,7 +280,7 @@ export default function Piattaforma() {
       {/* ── 6 MODULES ────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          <motion.div
             className="text-center mb-14">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
               6 moduli. <span className="text-gradient-primary">Una sola piattaforma.</span>
@@ -298,10 +292,6 @@ export default function Piattaforma() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
             {modules.map((m, i) => (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -4 }}
                 className={`group p-7 rounded-3xl border transition-all duration-300 ${
                   m.highlight
@@ -328,7 +318,7 @@ export default function Piattaforma() {
       {/* ── PLANS ────────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          <motion.div
             className="text-center mb-14">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-heading-tight leading-[1.08] mb-4">
               Piani e <span className="text-gradient-primary">prezzi</span>
@@ -338,10 +328,6 @@ export default function Piattaforma() {
           <div className="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {plans.map((p, i) => (
               <motion.div key={p.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
                 whileHover={{ y: -4 }}
                 className={`relative flex flex-col rounded-3xl border overflow-hidden transition-all duration-300 ${
                   p.featured
@@ -390,7 +376,7 @@ export default function Piattaforma() {
       {/* ── ADD-ONS ──────────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          <motion.div
             className="text-center mb-10">
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-3">
               Add-on <span className="text-gradient-primary">disponibili</span>
@@ -400,10 +386,6 @@ export default function Piattaforma() {
           <div className="grid sm:grid-cols-2 gap-4">
             {addons.map((a, i) => (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
                 className="flex items-start gap-4 p-5 rounded-2xl border border-border bg-card hover:border-primary/25 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                   <a.icon size={18} className="text-primary" />
@@ -430,10 +412,6 @@ export default function Piattaforma() {
               { q: "La bozza di policy AI è stata generata in pochi minuti e revisionata dallo studio prima dell'adozione. Avere il testo già impostato ha ridotto di settimane il lavoro di verifica.", name: "Sara V.", role: "HR Manager — Studio di architettura" },
             ].map((t, i) => (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
                 className="p-7 rounded-3xl border border-border bg-background">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => <Star key={j} size={14} className="fill-primary text-primary" />)}
@@ -460,7 +438,7 @@ export default function Piattaforma() {
           backgroundImage: "radial-gradient(circle at 50% 50%, rgba(14,165,233,0.15) 0%, transparent 70%)"
         }} />
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <motion.div   >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-5">
               Prova TutelAI Platform{" "}
               <span className="text-gradient-primary">gratis per 14 giorni.</span>

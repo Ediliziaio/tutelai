@@ -76,8 +76,8 @@ const onetimeServices = [
     ],
     cta: "Richiedi una call conoscitiva",
     featured: false,
-    color: "text-emerald-500",
-    bg: "bg-emerald-500/10",
+    color: "text-primary",
+    bg: "bg-primary/10",
   },
 ];
 
@@ -284,7 +284,7 @@ export default function Servizi() {
             {/* ── BEFORE/AFTER ─────────────────────────────────────────────────── */}
             <section className="py-16 sm:py-20 bg-card border-b border-border">
               <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                <motion.div
                   className="text-center mb-10">
                   <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-3">
                     La differenza è <span className="text-gradient-primary">tutto</span>
@@ -294,10 +294,6 @@ export default function Servizi() {
                 <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
                   {comparison.map((col, ci) => (
                     <motion.div key={ci}
-                      initial={{ opacity: 0, x: ci === 0 ? -20 : 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: ci * 0.1 }}
                       className={`rounded-2xl p-6 border ${col.bad
                         ? "border-destructive/20 bg-destructive/5"
                         : "border-primary/20 bg-primary/5"
@@ -325,7 +321,7 @@ export default function Servizi() {
             {/* ── ONE-TIME SERVICES ─────────────────────────────────────────────── */}
             <section className="py-16 sm:py-24">
               <div className="container mx-auto px-4 lg:px-8">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                <motion.div
                   className="text-center mb-14">
                   <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
                     Interventi mirati,{" "}
@@ -340,10 +336,6 @@ export default function Servizi() {
                 <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                   {onetimeServices.map((s, i) => (
                     <motion.div key={s.id}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.12 }}
                       whileHover={{ y: -4 }}
                       className={`relative flex flex-col rounded-3xl border transition-all duration-300 overflow-hidden ${
                         s.featured
@@ -406,7 +398,7 @@ export default function Servizi() {
                 </div>
 
                 {/* Urgency strip */}
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+                <motion.div
                   className="mt-10 max-w-3xl mx-auto flex items-center gap-4 p-4 rounded-2xl border border-destructive/25 bg-destructive/5">
                   <AlertTriangle size={20} className="text-destructive shrink-0" />
                   <p className="text-sm font-subtitle text-foreground">
@@ -423,7 +415,7 @@ export default function Servizi() {
             {/* ── SPECIALIST SERVICES ──────────────────────────────────────────── */}
             <section className="py-16 sm:py-20 bg-card">
               <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                <motion.div
                   className="text-center mb-12">
                   <h2 className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-3">
                     Servizi <span className="text-gradient-primary">specialistici</span>
@@ -433,10 +425,6 @@ export default function Servizi() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   {specialistServices.map((s, i) => (
                     <motion.div key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
                       whileHover={{ y: -3 }}
                       className="p-6 rounded-2xl border border-border bg-background hover:border-primary/30 hover:shadow-md transition-all"
                     >
@@ -458,7 +446,7 @@ export default function Servizi() {
                     </motion.div>
                   ))}
                 </div>
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+                <motion.div
                   className="text-center mt-8">
                   <button onClick={openModal}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-subtitle font-semibold hover:bg-card transition-colors">
@@ -479,7 +467,7 @@ export default function Servizi() {
             {/* ── RETAINER PLANS ───────────────────────────────────────────────── */}
             <section className="py-16 sm:py-24">
               <div className="container mx-auto px-4 lg:px-8">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                <motion.div
                   className="text-center mb-14">
                   <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-4">
                     Il tuo team legale-AI,{" "}
@@ -494,10 +482,6 @@ export default function Servizi() {
                 <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                   {retainerPlans.map((p, i) => (
                     <motion.div key={p.name}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.12 }}
                       whileHover={{ y: -4 }}
                       className={`relative flex flex-col rounded-3xl border overflow-hidden transition-all duration-300 ${
                         p.featured
@@ -550,17 +534,13 @@ export default function Servizi() {
             {/* ── RETAINER FAQ ─────────────────────────────────────────────────── */}
             <section className="py-16 sm:py-20 bg-card">
               <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                <motion.h2
                   className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-10 text-center">
                   Domande sui retainer
                 </motion.h2>
                 <div className="space-y-3">
                   {faqRetainer.map((f, i) => (
                     <motion.div key={i}
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.08 }}
                       className="rounded-2xl border border-border bg-background overflow-hidden"
                     >
                       <button
@@ -594,7 +574,7 @@ export default function Servizi() {
       {/* ── TESTIMONIALS ─────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 border-t border-border">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          <motion.h2
             className="font-display font-extrabold text-2xl sm:text-3xl tracking-heading-tight mb-10 text-center">
             Chi ha già scelto <span className="text-gradient-primary">TutelAI</span>
           </motion.h2>
@@ -604,10 +584,6 @@ export default function Servizi() {
               { q: "Con l'AI Shield Pro ho un DPO e un AI Officer disponibili ogni mese. Costa meno di un consulente generalista e lavora su cose reali.", name: "Avv. Giulia M.", role: "Partner — Studio legale, Milano" },
             ].map((t, i) => (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
                 className="p-7 rounded-3xl border border-border bg-card"
               >
                 <div className="flex gap-1 mb-4">
@@ -632,7 +608,7 @@ export default function Servizi() {
       {/* ── FINAL CTA ────────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 bg-dark-gradient text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <motion.div   >
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-heading-tight leading-[1.08] mb-5">
               Non sai da dove iniziare?
             </h2>

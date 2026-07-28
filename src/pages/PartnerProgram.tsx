@@ -31,25 +31,10 @@ function Counter({
   prefix?: string;
   duration?: number;
 }) {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
-  useEffect(() => {
-    if (!inView) return;
-    const t0 = performance.now();
-    const tick = (t: number) => {
-      const p = Math.min((t - t0) / duration, 1);
-      setVal(Math.floor((1 - (1 - p) ** 3) * to));
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView, to, duration]);
-
   return (
-    <span ref={ref}>
+    <span>
       {prefix}
-      {val.toLocaleString("it-IT")}
+      {to.toLocaleString("it-IT")}
       {suffix}
     </span>
   );
@@ -234,9 +219,6 @@ export default function PartnerProgram() {
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="bg-dark-gradient text-primary-foreground pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-36 relative overflow-hidden">
         {/* Ambient glows */}
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary/15 rounded-full blur-3xl pointer-events-none" />
-
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-4xl relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -285,9 +267,6 @@ export default function PartnerProgram() {
       <section className="py-16 sm:py-20 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center text-muted-foreground text-sm font-mono-accent uppercase tracking-widest mb-10"
           >
             I numeri che devi conoscere
@@ -296,10 +275,6 @@ export default function PartnerProgram() {
             {opportunityStats.map((s, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="text-center p-6 rounded-2xl border border-border bg-background hover:border-primary/30 transition-colors"
               >
                 <p className="font-display font-extrabold text-3xl sm:text-4xl tracking-stat-tight text-gradient-primary mb-1">
@@ -319,10 +294,6 @@ export default function PartnerProgram() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: il problema */}
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-destructive mb-4 px-3 py-1.5 rounded-full bg-destructive/10 border border-destructive/20">
                 Il problema
@@ -355,10 +326,6 @@ export default function PartnerProgram() {
 
             {/* Right: la tua opportunità + earning calc */}
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
             >
               <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
                 La tua opportunità
@@ -424,10 +391,6 @@ export default function PartnerProgram() {
       <section className="py-20 sm:py-28 lg:py-36 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -446,10 +409,6 @@ export default function PartnerProgram() {
             {partnerTypes.map((p, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.5 }}
                 className={`flex flex-col rounded-2xl border overflow-hidden transition-all duration-300 ${
                   p.featured
                     ? "border-primary shadow-2xl ring-2 ring-primary/20 bg-background"
@@ -516,10 +475,6 @@ export default function PartnerProgram() {
       <section id="come-funziona" className="py-20 sm:py-28 lg:py-36 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -538,10 +493,6 @@ export default function PartnerProgram() {
             {processSteps.map((step, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="flex gap-5 p-6 rounded-2xl border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all duration-300"
               >
                 {/* Number badge */}
@@ -572,10 +523,6 @@ export default function PartnerProgram() {
       <section className="py-20 sm:py-28 lg:py-36 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             className="text-center mb-14"
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4">
@@ -594,10 +541,6 @@ export default function PartnerProgram() {
             {benefits.map((b, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.05 + i * 0.07, duration: 0.5 }}
                 className="flex gap-4 p-5 rounded-xl border border-border bg-background hover:border-primary/30 hover:shadow-sm transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-xl bg-gradient-cta flex items-center justify-center shrink-0">
@@ -616,14 +559,8 @@ export default function PartnerProgram() {
       {/* ── FINAL CTA ─────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28 lg:py-36 bg-dark-gradient text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-gradient-cta pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-6">
               Unisciti al programma

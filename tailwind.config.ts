@@ -15,15 +15,17 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Bricolage Grotesque", "sans-serif"],
-        subtitle: ["Plus Jakarta Sans", "sans-serif"],
-        body: ["Inter", "sans-serif"],
-        "mono-accent": ["JetBrains Mono", "monospace"],
+        display: ["Fraunces", "Georgia", "serif"],
+        subtitle: ["Newsreader", "Georgia", "serif"],
+        body: ["Newsreader", "Georgia", "serif"],
+        "mono-accent": ["DM Mono", "ui-monospace", "monospace"],
       },
+      // Le serif editoriali non vogliono il tracking negativo delle grotesque:
+      // stringerle sporca le grazie. Si tiene neutro/positivo.
       letterSpacing: {
-        "display-tight": "-0.03em",
-        "heading-tight": "-0.02em",
-        "stat-tight": "-0.04em",
+        "display-tight": "-0.015em",
+        "heading-tight": "-0.01em",
+        "stat-tight": "-0.02em",
       },
       colors: {
         // ── TutelAI brand palette ──────────────────────────────────────────

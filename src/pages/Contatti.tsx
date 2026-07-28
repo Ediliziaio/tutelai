@@ -155,7 +155,6 @@ export default function Contatti() {
       <section className="relative pt-28 pb-14 sm:pt-36 sm:pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
         {/* subtle bg decoration */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[350px] rounded-full bg-primary/6 blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl relative text-center">
@@ -416,10 +415,6 @@ export default function Contatti() {
                   return (
                     <motion.div
                       key={i}
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
                       className="flex gap-5 items-start"
                     >
                       {/* time badge */}
@@ -448,10 +443,6 @@ export default function Contatti() {
                 {testimonials.map((t, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
                     className="rounded-xl border border-border bg-card p-4"
                   >
                     <div className="flex gap-0.5 mb-2">
@@ -491,9 +482,6 @@ export default function Contatti() {
       <section className="py-16 sm:py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-10"
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-semibold tracking-widest uppercase text-primary mb-4 px-3 py-1.5 rounded-full bg-primary/10">
@@ -509,10 +497,6 @@ export default function Contatti() {
             {faqItems.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
                 className="rounded-xl border border-border bg-background overflow-hidden"
               >
                 <button
@@ -545,9 +529,6 @@ export default function Contatti() {
       <section className="py-16 sm:py-20 lg:py-28 bg-dark-gradient text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
           >
             <Phone size={40} className="mx-auto mb-6 text-primary/60" />
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-heading-tight text-white mb-5 leading-[1.08]">

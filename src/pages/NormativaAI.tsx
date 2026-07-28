@@ -24,7 +24,9 @@ import LeadFormModal from "@/components/LeadFormModal";
 
 const riskCategories = [
   {
-    dot: "🔴",
+    // Le emoji semaforo sono un segno da presentazione, non da documento:
+    // sostituite da numeri romani, come i livelli di una classificazione.
+    dot: "I",
     level: "Rischio Inaccettabile",
     badge: "VIETATO",
     badgeClass: "bg-destructive text-destructive-foreground",
@@ -36,32 +38,32 @@ const riskCategories = [
     highlight: false,
   },
   {
-    dot: "🟠",
+    dot: "II",
     level: "Rischio Alto",
     badge: "OBBLIGHI PESANTI",
-    badgeClass: "bg-orange-500 text-white",
-    borderClass: "border-orange-400/30",
-    bgClass: "bg-orange-500/5",
+    badgeClass: "bg-primary text-primary-foreground",
+    borderClass: "border-primary/25",
+    bgClass: "bg-primary/5",
     examples: ["AI in HR e selezione personale", "Valutazione del credito", "AI in infrastrutture critiche"],
     when: "Dal 2 agosto 2026 (Allegato III)",
-    whenClass: "text-orange-600",
+    whenClass: "text-primary",
     highlight: false,
   },
   {
-    dot: "🔵",
+    dot: "III",
     level: "Rischio Limitato",
     badge: "LE PMI SONO QUI",
-    badgeClass: "bg-primary text-primary-foreground",
-    borderClass: "border-primary",
-    bgClass: "bg-primary/5",
+    badgeClass: "bg-accent text-accent-foreground",
+    borderClass: "border-accent",
+    bgClass: "bg-accent/5",
     examples: ["Chatbot sul sito", "Voice agent customer service", "Assistenti AI nelle email"],
     when: "Dal 2 agosto 2026",
-    whenClass: "text-primary font-bold",
+    whenClass: "text-foreground font-semibold",
     highlight: true,
-    urgentLabel: "URGENTE",
+    urgentLabel: "TERMINE IMMINENTE",
   },
   {
-    dot: "⚪",
+    dot: "IV",
     level: "Rischio Minimo",
     badge: "NESSUN OBBLIGO AI ACT",
     badgeClass: "bg-muted text-muted-foreground",
@@ -113,7 +115,7 @@ const legge132Articles = [
     title: "Obblighi per i datori di lavoro",
     desc: "Chi usa AI in processi HR deve informare i lavoratori per iscritto prima dell'uso, spiegare le logiche dell'algoritmo e garantire il diritto di contestazione delle decisioni automatizzate.",
     impact: "Alta",
-    impactClass: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    impactClass: "bg-primary/10 text-primary",
     icon: Users,
   },
   {
@@ -121,7 +123,7 @@ const legge132Articles = [
     title: "Professioni intellettuali",
     desc: "Avvocati, commercialisti, medici che usano AI devono comunicarlo esplicitamente al cliente e garantire che la decisione finale rimanga sempre umana e verificabile.",
     impact: "Alta",
-    impactClass: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    impactClass: "bg-primary/10 text-primary",
     icon: Scale,
   },
   {
@@ -223,7 +225,6 @@ export default function NormativaAI() {
       <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-44 lg:pb-28 bg-gradient-to-b from-primary/5 via-background to-background overflow-hidden">
         {/* decorative blur */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-primary/8 blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl relative">
@@ -296,10 +297,6 @@ export default function NormativaAI() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* left: editorial explanation */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-semibold tracking-widest uppercase text-primary mb-4 px-3 py-1.5 rounded-full bg-primary/10">
                 <Scale size={12} />
@@ -336,10 +333,6 @@ export default function NormativaAI() {
 
             {/* right: "a chi si applica" card */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
               className="rounded-2xl border-2 border-primary bg-primary/5 p-6 sm:p-8"
             >
               <p className="font-mono-accent text-xs font-bold tracking-widest uppercase text-primary mb-5">
@@ -382,9 +375,6 @@ export default function NormativaAI() {
       <section className="py-16 sm:py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-12"
           >
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl tracking-heading-tight mb-4">
@@ -399,10 +389,6 @@ export default function NormativaAI() {
             {riskCategories.map((cat, i) => (
               <motion.div
                 key={cat.level}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className={`relative rounded-2xl border-2 p-6 ${cat.borderClass} ${cat.bgClass} ${cat.highlight ? "ring-2 ring-primary ring-offset-2" : ""}`}
               >
                 {cat.highlight && cat.urgentLabel && (
@@ -439,9 +425,6 @@ export default function NormativaAI() {
       <section className="py-16 sm:py-20 lg:py-28 bg-dark-gradient text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-12"
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-bold tracking-widest uppercase text-red-400 mb-4 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/30">
@@ -466,23 +449,19 @@ export default function NormativaAI() {
                 amount: "€15.000.000",
                 pct: "o 3% del fatturato",
                 label: "Violazione obblighi",
-                color: "border-orange-500 bg-orange-500/10",
-                textColor: "text-orange-400",
+                color: "border-accent bg-accent/10",
+                textColor: "text-accent",
               },
               {
                 amount: "€7.500.000",
                 pct: "o 1% del fatturato",
                 label: "Informazioni false",
-                color: "border-yellow-500 bg-yellow-500/10",
-                textColor: "text-yellow-400",
+                color: "border-accent bg-accent/10",
+                textColor: "text-accent",
               },
             ].map((tier, i) => (
               <motion.div
                 key={tier.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
                 className={`rounded-2xl border-2 p-6 text-center ${tier.color}`}
               >
                 <p className={`font-display font-extrabold text-2xl sm:text-3xl tracking-stat-tight ${tier.textColor} mb-1`}>
@@ -497,9 +476,6 @@ export default function NormativaAI() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8 text-center"
           >
             <p className="text-white/90 text-base sm:text-lg font-subtitle leading-relaxed max-w-2xl mx-auto">
@@ -520,9 +496,6 @@ export default function NormativaAI() {
       <section className="py-16 sm:py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-12"
           >
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl tracking-heading-tight mb-4">
@@ -538,10 +511,6 @@ export default function NormativaAI() {
               {deadlines.map((d, i) => (
                 <motion.div
                   key={d.date}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
                   className="relative flex gap-5 items-start"
                 >
                   {/* dot */}
@@ -590,9 +559,6 @@ export default function NormativaAI() {
       <section className="py-16 sm:py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-12"
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono-accent font-bold tracking-widest uppercase text-primary mb-4 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
@@ -612,10 +578,6 @@ export default function NormativaAI() {
             {legge132Articles.map((art, i) => (
               <motion.div
                 key={art.article}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="rounded-2xl border border-border bg-background p-6 flex flex-col"
               >
                 <div className="flex items-center justify-between mb-4">
@@ -640,9 +602,6 @@ export default function NormativaAI() {
       <section className="py-16 sm:py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center mb-10"
           >
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl tracking-heading-tight mb-4">
@@ -659,10 +618,6 @@ export default function NormativaAI() {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.07 }}
                   className={`flex items-start gap-4 p-4 rounded-xl border ${
                     item.urgent
                       ? "border-destructive/40 bg-destructive/5"
@@ -696,9 +651,6 @@ export default function NormativaAI() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="text-center"
           >
             <p className="text-muted-foreground text-sm mb-5">
@@ -718,9 +670,6 @@ export default function NormativaAI() {
       <section className="py-16 sm:py-20 lg:py-28 bg-dark-gradient text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
           >
             <Shield size={40} className="mx-auto mb-6 text-primary/70" />
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-heading-tight text-white mb-5 leading-[1.08]">

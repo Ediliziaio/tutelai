@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Clock, Calendar, ArrowRight } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -20,20 +20,14 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Blog & Risorse | TutelAI — AI Compliance per PMI italiane</title>
-        <meta
-          name="description"
-          content="Tutto quello che devi sapere sull'AI compliance — in italiano, senza gergo. AI Act, Legge 132/2025, DPO, sanzioni. Articoli pratici per imprenditori italiani."
-        />
-        <meta property="og:title" content="Blog TutelAI — AI Compliance per PMI italiane" />
-        <meta
-          property="og:description"
-          content="Analisi settimanale delle novità normative che impattano le PMI italiane. Senza paroloni, con esempi concreti."
-        />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://tutelai.it/blog" />
-      </Helmet>
+            <SEOHead
+        title="Blog & Risorse | TutelAI — AI Compliance per PMI italiane"
+        description="Tutto quello che devi sapere sull'AI compliance — in italiano, senza gergo. AI Act, Legge 132/2025, DPO, sanzioni. Articoli pratici per imprenditori italiani."
+        ogTitle="Blog TutelAI — AI Compliance per PMI italiane"
+        ogDescription="Analisi settimanale delle novità normative che impattano le PMI italiane. Senza paroloni, con esempi concreti."
+        ogType="website"
+        canonical="https://tutelai.it/blog"
+      />
 
       <Navbar onCtaClick={() => setLeadOpen(true)} />
 

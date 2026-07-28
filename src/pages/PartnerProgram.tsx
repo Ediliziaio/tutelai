@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -15,6 +14,7 @@ import {
   Calculator,
   Phone,
 } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -193,20 +193,14 @@ export default function PartnerProgram() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Programma di collaborazione | TutelAI</title>
-        <meta
-          name="description"
-          content="Programma di collaborazione TutelAI per commercialisti, studi legali e consulenti IT: referral, rivendita e white label. Condizioni definite nell’accordo, senza costi di adesione."
-        />
-        <link rel="canonical" href="https://tutelai.it/partner" />
-        <meta property="og:title" content="Partner Program | TutelAI" />
-        <meta
-          property="og:description"
-          content="Il mercato della compliance AI vale miliardi. I tuoi clienti ne hanno bisogno adesso. TutelAI ti dà gli strumenti per servirli subito."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+            <SEOHead
+        title="Programma di collaborazione | TutelAI"
+        description="Programma di collaborazione TutelAI per commercialisti, studi legali e consulenti IT: referral, rivendita e white label. Condizioni definite nell’accordo, senza costi di adesione."
+        ogTitle="Partner Program | TutelAI"
+        ogDescription="Il mercato della compliance AI vale miliardi. I tuoi clienti ne hanno bisogno adesso. TutelAI ti dà gli strumenti per servirli subito."
+        ogType="website"
+        canonical="https://tutelai.it/partner"
+      />
 
       <Navbar onCtaClick={openModal} />
 

@@ -1,14 +1,14 @@
-import { Helmet } from 'react-helmet-async';
+import SEOHead from '@/components/SEOHead';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const Privacy = () => (
   <>
-    <Helmet>
-      <title>Privacy Policy — TutelAI</title>
-      <meta name="description" content="Informativa sulla privacy di TutelAI." />
-      <link rel="canonical" href="https://tutelai.it/privacy" />
-    </Helmet>
+        <SEOHead
+      title="Privacy Policy — TutelAI"
+      description="Informativa sulla privacy di TutelAI."
+      canonical="https://tutelai.it/privacy"
+    />
     <Navbar onCtaClick={() => {}} />
     <main className="min-h-screen pt-24 pb-16 px-6 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-foreground">Privacy Policy</h1>

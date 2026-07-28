@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Clock, Calendar, ArrowLeft, ArrowRight, Tag } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -62,19 +62,17 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>{article.seo.metaTitle}</title>
-        <meta name="description" content={article.seo.metaDescription} />
-        <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.seo.metaDescription} />
-        <meta property="og:type" content="article" />
-        <meta property="og:image" content={coverImage} />
-        <meta property="og:url" content={`https://tutelai.it/blog/${article.slug}`} />
-        <meta property="article:published_time" content={article.publishedAt} />
-        <meta property="article:tag" content={article.tags.join(", ")} />
-        <link rel="canonical" href={`https://tutelai.it/blog/${article.slug}`} />
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
+      <SEOHead
+        title={article.seo.metaTitle}
+        description={article.seo.metaDescription}
+        ogTitle={article.title}
+        ogType="article"
+        ogImage={coverImage}
+        canonical={`https://tutelai.it/blog/${article.slug}`}
+        publishedTime={article.publishedAt}
+        tags={article.tags.join(", ")}
+        jsonLd={jsonLd}
+      />
 
       <Navbar onCtaClick={() => setLeadOpen(true)} />
 

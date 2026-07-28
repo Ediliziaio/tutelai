@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   CheckCircle2,
@@ -13,6 +12,7 @@ import {
   Building2,
   Star,
 } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -140,14 +140,11 @@ export default function Contatti() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Contatti | TutelAI — Prenota una call gratuita di 30 minuti</title>
-        <meta
-          name="description"
-          content="Primo colloquio gratuito di 30 minuti con i professionisti dello studio: inquadriamo i sistemi AI in uso, la tua esposizione rispetto al Regolamento UE 2024/1689 e il percorso di adeguamento, con preventivo scritto."
-        />
-        <link rel="canonical" href="https://tutelai.it/contatti" />
-      </Helmet>
+            <SEOHead
+        title="Contatti | TutelAI — Prenota una call gratuita di 30 minuti"
+        description="Primo colloquio gratuito di 30 minuti con i professionisti dello studio: inquadriamo i sistemi AI in uso, la tua esposizione rispetto al Regolamento UE 2024/1689 e il percorso di adeguamento, con preventivo scritto."
+        canonical="https://tutelai.it/contatti"
+      />
 
       <Navbar onCtaClick={openModal} />
 

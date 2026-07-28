@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   AlertTriangle,
@@ -18,6 +17,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { APPLICAZIONE_GENERALE, conteggio } from "@/lib/scadenze";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -209,15 +209,12 @@ export default function NormativaAI() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Normativa AI Italia 2025-2026 | AI Act e Legge 132/2025 per PMI — TutelAI</title>
-        <meta
-          name="description"
-          content="Guida completa all'AI Act europeo e alla Legge 132/2025 italiana. Obblighi, sanzioni, scadenze e checklist per le PMI italiane. Aggiornata a luglio 2026."
-        />
-        <link rel="canonical" href="https://tutelai.it/normativa-ai" />
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      </Helmet>
+      <SEOHead
+        title="Normativa AI Italia 2025-2026 | AI Act e Legge 132/2025 per PMI — TutelAI"
+        description="Guida completa all'AI Act europeo e alla Legge 132/2025 italiana. Obblighi, sanzioni, scadenze e checklist per le PMI italiane. Aggiornata a luglio 2026."
+        canonical="https://tutelai.it/normativa-ai"
+        jsonLd={faqSchema}
+      />
 
       <Navbar onCtaClick={openModal} />
 

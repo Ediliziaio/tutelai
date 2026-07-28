@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, ArrowRight, Shield, FileText, ShieldCheck, Eye, Clock, AlertTriangle, Zap, Scale, Users, Phone, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { APPLICAZIONE_GENERALE, conteggio } from "@/lib/scadenze";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -208,11 +208,11 @@ export default function Servizi() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Helmet>
-        <title>Servizi AI Compliance | TutelAI — Una tantum e Retainer mensili</title>
-        <meta name="description" content="AI Risk Scan, AI Compliance Pack, AI Governance Setup e retainer continuativi per la conformità all'AI Act e alla Legge 132/2025. Onorari a preventivo scritto." />
-        <link rel="canonical" href="https://tutelai.it/servizi" />
-      </Helmet>
+            <SEOHead
+        title="Servizi AI Compliance | TutelAI — Una tantum e Retainer mensili"
+        description="AI Risk Scan, AI Compliance Pack, AI Governance Setup e retainer continuativi per la conformità all'AI Act e alla Legge 132/2025. Onorari a preventivo scritto."
+        canonical="https://tutelai.it/servizi"
+      />
 
       <Navbar onCtaClick={openModal} />
 

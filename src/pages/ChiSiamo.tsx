@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Scale, Cpu, Users, Target, ArrowRight, Building2 } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -114,17 +114,14 @@ export default function ChiSiamo() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Chi Siamo | TutelAI — Studio legale specializzato in AI Act</title>
-        <meta
-          name="description"
-          content="TutelAI è lo studio legale che assiste le PMI italiane in materia di intelligenza artificiale: una rete di avvocati iscritti all'albo, specializzati sul Regolamento UE 2024/1689 e sulla Legge 132/2025, affiancata da competenze tecniche interne."
-        />
-        <link rel="canonical" href="https://tutelai.it/chi-siamo" />
-        <meta property="og:title" content="Chi Siamo | TutelAI" />
-        <meta property="og:description" content="Studio legale e rete di avvocati specializzati in AI Act per le PMI italiane." />
-        <meta property="og:type" content="website" />
-      </Helmet>
+            <SEOHead
+        title="Chi Siamo | TutelAI — Studio legale specializzato in AI Act"
+        description="TutelAI è lo studio legale che assiste le PMI italiane in materia di intelligenza artificiale: una rete di avvocati iscritti all'albo, specializzati sul Regolamento UE 2024/1689 e sulla Legge 132/2025, affiancata da competenze tecniche interne."
+        ogTitle="Chi Siamo | TutelAI"
+        ogDescription="Studio legale e rete di avvocati specializzati in AI Act per le PMI italiane."
+        ogType="website"
+        canonical="https://tutelai.it/chi-siamo"
+      />
 
       <Navbar onCtaClick={openModal} />
 

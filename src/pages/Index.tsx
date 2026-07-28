@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { motion, useInView } from "framer-motion";
 import {
   Shield, AlertTriangle, CheckCircle2, ArrowRight, Clock,
@@ -9,6 +8,7 @@ import {
   Globe, Award, Eye, Building2, Sparkles,
 } from "lucide-react";
 import { APPLICAZIONE_GENERALE, conteggio, etichettaBreve } from "@/lib/scadenze";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -350,13 +350,13 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Helmet>
-        <title>TutelAI — Studio legale specializzato in AI Act e compliance AI</title>
-        <meta name="description" content="Dal 2 agosto 2026 il Regolamento UE 2024/1689 si applica per intero. Avvocati specializzati in AI Act e Legge 132/2025 assistono la tua azienda: AI Risk Scan, documentazione, DPO e AI Officer esterni." />
-        <meta property="og:title" content="TutelAI — Studio legale specializzato in AI Act" />
-        <meta property="og:description" content="Assistenza legale in materia di intelligenza artificiale per le PMI italiane. AI Act, Legge 132/2025, DPO e AI Officer esterni." />
-        <link rel="canonical" href="https://tutelai.it" />
-      </Helmet>
+            <SEOHead
+        title="TutelAI — Studio legale specializzato in AI Act e compliance AI"
+        description="Dal 2 agosto 2026 il Regolamento UE 2024/1689 si applica per intero. Avvocati specializzati in AI Act e Legge 132/2025 assistono la tua azienda: AI Risk Scan, documentazione, DPO e AI Officer esterni."
+        ogTitle="TutelAI — Studio legale specializzato in AI Act"
+        ogDescription="Assistenza legale in materia di intelligenza artificiale per le PMI italiane. AI Act, Legge 132/2025, DPO e AI Officer esterni."
+        canonical="https://tutelai.it"
+      />
 
       <Navbar onCtaClick={openModal} />
 

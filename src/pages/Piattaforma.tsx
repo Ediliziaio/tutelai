@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight, Database, FileText, Bell, BookOpen, Shield, ClipboardList, Zap, BarChart3, Lock, Globe, Users, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadFormModal from "@/components/LeadFormModal";
@@ -188,11 +188,11 @@ export default function Piattaforma() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Helmet>
-        <title>TutelAI Platform — L'applicativo per la compliance AI</title>
-        <meta name="description" content="Registro dei sistemi AI, generazione documentale, monitoraggio normativo, formazione e audit trail in un unico applicativo, sotto supervisione legale. Prova gratuita 14 giorni, senza carta di credito." />
-        <link rel="canonical" href="https://tutelai.it/piattaforma" />
-      </Helmet>
+            <SEOHead
+        title="TutelAI Platform — L'applicativo per la compliance AI"
+        description="Registro dei sistemi AI, generazione documentale, monitoraggio normativo, formazione e audit trail in un unico applicativo, sotto supervisione legale. Prova gratuita 14 giorni, senza carta di credito."
+        canonical="https://tutelai.it/piattaforma"
+      />
 
       <Navbar onCtaClick={openModal} />
 
